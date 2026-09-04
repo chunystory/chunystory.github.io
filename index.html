@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>말온도</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --canvas: #F5F1EA; --ink: #211E1B; --ink-2: #56504A; --ink-3: #6C655D;
+    --line: #E6DFD4; --accent: #BE2D1A;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --canvas: #16120F; --ink: #F0EAE3; --ink-2: #B8AFA5; --ink-3: #9E958A;
+      --line: #3A342E; --accent: #E8ACA4;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--canvas); color: var(--ink);
+    font: 16px/1.75 -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+          "Malgun Gothic", sans-serif;
+    word-break: keep-all;
+    display: grid; place-items: center; min-height: 100vh;
+  }
+  main { max-width: 32rem; padding: 3rem 1.5rem; }
+  h1 { font-size: 2.1rem; letter-spacing: -.02em; margin: 0 0 .75rem; }
+  p { color: var(--ink-2); margin: 0 0 1.5rem; }
+  .links { display: flex; gap: 1.25rem; flex-wrap: wrap; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+  a { color: var(--accent); }
+  small { color: var(--ink-3); display: block; margin-top: 2.5rem; font-size: .85rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>말온도</h1>
+  <p>말하기 어려운 순간에, 지금 이 사람에게 건넬 한두 문장을 찾는 대화 코치입니다.</p>
+  <div class="links">
+    <a href="/privacy.html">개인정보처리방침</a>
+  </div>
+  <small>© 2026 말온도</small>
+</main>
+</body>
+</html>
