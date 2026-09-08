@@ -36,6 +36,11 @@
     /* 온도 램프 — 그래픽용(r) 과 글자용(ri). lib/theme/malondo_palette.dart 와 같은 값 */
     --r1: #2B4669; --r2: #325D57; --r3: #6D6359; --r4: #976A23; --r5: #C76138; --r6: #D76656;
     --r1i: #2B4669; --r2i: #325D57; --r3i: #6D6359; --r4i: #895B13; --r5i: #AA451E; --r6i: #BE2D1A;
+    /* 헤드라인 강조 — 스토어 스크린샷의 청록→금→살구 */
+    --g1: #2F7A6E; --g2: #B5832C; --g3: #D3664F;
+    --blob1: rgba(156,208,198,.55); --blob2: rgba(234,205,150,.55); --blob3: rgba(242,181,161,.6);
+    --frame: #3A3532; --frame-edge: #6B645F; --frame-in: #0A0908;
+    --shadow: rgba(58,34,24,.42);
     --sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
             "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
     --serif: "Gowun Batang", "Apple Myungjo", "Noto Serif KR", serif;
@@ -50,6 +55,10 @@
       --accent: #E8ACA4; --accent-soft: #40221E;
       --r1: #7496C3; --r2: #50AA9E; --r3: #AEA396; --r4: #CDA669; --r5: #DFA690; --r6: #E8ACA4;
       --r1i: #7496C3; --r2i: #50AA9E; --r3i: #AEA396; --r4i: #CDA669; --r5i: #DFA690; --r6i: #E8ACA4;
+      --g1: #50AA9E; --g2: #CDA669; --g3: #E8ACA4;
+      --blob1: rgba(80,170,158,.18); --blob2: rgba(205,166,105,.16); --blob3: rgba(232,172,164,.18);
+      --frame: #2B2622; --frame-edge: #4A423C; --frame-in: #050404;
+      --shadow: rgba(0,0,0,.7);
     }
   }
   :root[data-theme="dark"] {
@@ -60,53 +69,127 @@
     --accent: #E8ACA4; --accent-soft: #40221E;
     --r1: #7496C3; --r2: #50AA9E; --r3: #AEA396; --r4: #CDA669; --r5: #DFA690; --r6: #E8ACA4;
     --r1i: #7496C3; --r2i: #50AA9E; --r3i: #AEA396; --r4i: #CDA669; --r5i: #DFA690; --r6i: #E8ACA4;
+    --g1: #50AA9E; --g2: #CDA669; --g3: #E8ACA4;
+    --blob1: rgba(80,170,158,.18); --blob2: rgba(205,166,105,.16); --blob3: rgba(232,172,164,.18);
+    --frame: #2B2622; --frame-edge: #4A423C; --frame-in: #050404;
+    --shadow: rgba(0,0,0,.7);
   }
 
   * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   body {
     margin: 0; background: var(--canvas); color: var(--ink);
     font: 16px/1.75 var(--sans); letter-spacing: -.01em;
-    word-break: keep-all; -webkit-font-smoothing: antialiased;
+    word-break: keep-all; -webkit-font-smoothing: antialiased; overflow-x: hidden;
   }
   .wrap { max-width: 44rem; margin: 0 auto; padding: 0 1.25rem; }
-  h1, h2, h3 { margin: 0; letter-spacing: -.02em; line-height: 1.3; text-wrap: balance; }
+  .wide { max-width: 68rem; margin: 0 auto; padding: 0 1.25rem; }
+  h1, h2, h3 { margin: 0; letter-spacing: -.025em; line-height: 1.25; text-wrap: balance; }
   p { margin: 0 0 1rem; color: var(--ink-2); }
   p:last-child { margin-bottom: 0; }
   strong, b { color: var(--ink); font-weight: 600; }
   a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; }
   a:hover { text-decoration-thickness: 2px; }
-  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
   sub, sup { font-size: .72em; line-height: 0; }
   small { font-size: .8125rem; }
-
-  /* ── 머리 ── */
-  .top { padding: 3.25rem 0 2.25rem; }
-  .brand { display: flex; align-items: center; gap: .9rem; }
-  .brand img { width: 56px; height: 56px; border-radius: 14px; flex: none; }
-  .brand h1 { font-size: 2.1rem; font-weight: 700; }
-  .lede { margin: 1.25rem 0 0; font-size: 1.125rem; max-width: 34ch; }
-  .facts { list-style: none; margin: 1.1rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .25rem 0; font-size: .875rem; color: var(--ink-3); }
-  .facts li + li::before { content: "·"; margin: 0 .6rem; color: var(--line-2); }
-
-  /* ── 구획 ── */
-  section { padding: 2.5rem 0; border-top: 1px solid var(--line); }
+  .grad { background: linear-gradient(90deg, var(--g1), var(--g2) 55%, var(--g3)); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .eyebrow { display: block; font-size: .8125rem; font-weight: 600; letter-spacing: .02em; color: var(--accent); margin: 0 0 .6rem; }
-  h2 { font-size: 1.5rem; font-weight: 700; margin: 0 0 1rem; }
+  h2 { font-size: clamp(1.6rem, 3.2vw, 2.1rem); font-weight: 700; margin: 0 0 1rem; }
   h3 { font-size: 1.0625rem; font-weight: 600; }
 
-  /* ── 질문 한 줄 · 세 가지 일 ── */
-  .q { display: block; margin: 0 0 1.25rem; font-family: var(--serif); font-size: 1.5rem; line-height: 1.5; letter-spacing: -.01em; color: var(--ink); }
+  /* ── 나타나기 ── */
+  html.js [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  html.js [data-reveal].in { opacity: 1; transform: none; }
+  html.js [data-reveal][data-delay="1"] { transition-delay: .08s; }
+  html.js [data-reveal][data-delay="2"] { transition-delay: .16s; }
+  html.js [data-reveal][data-delay="3"] { transition-delay: .24s; }
+
+  /* ── 머리 ── */
+  .bar { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); background: color-mix(in srgb, var(--canvas) 78%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent); }
+  .bar .wide { display: flex; align-items: center; gap: .75rem; height: 3.5rem; }
+  .bar img { width: 30px; height: 30px; border-radius: 8px; }
+  .bar b { font-size: 1.05rem; font-weight: 700; letter-spacing: -.02em; }
+  .bar nav { margin-left: auto; display: flex; gap: 1.1rem; font-size: .875rem; }
+  .bar nav a { color: var(--ink-2); text-decoration: none; }
+  .bar nav a:hover { color: var(--ink); }
+
+  /* ── 영웅 ── */
+  .hero { position: relative; overflow: hidden; padding: 4rem 0 3.5rem; }
+  .blobs { position: absolute; inset: -20% -10%; pointer-events: none; filter: blur(60px); z-index: 0; }
+  .blob { position: absolute; border-radius: 50%; will-change: transform; }
+  .blob.a { width: 46vw; height: 30vw; left: -8%; top: 55%; background: var(--blob1); animation: drift 26s ease-in-out infinite alternate; }
+  .blob.b { width: 40vw; height: 26vw; right: -6%; top: 6%; background: var(--blob2); animation: drift 31s ease-in-out infinite alternate-reverse; }
+  .blob.c { width: 50vw; height: 30vw; right: 4%; bottom: -8%; background: var(--blob3); animation: drift 37s ease-in-out infinite alternate; }
+  @keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(6vw, -4vw) scale(1.12); } }
+  .hero .wide { position: relative; z-index: 1; display: grid; gap: 2.5rem; align-items: center; }
+  @media (min-width: 880px) { .hero .wide { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 3rem; } .hero { padding: 5.5rem 0 5rem; } }
+  .hero h1 { font-size: clamp(2.2rem, 5.2vw, 3.6rem); font-weight: 700; line-height: 1.18; }
+  .hero .lede { margin: 1.4rem 0 0; font-size: 1.125rem; max-width: 34ch; }
+  .facts { list-style: none; margin: 1.1rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .25rem 0; font-size: .875rem; color: var(--ink-3); }
+  .facts li + li::before { content: "·"; margin: 0 .6rem; color: var(--line-2); }
+  .stores { list-style: none; margin: 1.6rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .6rem; }
+  .store { display: inline-flex; align-items: center; gap: .5rem; padding: .6rem 1rem; border: 1px solid var(--line-2); border-radius: .75rem; color: var(--ink); font-size: .9375rem; text-decoration: none; background: color-mix(in srgb, var(--surface) 70%, transparent); }
+  .store small { color: var(--ink-3); }
+  .store.soon { color: var(--ink-2); }
+
+  /* 다이얼 */
+  .dial-wrap { display: grid; justify-items: center; gap: 1.1rem; }
+  .dial { position: relative; width: min(320px, 78vw); aspect-ratio: 1; }
+  .ring { position: absolute; inset: 0; border-radius: 50%;
+    background: conic-gradient(from 240deg, var(--r1) 0deg, var(--r2) 52.5deg, var(--r3) 112.5deg, var(--r4) 157.5deg, var(--r5) 202.5deg, var(--r6) 240deg, transparent 240deg 360deg);
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 30px), #000 calc(100% - 29px)); mask: radial-gradient(farthest-side, transparent calc(100% - 30px), #000 calc(100% - 29px)); }
+  .needle { position: absolute; inset: 0; transform: rotate(var(--a, 0deg)); transition: transform .9s cubic-bezier(.3,.8,.3,1); will-change: transform; }
+  .needle i { position: absolute; left: 50%; top: 15px; width: 22px; height: 22px; margin-left: -11px; border-radius: 50%; background: var(--ink); box-shadow: 0 0 0 4px var(--canvas), 0 6px 18px var(--shadow); }
+  .dial-core { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
+  .dial-core .num { font-size: clamp(2.6rem, 8vw, 3.6rem); font-weight: 800; letter-spacing: -.04em; line-height: 1; font-variant-numeric: tabular-nums; color: var(--tone, var(--ink)); transition: color .6s; }
+  .dial-core .num small { font-size: .42em; font-weight: 700; letter-spacing: 0; margin-left: .1em; }
+  .dial-core .tone { margin-top: .5rem; font-size: 1rem; font-weight: 600; color: var(--tone, var(--ink)); transition: color .6s; }
+  .dial-core .drift { margin-top: .2rem; font-size: .8125rem; color: var(--ink-3); min-height: 1.4em; }
+  .wave { display: flex; align-items: center; gap: 4px; height: 34px; }
+  .wave i { width: 4px; border-radius: 3px; background: var(--r5); height: 30%; animation: wave 1.4s ease-in-out infinite; opacity: .85; }
+  .wave i:nth-child(odd) { background: var(--r4); }
+  .wave i:nth-child(3n) { background: var(--r6); }
+  @keyframes wave { 0%, 100% { height: 22%; } 50% { height: var(--h, 80%); } }
+  .dial-note { font-size: .8125rem; color: var(--ink-3); text-align: center; max-width: 30ch; }
+
+  /* ── 화면 넘겨보기 ── */
+  .shots { padding: 3.5rem 0 3rem; border-top: 1px solid var(--line); }
+  .shots .head { text-align: center; max-width: 40rem; margin: 0 auto 1.5rem; padding: 0 1.25rem; }
+  .track { display: flex; gap: clamp(1rem, 3vw, 2.25rem); overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 1rem calc(50% - min(300px, 78vw) / 2) 1.5rem; scrollbar-width: none; -webkit-overflow-scrolling: touch; cursor: grab; }
+  .track::-webkit-scrollbar { display: none; }
+  .track.dragging { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; }
+  .slide { flex: 0 0 min(300px, 78vw); scroll-snap-align: center; display: grid; gap: 1rem; text-align: center; transition: transform .5s cubic-bezier(.2,.7,.2,1), opacity .5s; transform: scale(.93); opacity: .55; }
+  .slide.on { transform: none; opacity: 1; }
+  .slide h3 { font-size: 1.125rem; font-weight: 700; line-height: 1.3; min-height: 3.9em; display: grid; align-content: end; }
+  .slide p { font-size: .875rem; color: var(--ink-3); margin: -.4rem 0 0; }
+  .phone { position: relative; width: 100%; aspect-ratio: 1284 / 2778; border-radius: 14% / 6.5%; background: var(--frame-in); box-shadow: 0 0 0 3px var(--frame-in), 0 0 0 11px var(--frame), 0 0 0 12px var(--frame-edge), 0 28px 50px -18px var(--shadow); margin: 12px auto 24px; }
+  .phone img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+  .phone::after { content: ""; position: absolute; left: 50%; top: 2.2%; width: 27%; height: 3.4%; margin-left: -13.5%; border-radius: 999px; background: #070606; }
+  .ctl { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: .25rem; }
+  .ctl button { appearance: none; border: 1px solid var(--line-2); background: var(--surface); color: var(--ink); width: 40px; height: 40px; border-radius: 50%; font-size: 1.1rem; cursor: pointer; display: grid; place-items: center; }
+  .ctl button:hover { border-color: var(--ink); }
+  .dots { display: flex; gap: 7px; }
+  .dots i { width: 7px; height: 7px; border-radius: 50%; background: var(--line-2); opacity: .45; transition: all .3s; }
+  .dots i.on { opacity: 1; background: var(--accent); width: 20px; border-radius: 4px; }
+
+  /* ── 구획 ── */
+  section.plain { padding: 3.5rem 0; border-top: 1px solid var(--line); }
+  .q { display: block; margin: 0 0 1.25rem; font-family: var(--serif); font-size: clamp(1.4rem, 2.6vw, 1.7rem); line-height: 1.5; letter-spacing: -.01em; color: var(--ink); }
   .q::before, .q::after { content: none; }
-  .does { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; gap: .9rem; }
-  .does li { padding-top: .8rem; border-top: 1px solid var(--line); font-size: .9375rem; color: var(--ink-2); }
-  .does b { display: block; margin-bottom: .2rem; font-size: 1rem; }
-  @media (min-width: 720px) { .does { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; } }
+  .does { list-style: none; margin: 1.75rem 0 0; padding: 0; display: grid; gap: 1rem; }
+  .does li { padding: 1.25rem 1.25rem 1.35rem; border: 1px solid var(--line); border-radius: 1rem; background: var(--surface); font-size: .9375rem; color: var(--ink-2); }
+  .does li i { display: block; width: 34px; height: 4px; border-radius: 2px; margin-bottom: 1rem; background: linear-gradient(90deg, var(--g1), var(--g2), var(--g3)); }
+  .does b { display: block; margin-bottom: .3rem; font-size: 1.0625rem; }
+  @media (min-width: 720px) { .does { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; } }
 
   /* ── 온도 자 ── */
   .ramp { --dir: to bottom; list-style: none; margin: 1.75rem 0 .5rem; padding: 0 0 0 36px; position: relative; height: 400px; }
   .ramp::before { content: ""; position: absolute; left: 10px; top: 0; bottom: 0; width: 10px; border-radius: 6px;
     background: linear-gradient(var(--dir), var(--r1) 0%, var(--r2) 21.875%, var(--r3) 46.875%, var(--r4) 65.625%, var(--r5) 84.375%, var(--r6) 100%); }
+  .ramp::after { content: ""; position: absolute; left: 10px; top: 0; bottom: 0; width: 10px; border-radius: 6px; background: linear-gradient(var(--dir), transparent 0%, rgba(255,255,255,.75) 50%, transparent 100%); background-size: 100% 30%; background-repeat: no-repeat; background-position: 0 -40%; opacity: 0; }
+  .ramp.wake::after { animation: sweepV 1.6s cubic-bezier(.4,0,.2,1) .2s 1 both; }
+  @keyframes sweepV { 0% { opacity: 0; background-position: 0 -40%; } 15% { opacity: 1; } 100% { opacity: 0; background-position: 0 140%; } }
   .stop { position: absolute; margin: 0; left: 36px; right: 0; top: var(--p); height: 0; }
   .stop::before { content: ""; position: absolute; left: -14px; top: -.5px; width: 10px; height: 1px; background: var(--line-2); }
   .origin::before { background: var(--ink); }
@@ -128,7 +211,9 @@
   .s6 .lab span, .s6 .ls line { color: var(--r6i); stroke: var(--r6i); }
   @media (min-width: 720px) {
     .ramp { --dir: to right; height: 200px; padding: 0; margin-top: 2.25rem; }
-    .ramp::before { left: 0; right: 0; width: auto; top: 96px; bottom: auto; height: 10px; }
+    .ramp::before, .ramp::after { left: 0; right: 0; width: auto; top: 96px; bottom: auto; height: 10px; }
+    .ramp::after { background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.75) 50%, transparent 100%); background-size: 30% 100%; background-position: -40% 0; }
+    .ramp.wake::after { animation-name: sweepH; }
     .stop { top: 96px; left: var(--p); right: auto; width: 0; height: 10px; }
     .stop::before { left: -.5px; width: 1px; height: 14px; top: auto; }
     .above::before { top: -14px; }
@@ -139,6 +224,7 @@
     .first .lab { transform: none; text-align: left; }
     .last .lab { transform: translateX(-100%); text-align: right; }
   }
+  @keyframes sweepH { 0% { opacity: 0; background-position: -40% 0; } 15% { opacity: 1; } 100% { opacity: 0; background-position: 140% 0; } }
   .ramp-note { font-size: .875rem; color: var(--ink-3); }
 
   /* ── 다섯 걸음 ── */
@@ -158,7 +244,9 @@
   .fp-grid { fill: none; stroke: var(--line-2); stroke-opacity: .55; stroke-width: 1; }
   .fp-axis line { stroke: var(--line-2); stroke-opacity: .55; stroke-width: 1; }
   .fp-target { fill: none; stroke: var(--ink-2); stroke-width: 1.6; stroke-dasharray: 4 3; stroke-linejoin: round; }
-  .fp-me { fill: var(--accent); fill-opacity: .16; stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; }
+  .fp-me { fill: var(--accent); fill-opacity: .16; stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; transform-origin: 150px 150px; }
+  html.js .fp-me { transform: scale(.2); opacity: 0; transition: transform 1.1s cubic-bezier(.2,.8,.2,1) .2s, opacity .6s .2s; }
+  html.js .in .fp-me { transform: none; opacity: 1; }
   .fp-label text { fill: var(--ink-2); font-family: var(--sans); font-size: 15px; font-weight: 600; }
   .fp-side .result { display: flex; align-items: baseline; gap: .6rem; margin: 0 0 .75rem; }
   .fp-side .result b { font-size: 2rem; font-weight: 800; letter-spacing: -.03em; font-variant-numeric: tabular-nums; line-height: 1; }
@@ -173,9 +261,12 @@
   .key.tg { border-top: 2px dashed var(--ink-2); }
   figcaption { grid-column: 1 / -1; font-size: .875rem; color: var(--ink-3); }
   @media (min-width: 720px) { figure { grid-template-columns: 330px 1fr; gap: 1.5rem 2rem; } }
-
-  /* ── 여섯 결 표 ── */
-  .scroll { overflow-x: auto; margin: 1.5rem 0 0; }
+  details { margin-top: 1.5rem; border-top: 1px solid var(--line); }
+  summary { cursor: pointer; padding: 1rem 0; font-weight: 600; color: var(--ink); list-style: none; display: flex; align-items: center; gap: .5rem; }
+  summary::-webkit-details-marker { display: none; }
+  summary::before { content: ""; width: 8px; height: 8px; border-right: 1.5px solid var(--ink-3); border-bottom: 1.5px solid var(--ink-3); transform: rotate(-45deg); transition: transform .3s; margin-right: .2rem; }
+  details[open] summary::before { transform: rotate(45deg); }
+  .scroll { overflow-x: auto; margin: 0 0 1rem; }
   .tones { width: 100%; min-width: 34rem; border-collapse: collapse; font-size: .875rem; font-variant-numeric: tabular-nums; }
   .tones th, .tones td { padding: .5rem .5rem; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
   .tones th { color: var(--ink-3); font-weight: 600; font-size: .8125rem; }
@@ -188,8 +279,7 @@
   .tones .t4 td:first-child, .tones .t4 td:nth-child(2) { color: var(--r4i); }
   .tones .t5 td:first-child, .tones .t5 td:nth-child(2) { color: var(--r5i); }
   .tones .t6 td:first-child, .tones .t6 td:nth-child(2) { color: var(--r6i); }
-  .tones td.dim { color: var(--ink-3); }
-  .table-note { margin-top: .6rem; font-size: .8125rem; color: var(--ink-3); }
+  .table-note { font-size: .8125rem; color: var(--ink-3); }
 
   /* ── 왜 · 하지 않는 것 ── */
   .why dl { margin: 1.25rem 0 0; display: grid; gap: 1.25rem; }
@@ -201,223 +291,423 @@
   .nots b { margin-right: .3rem; }
 
   /* ── 받기 · 바닥 ── */
-  .after { margin-top: 1.25rem; font-size: .9375rem; }
-  .stores { list-style: none; margin: .5rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .6rem; }
-  .store { display: inline-block; margin-top: 0; padding: .55rem .95rem; border: 1px solid var(--line-2); border-radius: .6rem; color: var(--ink-3); font-size: .9375rem; }
+  .get { text-align: center; padding: 4rem 0; border-top: 1px solid var(--line); position: relative; overflow: hidden; }
+  .get .wrap { position: relative; z-index: 1; }
+  .get .stores { justify-content: center; }
+  .get .after { margin-top: 1.25rem; font-size: .9375rem; }
   footer { border-top: 1px solid var(--line); padding: 2rem 0 3.5rem; font-size: .875rem; color: var(--ink-3); }
   footer .links { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; margin: 0 0 1rem; padding: 0; list-style: none; }
   footer p { margin: 0; color: var(--ink-3); }
 
-  @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .blob, .wave i, .ramp.wake::after { animation: none !important; }
+    html.js [data-reveal] { opacity: 1; transform: none; transition: none; }
+    .needle, .slide, .dial-core .num, .dial-core .tone { transition: none; }
+    html.js .fp-me { transform: none; opacity: 1; transition: none; }
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-<header class="top">
-  <div class="brand">
-    <img src="/icon-192.png" alt="" width="56" height="56">
-    <h1>말온도</h1>
+<header class="bar">
+  <div class="wide">
+    <img src="/icon-192.png" alt="" width="30" height="30">
+    <b>말온도</b>
+    <nav aria-label="바로 가기">
+      <a href="#shots">화면</a>
+      <a href="#how">어떻게 재나요</a>
+      <a href="/support.html">지원</a>
+    </nav>
   </div>
-  <p class="lede">말하기 어려운 순간에, 지금 이 사람에게 건넬 한두 문장을 찾는 대화 코치입니다.</p>
-  <ul class="facts">
-    <li>아이폰</li>
-    <li>안드로이드</li>
-    <li>무료</li>
-    <li>인앱결제 없음</li>
-    <li>계정 없음</li>
-    <li>한국어</li>
-  </ul>
 </header>
 
 <main>
 
-<section class="ask">
-  <q class="q">지금 이 사람에게, 내 말투로, 어떤 한두 문장을 건네면 좋을까?</q>
-  <p>말온도는 이 한 질문에만 답하려고 만든 앱입니다. 부탁, 거절, 사과, 위로, 갈등. 할 말은 이미 마음에 있는데 첫 문장이 나오지 않아 창을 열어 두고 한참을 앉아 있게 되는 순간을 위한 것입니다. 앱이 대신 보내는 일은 없습니다. 고르고, 내 말로 다듬고, 복사해 내가 보냅니다.</p>
-  <ul class="does">
-    <li><b>건넬 말</b>관계와 목표와 온도를 고르고 상황을 한두 줄 적으면, 서로 다른 접근의 문장 여섯 장이 30초 안에 옵니다. 문장 길이와 존댓말, 쓰지 않을 표현을 한 번 정해 두면 그 결을 따라옵니다.</li>
-    <li><b>마음부터 풀기</b>건넬 말이 아직 아닌 날에는 있었던 일을 적고 「그냥 들어주세요 · 정리해 주세요 · 다르게 봐 주세요」 중 하나를 골라 긴 답장 한 통을 받습니다. 적은 이야기도 답장도 남기지 않습니다.</li>
-    <li><b>말온도 재기</b>한 문장을 소리 내어 읽으면 목소리의 크기와 쉼, 억양을 기기 안에서 읽어 말의 온도를 잽니다. 달마다 내 결이 어떻게 움직였는지를 봅니다. 재지 않는 날에는 오늘의 온도를 직접 고를 수 있습니다.</li>
-  </ul>
-</section>
-
-<section class="scale">
-  <span class="eyebrow">말온도</span>
-  <h2>체온이 아니라, 말의 결에 붙인 온도</h2>
-  <p>여섯 가지 말투에 차가운 쪽부터 따뜻한 쪽으로 온도를 하나씩 붙였습니다. 36.5℃, 담백하게가 원점입니다. 왼쪽으로 가면 말이 식고 오른쪽으로 가면 데워집니다. 문장을 고를 때 정하는 온도와 목소리로 잰 온도가 같은 여섯 칸, 같은 섭씨라 둘을 바로 견줄 수 있습니다.</p>
-  <ol class="ramp" aria-label="여섯 말투와 온도. 35.0도 단호하게부터 38.2도 따뜻하게까지">
-    <li class="stop s1 first above" style="--p:0%"><div class="lab"><svg class="ls" width="28" height="6" viewBox="0 0 28 6" aria-hidden="true"><line x1="1" y1="3" x2="27" y2="3" stroke-width="1.5" stroke-dasharray="0.1 3.4"/></svg><b>35.0<small>℃</small></b><span>단호하게</span><em>흔들리지 않고 또렷한 말</em></div></li>
-    <li class="stop s2 below" style="--p:21.875%"><div class="lab"><svg class="ls" width="28" height="6" viewBox="0 0 28 6" aria-hidden="true"><line x1="1" y1="3" x2="27" y2="3" stroke-width="1.5" stroke-dasharray="4 3"/></svg><b>35.7<small>℃</small></b><span>차분하게</span><em>낮고 고르게 가라앉은 결</em></div></li>
-    <li class="stop s3 above origin" style="--p:46.875%"><div class="lab"><svg class="ls" width="28" height="6" viewBox="0 0 28 6" aria-hidden="true"><line x1="1" y1="3" x2="27" y2="3" stroke-width="2" stroke-dasharray="7 4"/></svg><b>36.5<small>℃</small></b><span>담백하게</span><i>원점</i><em>군더더기 없이 담담한 말</em></div></li>
-    <li class="stop s4 below" style="--p:65.625%"><div class="lab"><svg class="ls" width="28" height="6" viewBox="0 0 28 6" aria-hidden="true"><line x1="1" y1="3" x2="27" y2="3" stroke-width="2.5" stroke-dasharray="12 5"/></svg><b>37.1<small>℃</small></b><span>유쾌하게</span><em>가볍고 빠른 리듬</em></div></li>
-    <li class="stop s5 above" style="--p:84.375%"><div class="lab"><svg class="ls" width="28" height="6" viewBox="0 0 28 6" aria-hidden="true"><line x1="1" y1="3" x2="27" y2="3" stroke-width="3"/></svg><b>37.7<small>℃</small></b><span>공감하며</span><em>상대의 결을 먼저 살피는 말</em></div></li>
-    <li class="stop s6 last below" style="--p:100%"><div class="lab"><svg class="ls" width="28" height="6" viewBox="0 0 28 6" aria-hidden="true"><line x1="1" y1="3" x2="27" y2="3" stroke-width="3.5"/></svg><b>38.2<small>℃</small></b><span>따뜻하게</span><em>마음이 묻어나는 온기</em></div></li>
-  </ol>
-  <p class="ramp-note">앱 안에서 온도는 색 하나로 전하지 않습니다. 색과 숫자와 이름과 선의 모양 넷이 함께 말합니다.</p>
-</section>
-
-<section class="how">
-  <span class="eyebrow">어떻게 재나요</span>
-  <h2>소리에서 ℃까지, 다섯 걸음</h2>
-  <p>재는 동안 화면의 바늘은 최근 4.5초를 보고 말소리로 판정된 칸에서만 움직입니다. 마치면 회차 전체를 한 번 다시 재서 그 값이 남습니다. 남는 것은 회차마다 ℃ 하나와 시각뿐입니다.</p>
-  <ol class="steps">
-    <li>
-      <h3>듣습니다</h3>
-      <p>70ms 마다 음량 하나를 읽습니다. 소리의 속을 볼 수 있는 길에서는 그 칸의 피치와 배음도 함께 옵니다.</p>
-      <div class="f"><span>70ms 마다 · 음량 dBFS · 피치 Hz</span></div>
-    </li>
-    <li>
-      <h3>사람의 말소리만 남깁니다</h3>
-      <p>방의 바닥 소음을 녹음 내내 따라가며 그 위로 올라온 자리, 그리고 초당 3~5번 출렁이는 음절의 리듬이 있는 자리만 셉니다. 바람도 에어컨도 온도를 움직이지 못합니다. 남은 칸에서는 방이 얹은 몫을 뺍니다.</p>
-      <div class="f"><span>x′ = 10·log<sub>10</sub>( 10<sup>x/10</sup> − 10<sup>바닥/10</sup> ) <span class="k">— 12dB 넘게는 깎지 않음</span></span></div>
-    </li>
-    <li>
-      <h3>다섯 지표를 냅니다</h3>
-      <p>차분함, 고른 음량, 말과 쉼, 목소리의 힘, 억양. 각각 0에서 100입니다. 말소리 칸의 평균 μ, 표준편차 σ, 지른 소리 비율 s, 쉼 비율 p, 억양 폭 r(반음)이 재료입니다. 억양은 자기 중앙 피치에서 벌어진 반음이라 목소리가 높은 사람과 낮은 사람을 같은 자로 잽니다.</p>
-      <div class="f">
-        <span>목소리의 힘 = (μ + 52) / 40 × 100 <span class="k">— −52dBFS 가 0, −12dBFS 가 100</span></span>
-        <span>고른 음량 = 100 − 7σ − 35s</span>
-        <span>말과 쉼 = 100 − 185·|p − 0.24| <span class="k">— 쉼이 24% 일 때 100</span></span>
-        <span>차분함 = (134 − 0.48·힘 − 3.5σ − 45s) × 100 / 134</span>
-        <span>억양 = 45 + (r / 6 × 100 − 45) × 신뢰도 <span class="k">— 2.7반음이 45</span></span>
-      </div>
-    </li>
-    <li>
-      <h3>여섯 결과 견줍니다</h3>
-      <p>여섯 말투마다 다섯 지표의 기준 결과 ℃ 가 상수로 있습니다. 내 결이 각 기준에서 얼마나 떨어졌는지를 다섯 지표의 평균 차이로 잽니다.</p>
-      <div class="f"><span>d<sub>k</sub> = ⅕ · Σ<sub>j</sub> | 내 지표<sub>j</sub> − 기준<sub>k,j</sub> |</span></div>
-    </li>
-    <li>
-      <h3>닮은 만큼 섭씨를 섞습니다</h3>
-      <p>가장 가까운 말투가 무게의 중심입니다. 거기서 5점 멀어진 말투는 무게가 약 19분의 1, 10점이면 약 81분의 1로 줄어듭니다. 결과는 여섯 섭씨를 섞은 값이라 언제나 35.0과 38.2 사이에 떨어집니다.</p>
-      <div class="f">
-        <span>w<sub>k</sub> = 1 / ( d<sub>k</sub> − d<sub>min</sub> + 3 )<sup>3</sup></span>
-        <span>말온도 = Σ w<sub>k</sub>·℃<sub>k</sub> / Σ w<sub>k</sub></span>
-      </div>
-    </li>
-  </ol>
-
-  <figure>
-    <svg class="fp" viewBox="-25 15 350 262" role="img" aria-label="다섯 축의 결 지문. 점선은 담백하게의 기준 결, 채움은 보기용 목소리의 결.">
-      <polygon class="fp-grid" points="150,40 254.6,116 214.7,239 85.3,239 45.4,116"/>
-      <polygon class="fp-grid" points="150,95 202.3,133 182.3,194.5 117.7,194.5 97.7,133"/>
-      <g class="fp-axis">
-        <line x1="150" y1="150" x2="150" y2="40"/>
-        <line x1="150" y1="150" x2="254.6" y2="116"/>
-        <line x1="150" y1="150" x2="214.7" y2="239"/>
-        <line x1="150" y1="150" x2="85.3" y2="239"/>
-        <line x1="150" y1="150" x2="45.4" y2="116"/>
-      </g>
-      <polygon class="fp-target" points="150,70.8 235.8,122.1 195.3,212.3 116.4,196.3 102.9,134.7"/>
-      <polygon class="fp-me" points="150,77.4 233.7,122.8 196.6,214.1 117.7,194.5 97.7,133"/>
-      <g class="fp-label">
-        <text x="150" y="30" text-anchor="middle">차분함</text>
-        <text x="262" y="114" text-anchor="start">고른 음량</text>
-        <text x="222" y="258" text-anchor="start">말과 쉼</text>
-        <text x="78" y="258" text-anchor="end">목소리의 힘</text>
-        <text x="38" y="114" text-anchor="end">억양</text>
-      </g>
-    </svg>
-    <div class="fp-side">
-      <p class="result"><b>36.9<small>℃</small></b><span>담백하게에 가장 닮은 결</span></p>
-      <table class="vals">
-        <thead><tr><th scope="col">축</th><th scope="col"><span class="key tg"></span>담백하게</th><th scope="col"><span class="key"></span>보기 목소리</th></tr></thead>
-        <tbody>
-          <tr><td>차분함</td><td>72</td><td class="me">66</td></tr>
-          <tr><td>고른 음량</td><td>82</td><td class="me">80</td></tr>
-          <tr><td>말과 쉼</td><td>70</td><td class="me">72</td></tr>
-          <tr><td>목소리의 힘</td><td>52</td><td class="me">50</td></tr>
-          <tr><td>억양</td><td>45</td><td class="me">50</td></tr>
-        </tbody>
-      </table>
+<section class="hero" aria-labelledby="hero-title">
+  <div class="blobs" aria-hidden="true"><i class="blob a"></i><i class="blob b"></i><i class="blob c"></i></div>
+  <div class="wide">
+    <div>
+      <span class="eyebrow" data-reveal>말의 온도를 재는 대화 코치</span>
+      <h1 id="hero-title" data-reveal data-delay="1">오늘 내 말의 <span class="grad">온도</span>는<br>몇 도였을까요?</h1>
+      <p class="lede" data-reveal data-delay="2">말하기 어려운 순간에, 지금 이 사람에게 건넬 한두 문장을 찾습니다. 목소리의 크기와 쉼, 억양을 기기 안에서 읽어 말의 온도를 잽니다.</p>
+      <ul class="stores" data-reveal data-delay="3">
+        <!-- App Store 승인 뒤: <li><a class="store" href="https://apps.apple.com/kr/app/id0000000000">App Store 에서 받기</a></li> -->
+        <li><span class="store soon">App Store <small>심사 중</small></span></li>
+        <!-- Google Play 출시 뒤: <li><a class="store" href="https://play.google.com/store/apps/details?id=com.malondo.malondo_app">Google Play 에서 받기</a></li> -->
+        <li><span class="store soon">Google Play <small>심사 전</small></span></li>
+      </ul>
+      <ul class="facts" data-reveal data-delay="3">
+        <li>아이폰</li><li>안드로이드</li><li>무료</li><li>인앱결제 없음</li><li>계정 없음</li><li>한국어</li>
+      </ul>
     </div>
-    <figcaption>결 지문. 여섯 기준 중 담백하게에 가장 가까워 무게의 6할이 거기 실리고, 공감하며에 그 다음이 실려 36.9℃가 됩니다. 결과 화면에서 같은 그림으로 목표의 결과 내 결을 겹쳐 봅니다.</figcaption>
-  </figure>
-
-  <div class="scroll">
-    <table class="tones">
-      <thead>
-        <tr><th scope="col">말투</th><th scope="col">℃</th><th scope="col">차분함</th><th scope="col">고른 음량</th><th scope="col">말과 쉼</th><th scope="col">목소리의 힘</th><th scope="col">억양</th></tr>
-      </thead>
-      <tbody>
-        <tr class="t1"><td>단호하게</td><td>35.0</td><td>58</td><td>76</td><td>64</td><td>72</td><td>33</td></tr>
-        <tr class="t2"><td>차분하게</td><td>35.7</td><td>88</td><td>84</td><td>82</td><td>38</td><td>37</td></tr>
-        <tr class="t3"><td>담백하게</td><td>36.5</td><td>72</td><td>82</td><td>70</td><td>52</td><td>45</td></tr>
-        <tr class="t4"><td>유쾌하게</td><td>37.1</td><td>52</td><td>68</td><td>62</td><td>82</td><td>62</td></tr>
-        <tr class="t5"><td>공감하며</td><td>37.7</td><td>78</td><td>80</td><td>76</td><td>46</td><td>52</td></tr>
-        <tr class="t6"><td>따뜻하게</td><td>38.2</td><td>76</td><td>78</td><td>78</td><td>45</td><td>57</td></tr>
-      </tbody>
-    </table>
+    <div class="dial-wrap" data-reveal data-delay="2">
+      <div class="dial" id="dial" role="img" aria-label="말온도 다이얼. 35.0도 단호하게부터 38.2도 따뜻하게까지 여섯 말투 위로 바늘이 움직입니다.">
+        <div class="ring"></div>
+        <div class="needle" id="needle"><i></i></div>
+        <div class="dial-core">
+          <div class="num" id="num">36.5<small>℃</small></div>
+          <div class="tone" id="tone">담백하게</div>
+          <div class="drift" id="drift">원점입니다</div>
+        </div>
+      </div>
+      <div class="wave" aria-hidden="true">
+        <i style="--h:40%;animation-delay:-.1s"></i><i style="--h:70%;animation-delay:-.5s"></i><i style="--h:95%;animation-delay:-.9s"></i><i style="--h:60%;animation-delay:-.2s"></i><i style="--h:85%;animation-delay:-.7s"></i><i style="--h:45%;animation-delay:-1.1s"></i><i style="--h:90%;animation-delay:-.4s"></i><i style="--h:65%;animation-delay:-.8s"></i><i style="--h:35%;animation-delay:-.3s"></i><i style="--h:80%;animation-delay:-1s"></i><i style="--h:55%;animation-delay:-.6s"></i><i style="--h:92%;animation-delay:-1.2s"></i><i style="--h:48%;animation-delay:-.15s"></i><i style="--h:75%;animation-delay:-.55s"></i><i style="--h:38%;animation-delay:-.95s"></i>
+      </div>
+      <p class="dial-note">여섯 말투가 한 줄 위에 있습니다. 36.5℃ 담백하게가 원점이고, 말하는 동안 바늘이 이렇게 움직입니다.</p>
+    </div>
   </div>
-  <p class="table-note">여섯 말투의 기준 결. 앱이 들고 있는 상수 그대로입니다.</p>
 </section>
 
-<section class="why">
-  <span class="eyebrow">왜 온도인가요</span>
-  <h2>왜 목소리에서 온도가 나오나요</h2>
-  <dl>
-    <div>
-      <dt>체온을 재는 것이 아닙니다</dt>
-      <dd>말온도는 말의 결에 붙인 비유입니다. 물리적으로 재는 것은 소리의 크기와 기복, 쉼의 비율, 피치의 폭 넷이고, 이 넷은 마이크가 기기 안에서 확실히 잴 수 있는 양입니다.</dd>
-    </div>
-    <div>
-      <dt>온도가 되는 자리는 선언입니다</dt>
-      <dd>여섯 말투에 ℃ 를 하나씩 붙이고, 내 목소리가 그중 어디에 얼마나 닮았는지를 한 줄 위의 숫자로 옮깁니다. 그래서 문장을 고를 때의 온도와 목소리로 잰 온도를 같은 자 위에서 견줄 수 있습니다.</dd>
-    </div>
-    <div>
-      <dt>방과 목소리 높이를 타지 않습니다</dt>
-      <dd>바닥 소음을 빼서 카페와 침실이 같은 자 위에 섭니다. 억양은 절대 피치가 아니라 자기 중앙에서 벌어진 반음으로 재서, 성별이나 나이에 따른 목소리 높이가 온도를 밀지 않습니다.</dd>
-    </div>
-    <div>
-      <dt>눈금은 사람의 목소리로 맞췄습니다</dt>
-      <dd>담백하게의 억양 기준은 한국어 낭독 207회차의 중앙값 2.7반음에서 왔습니다. 다른 말투의 기준은 그 사이에서 잡았고, 더 많은 목소리로 계속 고쳐 갑니다.</dd>
-    </div>
-  </dl>
+<section class="shots" id="shots" aria-labelledby="shots-title">
+  <div class="head">
+    <span class="eyebrow" data-reveal>화면으로 보기</span>
+    <h2 id="shots-title" data-reveal data-delay="1">재고, 건네고, <span class="grad">풀어 놓는</span> 자리</h2>
+    <p data-reveal data-delay="2">옆으로 넘겨 보세요. 열 장면입니다.</p>
+  </div>
+  <div class="track" id="track" tabindex="0" aria-roledescription="넘겨보기" aria-label="앱 화면 열 장">
+    <article class="slide"><h3>오늘 내 말의 <span class="grad">온도</span>는<br>몇 도였을까요?</h3><p>하루하루의 말온도가 달력에 쌓여요</p><div class="phone"><img src="/shots/01-home.webp" alt="홈 화면. 이 달의 말온도 36.7℃와 하루하루 온도가 표정으로 찍힌 달력." loading="eager" width="720" height="1558"></div></article>
+    <article class="slide"><h3>목표 온도를 고르고<br><span class="grad">20초</span>만 말해보세요</h3><p>목소리는 기기 안에서만 들어요</p><div class="phone"><img src="/shots/02-measure.webp" alt="말온도 재기 화면. 여섯 말투 중 하나를 목표로 고르고 마이크 버튼을 누릅니다." loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3>말하는 동안<br>온도가 <span class="grad">실시간</span>으로</h3><p>목표보다 차가운지 뜨거운지 바로 알려줘요</p><div class="phone"><img src="/shots/03-live.webp" alt="녹음 중 화면. 지금 내 말의 온도 36.6℃, 일치도 73, 결 지문과 파형이 움직입니다." loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3>목표와 얼마나<br>가까웠는지 <span class="grad">한눈에</span></h3><p>차분함·음량·말과 쉼까지 다섯 축으로</p><div class="phone"><img src="/shots/04-result.webp" alt="측정 결과 화면. 이번 말온도 37.2℃ 유쾌하게, 목표 36.5℃와의 차이 +0.7도, 온도 흐름 그래프." loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3>다시 들으며<br>온도의 <span class="grad">흐름</span>을 따라가요</h3><p>이 화면을 나가면 녹음은 바로 지워져요</p><div class="phone"><img src="/shots/05-playback.webp" alt="내 목소리 듣기 화면. 재생 위치에 따라 온도 흐름 위의 점이 따라갑니다." loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3>건넬 말이 필요한 날도,<br><span class="grad">마음</span>부터 풀어야 하는 날도</h3><p>상대·목표·온도를 정하면 문장이 와요</p><div class="phone"><img src="/shots/06-hub.webp" alt="대화 탭. 건넬 말을 찾을래요, 마음부터 풀래요, 오늘 한 칸 남기기 세 갈림길." loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3>지금 이 사람에게<br><span class="grad">건넬 수 있는 말</span></h3><p>상황과 온도에 맞춘 네 가지 문장</p><div class="phone"><img src="/shots/07-sentences.webp" alt="추천 문장 화면. 연인에게 담백하게 건넬 문장 한 장과 복사·담아둠 버튼." loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3>추천받은 문장을<br><span class="grad">소리 내어</span> 연습해요</h3><p>목표 온도에 맞춰 말하는 연습</p><div class="phone"><img src="/shots/08-practice.webp" alt="문장 연습 화면. 추천 문장을 읽는 동안 온도 36.9℃와 일치도 76이 실시간으로 뜹니다." loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3>아무한테도 못 한 이야기,<br>적으면 <span class="grad">답장</span>이 와요</h3><p>여기 적은 글은 남지 않아요</p><div class="phone"><img src="/shots/09-letter.webp" alt="털어놓기 화면. 있었던 일을 적는 칸과 여기 적은 글은 남기지 않는다는 안내." loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3>마음에 든 문장은<br><span class="grad">담아두고</span> 다시 꺼내요</h3><p>이 기기에만 저장돼요</p><div class="phone"><img src="/shots/10-saved.webp" alt="저장 탭. 담아둔 문장 여섯 개가 상대별로 정리되어 있습니다." loading="lazy" width="720" height="1558"></div></article>
+  </div>
+  <div class="ctl">
+    <button type="button" id="prev" aria-label="이전 화면">‹</button>
+    <div class="dots" id="dots" aria-hidden="true"></div>
+    <button type="button" id="next" aria-label="다음 화면">›</button>
+  </div>
 </section>
 
-<section class="not">
-  <span class="eyebrow">하지 않는 것</span>
-  <h2>이 앱의 성격은 하지 않기로 한 것들이 정합니다</h2>
-  <ul class="nots">
-    <li><b>진단하지 않습니다.</b>음량으로 읽은 값을 감정, 인격, 정신건강, 관계의 질을 판정하는 정보로 쓰지 않습니다. 의료와 상담을 대신하지 않습니다.</li>
-    <li><b>성적표를 만들지 않습니다.</b>그래프의 기준선은 36.5℃가 아니라 내 평균입니다. 비교 대상이 나 자신뿐이라 등급이 생기지 않습니다. 점수도 연속 기록도 없습니다.</li>
-    <li><b>상대를 조종하는 문장을 만들지 않습니다.</b>상대를 이기거나 설득하는 문장이 아니라, 내 마음과 내 경계를 함께 전하는 문장을 만듭니다.</li>
-    <li><b>위험 앞에서는 물러납니다.</b>자해, 폭력, 협박 신호가 읽히면 추천보다 먼저 안내와 상담 전화가 서고, 그 화면에서는 광고도 닫힙니다.</li>
-    <li><b>글을 쌓아 두지 않습니다.</b>계정이 없고, 적은 글과 받은 문장은 서버에 남지 않습니다. 「모두 지우기」 한 번으로 기기의 기록과 익명 ID 가 함께 사라집니다.</li>
-  </ul>
+<section class="plain" aria-labelledby="ask-title">
+  <div class="wrap">
+    <q class="q" data-reveal>지금 이 사람에게, 내 말투로, 어떤 한두 문장을 건네면 좋을까?</q>
+    <h2 id="ask-title" data-reveal data-delay="1">이 한 질문에만 답하려고 만든 앱입니다</h2>
+    <p data-reveal data-delay="2">부탁, 거절, 사과, 위로, 갈등. 할 말은 이미 마음에 있는데 첫 문장이 나오지 않아 창을 열어 두고 한참을 앉아 있게 되는 순간을 위한 것입니다. 앱이 대신 보내는 일은 없습니다. 고르고, 내 말로 다듬고, 복사해 내가 보냅니다.</p>
+    <ul class="does">
+      <li data-reveal><i></i><b>건넬 말</b>관계와 목표와 온도를 고르고 상황을 한두 줄 적으면, 서로 다른 접근의 문장 여섯 장이 30초 안에 옵니다. 문장 길이와 존댓말, 쓰지 않을 표현을 한 번 정해 두면 그 결을 따라옵니다.</li>
+      <li data-reveal data-delay="1"><i></i><b>마음부터 풀기</b>건넬 말이 아직 아닌 날에는 있었던 일을 적고 「그냥 들어주세요 · 정리해 주세요 · 다르게 봐 주세요」 중 하나를 골라 긴 답장 한 통을 받습니다. 적은 이야기도 답장도 남기지 않습니다.</li>
+      <li data-reveal data-delay="2"><i></i><b>말온도 재기</b>한 문장을 소리 내어 읽으면 목소리의 크기와 쉼, 억양을 기기 안에서 읽어 말의 온도를 잽니다. 달마다 내 결이 어떻게 움직였는지를 봅니다. 재지 않는 날에는 오늘의 온도를 직접 고를 수 있습니다.</li>
+    </ul>
+  </div>
 </section>
 
-<section class="data">
-  <span class="eyebrow">데이터</span>
-  <h2>기기 밖으로 나가는 것</h2>
-  <p>음성은 기기 밖으로 나가지 않습니다. 음량과 주파수 분석은 전부 기기 안에서 이루어지고, 남는 것은 회차마다 ℃ 하나와 시각뿐입니다. 다만 문장을 만드는 순간에는 적은 상황과 말투 설정이 Google Gemini 로 전송됩니다. 저장하지 않는 것과 전송하지 않는 것은 다른 약속이라, 나가는 것의 완전한 목록을 <a href="/privacy.html">개인정보처리방침</a>에 적었습니다. 앱 안의 데이터 시트에서도 같은 목록을 봅니다.</p>
+<section class="plain" id="scale" aria-labelledby="scale-title">
+  <div class="wrap">
+    <span class="eyebrow" data-reveal>말온도</span>
+    <h2 id="scale-title" data-reveal data-delay="1">체온이 아니라, 말의 결에 붙인 온도</h2>
+    <p data-reveal data-delay="2">여섯 가지 말투에 차가운 쪽부터 따뜻한 쪽으로 온도를 하나씩 붙였습니다. 36.5℃, 담백하게가 원점입니다. 왼쪽으로 가면 말이 식고 오른쪽으로 가면 데워집니다. 문장을 고를 때 정하는 온도와 목소리로 잰 온도가 같은 여섯 칸, 같은 섭씨라 둘을 바로 견줄 수 있습니다.</p>
+    <ol class="ramp" id="ramp" aria-label="여섯 말투와 온도. 35.0도 단호하게부터 38.2도 따뜻하게까지">
+      <li class="stop s1 first above" style="--p:0%"><div class="lab"><svg class="ls" width="28" height="6" viewBox="0 0 28 6" aria-hidden="true"><line x1="1" y1="3" x2="27" y2="3" stroke-width="1.5" stroke-dasharray="0.1 3.4"/></svg><b>35.0<small>℃</small></b><span>단호하게</span><em>흔들리지 않고 또렷한 말</em></div></li>
+      <li class="stop s2 below" style="--p:21.875%"><div class="lab"><svg class="ls" width="28" height="6" viewBox="0 0 28 6" aria-hidden="true"><line x1="1" y1="3" x2="27" y2="3" stroke-width="1.5" stroke-dasharray="4 3"/></svg><b>35.7<small>℃</small></b><span>차분하게</span><em>낮고 고르게 가라앉은 결</em></div></li>
+      <li class="stop s3 above origin" style="--p:46.875%"><div class="lab"><svg class="ls" width="28" height="6" viewBox="0 0 28 6" aria-hidden="true"><line x1="1" y1="3" x2="27" y2="3" stroke-width="2" stroke-dasharray="7 4"/></svg><b>36.5<small>℃</small></b><span>담백하게</span><i>원점</i><em>군더더기 없이 담담한 말</em></div></li>
+      <li class="stop s4 below" style="--p:65.625%"><div class="lab"><svg class="ls" width="28" height="6" viewBox="0 0 28 6" aria-hidden="true"><line x1="1" y1="3" x2="27" y2="3" stroke-width="2.5" stroke-dasharray="12 5"/></svg><b>37.1<small>℃</small></b><span>유쾌하게</span><em>가볍고 빠른 리듬</em></div></li>
+      <li class="stop s5 above" style="--p:84.375%"><div class="lab"><svg class="ls" width="28" height="6" viewBox="0 0 28 6" aria-hidden="true"><line x1="1" y1="3" x2="27" y2="3" stroke-width="3"/></svg><b>37.7<small>℃</small></b><span>공감하며</span><em>상대의 결을 먼저 살피는 말</em></div></li>
+      <li class="stop s6 last below" style="--p:100%"><div class="lab"><svg class="ls" width="28" height="6" viewBox="0 0 28 6" aria-hidden="true"><line x1="1" y1="3" x2="27" y2="3" stroke-width="3.5"/></svg><b>38.2<small>℃</small></b><span>따뜻하게</span><em>마음이 묻어나는 온기</em></div></li>
+    </ol>
+    <p class="ramp-note">앱 안에서 온도는 색 하나로 전하지 않습니다. 색과 숫자와 이름과 선의 모양 넷이 함께 말합니다.</p>
+  </div>
 </section>
 
-<section class="get">
-  <span class="eyebrow">받기</span>
-  <h2>아이폰과 안드로이드에서, 무료로</h2>
-  <p>인앱결제가 없습니다. 하루치를 다 쓴 날에만 스스로 여는 보상형 광고 한 자리가 전부입니다. 한국어로만 나옵니다.</p>
-  <ul class="stores">
-    <!-- App Store 승인 뒤: <li><a class="store" href="https://apps.apple.com/kr/app/id0000000000">App Store 에서 받기</a></li> -->
-    <li><span class="store">App Store 심사 중입니다. 열리면 이 자리에 링크가 붙습니다.</span></li>
-    <!-- Google Play 출시 뒤: <li><a class="store" href="https://play.google.com/store/apps/details?id=com.malondo.malondo_app">Google Play 에서 받기</a></li> -->
-    <li><span class="store">Google Play 는 심사 전입니다. 준비되면 이 자리에 링크가 붙습니다.</span></li>
-  </ul>
-  <p class="after">쓰다가 막히는 것이나 바라는 것이 있으면 <a href="/support.html">지원 페이지</a>에 적어 주세요.</p>
+<section class="plain" id="how" aria-labelledby="how-title">
+  <div class="wrap">
+    <span class="eyebrow" data-reveal>어떻게 재나요</span>
+    <h2 id="how-title" data-reveal data-delay="1">소리에서 ℃까지, <span class="grad">다섯 걸음</span></h2>
+    <p data-reveal data-delay="2">재는 동안 화면의 바늘은 최근 4.5초를 보고 말소리로 판정된 칸에서만 움직입니다. 마치면 회차 전체를 한 번 다시 재서 그 값이 남습니다. 남는 것은 회차마다 ℃ 하나와 시각뿐입니다.</p>
+    <ol class="steps">
+      <li data-reveal>
+        <h3>듣습니다</h3>
+        <p>70ms 마다 음량 하나를 읽습니다. 소리의 속을 볼 수 있는 길에서는 그 칸의 피치와 배음도 함께 옵니다.</p>
+        <div class="f"><span>70ms 마다 · 음량 dBFS · 피치 Hz</span></div>
+      </li>
+      <li data-reveal>
+        <h3>사람의 말소리만 남깁니다</h3>
+        <p>방의 바닥 소음을 녹음 내내 따라가며 그 위로 올라온 자리, 그리고 초당 3~5번 출렁이는 음절의 리듬이 있는 자리만 셉니다. 바람도 에어컨도 온도를 움직이지 못합니다. 남은 칸에서는 방이 얹은 몫을 뺍니다.</p>
+        <div class="f"><span>x′ = 10·log<sub>10</sub>( 10<sup>x/10</sup> − 10<sup>바닥/10</sup> ) <span class="k">— 12dB 넘게는 깎지 않음</span></span></div>
+      </li>
+      <li data-reveal>
+        <h3>다섯 지표를 냅니다</h3>
+        <p>차분함, 고른 음량, 말과 쉼, 목소리의 힘, 억양. 각각 0에서 100입니다. 말소리 칸의 평균 μ, 표준편차 σ, 지른 소리 비율 s, 쉼 비율 p, 억양 폭 r(반음)이 재료입니다. 억양은 자기 중앙 피치에서 벌어진 반음이라 목소리가 높은 사람과 낮은 사람을 같은 자로 잽니다.</p>
+        <div class="f">
+          <span>목소리의 힘 = (μ + 52) / 40 × 100 <span class="k">— −52dBFS 가 0, −12dBFS 가 100</span></span>
+          <span>고른 음량 = 100 − 7σ − 35s</span>
+          <span>말과 쉼 = 100 − 185·|p − 0.24| <span class="k">— 쉼이 24% 일 때 100</span></span>
+          <span>차분함 = (134 − 0.48·힘 − 3.5σ − 45s) × 100 / 134</span>
+          <span>억양 = 45 + (r / 6 × 100 − 45) × 신뢰도 <span class="k">— 2.7반음이 45</span></span>
+        </div>
+      </li>
+      <li data-reveal>
+        <h3>여섯 결과 견줍니다</h3>
+        <p>여섯 말투마다 다섯 지표의 기준 결과 ℃ 가 상수로 있습니다. 내 결이 각 기준에서 얼마나 떨어졌는지를 다섯 지표의 평균 차이로 잽니다.</p>
+        <div class="f"><span>d<sub>k</sub> = ⅕ · Σ<sub>j</sub> | 내 지표<sub>j</sub> − 기준<sub>k,j</sub> |</span></div>
+      </li>
+      <li data-reveal>
+        <h3>닮은 만큼 섭씨를 섞습니다</h3>
+        <p>가장 가까운 말투가 무게의 중심입니다. 거기서 5점 멀어진 말투는 무게가 약 19분의 1, 10점이면 약 81분의 1로 줄어듭니다. 결과는 여섯 섭씨를 섞은 값이라 언제나 35.0과 38.2 사이에 떨어집니다.</p>
+        <div class="f">
+          <span>w<sub>k</sub> = 1 / ( d<sub>k</sub> − d<sub>min</sub> + 3 )<sup>3</sup></span>
+          <span>말온도 = Σ w<sub>k</sub>·℃<sub>k</sub> / Σ w<sub>k</sub></span>
+        </div>
+      </li>
+    </ol>
+
+    <figure data-reveal>
+      <svg class="fp" viewBox="-25 15 350 262" role="img" aria-label="다섯 축의 결 지문. 점선은 담백하게의 기준 결, 채움은 보기용 목소리의 결.">
+        <polygon class="fp-grid" points="150,40 254.6,116 214.7,239 85.3,239 45.4,116"/>
+        <polygon class="fp-grid" points="150,95 202.3,133 182.3,194.5 117.7,194.5 97.7,133"/>
+        <g class="fp-axis">
+          <line x1="150" y1="150" x2="150" y2="40"/>
+          <line x1="150" y1="150" x2="254.6" y2="116"/>
+          <line x1="150" y1="150" x2="214.7" y2="239"/>
+          <line x1="150" y1="150" x2="85.3" y2="239"/>
+          <line x1="150" y1="150" x2="45.4" y2="116"/>
+        </g>
+        <polygon class="fp-target" points="150,70.8 235.8,122.1 195.3,212.3 116.4,196.3 102.9,134.7"/>
+        <polygon class="fp-me" points="150,77.4 233.7,122.8 196.6,214.1 117.7,194.5 97.7,133"/>
+        <g class="fp-label">
+          <text x="150" y="30" text-anchor="middle">차분함</text>
+          <text x="262" y="114" text-anchor="start">고른 음량</text>
+          <text x="222" y="258" text-anchor="start">말과 쉼</text>
+          <text x="78" y="258" text-anchor="end">목소리의 힘</text>
+          <text x="38" y="114" text-anchor="end">억양</text>
+        </g>
+      </svg>
+      <div class="fp-side">
+        <p class="result"><b>36.9<small>℃</small></b><span>담백하게에 가장 닮은 결</span></p>
+        <table class="vals">
+          <thead><tr><th scope="col">축</th><th scope="col"><span class="key tg"></span>담백하게</th><th scope="col"><span class="key"></span>보기 목소리</th></tr></thead>
+          <tbody>
+            <tr><td>차분함</td><td>72</td><td class="me">66</td></tr>
+            <tr><td>고른 음량</td><td>82</td><td class="me">80</td></tr>
+            <tr><td>말과 쉼</td><td>70</td><td class="me">72</td></tr>
+            <tr><td>목소리의 힘</td><td>52</td><td class="me">50</td></tr>
+            <tr><td>억양</td><td>45</td><td class="me">50</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figcaption>결 지문. 여섯 기준 중 담백하게에 가장 가까워 무게의 6할이 거기 실리고, 공감하며에 그 다음이 실려 36.9℃가 됩니다. 결과 화면에서 같은 그림으로 목표의 결과 내 결을 겹쳐 봅니다.</figcaption>
+    </figure>
+
+    <details>
+      <summary>여섯 말투의 기준 결 보기</summary>
+      <div class="scroll">
+        <table class="tones">
+          <thead>
+            <tr><th scope="col">말투</th><th scope="col">℃</th><th scope="col">차분함</th><th scope="col">고른 음량</th><th scope="col">말과 쉼</th><th scope="col">목소리의 힘</th><th scope="col">억양</th></tr>
+          </thead>
+          <tbody>
+            <tr class="t1"><td>단호하게</td><td>35.0</td><td>58</td><td>76</td><td>64</td><td>72</td><td>33</td></tr>
+            <tr class="t2"><td>차분하게</td><td>35.7</td><td>88</td><td>84</td><td>82</td><td>38</td><td>37</td></tr>
+            <tr class="t3"><td>담백하게</td><td>36.5</td><td>72</td><td>82</td><td>70</td><td>52</td><td>45</td></tr>
+            <tr class="t4"><td>유쾌하게</td><td>37.1</td><td>52</td><td>68</td><td>62</td><td>82</td><td>62</td></tr>
+            <tr class="t5"><td>공감하며</td><td>37.7</td><td>78</td><td>80</td><td>76</td><td>46</td><td>52</td></tr>
+            <tr class="t6"><td>따뜻하게</td><td>38.2</td><td>76</td><td>78</td><td>78</td><td>45</td><td>57</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">앱이 들고 있는 상수 그대로입니다.</p>
+    </details>
+  </div>
+</section>
+
+<section class="plain why" aria-labelledby="why-title">
+  <div class="wrap">
+    <span class="eyebrow" data-reveal>왜 온도인가요</span>
+    <h2 id="why-title" data-reveal data-delay="1">왜 목소리에서 온도가 나오나요</h2>
+    <dl>
+      <div data-reveal>
+        <dt>체온을 재는 것이 아닙니다</dt>
+        <dd>말온도는 말의 결에 붙인 비유입니다. 물리적으로 재는 것은 소리의 크기와 기복, 쉼의 비율, 피치의 폭 넷이고, 이 넷은 마이크가 기기 안에서 확실히 잴 수 있는 양입니다.</dd>
+      </div>
+      <div data-reveal data-delay="1">
+        <dt>온도가 되는 자리는 선언입니다</dt>
+        <dd>여섯 말투에 ℃ 를 하나씩 붙이고, 내 목소리가 그중 어디에 얼마나 닮았는지를 한 줄 위의 숫자로 옮깁니다. 그래서 문장을 고를 때의 온도와 목소리로 잰 온도를 같은 자 위에서 견줄 수 있습니다.</dd>
+      </div>
+      <div data-reveal data-delay="2">
+        <dt>방과 목소리 높이를 타지 않습니다</dt>
+        <dd>바닥 소음을 빼서 카페와 침실이 같은 자 위에 섭니다. 억양은 절대 피치가 아니라 자기 중앙에서 벌어진 반음으로 재서, 성별이나 나이에 따른 목소리 높이가 온도를 밀지 않습니다.</dd>
+      </div>
+      <div data-reveal data-delay="3">
+        <dt>눈금은 사람의 목소리로 맞췄습니다</dt>
+        <dd>담백하게의 억양 기준은 한국어 낭독 207회차의 중앙값 2.7반음에서 왔습니다. 다른 말투의 기준은 그 사이에서 잡았고, 더 많은 목소리로 계속 고쳐 갑니다.</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<section class="plain" aria-labelledby="not-title">
+  <div class="wrap">
+    <span class="eyebrow" data-reveal>하지 않는 것</span>
+    <h2 id="not-title" data-reveal data-delay="1">이 앱의 성격은 하지 않기로 한 것들이 정합니다</h2>
+    <ul class="nots">
+      <li data-reveal><b>진단하지 않습니다.</b>음량으로 읽은 값을 감정, 인격, 정신건강, 관계의 질을 판정하는 정보로 쓰지 않습니다. 의료와 상담을 대신하지 않습니다.</li>
+      <li data-reveal><b>성적표를 만들지 않습니다.</b>그래프의 기준선은 36.5℃가 아니라 내 평균입니다. 비교 대상이 나 자신뿐이라 등급이 생기지 않습니다. 점수도 연속 기록도 없습니다.</li>
+      <li data-reveal><b>상대를 조종하는 문장을 만들지 않습니다.</b>상대를 이기거나 설득하는 문장이 아니라, 내 마음과 내 경계를 함께 전하는 문장을 만듭니다.</li>
+      <li data-reveal><b>위험 앞에서는 물러납니다.</b>자해, 폭력, 협박 신호가 읽히면 추천보다 먼저 안내와 상담 전화가 서고, 그 화면에서는 광고도 닫힙니다.</li>
+      <li data-reveal><b>글을 쌓아 두지 않습니다.</b>계정이 없고, 적은 글과 받은 문장은 서버에 남지 않습니다. 「모두 지우기」 한 번으로 기기의 기록과 익명 ID 가 함께 사라집니다.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="plain" aria-labelledby="data-title">
+  <div class="wrap">
+    <span class="eyebrow" data-reveal>데이터</span>
+    <h2 id="data-title" data-reveal data-delay="1">기기 밖으로 나가는 것</h2>
+    <p data-reveal data-delay="2">음성은 기기 밖으로 나가지 않습니다. 음량과 주파수 분석은 전부 기기 안에서 이루어지고, 남는 것은 회차마다 ℃ 하나와 시각뿐입니다. 다만 문장을 만드는 순간에는 적은 상황과 말투 설정이 Google Gemini 로 전송됩니다. 저장하지 않는 것과 전송하지 않는 것은 다른 약속이라, 나가는 것의 완전한 목록을 <a href="/privacy.html">개인정보처리방침</a>에 적었습니다. 앱 안의 데이터 시트에서도 같은 목록을 봅니다.</p>
+  </div>
+</section>
+
+<section class="get" aria-labelledby="get-title">
+  <div class="blobs" aria-hidden="true"><i class="blob a" style="top:10%"></i><i class="blob c" style="bottom:-30%"></i></div>
+  <div class="wrap">
+    <span class="eyebrow" data-reveal>받기</span>
+    <h2 id="get-title" data-reveal data-delay="1">아이폰과 안드로이드에서, <span class="grad">무료로</span></h2>
+    <p data-reveal data-delay="2">인앱결제가 없습니다. 하루치를 다 쓴 날에만 스스로 여는 보상형 광고 한 자리가 전부입니다. 한국어로만 나옵니다.</p>
+    <ul class="stores" data-reveal data-delay="3">
+      <!-- App Store 승인 뒤: <li><a class="store" href="https://apps.apple.com/kr/app/id0000000000">App Store 에서 받기</a></li> -->
+      <li><span class="store soon">App Store <small>심사 중입니다 · 열리면 링크가 붙습니다</small></span></li>
+      <!-- Google Play 출시 뒤: <li><a class="store" href="https://play.google.com/store/apps/details?id=com.malondo.malondo_app">Google Play 에서 받기</a></li> -->
+      <li><span class="store soon">Google Play <small>심사 전입니다 · 준비되면 링크가 붙습니다</small></span></li>
+    </ul>
+    <p class="after" data-reveal data-delay="3">쓰다가 막히는 것이나 바라는 것이 있으면 <a href="/support.html">지원 페이지</a>에 적어 주세요.</p>
+  </div>
 </section>
 
 </main>
 
 <footer>
-  <ul class="links">
-    <li><a href="/support.html">지원</a></li>
-    <li><a href="/privacy.html">개인정보처리방침</a></li>
-    <li><a href="mailto:chuny4u@gmail.com">문의 chuny4u@gmail.com</a></li>
-  </ul>
-  <p>© 2026 말온도</p>
+  <div class="wrap">
+    <ul class="links">
+      <li><a href="/support.html">지원</a></li>
+      <li><a href="/privacy.html">개인정보처리방침</a></li>
+      <li><a href="mailto:chuny4u@gmail.com">문의 chuny4u@gmail.com</a></li>
+    </ul>
+    <p>© 2026 말온도</p>
+  </div>
 </footer>
 
-</div>
+<script>
+(function () {
+  document.documentElement.classList.add('js');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // 나타나기
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+  var reveals = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+  reveals.forEach(function (el) {
+    // 첫 화면에 이미 보이는 것은 관찰을 기다리지 않는다.
+    if (el.getBoundingClientRect().top < window.innerHeight * 0.95) el.classList.add('in');
+    else io.observe(el);
+  });
+  // 관찰이 어떤 이유로든 오지 않아도 글이 숨어 있으면 안 된다.
+  setTimeout(function () { reveals.forEach(function (el) { if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('in'); }); }, 1500);
+
+  // 온도 자 — 처음 보일 때 빛이 한 번 지나간다
+  var ramp = document.getElementById('ramp');
+  if (ramp) {
+    var ro = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { ramp.classList.add('wake'); ro.disconnect(); } });
+    }, { threshold: 0.5 });
+    ro.observe(ramp);
+  }
+
+  // 다이얼 — 여섯 말투 사이를 오간다
+  var tones = [
+    [35.0, '단호하게', 'r1i'], [35.7, '차분하게', 'r2i'], [36.5, '담백하게', 'r3i'],
+    [37.1, '유쾌하게', 'r4i'], [37.7, '공감하며', 'r5i'], [38.2, '따뜻하게', 'r6i']
+  ];
+  var needle = document.getElementById('needle'), num = document.getElementById('num'),
+      toneEl = document.getElementById('tone'), driftEl = document.getElementById('drift'), dial = document.getElementById('dial');
+  function nearest(t) { var b = tones[0]; tones.forEach(function (x) { if (Math.abs(x[0] - t) < Math.abs(b[0] - t)) b = x; }); return b; }
+  function show(t) {
+    var a = -120 + 240 * (t - 35.0) / 3.2;
+    needle.style.setProperty('--a', a.toFixed(2) + 'deg');
+    num.innerHTML = t.toFixed(1) + '<small>℃</small>';
+    var n = nearest(t);
+    toneEl.textContent = n[1];
+    dial.style.setProperty('--tone', 'var(--' + n[2] + ')');
+    var d = t - 36.5;
+    driftEl.textContent = Math.abs(d) < 0.15 ? '원점입니다' : (d > 0 ? '원점보다 ' + d.toFixed(1) + '℃ 데워졌습니다' : '원점보다 ' + (-d).toFixed(1) + '℃ 식었습니다');
+  }
+  if (needle && num) {
+    show(36.5);
+    if (!reduce) {
+      var path = [36.5, 37.2, 37.8, 36.9, 36.1, 35.6, 36.4, 37.0, 38.0, 36.6];
+      var i = 0, from = 36.5, to = 36.5, t0 = 0, dur = 2200, hold = 900, holding = true, hStart = performance.now();
+      function ease(x) { return x < .5 ? 4*x*x*x : 1 - Math.pow(-2*x + 2, 3) / 2; }
+      function frame(now) {
+        if (document.hidden) { requestAnimationFrame(frame); return; }
+        if (holding) {
+          if (now - hStart > hold) { holding = false; from = to; i = (i + 1) % path.length; to = path[i]; t0 = now; }
+        } else {
+          var k = Math.min(1, (now - t0) / dur);
+          show(from + (to - from) * ease(k));
+          if (k >= 1) { holding = true; hStart = now; }
+        }
+        requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
+  }
+
+  // 화면 넘겨보기
+  var track = document.getElementById('track');
+  if (track) {
+    var slides = Array.prototype.slice.call(track.querySelectorAll('.slide'));
+    var dots = document.getElementById('dots');
+    slides.forEach(function (_, k) { var d = document.createElement('i'); if (k === 0) d.className = 'on'; dots.appendChild(d); });
+    var current = 0, userTouched = false, inView = false;
+    function setActive(k) {
+      current = k;
+      slides.forEach(function (s, j) { s.classList.toggle('on', j === k); });
+      Array.prototype.forEach.call(dots.children, function (d, j) { d.classList.toggle('on', j === k); });
+    }
+    var so = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting && e.intersectionRatio >= 0.6) setActive(slides.indexOf(e.target)); });
+    }, { root: track, threshold: [0.6] });
+    slides.forEach(function (s) { so.observe(s); });
+    function go(k) {
+      k = (k + slides.length) % slides.length;
+      var s = slides[k];
+      track.scrollTo({ left: s.offsetLeft - (track.clientWidth - s.offsetWidth) / 2, behavior: reduce ? 'auto' : 'smooth' });
+    }
+    document.getElementById('prev').addEventListener('click', function () { userTouched = true; go(current - 1); });
+    document.getElementById('next').addEventListener('click', function () { userTouched = true; go(current + 1); });
+    track.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { userTouched = true; go(current + 1); e.preventDefault(); }
+      if (e.key === 'ArrowLeft') { userTouched = true; go(current - 1); e.preventDefault(); }
+    });
+    ['touchstart', 'wheel', 'pointerdown'].forEach(function (ev) { track.addEventListener(ev, function () { userTouched = true; }, { passive: true }); });
+    // 마우스로 끌어 넘기기
+    var dragging = false, sx = 0, sl = 0;
+    track.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      dragging = true; sx = e.clientX; sl = track.scrollLeft; track.classList.add('dragging'); track.setPointerCapture(e.pointerId);
+    });
+    track.addEventListener('pointermove', function (e) { if (dragging) track.scrollLeft = sl - (e.clientX - sx); });
+    function endDrag() {
+      if (!dragging) return; dragging = false; track.classList.remove('dragging');
+      var best = 0, bd = Infinity, mid = track.scrollLeft + track.clientWidth / 2;
+      slides.forEach(function (s, j) { var c = s.offsetLeft + s.offsetWidth / 2, d = Math.abs(c - mid); if (d < bd) { bd = d; best = j; } });
+      go(best);
+    }
+    track.addEventListener('pointerup', endDrag); track.addEventListener('pointercancel', endDrag); track.addEventListener('pointerleave', endDrag);
+    track.querySelectorAll('img').forEach(function (im) { im.draggable = false; });
+    // 보이는 동안만, 손대기 전까지만 스스로 넘어간다
+    var vo = new IntersectionObserver(function (es) { es.forEach(function (e) { inView = e.isIntersecting; }); }, { threshold: 0.4 });
+    vo.observe(track);
+    if (!reduce) setInterval(function () { if (inView && !userTouched && !document.hidden) go(current + 1); }, 4200);
+    // 처음 자리 맞추기
+    requestAnimationFrame(function () { go(0); });
+  }
+})();
+</script>
 </body>
 </html>
