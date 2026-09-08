@@ -202,7 +202,8 @@
 
   /* ── 받기 · 바닥 ── */
   .after { margin-top: 1.25rem; font-size: .9375rem; }
-  .store { display: inline-block; margin-top: .5rem; padding: .55rem .95rem; border: 1px solid var(--line-2); border-radius: .6rem; color: var(--ink-3); font-size: .9375rem; }
+  .stores { list-style: none; margin: .5rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .6rem; }
+  .store { display: inline-block; margin-top: 0; padding: .55rem .95rem; border: 1px solid var(--line-2); border-radius: .6rem; color: var(--ink-3); font-size: .9375rem; }
   footer { border-top: 1px solid var(--line); padding: 2rem 0 3.5rem; font-size: .875rem; color: var(--ink-3); }
   footer .links { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; margin: 0 0 1rem; padding: 0; list-style: none; }
   footer p { margin: 0; color: var(--ink-3); }
@@ -221,6 +222,7 @@
   <p class="lede">말하기 어려운 순간에, 지금 이 사람에게 건넬 한두 문장을 찾는 대화 코치입니다.</p>
   <ul class="facts">
     <li>아이폰</li>
+    <li>안드로이드</li>
     <li>무료</li>
     <li>인앱결제 없음</li>
     <li>계정 없음</li>
@@ -394,10 +396,14 @@
 
 <section class="get">
   <span class="eyebrow">받기</span>
-  <h2>아이폰에서, 무료로</h2>
+  <h2>아이폰과 안드로이드에서, 무료로</h2>
   <p>인앱결제가 없습니다. 하루치를 다 쓴 날에만 스스로 여는 보상형 광고 한 자리가 전부입니다. 한국어로만 나옵니다.</p>
-  <!-- 승인 뒤 아래 한 줄을 이것으로 바꾼다: <a class="store" href="https://apps.apple.com/kr/app/id0000000000">App Store 에서 받기</a> -->
-  <span class="store">App Store 심사 중입니다. 열리면 이 자리에 링크가 붙습니다.</span>
+  <ul class="stores">
+    <!-- App Store 승인 뒤: <li><a class="store" href="https://apps.apple.com/kr/app/id0000000000">App Store 에서 받기</a></li> -->
+    <li><span class="store">App Store 심사 중입니다. 열리면 이 자리에 링크가 붙습니다.</span></li>
+    <!-- Google Play 출시 뒤: <li><a class="store" href="https://play.google.com/store/apps/details?id=com.malondo.malondo_app">Google Play 에서 받기</a></li> -->
+    <li><span class="store">Google Play 는 심사 전입니다. 준비되면 이 자리에 링크가 붙습니다.</span></li>
+  </ul>
   <p class="after">쓰다가 막히는 것이나 바라는 것이 있으면 <a href="/support.html">지원 페이지</a>에 적어 주세요.</p>
 </section>
 
