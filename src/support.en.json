@@ -1,0 +1,38 @@
+{
+  "meta.title": "Malondo Support",
+  "meta.desc": "Tell us what got in your way, what went wrong, or what you wish Malondo did. Common questions are answered here too.",
+  "brand": "Malondo",
+  "pref.lang": "Page language",
+
+  "title": "Malondo Support",
+  "lede": "If something gets in your way, goes wrong, or you wish it worked differently, write to us below. Telling us which screen you were on and what you were doing, along with your device name and the app version (drawer → About), helps us find it faster.",
+  "mail": "<strong>Email:</strong> <a href=\"mailto:chuny4u@gmail.com\">chuny4u@gmail.com</a>",
+  "mail.note": "Write in 한국어, English, 日本語 or Español — whichever you prefer.",
+
+  "faq.h": "Common questions",
+
+  "q1": "Do I need an account?",
+  "a1": "No. There is no sign-up and no login; you just start using it.",
+
+  "q2": "Where does what I write end up?",
+  "a2": "Only on this device. The situation you typed is sent to Google Gemini at the moment a sentence is written, and we do not store it. Everything that leaves and everything that stays is written out in the <a href=\"/privacy.html\">privacy policy</a>.",
+
+  "q3": "How do I change the language?",
+  "a3": "Drawer → <strong>Language and units</strong>, then pick 한국어, English, 日本語 or Español. By default it follows your device. Not only the screen but the sentences and letters Malondo writes, and the reminders, come in the language you chose. Sentences you already kept stay exactly as written and are not translated.",
+
+  "q4": "Can I see temperatures in °F?",
+  "a4": "In the same place (drawer → Language and units), pick ℃ or °F. Every value you measure or choose is always stored in Celsius and only what you see changes, so switching units leaves your history untouched.",
+
+  "q5": "How do I move to another device?",
+  "a5": "Drawer → Data and privacy → Export to make a file, then restore it on the new device. That file never comes to us.",
+
+  "q6": "Why are there ads?",
+  "a6": "The option to watch an ad opens only where you have used up the daily allowance. Watching one to the end refills that day's limit. Watching is always your choice, and Letting go and Today's square have neither ads nor a daily limit.",
+
+  "q7": "How do I delete everything?",
+  "a7": "Drawer → Data and privacy → Delete everything. The records and settings on the device and the anonymous ID go together. Deleting the app does the same.",
+
+  "link.home": "Malondo",
+  "link.privacy": "Privacy policy",
+  "foot": "© 2026 Malondo"
+}

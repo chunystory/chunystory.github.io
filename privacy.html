@@ -3,161 +3,415 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>말온도 개인정보처리방침</title>
+<title data-i="meta.title">말온도 개인정보처리방침</title>
+<meta name="description" content="말온도는 회원가입이 없습니다. 무엇이 기기 밖으로 나가고 무엇이 기기 안에 남는지를 전부 적었습니다." data-i-content="meta.desc">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://chunystory.github.io/privacy.html">
+<meta name="theme-color" content="#F5F1EA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16120F" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="alternate" hreflang="ko" href="https://chunystory.github.io/privacy.html?lang=ko">
+<link rel="alternate" hreflang="en" href="https://chunystory.github.io/privacy.html?lang=en">
+<link rel="alternate" hreflang="ja" href="https://chunystory.github.io/privacy.html?lang=ja">
+<link rel="alternate" hreflang="es" href="https://chunystory.github.io/privacy.html?lang=es">
+<link rel="alternate" hreflang="x-default" href="https://chunystory.github.io/privacy.html">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-jp-dynamic-subset.min.css">
 <style>
-  :root {
-    color-scheme: light dark;
-    --canvas: #F5F1EA; --surface: #FDFCFA; --ink: #211E1B;
-    --ink-2: #56504A; --ink-3: #6C655D; --line: #E6DFD4; --accent: #BE2D1A;
+/* privacy · support 두 페이지가 함께 쓰는 꼴. index 는 제 스타일을 따로 든다. */
+:root {
+  color-scheme: light;
+  --canvas: #F5F1EA; --surface: #FDFCFA; --ink: #211E1B;
+  --ink-2: #56504A; --ink-3: #6C655D; --line: #E6DFD4; --line-2: #877D71;
+  --accent: #BE2D1A;
+  --sans: "Pretendard Variable", Pretendard, "Pretendard JP Variable", "Pretendard JP",
+          -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Hiragino Sans",
+          "Noto Sans KR", "Noto Sans JP", "Malgun Gothic", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --canvas: #16120F; --surface: #211D19; --ink: #F0EAE3;
+    --ink-2: #B8AFA5; --ink-3: #9E958A; --line: #3A342E; --line-2: #7E756A;
+    --accent: #E8ACA4;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --canvas: #16120F; --surface: #211D19; --ink: #F0EAE3;
-      --ink-2: #B8AFA5; --ink-3: #9E958A; --line: #3A342E; --accent: #E8ACA4;
-    }
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; background: var(--canvas); color: var(--ink);
-    font: 16px/1.75 -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
-          "Malgun Gothic", sans-serif;
-    word-break: keep-all;
-  }
-  main { max-width: 44rem; margin: 0 auto; padding: 3rem 1.25rem 6rem; }
-  h1 { font-size: 1.9rem; letter-spacing: -.02em; margin: 0 0 .5rem; }
-  .sub { color: var(--ink-3); font-size: .9rem; margin: 0 0 2.5rem; }
-  h2 {
-    font-size: 1.2rem; margin: 2.75rem 0 .75rem; padding-top: 1.5rem;
-    border-top: 1px solid var(--line); letter-spacing: -.01em;
-  }
-  h3 { font-size: 1rem; margin: 1.5rem 0 .5rem; }
-  p, li { color: var(--ink-2); }
-  strong { color: var(--ink); }
-  ul { padding-left: 1.2rem; }
-  li { margin: .35rem 0; }
-  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .95rem; }
-  th, td { text-align: left; padding: .6rem .5rem; border-bottom: 1px solid var(--line); vertical-align: top; }
-  th { color: var(--ink-3); font-weight: 600; font-size: .85rem; }
-  .lead {
-    background: var(--surface); border: 1px solid var(--line);
-    border-radius: .6rem; padding: 1.25rem; margin: 0 0 2rem;
-  }
-  .lead p:last-child { margin-bottom: 0; }
-  a { color: var(--accent); }
-  footer { margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--line); font-size: .85rem; color: var(--ink-3); }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: #16120F; --surface: #211D19; --ink: #F0EAE3;
+  --ink-2: #B8AFA5; --ink-3: #9E958A; --line: #3A342E; --line-2: #7E756A;
+  --accent: #E8ACA4;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--canvas); color: var(--ink);
+  font: 16px/1.75 var(--sans); letter-spacing: -.01em;
+  word-break: keep-all; -webkit-font-smoothing: antialiased;
+}
+:root[lang="en"] body, :root[lang="es"] body { letter-spacing: 0; word-break: normal; overflow-wrap: anywhere; }
+:root[lang="ja"] body { word-break: normal; line-break: strict; overflow-wrap: anywhere; }
+
+/* 머리띠 — index 와 같은 자리, 같은 고르개 */
+.bar {
+  position: sticky; top: 0; z-index: 10;
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  background: color-mix(in srgb, var(--canvas) 78%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+}
+.bar .row { max-width: 44rem; margin: 0 auto; padding: 0 1.25rem; display: flex; align-items: center; gap: .75rem; height: 3.5rem; }
+.bar a.home { display: flex; align-items: center; gap: .6rem; text-decoration: none; color: var(--ink); }
+.bar img { width: 28px; height: 28px; border-radius: 8px; }
+.bar b { font-size: 1rem; font-weight: 700; letter-spacing: -.02em; white-space: nowrap; }
+.prefs { margin-left: auto; display: flex; align-items: center; gap: .4rem; }
+.prefs select {
+  appearance: none; -webkit-appearance: none; font: inherit; font-size: .8125rem; font-weight: 600;
+  color: var(--ink); background: color-mix(in srgb, var(--surface) 70%, transparent);
+  border: 1px solid var(--line-2); border-radius: 999px; height: 2rem; padding: 0 1.6rem 0 .75rem;
+  cursor: pointer; letter-spacing: 0;
+  background-image: linear-gradient(45deg, transparent 50%, var(--ink-3) 50%), linear-gradient(135deg, var(--ink-3) 50%, transparent 50%);
+  background-position: calc(100% - 13px) 55%, calc(100% - 9px) 55%;
+  background-size: 4px 4px; background-repeat: no-repeat;
+}
+.prefs select:hover { border-color: var(--ink); }
+a:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+main { max-width: 44rem; margin: 0 auto; padding: 2.5rem 1.25rem 6rem; }
+h1 { font-size: 1.9rem; letter-spacing: -.02em; margin: 0 0 .5rem; line-height: 1.3; text-wrap: balance; }
+.sub { color: var(--ink-3); font-size: .9rem; margin: 0 0 2rem; }
+h2 {
+  font-size: 1.2rem; margin: 2.75rem 0 .75rem; padding-top: 1.5rem;
+  border-top: 1px solid var(--line); letter-spacing: -.01em; line-height: 1.4;
+}
+h3 { font-size: 1rem; margin: 1.5rem 0 .5rem; line-height: 1.5; }
+p, li, dd { color: var(--ink-2); }
+p { margin: 0 0 1rem; }
+strong { color: var(--ink); }
+ul { padding-left: 1.2rem; }
+li { margin: .35rem 0; }
+code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: .9em; letter-spacing: 0; }
+.scroll { overflow-x: auto; margin: 1rem 0; }
+/* 칸 너비를 못 박는다 — 자동으로 두면 좁은 화면에서 첫 칸이 한 글자까지 좁아진다.
+   `overflow-wrap: anywhere` 가 최소 너비를 한 글자로 만들기 때문이라, 표 안에서는
+   낱말이 칸보다 길 때만 쪼개는 break-word 로 되돌린다(「Kept / sent / ence / s」). */
+table { width: 100%; border-collapse: collapse; font-size: .95rem; table-layout: fixed; }
+th, td { text-align: left; padding: .6rem .5rem; border-bottom: 1px solid var(--line); vertical-align: top; overflow-wrap: break-word; }
+th:first-child, td:first-child { width: 34%; }
+.who th:first-child, .who td:first-child { width: 33%; }
+.who th:last-child, .who td:last-child { width: 17%; }
+th { color: var(--ink-3); font-weight: 600; font-size: .85rem; }
+/* 좁은 화면에서는 첫 칸을 더 준다 — 34% 로는 「Measurements」 한 낱말이 넘쳐 쪼개진다. */
+@media (max-width: 560px) {
+  table { font-size: .9rem; }
+  th:first-child, td:first-child { width: 40%; }
+  .who th:first-child, .who td:first-child { width: 34%; }
+  .who th:last-child, .who td:last-child { width: 20%; }
+}
+.lead {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: .6rem; padding: 1.25rem; margin: 0 0 2rem;
+}
+.lead p:last-child { margin-bottom: 0; }
+a { color: var(--accent); }
+dl { margin: 0; }
+dt { font-weight: 600; color: var(--ink); margin-top: 1.25rem; }
+dd { margin: .25rem 0 0; }
+.links { display: flex; gap: 1.25rem; flex-wrap: wrap; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+footer, small.foot { display: block; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); font-size: .85rem; color: var(--ink-3); }
+.links + small.foot { margin-top: 1.5rem; border-top: 0; padding-top: 0; }
 </style>
 </head>
 <body>
+
+<header class="bar">
+  <div class="row">
+    <a class="home" href="/"><img src="/icon-192.png" alt="" width="28" height="28"><b data-i="brand">말온도</b></a>
+    <div class="prefs">
+      <select id="lang" aria-label="페이지 언어" data-i-aria-label="pref.lang">
+        <option value="ko">한국어</option>
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="es">Español</option>
+      </select>
+    </div>
+  </div>
+</header>
+
 <main>
 
-<h1>말온도 개인정보처리방침</h1>
-<p class="sub">시행일 2026년 9월 6일 · 최종 수정 2026년 9월 16일</p>
+<h1 data-i="title">말온도 개인정보처리방침</h1>
+<p class="sub" data-i="dates">시행일 2026년 9월 6일 · 최종 수정 2026년 9월 22일</p>
 
 <div class="lead">
-  <p><strong>말온도는 회원가입이 없습니다.</strong> 이름·이메일·비밀번호를 받지 않습니다. 여러분이 적은 것과 잰 것은 이 기기 안에 남고, 저희 서버로 오지 않습니다 — 저희에게는 서버가 없습니다. 요청 수를 사람마다 세어 한도를 걸기 위해 <strong>이름 없는 익명 ID 하나</strong>만 Firebase 가 만들어 둡니다(1절).</p>
-  <p>다만 <strong>문장을 만드는 순간에는 여러분이 적은 상황이 Google 로 전송됩니다.</strong> 저장하지 않는 것과 전송하지 않는 것은 다른 약속이므로, 이 문서는 그 차이를 분명히 적습니다.</p>
+  <p data-i="lead.1"><strong>말온도는 회원가입이 없습니다.</strong> 이름·이메일·비밀번호를 받지 않습니다. 여러분이 적은 것과 잰 것은 이 기기 안에 남고, 저희 서버로 오지 않습니다 — 저희에게는 서버가 없습니다. 요청 수를 사람마다 세어 한도를 걸기 위해 <strong>이름 없는 익명 ID 하나</strong>만 Firebase 가 만들어 둡니다(1절).</p>
+  <p data-i="lead.2">다만 <strong>문장을 만드는 순간에는 여러분이 적은 상황이 Google 로 전송됩니다.</strong> 저장하지 않는 것과 전송하지 않는 것은 다른 약속이므로, 이 문서는 그 차이를 분명히 적습니다.</p>
+  <p data-i="lead.3">이 방침은 한국어·English·日本語·Español 로 읽으실 수 있습니다. <strong>원본은 한국어이며</strong>, 번역과 뜻이 다르면 한국어를 따릅니다.</p>
 </div>
 
-<h2>1. 무엇이 기기 밖으로 나가나</h2>
+<h2 data-i="s1.h">1. 무엇이 기기 밖으로 나가나</h2>
 
-<h3>문장을 만들 때 — Google Gemini</h3>
-<p>추천 문장을 만들 때 <strong>관계 · 대화 목표 · 말의 온도 · 여러분이 적은 상황 · 말투 설정</strong>이 Firebase AI Logic 을 거쳐 Google Gemini API 로 전송됩니다.</p>
-<p>「털어놓기」에서 답장을 받을 때는 <strong>적으신 이야기 · 고른 결 · 답장의 온도 · 길이 · 얽힌 상대(고른 경우)</strong>가 같은 길로 나갑니다.</p>
-<p>이때 <strong>이 설치를 가리키는 익명 사용자 ID</strong> 하나가 함께 갑니다. Firebase Authentication 의 익명 로그인으로 만들어지는 무작위 이름이며, 이름·이메일·전화번호 없이 만들어져 여러분이 누구인지 말하지 못합니다. 쓰는 곳은 하나 — <strong>요청 수를 사람마다 세어 한도를 거는 것</strong>입니다. 「모두 지우기」를 누르면 이 ID 를 지우고 새 이름을 받습니다.</p>
-<p>홈의 「오늘의 한 문장」을 받을 때는 <strong>날짜만</strong> 보내고, 빈 입력창을 채우는 상황 예시가 앱에 실린 창고에 없을 때만 <strong>관계와 목표 두 낱말</strong>을 보냅니다. 두 경우 모두 여러분이 적은 글은 나가지 않습니다.</p>
-<p><strong>저희는 이 내용을 저장하지 않습니다.</strong> 응답을 화면에 띄우고 나면 여러분이 직접 담아두신 문장 외에는 아무것도 남지 않습니다. Google 의 처리 방식은 <a href="https://policies.google.com/privacy">Google 개인정보처리방침</a>을 따릅니다.</p>
+<h3 data-i="s1.a.h">문장을 만들 때 — Google Gemini</h3>
+<p data-i="s1.a.1">추천 문장을 만들 때 <strong>관계 · 대화 목표 · 말의 온도 · 여러분이 적은 상황 또는 초안 · 말투 설정 · 고르신 언어</strong>가 Firebase AI Logic 을 거쳐 Google Gemini API 로 전송됩니다.</p>
+<p data-i="s1.a.2">「털어놓기」에서 답장을 받을 때는 <strong>적으신 이야기 · 고른 결 · 답장의 온도 · 길이 · 얽힌 상대(고른 경우)</strong>가 같은 길로 나갑니다.</p>
+<p data-i="s1.a.3">「이 문장만 다시 다듬기」를 사용하면 선택한 추천 문장과 수정 방향도 Google Gemini 로 전송됩니다. 초안과 수정 요청은 기기에 자동 저장하지 않습니다.</p>
+<p data-i="s1.a.4">이때 <strong>이 설치를 가리키는 익명 사용자 ID</strong> 하나가 함께 갑니다. Firebase Authentication 의 익명 로그인으로 만들어지는 무작위 이름이며, 이름·이메일·전화번호 없이 만들어져 여러분이 누구인지 말하지 못합니다. 쓰는 곳은 하나 — <strong>요청 수를 사람마다 세어 한도를 거는 것</strong>입니다. 「모두 지우기」를 누르면 이 ID 를 지우고 새 이름을 받습니다.</p>
+<p data-i="s1.a.5">홈의 「오늘의 한 문장」을 받을 때는 <strong>날짜만</strong> 보내고, 빈 입력창을 채우는 상황 예시가 앱에 실린 창고에 없을 때만 <strong>관계와 목표 두 낱말</strong>을 보냅니다. 두 경우 모두 여러분이 적은 글은 나가지 않습니다.</p>
+<p data-i="s1.a.6"><strong>저희는 이 내용을 저장하지 않습니다.</strong> 응답을 화면에 띄우고 나면 여러분이 직접 담아두신 문장 외에는 아무것도 남지 않습니다. Google 의 처리 방식은 <a href="https://policies.google.com/privacy">Google 개인정보처리방침</a>을 따릅니다.</p>
 
-<h3>광고를 띄울 때 — Google AdMob</h3>
-<p>광고를 보시겠다고 직접 선택하셨을 때, 그리고 광고를 미리 받아 둘 때 <strong>광고 식별자 · 기기 정보 · 대략적인 위치</strong>가 Google AdMob 으로 전송됩니다.</p>
-<p><strong>여러분이 적은 상황과 고른 관계는 광고 쪽으로 보내지 않습니다.</strong> 유럽 등 요구되는 지역에서는 광고 동의(UMP)를 먼저 받으며, 앱 안에서 언제든 다시 고르실 수 있습니다(서랍 → 데이터와 프라이버시).</p>
+<h3 data-i="s1.b.h">광고를 띄울 때 — Google AdMob</h3>
+<p data-i="s1.b.1">광고를 보시겠다고 직접 선택하셨을 때, 그리고 광고를 미리 받아 둘 때 <strong>광고 식별자 · 기기 정보 · 대략적인 위치</strong>가 Google AdMob 으로 전송됩니다.</p>
+<p data-i="s1.b.2"><strong>여러분이 적은 상황과 고른 관계는 광고 쪽으로 보내지 않습니다.</strong> 유럽 등 요구되는 지역에서는 광고 동의(UMP)를 먼저 받으며, 앱 안에서 언제든 다시 고르실 수 있습니다(서랍 → 데이터와 프라이버시).</p>
 
-<h3>앱이 죽었을 때 — Firebase Crashlytics</h3>
-<p>앱이 예기치 않게 종료되면 <strong>충돌이 난 자리 · 기기 모델 · 운영체제와 앱 버전</strong>이 Firebase Crashlytics 로 전송됩니다. 무엇이 고장 났는지 알아내는 데에만 씁니다.</p>
-<p><strong>여러분이 적은 글과 받은 문장은 담기지 않습니다.</strong> 앱 안에서 끌 수 있습니다(서랍 → 데이터와 프라이버시 → 「죽었을 때 보고 보내기」). 끄면 그 순간부터 보내지 않으며, 앱을 다시 켜도 꺼진 채로 시작합니다.</p>
+<h3 data-i="s1.c.h">앱이 죽었을 때 — Firebase Crashlytics</h3>
+<p data-i="s1.c.1">앱이 예기치 않게 종료되면 <strong>충돌이 난 자리 · 기기 모델 · 운영체제와 앱 버전</strong>이 Firebase Crashlytics 로 전송됩니다. 무엇이 고장 났는지 알아내는 데에만 씁니다.</p>
+<p data-i="s1.c.2"><strong>여러분이 적은 글과 받은 문장은 담기지 않습니다.</strong> 앱 안에서 끌 수 있습니다(서랍 → 데이터와 프라이버시 → 「죽었을 때 보고 보내기」). 끄면 그 순간부터 보내지 않으며, 앱을 다시 켜도 꺼진 채로 시작합니다.</p>
 
-<h3>새 버전이 있는지 볼 때 — 저희 홈페이지</h3>
-<p><strong>말온도 1.0.2 부터입니다.</strong> 앱을 켤 때 <strong>버전 표 한 장을 저희 홈페이지에서 받아만 옵니다</strong>(<code>chunystory.github.io/version.json</code>). 지금 버전으로 계속 쓸 수 있는지 견주는 일은 <strong>기기 안에서</strong> 이루어지며, <strong>앱 버전을 포함해 어떤 값도 보내지 않습니다.</strong></p>
-<p>다만 파일을 받아 가는 <strong>접속 기록(IP 주소 · 시각)</strong>이 이 홈페이지를 띄워 주는 GitHub 의 서버에 남을 수 있습니다. 저희는 그 기록을 보지 못하며, 어떤 분석 도구도 이 페이지에 붙여 두지 않았습니다.</p>
+<h3 data-i="s1.d.h">새 버전이 있는지 볼 때 — 저희 홈페이지</h3>
+<p data-i="s1.d.1"><strong>말온도 1.0.2 부터입니다.</strong> 앱을 켤 때 <strong>버전 표 한 장을 저희 홈페이지에서 받아만 옵니다</strong>(<code>chunystory.github.io/version.json</code>). 지금 버전으로 계속 쓸 수 있는지 견주는 일은 <strong>기기 안에서</strong> 이루어지며, <strong>앱 버전을 포함해 어떤 값도 보내지 않습니다.</strong></p>
+<p data-i="s1.d.2">다만 파일을 받아 가는 <strong>접속 기록(IP 주소 · 시각)</strong>이 이 홈페이지를 띄워 주는 GitHub 의 서버에 남을 수 있습니다. 저희는 그 기록을 보지 못하며, 어떤 분석 도구도 이 페이지에 붙여 두지 않았습니다.</p>
 
-<h3>한 번도 나가지 않는 것</h3>
+<h3 data-i="s1.e.h">한 번도 나가지 않는 것</h3>
 <ul>
-  <li><strong>녹음과 음량</strong> — 어떤 형태로도 전송하지 않습니다</li>
-  <li><strong>담아둔 문장</strong></li>
-  <li><strong>사용 기록과 잰 말온도</strong></li>
-  <li><strong>대화 회고</strong> — 관계 · 목표 · 온도 · 직접 고른 결과만 남습니다</li>
-  <li><strong>「놓아주기」에 적은 글</strong> — 답장을 만들지 않는 화면이라 어디로도 전송하지 않고, 기기의 파일에도 한 번도 쓰지 않습니다</li>
+  <li data-i="s1.e.1"><strong>녹음과 음량</strong> — 어떤 형태로도 전송하지 않습니다</li>
+  <li data-i="s1.e.2"><strong>담아둔 문장</strong></li>
+  <li data-i="s1.e.3"><strong>사용 기록과 잰 말온도</strong></li>
+  <li data-i="s1.e.4"><strong>대화 회고</strong> — 관계 · 목표 · 온도 · 직접 고른 결과만 남습니다</li>
+  <li data-i="s1.e.5"><strong>상대별 기록</strong> — 날짜 · 상대 · 그때 고른 온도의 이름만 기기 안에 줄 하나로 남습니다</li>
+  <li data-i="s1.e.6"><strong>「놓아주기」에 적은 글</strong> — 답장을 만들지 않는 화면이라 어디로도 전송하지 않고, 기기의 파일에도 한 번도 쓰지 않습니다</li>
 </ul>
 
-<h2>2. 마이크</h2>
-<p>말의 온도를 재려면 마이크 권한이 필요합니다. 처음 녹음하실 때 기기가 물어봅니다.</p>
-<p><strong>음성은 기기 밖으로 나가지 않습니다.</strong> 음량과 주파수 분석은 전부 기기 안에서 이루어지고, 남는 것은 회차마다 <strong>℃ 하나와 시각</strong>뿐입니다. 음성·음량 샘플·주파수 값은 어떤 형태로도 저장하지 않습니다.</p>
-<p>녹음 파일은 결과 화면에서 자기 목소리를 한 번 들어보실 수 있도록 임시로 만들고, <strong>그 화면을 벗어나는 즉시 삭제</strong>합니다.</p>
+<h2 data-i="s2.h">2. 마이크</h2>
+<p data-i="s2.1">말의 온도를 재려면 마이크 권한이 필요합니다. 처음 녹음하실 때 기기가 물어봅니다.</p>
+<p data-i="s2.2"><strong>음성은 기기 밖으로 나가지 않습니다.</strong> 음량과 주파수 분석은 전부 기기 안에서 이루어지고, 남는 것은 회차마다 <strong>℃ 하나와 시각</strong>뿐입니다. 음성·음량 샘플·주파수 값은 어떤 형태로도 저장하지 않습니다.</p>
+<p data-i="s2.3">녹음 파일은 결과 화면에서 자기 목소리를 한 번 들어보실 수 있도록 임시로 만들고, <strong>그 화면을 벗어나는 즉시 삭제</strong>합니다.</p>
 
-<h2>3. 기기 안에 남는 것</h2>
-<p>앱 문서 디렉터리의 파일 하나(<code>malondo_state.json</code>)에 다음이 저장됩니다.</p>
-<table>
-  <tr><th>무엇</th><th>설명</th></tr>
-  <tr><td>담아둔 문장</td><td>직접 담아두신 문장</td></tr>
-  <tr><td>말투 설정</td><td>문장 길이 · 존댓말 · 피하고 싶은 표현 · 말투 학습 동의 여부</td></tr>
-  <tr><td>마지막으로 고른 조건</td><td>관계 · 대화 목표 · 말의 온도. 다음 대화에 그대로 떠 있습니다. 적으신 상황은 여기 없습니다</td></tr>
-  <tr><td>잰 기록</td><td>측정 회차마다 ℃ 하나와 시각. 최근 200회까지</td></tr>
-  <tr><td>일별 말온도</td><td>그날 잰 값과 「답장 받기」에서 고른 온도를 접은 하루 한 줄</td></tr>
-  <tr><td>일별 대화 사용</td><td>그날 건넬 말과 답장을 몇 번 받았는지. 홈의 달 판이 읽습니다</td></tr>
-  <tr><td>대화 회고</td><td>실제로 보냈다고 표시한 관계 · 목표 · 온도와 다음 날 직접 고른 결과. 상황과 추천 문장 원문은 없습니다. 답하지 않은 회고는 7일, 답한 회고는 1년까지 남습니다</td></tr>
-  <tr><td>하루 한 칸</td><td>그날의 마음과 온도. 직접 고르신 값</td></tr>
-  <tr><td>놓아준 날</td><td>「놓아주기」를 한 날짜와 그날의 횟수. 달력에 점으로 보입니다. <strong>무엇을 적으셨는지는 남지 않습니다</strong></td></tr>
-  <tr><td>익명 집계</td><td>추천·복사·저장 횟수와 만족도. <strong>문장 원문은 담지 않습니다</strong></td></tr>
-  <tr><td>말투 학습 숫자</td><td>동의하신 동안만 — 다듬은 문장의 수 · 글자 수 합계 · 존댓말 문장 수. 동의를 끄면 지워집니다</td></tr>
-  <tr><td>오늘의 한 문장</td><td>오늘 받은 보기 문장 한 장. 날짜가 지나면 쓰이지 않습니다</td></tr>
-  <tr><td>오늘 쓴 횟수</td><td>오늘 문장과 답장을 몇 번 받았는지. 날이 바뀌면 0 이 됩니다</td></tr>
-  <tr><td>화면 설정</td><td>화면 모드 · 알림 시각 · 조용히 쓰기 · 달력 겹 · 크래시 보고 스위치</td></tr>
-  <tr><td>설치 이름</td><td>이 설치를 가리키는 무작위 이름 하나. 사람도 기기도 가리키지 않으며 <strong>어디로도 전송하지 않습니다</strong></td></tr>
-</table>
-<p><strong>여러분이 적은 상황과 받은 추천 문장, 털어놓은 이야기와 그 답장은 저장하지 않습니다.</strong> 대화 회고에도 원문은 남지 않습니다.</p>
-<p>익명 사용자 ID 는 이 파일이 아니라 기기의 Firebase 인증 저장소에 있습니다. 홈 화면 위젯이 읽는 값(말온도 · 이달의 칸)은 기기 안 앱 공유 저장소에 한 겹 더 있으며, 조용히 쓰기를 켜면 말온도만 남습니다.</p>
-<p>이 파일은 Android 에서는 자동 백업(Google 드라이브)과 기기 간 전송에서, iOS 에서는 iCloud 백업에서 <strong>제외</strong>되어 있습니다. 기기를 바꾸실 때는 6절의 내보내기를 쓰십니다.</p>
+<h2 data-i="s3.h">3. 기기 안에 남는 것</h2>
+<p data-i="s3.1">앱 문서 디렉터리의 파일 하나(<code>malondo_state.json</code>)에 다음이 저장됩니다.</p>
+<div class="scroll">
+  <table>
+    <tr><th data-i="s3.th.1">무엇</th><th data-i="s3.th.2">설명</th></tr>
+    <tr><td data-i="s3.r1.a">담아둔 문장</td><td data-i="s3.r1.b">직접 담아두신 문장</td></tr>
+    <tr><td data-i="s3.r2.a">말투 설정</td><td data-i="s3.r2.b">문장 길이 · 존댓말 · 피하고 싶은 표현 · 말투 학습 동의 여부</td></tr>
+    <tr><td data-i="s3.r3.a">마지막으로 고른 조건</td><td data-i="s3.r3.b">관계 · 대화 목표 · 말의 온도. 다음 대화에 그대로 떠 있습니다. 적으신 상황은 여기 없습니다</td></tr>
+    <tr><td data-i="s3.r4.a">잰 기록</td><td data-i="s3.r4.b">측정 회차마다 ℃ 하나와 시각. 최근 200회까지</td></tr>
+    <tr><td data-i="s3.r5.a">일별 말온도</td><td data-i="s3.r5.b">그날 잰 값과 「답장 받기」에서 고른 온도를 접은 하루 한 줄</td></tr>
+    <tr><td data-i="s3.r6.a">일별 대화 사용</td><td data-i="s3.r6.b">그날 건넬 말과 답장을 몇 번 받았는지. 홈의 달 판이 읽습니다</td></tr>
+    <tr><td data-i="s3.r7.a">대화 회고</td><td data-i="s3.r7.b">실제로 보냈다고 표시한 관계 · 목표 · 온도와 다음 날 직접 고른 결과. 상황과 추천 문장 원문은 없습니다. 답하지 않은 회고는 7일, 답한 회고는 1년까지 남습니다</td></tr>
+    <tr><td data-i="s3.r8.a">상대별 기록</td><td data-i="s3.r8.b">날짜 · 상대 · 그때 고른 온도의 이름. 회고가 걷힌 뒤에도 「누구와 몇 번」이 줄지 않도록 따로 둔 줄이며, 적으신 상황과 문장은 없습니다</td></tr>
+    <tr><td data-i="s3.r9.a">하루 한 칸</td><td data-i="s3.r9.b">그날의 마음과 온도. 직접 고르신 값</td></tr>
+    <tr><td data-i="s3.r10.a">놓아준 날</td><td data-i="s3.r10.b">「놓아주기」를 한 날짜와 그날의 횟수. 달력에 점으로 보입니다. <strong>무엇을 적으셨는지는 남지 않습니다</strong></td></tr>
+    <tr><td data-i="s3.r11.a">익명 집계</td><td data-i="s3.r11.b">추천·복사·저장 횟수와 만족도. <strong>문장 원문은 담지 않습니다</strong></td></tr>
+    <tr><td data-i="s3.r12.a">말투 학습 숫자</td><td data-i="s3.r12.b">동의하신 동안만 — 다듬은 문장의 수 · 글자 수 합계 · 존댓말 문장 수. 동의를 끄면 지워집니다</td></tr>
+    <tr><td data-i="s3.r13.a">오늘의 한 문장</td><td data-i="s3.r13.b">오늘 받은 보기 문장 한 장. 날짜가 지나면 쓰이지 않습니다</td></tr>
+    <tr><td data-i="s3.r14.a">오늘 쓴 횟수</td><td data-i="s3.r14.b">오늘 문장과 답장을 몇 번 받았는지. 날이 바뀌면 0 이 됩니다</td></tr>
+    <tr><td data-i="s3.r15.a">화면 설정</td><td data-i="s3.r15.b">화면 모드 · <strong>언어 · 온도 단위</strong> · 읽기 글자 · 알림 시각 · 조용히 쓰기 · 달력 겹 · 크래시 보고 스위치</td></tr>
+    <tr><td data-i="s3.r16.a">설치 이름</td><td data-i="s3.r16.b">이 설치를 가리키는 무작위 이름 하나. 사람도 기기도 가리키지 않으며 <strong>어디로도 전송하지 않습니다</strong></td></tr>
+  </table>
+</div>
+<p data-i="s3.2"><strong>여러분이 적은 상황과 받은 추천 문장, 털어놓은 이야기와 그 답장은 저장하지 않습니다.</strong> 대화 회고에도 원문은 남지 않습니다.</p>
+<p data-i="s3.3">익명 사용자 ID 는 이 파일이 아니라 기기의 Firebase 인증 저장소에 있습니다. 홈 화면 위젯이 읽는 값(말온도 · 이달의 칸)은 기기 안 앱 공유 저장소에 한 겹 더 있으며, 조용히 쓰기를 켜면 말온도만 남습니다.</p>
+<p data-i="s3.4">이 파일은 Android 에서는 자동 백업(Google 드라이브)과 기기 간 전송에서, iOS 에서는 iCloud 백업에서 <strong>제외</strong>되어 있습니다. 기기를 바꾸실 때는 6절의 내보내기를 쓰십니다.</p>
 
-<h2>4. 알림</h2>
-<p>하루 한 번의 알림을 켜실 수 있습니다(기본은 꺼짐). 예약과 표시는 <strong>전부 기기 안에서</strong> 이루어지며, 저희 서버도 푸시 서비스도 거치지 않습니다. 알림 문구에는 관계도 상황도 담기지 않습니다.</p>
+<h2 data-i="s4.h">4. 알림</h2>
+<p data-i="s4.1">하루 한 번의 알림을 켜실 수 있습니다(기본은 꺼짐). 예약과 표시는 <strong>전부 기기 안에서</strong> 이루어지며, 저희 서버도 푸시 서비스도 거치지 않습니다. 알림 문구에는 관계도 상황도 담기지 않습니다.</p>
 
-<h2>5. 만 14세 미만 아동</h2>
-<p>말온도는 <strong>아동을 대상으로 하지 않습니다.</strong> 만 14세 미만 아동의 개인정보를 알면서 수집하지 않습니다.</p>
+<h2 data-i="s5.h">5. 만 14세 미만 아동</h2>
+<p data-i="s5.1">말온도는 <strong>아동을 대상으로 하지 않습니다.</strong> 만 14세 미만 아동의 개인정보를 알면서 수집하지 않습니다.</p>
 
-<h2>6. 보관 기간과 삭제</h2>
-<p>기기 안의 값은 여러분이 지울 때까지 남습니다. 다만 답하지 않은 대화 회고는 7일, 답한 회고는 1년이 지나면 자동으로 지웁니다. 저희가 보관하는 것은 없습니다.</p>
-<p><strong>언제든 전부 지우실 수 있습니다:</strong></p>
+<h2 data-i="s6.h">6. 보관 기간과 삭제</h2>
+<p data-i="s6.1">기기 안의 값은 여러분이 지울 때까지 남습니다. 다만 답하지 않은 대화 회고는 7일, 답한 회고는 1년이 지나면 자동으로 지웁니다. 저희가 보관하는 것은 없습니다.</p>
+<p data-i="s6.2"><strong>언제든 전부 지우실 수 있습니다:</strong></p>
 <ul>
-  <li>앱 안에서 — 서랍 → <strong>데이터와 프라이버시</strong> → <strong>모두 지우기</strong></li>
-  <li>앱을 삭제하시면 기기 안의 값도 함께 사라집니다</li>
+  <li data-i="s6.li.1">앱 안에서 — 서랍 → <strong>데이터와 프라이버시</strong> → <strong>모두 지우기</strong></li>
+  <li data-i="s6.li.2">앱을 삭제하시면 기기 안의 값도 함께 사라집니다</li>
 </ul>
-<p>「모두 지우기」는 담아둔 문장 · 잰 기록 · 대화 회고 · 놓아준 날 · 말투 설정 · 설치 이름을 지우고, 홈 화면 위젯도 함께 비우며, <strong>익명 사용자 ID 도 지우고 새 이름을 받습니다.</strong> 남는 것은 셋 — 오늘 쓴 횟수(날이 바뀌면 0 이 됩니다), 조용히 쓰기 스위치, 크래시 보고 스위치 — 이고, 그 이유는 앱의 확인창에 적혀 있습니다.</p>
-<p>회원가입이 없으므로 따로 탈퇴하실 것은 없습니다. 앱을 삭제하시면 기기 안의 값은 사라지고, 서버에 남는 것은 어떤 개인정보도 담고 있지 않은 빈 익명 ID 하나뿐입니다.</p>
-<p>기기를 바꾸실 때를 위해 <strong>내보내기</strong>가 있습니다(서랍 → 데이터와 프라이버시). 파일 한 장으로 만들어 여러분이 직접 옮기시며, <strong>저희는 그 파일을 받지 않습니다.</strong></p>
+<p data-i="s6.3">「모두 지우기」는 담아둔 문장 · 잰 기록 · 대화 회고 · 상대별 기록 · 놓아준 날 · 말투 설정 · 설치 이름을 지우고, 홈 화면 위젯도 함께 비우며, <strong>익명 사용자 ID 도 지우고 새 이름을 받습니다.</strong> 남는 것은 넷 — 오늘 쓴 횟수(날이 바뀌면 0 이 됩니다), 조용히 쓰기 스위치, 크래시 보고 스위치, 고르신 언어와 온도 단위 — 이고, 그 이유는 앱의 확인창에 적혀 있습니다.</p>
+<p data-i="s6.4">회원가입이 없으므로 따로 탈퇴하실 것은 없습니다. 앱을 삭제하시면 기기 안의 값은 사라지고, 서버에 남는 것은 어떤 개인정보도 담고 있지 않은 빈 익명 ID 하나뿐입니다.</p>
+<p data-i="s6.5">기기를 바꾸실 때를 위해 <strong>내보내기</strong>가 있습니다(서랍 → 데이터와 프라이버시). 파일 한 장으로 만들어 여러분이 직접 옮기시며, <strong>저희는 그 파일을 받지 않습니다.</strong></p>
 
-<h2>7. 제3자</h2>
-<table>
-  <tr><th>곳</th><th>무엇을 받나</th><th>방침</th></tr>
-  <tr><td>Google (Gemini · Firebase)</td><td>적으신 상황과 말투 설정 · 익명 사용자 ID · 충돌 정보</td><td><a href="https://policies.google.com/privacy">보기</a></td></tr>
-  <tr><td>Google AdMob</td><td>광고 식별자 · 기기 정보 · 대략적 위치</td><td><a href="https://policies.google.com/technologies/ads">보기</a></td></tr>
-  <tr><td>GitHub (홈페이지 호스팅)</td><td>받는 것이 없습니다 — 버전 표를 내려보낼 때의 접속 기록만 남습니다</td><td><a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement">보기</a></td></tr>
-</table>
-<p>이 밖에 개인정보를 제공하거나 판매하지 않습니다.</p>
+<h2 data-i="s7.h">7. 제3자</h2>
+<div class="scroll">
+  <table class="who">
+    <tr><th data-i="s7.th.1">곳</th><th data-i="s7.th.2">무엇을 받나</th><th data-i="s7.th.3">방침</th></tr>
+    <tr><td data-i="s7.r1.a">Google (Gemini · Firebase)</td><td data-i="s7.r1.b">적으신 상황과 말투 설정 · 고르신 언어 · 익명 사용자 ID · 충돌 정보</td><td><a href="https://policies.google.com/privacy" data-i="s7.see">보기</a></td></tr>
+    <tr><td data-i="s7.r2.a">Google AdMob</td><td data-i="s7.r2.b">광고 식별자 · 기기 정보 · 대략적 위치</td><td><a href="https://policies.google.com/technologies/ads" data-i="s7.see">보기</a></td></tr>
+    <tr><td data-i="s7.r3.a">GitHub (홈페이지 호스팅)</td><td data-i="s7.r3.b">받는 것이 없습니다 — 버전 표를 내려보낼 때의 접속 기록만 남습니다</td><td><a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" data-i="s7.see">보기</a></td></tr>
+  </table>
+</div>
+<p data-i="s7.1">이 밖에 개인정보를 제공하거나 판매하지 않습니다.</p>
 
-<h2>8. 안전</h2>
-<p>자해 · 폭력 · 협박 신호가 감지되면 추천보다 <strong>안전 안내와 상담 전화를 먼저</strong> 보여드립니다. 이 판정은 기기 안에서 먼저 이루어지며, 안전 안내를 지나기 전에는 그 내용을 외부로 보내지 않습니다.</p>
-<p>말온도는 의료·상담 서비스가 아니며 전문가의 도움을 대신하지 않습니다.</p>
+<h2 data-i="s8.h">8. 안전</h2>
+<p data-i="s8.1">자해 · 폭력 · 협박 신호가 감지되면 추천보다 <strong>안전 안내와 상담 전화를 먼저</strong> 보여드립니다. 이 판정은 기기 안에서 먼저 이루어지며, 안전 안내를 지나기 전에는 그 내용을 외부로 보내지 않습니다.</p>
+<p data-i="s8.2">말온도는 의료·상담 서비스가 아니며 전문가의 도움을 대신하지 않습니다.</p>
 
-<h2>9. 변경</h2>
-<p>이 방침이 바뀌면 이 페이지의 시행일을 고치고, 중요한 변경은 앱 안에서 알려드립니다.</p>
+<h2 data-i="s9.h">9. 변경</h2>
+<p data-i="s9.1">이 방침이 바뀌면 이 페이지의 시행일을 고치고, 중요한 변경은 앱 안에서 알려드립니다.</p>
+<p data-i="s9.2">네 언어판은 같은 날 함께 고칩니다. 번역이 아직 닿지 않은 자리가 있으면 한국어본이 기준입니다.</p>
 
-<h2>10. 문의</h2>
-<p>개인정보에 관한 문의는 아래로 주세요.</p>
-<p><strong>이메일:</strong> <a href="mailto:chuny4u@gmail.com">chuny4u@gmail.com</a></p>
+<h2 data-i="s10.h">10. 문의</h2>
+<p data-i="s10.1">개인정보에 관한 문의는 아래로 주세요.</p>
+<p data-i="s10.2"><strong>이메일:</strong> <a href="mailto:chuny4u@gmail.com">chuny4u@gmail.com</a></p>
 
-<footer>
-  말온도 · 개인정보처리방침 · 2026년 9월 14일
-</footer>
+<div class="links">
+  <a href="/" data-i="link.home">말온도</a>
+  <a href="/support.html" data-i="link.support">지원</a>
+</div>
+<small class="foot" data-i="foot">말온도 · 개인정보처리방침 · 2026년 9월 22일</small>
 
 </main>
+
+<script type="application/json" id="i18n">{"ko":{"meta.title":"말온도 개인정보처리방침","meta.desc":"말온도는 회원가입이 없습니다. 무엇이 기기 밖으로 나가고 무엇이 기기 안에 남는지를 전부 적었습니다.","brand":"말온도","pref.lang":"페이지 언어","title":"말온도 개인정보처리방침","dates":"시행일 2026년 9월 6일 · 최종 수정 2026년 9월 22일","lead.1":"<strong>말온도는 회원가입이 없습니다.<\/strong> 이름·이메일·비밀번호를 받지 않습니다. 여러분이 적은 것과 잰 것은 이 기기 안에 남고, 저희 서버로 오지 않습니다 — 저희에게는 서버가 없습니다. 요청 수를 사람마다 세어 한도를 걸기 위해 <strong>이름 없는 익명 ID 하나<\/strong>만 Firebase 가 만들어 둡니다(1절).","lead.2":"다만 <strong>문장을 만드는 순간에는 여러분이 적은 상황이 Google 로 전송됩니다.<\/strong> 저장하지 않는 것과 전송하지 않는 것은 다른 약속이므로, 이 문서는 그 차이를 분명히 적습니다.","lead.3":"이 방침은 한국어·English·日本語·Español 로 읽으실 수 있습니다. <strong>원본은 한국어이며<\/strong>, 번역과 뜻이 다르면 한국어를 따릅니다.","s1.h":"1. 무엇이 기기 밖으로 나가나","s1.a.h":"문장을 만들 때 — Google Gemini","s1.a.1":"추천 문장을 만들 때 <strong>관계 · 대화 목표 · 말의 온도 · 여러분이 적은 상황 또는 초안 · 말투 설정 · 고르신 언어<\/strong>가 Firebase AI Logic 을 거쳐 Google Gemini API 로 전송됩니다.","s1.a.2":"「털어놓기」에서 답장을 받을 때는 <strong>적으신 이야기 · 고른 결 · 답장의 온도 · 길이 · 얽힌 상대(고른 경우)<\/strong>가 같은 길로 나갑니다.","s1.a.3":"「이 문장만 다시 다듬기」를 사용하면 선택한 추천 문장과 수정 방향도 Google Gemini 로 전송됩니다. 초안과 수정 요청은 기기에 자동 저장하지 않습니다.","s1.a.4":"이때 <strong>이 설치를 가리키는 익명 사용자 ID<\/strong> 하나가 함께 갑니다. Firebase Authentication 의 익명 로그인으로 만들어지는 무작위 이름이며, 이름·이메일·전화번호 없이 만들어져 여러분이 누구인지 말하지 못합니다. 쓰는 곳은 하나 — <strong>요청 수를 사람마다 세어 한도를 거는 것<\/strong>입니다. 「모두 지우기」를 누르면 이 ID 를 지우고 새 이름을 받습니다.","s1.a.5":"홈의 「오늘의 한 문장」을 받을 때는 <strong>날짜만<\/strong> 보내고, 빈 입력창을 채우는 상황 예시가 앱에 실린 창고에 없을 때만 <strong>관계와 목표 두 낱말<\/strong>을 보냅니다. 두 경우 모두 여러분이 적은 글은 나가지 않습니다.","s1.a.6":"<strong>저희는 이 내용을 저장하지 않습니다.<\/strong> 응답을 화면에 띄우고 나면 여러분이 직접 담아두신 문장 외에는 아무것도 남지 않습니다. Google 의 처리 방식은 <a href=\"https://policies.google.com/privacy\">Google 개인정보처리방침<\/a>을 따릅니다.","s1.b.h":"광고를 띄울 때 — Google AdMob","s1.b.1":"광고를 보시겠다고 직접 선택하셨을 때, 그리고 광고를 미리 받아 둘 때 <strong>광고 식별자 · 기기 정보 · 대략적인 위치<\/strong>가 Google AdMob 으로 전송됩니다.","s1.b.2":"<strong>여러분이 적은 상황과 고른 관계는 광고 쪽으로 보내지 않습니다.<\/strong> 유럽 등 요구되는 지역에서는 광고 동의(UMP)를 먼저 받으며, 앱 안에서 언제든 다시 고르실 수 있습니다(서랍 → 데이터와 프라이버시).","s1.c.h":"앱이 죽었을 때 — Firebase Crashlytics","s1.c.1":"앱이 예기치 않게 종료되면 <strong>충돌이 난 자리 · 기기 모델 · 운영체제와 앱 버전<\/strong>이 Firebase Crashlytics 로 전송됩니다. 무엇이 고장 났는지 알아내는 데에만 씁니다.","s1.c.2":"<strong>여러분이 적은 글과 받은 문장은 담기지 않습니다.<\/strong> 앱 안에서 끌 수 있습니다(서랍 → 데이터와 프라이버시 → 「죽었을 때 보고 보내기」). 끄면 그 순간부터 보내지 않으며, 앱을 다시 켜도 꺼진 채로 시작합니다.","s1.d.h":"새 버전이 있는지 볼 때 — 저희 홈페이지","s1.d.1":"<strong>말온도 1.0.2 부터입니다.<\/strong> 앱을 켤 때 <strong>버전 표 한 장을 저희 홈페이지에서 받아만 옵니다<\/strong>(<code>chunystory.github.io/version.json<\/code>). 지금 버전으로 계속 쓸 수 있는지 견주는 일은 <strong>기기 안에서<\/strong> 이루어지며, <strong>앱 버전을 포함해 어떤 값도 보내지 않습니다.<\/strong>","s1.d.2":"다만 파일을 받아 가는 <strong>접속 기록(IP 주소 · 시각)<\/strong>이 이 홈페이지를 띄워 주는 GitHub 의 서버에 남을 수 있습니다. 저희는 그 기록을 보지 못하며, 어떤 분석 도구도 이 페이지에 붙여 두지 않았습니다.","s1.e.h":"한 번도 나가지 않는 것","s1.e.1":"<strong>녹음과 음량<\/strong> — 어떤 형태로도 전송하지 않습니다","s1.e.2":"<strong>담아둔 문장<\/strong>","s1.e.3":"<strong>사용 기록과 잰 말온도<\/strong>","s1.e.4":"<strong>대화 회고<\/strong> — 관계 · 목표 · 온도 · 직접 고른 결과만 남습니다","s1.e.5":"<strong>상대별 기록<\/strong> — 날짜 · 상대 · 그때 고른 온도의 이름만 기기 안에 줄 하나로 남습니다","s1.e.6":"<strong>「놓아주기」에 적은 글<\/strong> — 답장을 만들지 않는 화면이라 어디로도 전송하지 않고, 기기의 파일에도 한 번도 쓰지 않습니다","s2.h":"2. 마이크","s2.1":"말의 온도를 재려면 마이크 권한이 필요합니다. 처음 녹음하실 때 기기가 물어봅니다.","s2.2":"<strong>음성은 기기 밖으로 나가지 않습니다.<\/strong> 음량과 주파수 분석은 전부 기기 안에서 이루어지고, 남는 것은 회차마다 <strong>℃ 하나와 시각<\/strong>뿐입니다. 음성·음량 샘플·주파수 값은 어떤 형태로도 저장하지 않습니다.","s2.3":"녹음 파일은 결과 화면에서 자기 목소리를 한 번 들어보실 수 있도록 임시로 만들고, <strong>그 화면을 벗어나는 즉시 삭제<\/strong>합니다.","s3.h":"3. 기기 안에 남는 것","s3.1":"앱 문서 디렉터리의 파일 하나(<code>malondo_state.json<\/code>)에 다음이 저장됩니다.","s3.th.1":"무엇","s3.th.2":"설명","s3.r1.a":"담아둔 문장","s3.r1.b":"직접 담아두신 문장","s3.r2.a":"말투 설정","s3.r2.b":"문장 길이 · 존댓말 · 피하고 싶은 표현 · 말투 학습 동의 여부","s3.r3.a":"마지막으로 고른 조건","s3.r3.b":"관계 · 대화 목표 · 말의 온도. 다음 대화에 그대로 떠 있습니다. 적으신 상황은 여기 없습니다","s3.r4.a":"잰 기록","s3.r4.b":"측정 회차마다 ℃ 하나와 시각. 최근 200회까지","s3.r5.a":"일별 말온도","s3.r5.b":"그날 잰 값과 「답장 받기」에서 고른 온도를 접은 하루 한 줄","s3.r6.a":"일별 대화 사용","s3.r6.b":"그날 건넬 말과 답장을 몇 번 받았는지. 홈의 달 판이 읽습니다","s3.r7.a":"대화 회고","s3.r7.b":"실제로 보냈다고 표시한 관계 · 목표 · 온도와 다음 날 직접 고른 결과. 상황과 추천 문장 원문은 없습니다. 답하지 않은 회고는 7일, 답한 회고는 1년까지 남습니다","s3.r8.a":"상대별 기록","s3.r8.b":"날짜 · 상대 · 그때 고른 온도의 이름. 회고가 걷힌 뒤에도 「누구와 몇 번」이 줄지 않도록 따로 둔 줄이며, 적으신 상황과 문장은 없습니다","s3.r9.a":"하루 한 칸","s3.r9.b":"그날의 마음과 온도. 직접 고르신 값","s3.r10.a":"놓아준 날","s3.r10.b":"「놓아주기」를 한 날짜와 그날의 횟수. 달력에 점으로 보입니다. <strong>무엇을 적으셨는지는 남지 않습니다<\/strong>","s3.r11.a":"익명 집계","s3.r11.b":"추천·복사·저장 횟수와 만족도. <strong>문장 원문은 담지 않습니다<\/strong>","s3.r12.a":"말투 학습 숫자","s3.r12.b":"동의하신 동안만 — 다듬은 문장의 수 · 글자 수 합계 · 존댓말 문장 수. 동의를 끄면 지워집니다","s3.r13.a":"오늘의 한 문장","s3.r13.b":"오늘 받은 보기 문장 한 장. 날짜가 지나면 쓰이지 않습니다","s3.r14.a":"오늘 쓴 횟수","s3.r14.b":"오늘 문장과 답장을 몇 번 받았는지. 날이 바뀌면 0 이 됩니다","s3.r15.a":"화면 설정","s3.r15.b":"화면 모드 · <strong>언어 · 온도 단위<\/strong> · 읽기 글자 · 알림 시각 · 조용히 쓰기 · 달력 겹 · 크래시 보고 스위치","s3.r16.a":"설치 이름","s3.r16.b":"이 설치를 가리키는 무작위 이름 하나. 사람도 기기도 가리키지 않으며 <strong>어디로도 전송하지 않습니다<\/strong>","s3.2":"<strong>여러분이 적은 상황과 받은 추천 문장, 털어놓은 이야기와 그 답장은 저장하지 않습니다.<\/strong> 대화 회고에도 원문은 남지 않습니다.","s3.3":"익명 사용자 ID 는 이 파일이 아니라 기기의 Firebase 인증 저장소에 있습니다. 홈 화면 위젯이 읽는 값(말온도 · 이달의 칸)은 기기 안 앱 공유 저장소에 한 겹 더 있으며, 조용히 쓰기를 켜면 말온도만 남습니다.","s3.4":"이 파일은 Android 에서는 자동 백업(Google 드라이브)과 기기 간 전송에서, iOS 에서는 iCloud 백업에서 <strong>제외<\/strong>되어 있습니다. 기기를 바꾸실 때는 6절의 내보내기를 쓰십니다.","s4.h":"4. 알림","s4.1":"하루 한 번의 알림을 켜실 수 있습니다(기본은 꺼짐). 예약과 표시는 <strong>전부 기기 안에서<\/strong> 이루어지며, 저희 서버도 푸시 서비스도 거치지 않습니다. 알림 문구에는 관계도 상황도 담기지 않습니다.","s5.h":"5. 만 14세 미만 아동","s5.1":"말온도는 <strong>아동을 대상으로 하지 않습니다.<\/strong> 만 14세 미만 아동의 개인정보를 알면서 수집하지 않습니다.","s6.h":"6. 보관 기간과 삭제","s6.1":"기기 안의 값은 여러분이 지울 때까지 남습니다. 다만 답하지 않은 대화 회고는 7일, 답한 회고는 1년이 지나면 자동으로 지웁니다. 저희가 보관하는 것은 없습니다.","s6.2":"<strong>언제든 전부 지우실 수 있습니다:<\/strong>","s6.li.1":"앱 안에서 — 서랍 → <strong>데이터와 프라이버시<\/strong> → <strong>모두 지우기<\/strong>","s6.li.2":"앱을 삭제하시면 기기 안의 값도 함께 사라집니다","s6.3":"「모두 지우기」는 담아둔 문장 · 잰 기록 · 대화 회고 · 상대별 기록 · 놓아준 날 · 말투 설정 · 설치 이름을 지우고, 홈 화면 위젯도 함께 비우며, <strong>익명 사용자 ID 도 지우고 새 이름을 받습니다.<\/strong> 남는 것은 넷 — 오늘 쓴 횟수(날이 바뀌면 0 이 됩니다), 조용히 쓰기 스위치, 크래시 보고 스위치, 고르신 언어와 온도 단위 — 이고, 그 이유는 앱의 확인창에 적혀 있습니다.","s6.4":"회원가입이 없으므로 따로 탈퇴하실 것은 없습니다. 앱을 삭제하시면 기기 안의 값은 사라지고, 서버에 남는 것은 어떤 개인정보도 담고 있지 않은 빈 익명 ID 하나뿐입니다.","s6.5":"기기를 바꾸실 때를 위해 <strong>내보내기<\/strong>가 있습니다(서랍 → 데이터와 프라이버시). 파일 한 장으로 만들어 여러분이 직접 옮기시며, <strong>저희는 그 파일을 받지 않습니다.<\/strong>","s7.h":"7. 제3자","s7.th.1":"곳","s7.th.2":"무엇을 받나","s7.th.3":"방침","s7.see":"보기","s7.r1.a":"Google (Gemini · Firebase)","s7.r1.b":"적으신 상황과 말투 설정 · 고르신 언어 · 익명 사용자 ID · 충돌 정보","s7.r2.a":"Google AdMob","s7.r2.b":"광고 식별자 · 기기 정보 · 대략적 위치","s7.r3.a":"GitHub (홈페이지 호스팅)","s7.r3.b":"받는 것이 없습니다 — 버전 표를 내려보낼 때의 접속 기록만 남습니다","s7.1":"이 밖에 개인정보를 제공하거나 판매하지 않습니다.","s8.h":"8. 안전","s8.1":"자해 · 폭력 · 협박 신호가 감지되면 추천보다 <strong>안전 안내와 상담 전화를 먼저<\/strong> 보여드립니다. 이 판정은 기기 안에서 먼저 이루어지며, 안전 안내를 지나기 전에는 그 내용을 외부로 보내지 않습니다.","s8.2":"말온도는 의료·상담 서비스가 아니며 전문가의 도움을 대신하지 않습니다.","s9.h":"9. 변경","s9.1":"이 방침이 바뀌면 이 페이지의 시행일을 고치고, 중요한 변경은 앱 안에서 알려드립니다.","s9.2":"네 언어판은 같은 날 함께 고칩니다. 번역이 아직 닿지 않은 자리가 있으면 한국어본이 기준입니다.","s10.h":"10. 문의","s10.1":"개인정보에 관한 문의는 아래로 주세요.","s10.2":"<strong>이메일:<\/strong> <a href=\"mailto:chuny4u@gmail.com\">chuny4u@gmail.com<\/a>","link.home":"말온도","link.support":"지원","foot":"말온도 · 개인정보처리방침 · 2026년 9월 22일"},"en":{"meta.title":"Malondo Privacy Policy","meta.desc":"Malondo has no sign-up. This page states exactly what leaves your device and what stays on it.","brand":"Malondo","pref.lang":"Page language","title":"Malondo Privacy Policy","dates":"Effective 6 September 2026 · Last updated 22 September 2026","lead.1":"<strong>Malondo has no sign-up.<\/strong> We do not ask for your name, email or a password. What you write and what you measure stay on this device and never reach our server — we do not have one. Firebase creates <strong>a single anonymous ID with no name<\/strong> so that requests can be counted per person against a daily limit (section 1).","lead.2":"That said, <strong>at the moment a sentence is written, the situation you typed is sent to Google.<\/strong> Not storing and not sending are different promises, so this document states the difference plainly.","lead.3":"This policy is available in 한국어, English, 日本語 and Español. <strong>The Korean text is the original<\/strong>; if a translation differs in meaning, the Korean text governs.","s1.h":"1. What leaves your device","s1.a.h":"When a sentence is written — Google Gemini","s1.a.1":"When suggestions are written, the <strong>relationship, conversation goal, word temperature, the situation or draft you typed, your tone settings and the language you chose<\/strong> are sent through Firebase AI Logic to the Google Gemini API.","s1.a.2":"When you receive a letter in Unwind first, <strong>the story you wrote, the tone you chose, the temperature and length of the reply, and the person involved (if you chose one)<\/strong> go the same way.","s1.a.3":"If you use Rework this one sentence, the chosen suggestion and the direction of the rework are also sent to Google Gemini. Drafts and rework requests are not saved on the device automatically.","s1.a.4":"<strong>An anonymous user ID that identifies this installation<\/strong> goes along with the request. It is a random name created by Firebase Authentication's anonymous sign-in, made without a name, email or phone number, and it cannot say who you are. It has exactly one use: <strong>counting requests per person against a daily limit<\/strong>. Tapping Delete everything removes this ID and takes a new name.","s1.a.5":"When Today's sentence is fetched on Home, <strong>only the date<\/strong> is sent; the two words for <strong>relationship and goal<\/strong> are sent only when the example that fills an empty field is not in the store bundled with the app. In neither case does anything you wrote leave the device.","s1.a.6":"<strong>We do not store any of this.<\/strong> Once a response is on screen, nothing remains except the sentences you chose to keep. Google's handling follows the <a href=\"https://policies.google.com/privacy\">Google Privacy Policy<\/a>.","s1.b.h":"When an ad is shown — Google AdMob","s1.b.1":"When you choose to watch an ad, and when an ad is fetched in advance, the <strong>advertising identifier, device information and approximate location<\/strong> are sent to Google AdMob.","s1.b.2":"<strong>The situation you typed and the relationship you chose are never sent to the ad side.<\/strong> Where it is required, such as in Europe, ad consent (UMP) is asked for first, and you can change your choice at any time in the app (drawer → Data and privacy).","s1.c.h":"When the app crashes — Firebase Crashlytics","s1.c.1":"If the app terminates unexpectedly, <strong>where the crash happened, the device model, and the operating-system and app version<\/strong> are sent to Firebase Crashlytics. It is used only to find out what broke.","s1.c.2":"<strong>Nothing you wrote and nothing you received is included.<\/strong> You can turn it off in the app (drawer → Data and privacy → Report crashes). Once off, nothing is sent from that moment on, and it stays off when the app is reopened.","s1.d.h":"When it checks for a new version — our website","s1.d.1":"<strong>From Malondo 1.0.2 onwards.<\/strong> At launch the app <strong>only fetches one version table from our website<\/strong> (<code>chunystory.github.io/version.json<\/code>). Deciding whether the current version can still be used happens <strong>on the device<\/strong>, and <strong>no value is sent, not even the app version.<\/strong>","s1.d.2":"However, <strong>an access record (IP address and time)<\/strong> from fetching the file may remain on GitHub's servers, which host this site. We cannot see those records, and no analytics tool is attached to this page.","s1.e.h":"What never leaves","s1.e.1":"<strong>Recordings and loudness<\/strong> — never transmitted in any form","s1.e.2":"<strong>Sentences you kept<\/strong>","s1.e.3":"<strong>Usage history and measured temperatures<\/strong>","s1.e.4":"<strong>Look-backs<\/strong> — only the relationship, goal, temperature and the answer you chose yourself","s1.e.5":"<strong>Per-person records<\/strong> — only the date, the person and the name of the temperature you chose, kept on the device as a single line","s1.e.6":"<strong>Anything written in Letting go<\/strong> — nothing is generated on that screen, so it is never transmitted anywhere and never written to a file on the device","s2.h":"2. Microphone","s2.1":"Measuring the temperature of your words needs microphone permission. Your device asks the first time you record.","s2.2":"<strong>Your voice never leaves the device.<\/strong> Loudness and frequency analysis happen entirely on it, and all that remains per take is <strong>one temperature in ℃ and a timestamp<\/strong>. Audio, loudness samples and frequency values are not stored in any form.","s2.3":"The recording file is created temporarily so that you can listen to your own voice once on the result screen, and it is <strong>deleted the moment you leave that screen<\/strong>.","s3.h":"3. What stays on your device","s3.1":"The following is stored in a single file in the app's documents directory (<code>malondo_state.json<\/code>).","s3.th.1":"What","s3.th.2":"Description","s3.r1.a":"Kept sentences","s3.r1.b":"The sentences you chose to keep","s3.r2.a":"Tone settings","s3.r2.b":"Sentence length · formality · expressions to avoid · whether tone learning is allowed","s3.r3.a":"Last choices","s3.r3.b":"Relationship · conversation goal · word temperature. They are pre-filled next time. The situation you typed is not here","s3.r4.a":"Measurements","s3.r4.b":"One temperature in ℃ and a timestamp per take. Up to the last 200","s3.r5.a":"Daily temperature","s3.r5.b":"One line per day, folding together what you measured and the temperature you chose when receiving a letter","s3.r6.a":"Daily usage","s3.r6.b":"How many suggestions and letters you received that day. Read by the month panel on Home","s3.r7.a":"Look-backs","s3.r7.b":"The relationship, goal and temperature you marked as actually sent, and the answer you chose the next day. No situation text and no suggestion text. Unanswered look-backs are kept for 7 days, answered ones for a year","s3.r8.a":"Per-person records","s3.r8.b":"Date · person · the name of the temperature you chose. Kept as a separate line so that \"who and how many times\" does not shrink after look-backs are cleared. No situation text and no sentences","s3.r9.a":"Today's square","s3.r9.b":"How you felt that day and the temperature. Values you chose yourself","s3.r10.a":"Days you let go","s3.r10.b":"The date you used Letting go and how many times that day. Shown as a dot on the calendar. <strong>What you wrote is not kept<\/strong>","s3.r11.a":"Anonymous counts","s3.r11.b":"How often suggestions were requested, copied and kept, and satisfaction. <strong>No sentence text is included<\/strong>","s3.r12.a":"Tone-learning numbers","s3.r12.b":"Only while you allow it — the number of sentences you edited, the total character count, and how many were formal. Turning it off deletes them","s3.r13.a":"Today's sentence","s3.r13.b":"The one example sentence received today. It is not used once the date passes","s3.r14.a":"Today's count","s3.r14.b":"How many suggestions and letters you received today. It returns to 0 when the day changes","s3.r15.a":"Display settings","s3.r15.b":"Appearance · <strong>language · temperature unit<\/strong> · reading type · reminder time · quiet mode · calendar layers · the crash-report switch","s3.r16.a":"Installation name","s3.r16.b":"One random name for this installation. It points to neither a person nor a device and is <strong>never transmitted anywhere<\/strong>","s3.2":"<strong>The situation you typed, the suggestions you received, the story you shared and its reply are not stored.<\/strong> Look-backs keep no original text either.","s3.3":"The anonymous user ID lives not in this file but in the device's Firebase authentication storage. The values the home-screen widget reads (temperature and this month's squares) sit in one more layer, the app's shared storage on the device; with quiet mode on, only the temperature remains.","s3.4":"This file is <strong>excluded<\/strong> from automatic backup (Google Drive) and device-to-device transfer on Android, and from iCloud backup on iOS. To move to a new device, use the export in section 6.","s4.h":"4. Notifications","s4.1":"You can turn on one reminder a day (off by default). Scheduling and display happen <strong>entirely on the device<\/strong>, passing through neither our server nor a push service. Notification text contains no relationship and no situation.","s5.h":"5. Children under 14","s5.1":"Malondo is <strong>not directed at children.<\/strong> We do not knowingly collect personal information from children under 14.","s6.h":"6. Retention and deletion","s6.1":"Values on the device stay until you delete them. Unanswered look-backs are deleted automatically after 7 days and answered ones after a year. We retain nothing.","s6.2":"<strong>You can delete everything at any time:<\/strong>","s6.li.1":"In the app — drawer → <strong>Data and privacy<\/strong> → <strong>Delete everything<\/strong>","s6.li.2":"Deleting the app removes the values on the device with it","s6.3":"Delete everything removes kept sentences, measurements, look-backs, per-person records, days you let go, tone settings and the installation name, clears the home-screen widget, and <strong>deletes the anonymous user ID and takes a new name.<\/strong> Four things remain — today's count (which returns to 0 when the day changes), the quiet-mode switch, the crash-report switch, and the language and temperature unit you chose — and the app's confirmation dialog says why.","s6.4":"Since there is no sign-up, there is no account to close. Deleting the app removes the values on the device, and all that remains on a server is one empty anonymous ID that holds no personal information.","s6.5":"For moving to a new device there is an <strong>export<\/strong> (drawer → Data and privacy). It produces a single file that you move yourself, and <strong>we never receive that file.<\/strong>","s7.h":"7. Third parties","s7.th.1":"Who","s7.th.2":"What they receive","s7.th.3":"Policy","s7.see":"View","s7.r1.a":"Google (Gemini · Firebase)","s7.r1.b":"The situation you typed and your tone settings · the language you chose · the anonymous user ID · crash information","s7.r2.a":"Google AdMob","s7.r2.b":"Advertising identifier · device information · approximate location","s7.r3.a":"GitHub (website hosting)","s7.r3.b":"Receives nothing — only an access record remains when the version table is served","s7.1":"We do not otherwise share or sell personal information.","s8.h":"8. Safety","s8.1":"When signs of self-harm, violence or threats are detected, <strong>guidance and helpline numbers come before<\/strong> any suggestion. That judgement is made on the device first, and nothing is sent outside before you pass the safety notice.","s8.2":"Malondo is not a medical or counselling service and does not replace help from a professional.","s9.h":"9. Changes","s9.1":"When this policy changes, we update the effective date on this page, and important changes are announced inside the app.","s9.2":"All four language versions are updated on the same day. Where a translation has not caught up, the Korean text governs.","s10.h":"10. Contact","s10.1":"For questions about privacy, please write to us.","s10.2":"<strong>Email:<\/strong> <a href=\"mailto:chuny4u@gmail.com\">chuny4u@gmail.com<\/a>","link.home":"Malondo","link.support":"Support","foot":"Malondo · Privacy Policy · 22 September 2026"},"ja":{"meta.title":"Malondo プライバシーポリシー","meta.desc":"Malondo に会員登録はありません。何が端末の外に出て、何が端末の中に残るのかをすべて記しています。","brand":"Malondo","pref.lang":"ページの言語","title":"Malondo プライバシーポリシー","dates":"施行日 2026年9月6日 · 最終更新 2026年9月22日","lead.1":"<strong>Malondo に会員登録はありません。<\/strong>氏名・メールアドレス・パスワードをお預かりしません。お書きになったものと測った値はこの端末の中に残り、当方のサーバーには届きません — 当方にサーバーはありません。リクエスト数を一人ずつ数えて上限をかけるために、<strong>名前のない匿名 ID ひとつ<\/strong>だけを Firebase が作ります（1節）。","lead.2":"ただし<strong>文をつくる瞬間には、お書きになった状況が Google へ送信されます。<\/strong>保存しないことと送信しないことは別の約束ですので、この文書ではその違いをはっきり記します。","lead.3":"このポリシーは 한국어・English・日本語・Español でお読みいただけます。<strong>原本は韓国語<\/strong>であり、翻訳と意味が異なる場合は韓国語版によります。","s1.h":"1. 何が端末の外に出るのか","s1.a.h":"文をつくるとき — Google Gemini","s1.a.1":"提案文をつくるとき、<strong>関係 · 会話の目的 · 言葉の温度 · お書きになった状況または下書き · 話し方の設定 · お選びになった言語<\/strong>が Firebase AI Logic を経て Google Gemini API へ送信されます。","s1.a.2":"「まず気持ちをほどく」で手紙を受け取るときは、<strong>お書きになった話 · 選んだ結 · 返事の温度 · 長さ · 関わる相手（選んだ場合）<\/strong>が同じ経路で出ます。","s1.a.3":"「この文だけもう一度整える」をお使いになると、選んだ提案文と直す方向も Google Gemini へ送信されます。下書きと修正の依頼は端末に自動保存しません。","s1.a.4":"このとき<strong>このインストールを指す匿名ユーザー ID<\/strong> がひとつ一緒に行きます。Firebase Authentication の匿名ログインで作られる無作為な名前で、氏名・メール・電話番号なしに作られるため、あなたがどなたかを語れません。使い道はひとつ — <strong>リクエスト数を一人ずつ数えて上限をかけること<\/strong>です。「すべて消す」を押すとこの ID を消し、新しい名前を受け取ります。","s1.a.5":"ホームの「きょうの一文」を受け取るときは<strong>日付だけ<\/strong>を送り、空欄を埋める状況の例がアプリに同梱された倉庫にないときにだけ<strong>関係と目的の二語<\/strong>を送ります。どちらの場合も、お書きになった文は出ません。","s1.a.6":"<strong>当方はこの内容を保存しません。<\/strong>応答を画面に出したあとは、ご自身で保存された文のほかに何も残りません。Google の取り扱いは <a href=\"https://policies.google.com/privacy\">Google プライバシーポリシー<\/a>に従います。","s1.b.h":"広告を出すとき — Google AdMob","s1.b.1":"広告をご覧になるとご自身で選ばれたとき、そして広告をあらかじめ受け取っておくときに、<strong>広告識別子 · 端末情報 · おおよその位置<\/strong>が Google AdMob へ送信されます。","s1.b.2":"<strong>お書きになった状況と選ばれた関係は、広告側へ送りません。<\/strong>欧州など求められる地域では広告同意（UMP）を先に取得し、アプリ内でいつでも選び直せます（ドロワー → データとプライバシー）。","s1.c.h":"アプリが落ちたとき — Firebase Crashlytics","s1.c.1":"アプリが予期せず終了すると、<strong>クラッシュした箇所 · 端末のモデル · OS とアプリのバージョン<\/strong>が Firebase Crashlytics へ送信されます。何が壊れたのかを突き止めるためだけに使います。","s1.c.2":"<strong>お書きになった文と受け取った文は含まれません。<\/strong>アプリ内で切ることができます（ドロワー → データとプライバシー → 「落ちたときに知らせる」）。切るとその瞬間から送らず、アプリを開き直しても切れたまま始まります。","s1.d.h":"新しいバージョンがあるか確かめるとき — 当方のホームページ","s1.d.1":"<strong>Malondo 1.0.2 からです。<\/strong>アプリを開くとき<strong>バージョン表を一枚、当方のホームページから受け取るだけ<\/strong>です（<code>chunystory.github.io/version.json<\/code>）。今のバージョンで使い続けられるかを見比べる処理は<strong>端末の中<\/strong>で行われ、<strong>アプリのバージョンを含め、どんな値も送りません。<\/strong>","s1.d.2":"ただしファイルを受け取る<strong>アクセス記録（IP アドレス · 時刻）<\/strong>が、このホームページを配信する GitHub のサーバーに残る場合があります。当方はその記録を見ることができず、解析ツールもこのページに入れていません。","s1.e.h":"一度も外に出ないもの","s1.e.1":"<strong>録音と音量<\/strong> — どんな形でも送信しません","s1.e.2":"<strong>保存した文<\/strong>","s1.e.3":"<strong>利用の記録と測った言葉の温度<\/strong>","s1.e.4":"<strong>ふり返り<\/strong> — 関係 · 目的 · 温度 · ご自身で選ばれた結果だけが残ります","s1.e.5":"<strong>相手ごとの記録<\/strong> — 日付 · 相手 · そのとき選んだ温度の名前だけが、端末の中に一行として残ります","s1.e.6":"<strong>「手放す」に書いた文<\/strong> — 返事をつくらない画面なので、どこへも送信せず、端末のファイルにも一度も書き込みません","s2.h":"2. マイク","s2.1":"言葉の温度を測るにはマイクの許可が必要です。初めて録音されるときに端末がおたずねします。","s2.2":"<strong>声は端末の外に出ません。<\/strong>音量と周波数の分析はすべて端末の中で行われ、残るのは一回ごとに<strong>℃ ひとつと時刻<\/strong>だけです。音声・音量のサンプル・周波数の値は、どんな形でも保存しません。","s2.3":"録音ファイルは結果画面でご自身の声を一度お聴きいただけるように一時的に作り、<strong>その画面を離れた瞬間に削除<\/strong>します。","s3.h":"3. 端末の中に残るもの","s3.1":"アプリのドキュメントディレクトリにあるファイル一つ（<code>malondo_state.json<\/code>）に、次が保存されます。","s3.th.1":"何が","s3.th.2":"説明","s3.r1.a":"保存した文","s3.r1.b":"ご自身で保存された文","s3.r2.a":"話し方の設定","s3.r2.b":"文の長さ · 敬語 · 避けたい表現 · 話し方の学習への同意","s3.r3.a":"最後に選んだ条件","s3.r3.b":"関係 · 会話の目的 · 言葉の温度。次の会話でそのまま入っています。お書きになった状況はここにありません","s3.r4.a":"測った記録","s3.r4.b":"測定一回ごとに ℃ ひとつと時刻。直近 200 回まで","s3.r5.a":"日ごとの温度","s3.r5.b":"その日測った値と「返事を受け取る」で選んだ温度をたたんだ、一日一行","s3.r6.a":"日ごとの利用","s3.r6.b":"その日、かける言葉と返事を何回受け取ったか。ホームの月の盤が読みます","s3.r7.a":"ふり返り","s3.r7.b":"実際に送ったと記した関係 · 目的 · 温度と、翌日ご自身で選ばれた結果。状況や提案文の原文はありません。答えていないふり返りは 7 日、答えたふり返りは 1 年まで残ります","s3.r8.a":"相手ごとの記録","s3.r8.b":"日付 · 相手 · そのとき選んだ温度の名前。ふり返りが片づいたあとも「だれと何回」が減らないように別に置いた一行で、お書きになった状況や文はありません","s3.r9.a":"きょうの一マス","s3.r9.b":"その日の気持ちと温度。ご自身で選ばれた値","s3.r10.a":"手放した日","s3.r10.b":"「手放す」をした日付とその日の回数。カレンダーに点として見えます。<strong>何をお書きになったかは残りません<\/strong>","s3.r11.a":"匿名の集計","s3.r11.b":"提案・コピー・保存の回数と満足度。<strong>文の原文は含みません<\/strong>","s3.r12.a":"話し方の学習の数値","s3.r12.b":"ご同意いただいている間だけ — 整えた文の数 · 文字数の合計 · 敬語の文の数。同意を切ると消えます","s3.r13.a":"きょうの一文","s3.r13.b":"きょう受け取った例文一枚。日付が変わると使われません","s3.r14.a":"きょうの回数","s3.r14.b":"きょう文と返事を何回受け取ったか。日が変わると 0 になります","s3.r15.a":"画面の設定","s3.r15.b":"画面モード · <strong>言語 · 温度の単位<\/strong> · 読む文字 · 通知の時刻 · 静かに使う · カレンダーの層 · クラッシュ報告のスイッチ","s3.r16.a":"インストールの名前","s3.r16.b":"このインストールを指す無作為な名前ひとつ。人も端末も指さず、<strong>どこへも送信しません<\/strong>","s3.2":"<strong>お書きになった状況と受け取った提案文、打ち明けた話とその返事は保存しません。<\/strong>ふり返りにも原文は残りません。","s3.3":"匿名ユーザー ID はこのファイルではなく、端末の Firebase 認証ストレージにあります。ホーム画面のウィジェットが読む値（言葉の温度 · 今月のマス）は、端末内のアプリ共有ストレージにもう一層あり、静かに使うを入れると温度だけが残ります。","s3.4":"このファイルは Android では自動バックアップ（Google ドライブ）と端末間の転送から、iOS では iCloud バックアップから<strong>除外<\/strong>されています。端末をお替えになるときは 6 節の書き出しをお使いください。","s4.h":"4. 通知","s4.1":"一日一回の通知を入れることができます（初期設定は切）。予約と表示は<strong>すべて端末の中<\/strong>で行われ、当方のサーバーもプッシュサービスも経由しません。通知の文には関係も状況も含まれません。","s5.h":"5. 満 14 歳未満のお子さま","s5.1":"Malondo は<strong>お子さまを対象としていません。<\/strong>満 14 歳未満のお子さまの個人情報を、知りながら収集することはありません。","s6.h":"6. 保管期間と削除","s6.1":"端末の中の値は、お消しになるまで残ります。ただし答えていないふり返りは 7 日、答えたふり返りは 1 年を過ぎると自動で消します。当方が保管するものはありません。","s6.2":"<strong>いつでもすべて消すことができます:<\/strong>","s6.li.1":"アプリ内で — ドロワー → <strong>データとプライバシー<\/strong> → <strong>すべて消す<\/strong>","s6.li.2":"アプリを削除されると、端末の中の値も一緒に消えます","s6.3":"「すべて消す」は、保存した文 · 測った記録 · ふり返り · 相手ごとの記録 · 手放した日 · 話し方の設定 · インストールの名前を消し、ホーム画面のウィジェットも空にし、<strong>匿名ユーザー ID も消して新しい名前を受け取ります。<\/strong>残るのは四つ — きょうの回数（日が変わると 0 になります）、静かに使うのスイッチ、クラッシュ報告のスイッチ、お選びになった言語と温度の単位 — で、その理由はアプリの確認画面に書かれています。","s6.4":"会員登録がないため、退会の手続きはありません。アプリを削除されると端末の中の値は消え、サーバーに残るのは、どんな個人情報も含まない空の匿名 ID ひとつだけです。","s6.5":"端末をお替えになるときのために<strong>書き出し<\/strong>があります（ドロワー → データとプライバシー）。ファイル一枚にして、ご自身でお移しいただくもので、<strong>当方はそのファイルを受け取りません。<\/strong>","s7.h":"7. 第三者","s7.th.1":"どこ","s7.th.2":"何を受け取るか","s7.th.3":"ポリシー","s7.see":"見る","s7.r1.a":"Google（Gemini · Firebase）","s7.r1.b":"お書きになった状況と話し方の設定 · お選びになった言語 · 匿名ユーザー ID · クラッシュ情報","s7.r2.a":"Google AdMob","s7.r2.b":"広告識別子 · 端末情報 · おおよその位置","s7.r3.a":"GitHub（ホームページのホスティング）","s7.r3.b":"受け取るものはありません — バージョン表を配信するときのアクセス記録だけが残ります","s7.1":"このほかに個人情報を提供したり販売したりすることはありません。","s8.h":"8. 安全","s8.1":"自傷 · 暴力 · 脅しの兆しが検知されると、提案より先に<strong>安全の案内と相談窓口の電話番号<\/strong>をお見せします。この判定はまず端末の中で行われ、安全の案内を過ぎるまでその内容を外部へ送りません。","s8.2":"Malondo は医療・相談のサービスではなく、専門家の助けに代わるものではありません。","s9.h":"9. 変更","s9.1":"このポリシーが変わるときは、このページの施行日を改め、重要な変更はアプリ内でお知らせします。","s9.2":"四つの言語版は同じ日に一緒に改めます。翻訳がまだ届いていない箇所がある場合は、韓国語版が基準です。","s10.h":"10. お問い合わせ","s10.1":"個人情報に関するお問い合わせは下記へお寄せください。","s10.2":"<strong>メール:<\/strong> <a href=\"mailto:chuny4u@gmail.com\">chuny4u@gmail.com<\/a>","link.home":"Malondo","link.support":"サポート","foot":"Malondo · プライバシーポリシー · 2026年9月22日"},"es":{"meta.title":"Política de privacidad de Malondo","meta.desc":"Malondo no tiene registro. Esta página indica exactamente qué sale de tu dispositivo y qué se queda en él.","brand":"Malondo","pref.lang":"Idioma de la página","title":"Política de privacidad de Malondo","dates":"En vigor desde el 6 de septiembre de 2026 · Última actualización 22 de septiembre de 2026","lead.1":"<strong>Malondo no tiene registro.<\/strong> No pedimos tu nombre, tu correo ni una contraseña. Lo que escribes y lo que mides se queda en este dispositivo y nunca llega a nuestro servidor: no tenemos ninguno. Firebase crea <strong>un único identificador anónimo sin nombre<\/strong> para contar las peticiones por persona frente a un límite diario (sección 1).","lead.2":"Dicho esto, <strong>en el momento en que se escribe una frase, la situación que escribiste se envía a Google.<\/strong> No guardar y no enviar son promesas distintas, así que este documento deja clara la diferencia.","lead.3":"Esta política está disponible en 한국어, English, 日本語 y Español. <strong>El texto original es el coreano<\/strong>; si una traducción difiere en su sentido, prevalece el coreano.","s1.h":"1. Qué sale de tu dispositivo","s1.a.h":"Al escribir una frase — Google Gemini","s1.a.1":"Al redactar las sugerencias, se envían a la API de Google Gemini, a través de Firebase AI Logic, <strong>la relación, el objetivo de la conversación, la temperatura de las palabras, la situación o el borrador que escribiste, tus ajustes de tono y el idioma que elegiste<\/strong>.","s1.a.2":"Cuando recibes una carta en Desahogarme primero, van por la misma vía <strong>lo que escribiste, el tono elegido, la temperatura y la extensión de la respuesta y la persona implicada (si la elegiste)<\/strong>.","s1.a.3":"Si usas Ajustar solo esta frase, también se envían a Google Gemini la sugerencia elegida y la dirección del ajuste. Los borradores y las peticiones de ajuste no se guardan automáticamente en el dispositivo.","s1.a.4":"Con la petición viaja <strong>un identificador de usuario anónimo que señala a esta instalación<\/strong>. Es un nombre aleatorio creado por el inicio de sesión anónimo de Firebase Authentication, generado sin nombre, correo ni teléfono, y no puede decir quién eres. Tiene un solo uso: <strong>contar las peticiones por persona frente a un límite diario<\/strong>. Al pulsar Borrar todo se elimina ese identificador y se toma un nombre nuevo.","s1.a.5":"Al recibir La frase de hoy en Inicio se envía <strong>solo la fecha<\/strong>; las dos palabras de <strong>relación y objetivo<\/strong> se envían únicamente cuando el ejemplo que rellena un campo vacío no está en el almacén incluido con la app. En ninguno de los dos casos sale nada de lo que escribiste.","s1.a.6":"<strong>No guardamos nada de esto.<\/strong> Una vez que la respuesta está en pantalla, no queda nada salvo las frases que decidiste guardar. El tratamiento por parte de Google sigue la <a href=\"https://policies.google.com/privacy\">Política de privacidad de Google<\/a>.","s1.b.h":"Al mostrar un anuncio — Google AdMob","s1.b.1":"Cuando eliges ver un anuncio, y cuando un anuncio se descarga por adelantado, se envían a Google AdMob <strong>el identificador de publicidad, información del dispositivo y la ubicación aproximada<\/strong>.","s1.b.2":"<strong>La situación que escribiste y la relación que elegiste nunca se envían al lado publicitario.<\/strong> Donde es obligatorio, como en Europa, primero se solicita el consentimiento publicitario (UMP), y puedes cambiar tu elección en cualquier momento dentro de la app (cajón → Datos y privacidad).","s1.c.h":"Si la app se cierra de golpe — Firebase Crashlytics","s1.c.1":"Si la app termina de forma inesperada, se envían a Firebase Crashlytics <strong>dónde ocurrió el fallo, el modelo del dispositivo y la versión del sistema operativo y de la app<\/strong>. Se usa solo para averiguar qué se rompió.","s1.c.2":"<strong>No se incluye nada de lo que escribiste ni de lo que recibiste.<\/strong> Puedes desactivarlo dentro de la app (cajón → Datos y privacidad → Informar de fallos). Una vez desactivado no se envía nada desde ese momento, y sigue desactivado al volver a abrir la app.","s1.d.h":"Al comprobar si hay una versión nueva — nuestra web","s1.d.1":"<strong>Desde Malondo 1.0.2.<\/strong> Al abrirse, la app <strong>solo descarga una tabla de versiones de nuestra web<\/strong> (<code>chunystory.github.io/version.json<\/code>). Decidir si la versión actual se puede seguir usando ocurre <strong>en el dispositivo<\/strong>, y <strong>no se envía ningún valor, ni siquiera la versión de la app.<\/strong>","s1.d.2":"No obstante, <strong>un registro de acceso (dirección IP y hora)<\/strong> por la descarga del archivo puede quedar en los servidores de GitHub, que alojan este sitio. Nosotros no podemos ver esos registros, y no hay ninguna herramienta de analítica en esta página.","s1.e.h":"Lo que nunca sale","s1.e.1":"<strong>Grabaciones y volumen<\/strong>: nunca se transmiten de ninguna forma","s1.e.2":"<strong>Frases guardadas<\/strong>","s1.e.3":"<strong>Historial de uso y temperaturas medidas<\/strong>","s1.e.4":"<strong>Repasos<\/strong>: solo la relación, el objetivo, la temperatura y la respuesta que elegiste tú","s1.e.5":"<strong>Registros por persona<\/strong>: solo la fecha, la persona y el nombre de la temperatura elegida, guardados en el dispositivo como una sola línea","s1.e.6":"<strong>Lo escrito en Soltar<\/strong>: en esa pantalla no se genera nada, así que nunca se transmite a ninguna parte ni se escribe jamás en un archivo del dispositivo","s2.h":"2. Micrófono","s2.1":"Medir la temperatura de tus palabras necesita permiso de micrófono. Tu dispositivo lo pregunta la primera vez que grabas.","s2.2":"<strong>Tu voz nunca sale del dispositivo.<\/strong> El análisis de volumen y de frecuencia se hace entero en él, y por toma solo queda <strong>una temperatura en ℃ y la hora<\/strong>. El audio, las muestras de volumen y los valores de frecuencia no se guardan de ninguna forma.","s2.3":"El archivo de grabación se crea temporalmente para que puedas escuchar tu propia voz una vez en la pantalla de resultado, y <strong>se borra en cuanto sales de esa pantalla<\/strong>.","s3.h":"3. Qué se queda en tu dispositivo","s3.1":"Lo siguiente se guarda en un único archivo del directorio de documentos de la app (<code>malondo_state.json<\/code>).","s3.th.1":"Qué","s3.th.2":"Descripción","s3.r1.a":"Frases guardadas","s3.r1.b":"Las frases que decidiste guardar","s3.r2.a":"Ajustes de tono","s3.r2.b":"Extensión de la frase · tratamiento formal · expresiones a evitar · si permites el aprendizaje de tono","s3.r3.a":"Últimas elecciones","s3.r3.b":"Relación · objetivo de la conversación · temperatura. Aparecen ya puestas la próxima vez. La situación que escribiste no está aquí","s3.r4.a":"Mediciones","s3.r4.b":"Una temperatura en ℃ y la hora por toma. Hasta las últimas 200","s3.r5.a":"Temperatura diaria","s3.r5.b":"Una línea por día, que pliega lo medido y la temperatura elegida al recibir una carta","s3.r6.a":"Uso diario","s3.r6.b":"Cuántas sugerencias y cartas recibiste ese día. Lo lee el panel del mes en Inicio","s3.r7.a":"Repasos","s3.r7.b":"La relación, el objetivo y la temperatura que marcaste como enviados de verdad, y la respuesta que elegiste al día siguiente. Sin el texto de la situación ni el de las sugerencias. Los repasos sin responder se guardan 7 días; los respondidos, un año","s3.r8.a":"Registros por persona","s3.r8.b":"Fecha · persona · el nombre de la temperatura elegida. Se guarda como una línea aparte para que «con quién y cuántas veces» no se reduzca cuando se retiran los repasos. Sin el texto de la situación ni frases","s3.r9.a":"La casilla de hoy","s3.r9.b":"Cómo te sentiste ese día y la temperatura. Valores que elegiste tú","s3.r10.a":"Días en que soltaste","s3.r10.b":"La fecha en que usaste Soltar y cuántas veces ese día. Se ve como un punto en el calendario. <strong>Lo que escribiste no se guarda<\/strong>","s3.r11.a":"Conteos anónimos","s3.r11.b":"Cuántas veces se pidieron, copiaron y guardaron sugerencias, y la satisfacción. <strong>No incluye el texto de ninguna frase<\/strong>","s3.r12.a":"Cifras de aprendizaje de tono","s3.r12.b":"Solo mientras lo permitas: el número de frases que ajustaste, el total de caracteres y cuántas eran formales. Al desactivarlo se borran","s3.r13.a":"La frase de hoy","s3.r13.b":"La frase de ejemplo recibida hoy. Deja de usarse cuando pasa la fecha","s3.r14.a":"Usos de hoy","s3.r14.b":"Cuántas sugerencias y cartas recibiste hoy. Vuelve a 0 al cambiar el día","s3.r15.a":"Ajustes de pantalla","s3.r15.b":"Apariencia · <strong>idioma · unidad de temperatura<\/strong> · tipografía de lectura · hora del recordatorio · modo silencioso · capas del calendario · el interruptor de informes de fallos","s3.r16.a":"Nombre de la instalación","s3.r16.b":"Un nombre aleatorio para esta instalación. No señala ni a una persona ni a un dispositivo y <strong>nunca se transmite a ninguna parte<\/strong>","s3.2":"<strong>La situación que escribiste, las sugerencias que recibiste, lo que contaste y su respuesta no se guardan.<\/strong> Los repasos tampoco conservan ningún texto original.","s3.3":"El identificador de usuario anónimo no vive en este archivo, sino en el almacenamiento de autenticación de Firebase del dispositivo. Los valores que lee el widget de inicio (la temperatura y las casillas de este mes) están en una capa más, el almacenamiento compartido de la app en el dispositivo; con el modo silencioso activado solo queda la temperatura.","s3.4":"Este archivo está <strong>excluido<\/strong> de la copia de seguridad automática (Google Drive) y de la transferencia entre dispositivos en Android, y de la copia de iCloud en iOS. Para cambiar de dispositivo, usa la exportación de la sección 6.","s4.h":"4. Notificaciones","s4.1":"Puedes activar un recordatorio al día (desactivado por defecto). La programación y la presentación ocurren <strong>enteramente en el dispositivo<\/strong>, sin pasar por nuestro servidor ni por un servicio de notificaciones push. El texto de la notificación no contiene ni relación ni situación.","s5.h":"5. Menores de 14 años","s5.1":"Malondo <strong>no está dirigido a menores.<\/strong> No recogemos a sabiendas información personal de menores de 14 años.","s6.h":"6. Conservación y borrado","s6.1":"Los valores del dispositivo permanecen hasta que los borres. Los repasos sin responder se borran automáticamente a los 7 días y los respondidos al año. Nosotros no conservamos nada.","s6.2":"<strong>Puedes borrarlo todo en cualquier momento:<\/strong>","s6.li.1":"Dentro de la app: cajón → <strong>Datos y privacidad<\/strong> → <strong>Borrar todo<\/strong>","s6.li.2":"Si eliminas la app, los valores del dispositivo desaparecen con ella","s6.3":"Borrar todo elimina las frases guardadas, las mediciones, los repasos, los registros por persona, los días en que soltaste, los ajustes de tono y el nombre de la instalación; vacía también el widget de inicio y <strong>borra el identificador de usuario anónimo y toma un nombre nuevo.<\/strong> Quedan cuatro cosas: los usos de hoy (que vuelven a 0 al cambiar el día), el interruptor del modo silencioso, el de informes de fallos, y el idioma y la unidad de temperatura que elegiste. El diálogo de confirmación de la app explica por qué.","s6.4":"Como no hay registro, no hay cuenta que cerrar. Si eliminas la app, los valores del dispositivo desaparecen, y lo único que queda en un servidor es un identificador anónimo vacío que no contiene información personal alguna.","s6.5":"Para cambiar de dispositivo existe una <strong>exportación<\/strong> (cajón → Datos y privacidad). Genera un único archivo que mueves tú, y <strong>nosotros nunca recibimos ese archivo.<\/strong>","s7.h":"7. Terceros","s7.th.1":"Quién","s7.th.2":"Qué recibe","s7.th.3":"Política","s7.see":"Ver","s7.r1.a":"Google (Gemini · Firebase)","s7.r1.b":"La situación que escribiste y tus ajustes de tono · el idioma que elegiste · el identificador de usuario anónimo · información de fallos","s7.r2.a":"Google AdMob","s7.r2.b":"Identificador de publicidad · información del dispositivo · ubicación aproximada","s7.r3.a":"GitHub (alojamiento de la web)","s7.r3.b":"No recibe nada: solo queda un registro de acceso cuando se sirve la tabla de versiones","s7.1":"Por lo demás, no compartimos ni vendemos información personal.","s8.h":"8. Seguridad","s8.1":"Cuando se detectan señales de autolesión, violencia o amenazas, <strong>la orientación y los teléfonos de ayuda aparecen antes<\/strong> que cualquier sugerencia. Ese juicio se hace primero en el dispositivo, y no se envía nada al exterior antes de que pases el aviso de seguridad.","s8.2":"Malondo no es un servicio médico ni de terapia y no sustituye la ayuda de un profesional.","s9.h":"9. Cambios","s9.1":"Cuando esta política cambie, actualizaremos la fecha de entrada en vigor de esta página, y los cambios importantes se anunciarán dentro de la app.","s9.2":"Las cuatro versiones se actualizan el mismo día. Allí donde una traducción no haya llegado todavía, prevalece el texto coreano.","s10.h":"10. Contacto","s10.1":"Para cualquier consulta sobre privacidad, escríbenos.","s10.2":"<strong>Correo:<\/strong> <a href=\"mailto:chuny4u@gmail.com\">chuny4u@gmail.com<\/a>","link.home":"Malondo","link.support":"Soporte","foot":"Malondo · Política de privacidad · 22 de septiembre de 2026"}}</script>
+<script>
+/* 세 페이지(index · privacy · support)가 함께 쓰는 언어·단위 장치.
+ *
+ * - 표는 페이지마다 <script type="application/json" id="i18n"> 에 실려 온다.
+ *   build.py 가 그 자리에 네 언어를 통째로 넣는다.
+ * - 고른 언어는 localStorage 에 남는다. 같은 출처라 **페이지를 옮겨도 따라온다** —
+ *   홈에서 English 를 고르고 처리방침으로 가면 처리방침도 영어로 선다.
+ * - 온도 단위 단추와 언어 고르개는 없을 수도 있다(support). 없으면 건너뛴다.
+ * - 값이 바뀔 때 다시 그려야 하는 것(홈의 다이얼)은 onChange 로 건다.
+ */
+(function () {
+  var LANGS = ['ko', 'en', 'ja', 'es'];
+  var dict;
+  try {
+    dict = JSON.parse(document.getElementById('i18n').textContent);
+  } catch (e) {
+    return; // 표가 없으면 HTML 에 구워진 한국어가 그대로 선다.
+  }
+
+  var lang = 'ko', unit = 'c', hooks = [];
+
+  function keep(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  function recall(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+
+  function deviceLang() {
+    var list = navigator.languages || [navigator.language || 'ko'];
+    for (var i = 0; i < list.length; i++) {
+      var t = String(list[i]).slice(0, 2).toLowerCase();
+      if (LANGS.indexOf(t) >= 0) return t;
+    }
+    return 'ko';
+  }
+
+  // 일상에서 화씨를 쓰는 여덟 나라 — lib/temperature_unit.dart 와 같은 목록
+  function deviceUnit() {
+    var list = navigator.languages || [navigator.language || ''];
+    for (var i = 0; i < list.length; i++) {
+      var m = /[-_]([A-Za-z]{2})\b/.exec(String(list[i]));
+      if (m && 'US BS BZ KY FM LR MH PW'.split(' ').indexOf(m[1].toUpperCase()) >= 0) return 'f';
+    }
+    return 'c';
+  }
+
+  function t(k) {
+    var d = dict[lang] || dict.ko;
+    if (d && d[k] != null) return d[k];
+    return (dict.ko && dict.ko[k]) || '';
+  }
+
+  function fmtC(c) { return unit === 'f' ? (c * 9 / 5 + 32).toFixed(1) : c.toFixed(1); }
+  function sym() { return unit === 'f' ? '°F' : '℃'; }
+  // 차이는 절대 온도가 아니다 — 32 를 더하지 않는다.
+  function fmtD(d) { return (unit === 'f' ? d * 9 / 5 : d).toFixed(1) + sym(); }
+
+  function expand(s) {
+    return String(s)
+      .replace(/\{c:([\d.]+)\}/g, function (_, c) {
+        return '<span class="tv" data-c="' + c + '">' + fmtC(+c) + sym() + '</span>';
+      })
+      .replace(/\{d:([\d.]+)\}/g, function (_, d) {
+        return '<span class="tv" data-d="' + d + '">' + fmtD(+d) + '</span>';
+      });
+  }
+
+  function strip(s) { return s.replace(/<[^>]+>/g, ''); }
+
+  function paintUnits() {
+    Array.prototype.forEach.call(document.querySelectorAll('.tv[data-c]'), function (el) {
+      var v = fmtC(+el.getAttribute('data-c'));
+      if (el.classList.contains('bare')) el.textContent = v;
+      else if (el.querySelector('small')) el.innerHTML = v + '<small>' + sym() + '</small>';
+      else el.textContent = v + sym();
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.tv[data-d]'), function (el) {
+      el.textContent = fmtD(+el.getAttribute('data-d'));
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.unit-h'), function (el) {
+      el.textContent = sym();
+    });
+    var b = document.getElementById('unit');
+    if (b) b.textContent = unit === 'f' ? '°F' : '℃';
+    Array.prototype.forEach.call(document.querySelectorAll('[data-unit]'), function (x) {
+      x.classList.toggle('on', x.getAttribute('data-unit') === unit);
+    });
+    fire();
+  }
+
+  function apply() {
+    document.documentElement.lang = lang;
+    Array.prototype.forEach.call(document.querySelectorAll('[data-i]'), function (el) {
+      var s = expand(t(el.getAttribute('data-i')));
+      if (el.namespaceURI === 'http://www.w3.org/2000/svg' || el.tagName === 'TITLE') el.textContent = strip(s);
+      else el.innerHTML = s;
+    });
+    ['alt', 'aria-label', 'aria-roledescription', 'content'].forEach(function (a) {
+      Array.prototype.forEach.call(document.querySelectorAll('[data-i-' + a + ']'), function (el) {
+        el.setAttribute(a, strip(expand(t(el.getAttribute('data-i-' + a)))));
+      });
+    });
+    var sel = document.getElementById('lang');
+    if (sel) sel.value = lang;
+    Array.prototype.forEach.call(document.querySelectorAll('#fan li'), function (li) {
+      li.classList.toggle('on', li.getAttribute('data-lang') === lang);
+    });
+    paintUnits();
+  }
+
+  function fire() { hooks.forEach(function (fn) { try { fn(); } catch (e) {} }); }
+
+  var api = {
+    get lang() { return lang; },
+    get unit() { return unit; },
+    langs: LANGS,
+    t: t, fmtC: fmtC, sym: sym, fmtD: fmtD, apply: apply,
+    setLang: function (l, remember) {
+      if (LANGS.indexOf(l) < 0) return;
+      lang = l;
+      if (remember) keep('malondo.lang', l);
+      apply();
+    },
+    setUnit: function (u, remember) {
+      unit = u === 'f' ? 'f' : 'c';
+      if (remember) keep('malondo.unit', unit);
+      paintUnits();
+    },
+    onChange: function (fn) { hooks.push(fn); },
+  };
+
+  // 셋 다 아는 값인지 보고 받는다 — 표에 없는 이름이 들어오면 한국어로 선다.
+  function pick(v) { return (v && LANGS.indexOf(v) >= 0) ? v : null; }
+  var q = pick(new URLSearchParams(location.search).get('lang'));
+  lang = q || pick(recall('malondo.lang')) || deviceLang();
+  unit = recall('malondo.unit') === 'f' ? 'f' : (recall('malondo.unit') === 'c' ? 'c' : deviceUnit());
+
+  var sel = document.getElementById('lang');
+  if (sel) sel.addEventListener('change', function (e) { api.setLang(e.target.value, true); });
+  var ub = document.getElementById('unit');
+  if (ub) ub.addEventListener('click', function () { api.setUnit(unit === 'f' ? 'c' : 'f', true); });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-unit]'), function (x) {
+    x.addEventListener('click', function () { api.setUnit(x.getAttribute('data-unit'), true); });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('#fan li button'), function (b) {
+    b.addEventListener('click', function () { api.setLang(b.parentNode.getAttribute('data-lang'), true); });
+  });
+
+  window.MalondoI18n = api;
+  apply();
+})();
+</script>
 </body>
 </html>

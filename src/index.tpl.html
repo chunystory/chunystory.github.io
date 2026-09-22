@@ -721,102 +721,39 @@
 
 <script type="application/json" id="i18n">{{I18N_JSON}}</script>
 <script>
+{{I18N_JS}}
+</script>
+<script>
 (function () {
   document.documentElement.classList.add('js');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var dict = JSON.parse(document.getElementById('i18n').textContent);
-  var LANGS = ['ko', 'en', 'ja', 'es'];
-  var lang = 'ko', unit = 'c';
-
-  // ── 언어와 단위 ──
-  // 앱과 같은 규칙: 기본은 기기 설정을 따르고, 고른 것이 있으면 그것을 기억한다.
-  function store(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
-  function recall(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
-  function deviceLang() {
-    var list = navigator.languages || [navigator.language || 'ko'];
-    for (var i = 0; i < list.length; i++) { var t = String(list[i]).slice(0, 2).toLowerCase(); if (LANGS.indexOf(t) >= 0) return t; }
-    return 'ko';
-  }
-  function deviceUnit() {
-    // 일상에서 화씨를 쓰는 여덟 나라 — lib/temperature_unit.dart 와 같은 목록
-    var list = navigator.languages || [navigator.language || ''];
-    for (var i = 0; i < list.length; i++) {
-      var m = /[-_]([A-Za-z]{2})\b/.exec(String(list[i]));
-      if (m && 'US BS BZ KY FM LR MH PW'.split(' ').indexOf(m[1].toUpperCase()) >= 0) return 'f';
-    }
-    return 'c';
-  }
-  function fmtC(c) { return unit === 'f' ? (c * 9 / 5 + 32).toFixed(1) : c.toFixed(1); }
-  function sym() { return unit === 'f' ? '°F' : '℃'; }
-  function fmtD(d) { return (unit === 'f' ? d * 9 / 5 : d).toFixed(1) + sym(); }
-  function t(k) { var d = dict[lang] || dict.ko; return (d && d[k] != null) ? d[k] : (dict.ko[k] || ''); }
-  function expand(s) {
-    return s.replace(/\{c:([\d.]+)\}/g, function (_, c) { return '<span class="tv" data-c="' + c + '">' + fmtC(+c) + sym() + '</span>'; })
-            .replace(/\{d:([\d.]+)\}/g, function (_, d) { return '<span class="tv" data-d="' + d + '">' + fmtD(+d) + '</span>'; });
-  }
-  function paintUnits() {
-    Array.prototype.forEach.call(document.querySelectorAll('.tv[data-c]'), function (el) {
-      var v = fmtC(+el.getAttribute('data-c'));
-      if (el.classList.contains('bare')) el.textContent = v;
-      else if (el.querySelector('small')) el.innerHTML = v + '<small>' + sym() + '</small>';
-      else el.textContent = v + sym();
-    });
-    Array.prototype.forEach.call(document.querySelectorAll('.tv[data-d]'), function (el) { el.textContent = fmtD(+el.getAttribute('data-d')); });
-    Array.prototype.forEach.call(document.querySelectorAll('.unit-h'), function (el) { el.textContent = sym(); });
-    document.getElementById('unit').textContent = unit === 'f' ? '°F' : '℃';
-    Array.prototype.forEach.call(document.querySelectorAll('[data-unit]'), function (b) { b.classList.toggle('on', b.getAttribute('data-unit') === unit); });
-    if (typeof repaintDial === 'function') repaintDial();
-  }
-  function apply() {
-    document.documentElement.lang = lang;
-    Array.prototype.forEach.call(document.querySelectorAll('[data-i]'), function (el) {
-      var s = expand(t(el.getAttribute('data-i')));
-      if (el.namespaceURI === 'http://www.w3.org/2000/svg' || el.tagName === 'TITLE') el.textContent = s.replace(/<[^>]+>/g, '');
-      else el.innerHTML = s;
-    });
-    ['alt', 'aria-label', 'aria-roledescription', 'content'].forEach(function (a) {
-      Array.prototype.forEach.call(document.querySelectorAll('[data-i-' + a + ']'), function (el) {
-        el.setAttribute(a, expand(t(el.getAttribute('data-i-' + a))).replace(/<[^>]+>/g, ''));
-      });
-    });
-    document.getElementById('lang').value = lang;
-    Array.prototype.forEach.call(document.querySelectorAll('#fan li'), function (li) { li.classList.toggle('on', li.getAttribute('data-lang') === lang); });
-    paintUnits();
-  }
-  function setLang(l, remember) { if (LANGS.indexOf(l) < 0) return; lang = l; if (remember) store('malondo.lang', l); apply(); }
-  function setUnit(u, remember) { unit = u === 'f' ? 'f' : 'c'; if (remember) store('malondo.unit', unit); paintUnits(); }
-
-  var q = new URLSearchParams(location.search).get('lang');
-  lang = (q && LANGS.indexOf(q) >= 0) ? q : (recall('malondo.lang') || deviceLang());
-  unit = recall('malondo.unit') || deviceUnit();
-
-  document.getElementById('lang').addEventListener('change', function (e) { setLang(e.target.value, true); });
-  document.getElementById('unit').addEventListener('click', function () { setUnit(unit === 'f' ? 'c' : 'f', true); });
-  Array.prototype.forEach.call(document.querySelectorAll('[data-unit]'), function (b) { b.addEventListener('click', function () { setUnit(b.getAttribute('data-unit'), true); }); });
-  Array.prototype.forEach.call(document.querySelectorAll('#fan li button'), function (b) {
-    b.addEventListener('click', function () { setLang(b.parentNode.getAttribute('data-lang'), true); });
-  });
+  var i18n = window.MalondoI18n;
+  if (!i18n) return;
 
   // ── 다이얼 — 여섯 말투 사이를 오간다 ──
-  var tonesC = [35.0, 35.7, 36.5, 37.1, 37.7, 38.2], toneKeys = ['tone.1', 'tone.2', 'tone.3', 'tone.4', 'tone.5', 'tone.6'], toneVars = ['r1i', 'r2i', 'r3i', 'r4i', 'r5i', 'r6i'];
+  var tonesC = [35.0, 35.7, 36.5, 37.1, 37.7, 38.2],
+      toneKeys = ['tone.1', 'tone.2', 'tone.3', 'tone.4', 'tone.5', 'tone.6'],
+      toneVars = ['r1i', 'r2i', 'r3i', 'r4i', 'r5i', 'r6i'];
   var needle = document.getElementById('needle'), num = document.getElementById('num'),
-      toneEl = document.getElementById('tone'), driftEl = document.getElementById('drift'), dial = document.getElementById('dial');
+      toneEl = document.getElementById('tone'), driftEl = document.getElementById('drift'),
+      dial = document.getElementById('dial');
   var lastT = 36.5;
   function nearest(v) { var b = 0; for (var i = 1; i < tonesC.length; i++) if (Math.abs(tonesC[i] - v) < Math.abs(tonesC[b] - v)) b = i; return b; }
   function show(v) {
     lastT = v;
     var a = -120 + 240 * (v - 35.0) / 3.2;
     needle.style.setProperty('--a', a.toFixed(2) + 'deg');
-    num.innerHTML = fmtC(v) + '<small>' + sym() + '</small>';
+    num.innerHTML = i18n.fmtC(v) + '<small>' + i18n.sym() + '</small>';
     var n = nearest(v);
-    toneEl.textContent = t(toneKeys[n]);
+    toneEl.textContent = i18n.t(toneKeys[n]);
     dial.style.setProperty('--tone', 'var(--' + toneVars[n] + ')');
     var d = v - 36.5;
-    driftEl.textContent = Math.abs(d) < 0.15 ? t('dial.origin') : t(d > 0 ? 'dial.warmer' : 'dial.cooler').replace('{0}', fmtD(Math.abs(d)));
+    driftEl.textContent = Math.abs(d) < 0.15
+      ? i18n.t('dial.origin')
+      : i18n.t(d > 0 ? 'dial.warmer' : 'dial.cooler').replace('{0}', i18n.fmtD(Math.abs(d)));
   }
-  function repaintDial() { if (needle && num) show(lastT); }
-
-  apply();
+  // 언어나 단위가 바뀌면 다이얼도 그 값으로 다시 선다.
+  if (needle && num) { i18n.onChange(function () { show(lastT); }); show(36.5); }
 
   if (needle && num && !reduce) {
     var path = [36.5, 37.2, 37.8, 36.9, 36.1, 35.6, 36.4, 37.0, 38.0, 36.6];

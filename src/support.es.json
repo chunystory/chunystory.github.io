@@ -1,0 +1,38 @@
+{
+  "meta.title": "Soporte de Malondo",
+  "meta.desc": "Cuéntanos qué te frenó, qué falló o qué te gustaría que Malondo hiciera. Aquí también respondemos las dudas más frecuentes.",
+  "brand": "Malondo",
+  "pref.lang": "Idioma de la página",
+
+  "title": "Soporte de Malondo",
+  "lede": "Si algo te frena, falla o te gustaría que funcionara de otra manera, escríbenos abajo. Decirnos en qué pantalla estabas y qué hacías, junto con el nombre de tu dispositivo y la versión de la app (cajón → Información), nos ayuda a encontrarlo antes.",
+  "mail": "<strong>Correo:</strong> <a href=\"mailto:chuny4u@gmail.com\">chuny4u@gmail.com</a>",
+  "mail.note": "Escribe en 한국어, English, 日本語 o Español, como prefieras.",
+
+  "faq.h": "Dudas frecuentes",
+
+  "q1": "¿Necesito una cuenta?",
+  "a1": "No. No hay registro ni inicio de sesión; simplemente empiezas a usarla.",
+
+  "q2": "¿Dónde acaba lo que escribo?",
+  "a2": "Solo en este dispositivo. La situación que escribes se envía a Google Gemini en el momento en que se redacta una frase, y nosotros no la guardamos. Todo lo que sale y todo lo que se queda está detallado en la <a href=\"/privacy.html\">política de privacidad</a>.",
+
+  "q3": "¿Cómo cambio el idioma?",
+  "a3": "Cajón → <strong>Idioma y unidades</strong>, y eliges entre 한국어, English, 日本語 y Español. Por defecto sigue tu dispositivo. No solo cambia la pantalla: las frases y las cartas que escribe Malondo, y los recordatorios, llegan en el idioma elegido. Las frases que ya guardaste se quedan tal cual y no se traducen.",
+
+  "q4": "¿Puedo ver las temperaturas en °F?",
+  "a4": "En el mismo sitio (cajón → Idioma y unidades) eliges entre ℃ y °F. Todo valor que mides o eliges se guarda siempre en Celsius y solo cambia lo que ves, así que cambiar de unidad no toca tu historial.",
+
+  "q5": "¿Cómo paso a otro dispositivo?",
+  "a5": "Cajón → Datos y privacidad → Exportar para crear un archivo, y lo restauras en el nuevo dispositivo. Ese archivo nunca llega a nosotros.",
+
+  "q6": "¿Por qué hay anuncios?",
+  "a6": "La opción de ver un anuncio solo se abre donde ya agotaste el cupo del día. Verlo hasta el final vuelve a llenar el límite de esa jornada. Verlo es siempre decisión tuya, y Soltar y La casilla de hoy no tienen ni anuncios ni cupo diario.",
+
+  "q7": "¿Cómo lo borro todo?",
+  "a7": "Cajón → Datos y privacidad → Borrar todo. Los registros y ajustes del dispositivo y el identificador anónimo se van juntos. Eliminar la app hace lo mismo.",
+
+  "link.home": "Malondo",
+  "link.privacy": "Política de privacidad",
+  "foot": "© 2026 Malondo"
+}

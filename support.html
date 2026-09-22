@@ -3,76 +3,330 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>말온도 지원</title>
+<title data-i="meta.title">말온도 지원</title>
+<meta name="description" content="말온도를 쓰다가 막히는 것, 잘못된 것, 바라는 것을 적어 주세요. 자주 묻는 것도 함께 모았습니다." data-i-content="meta.desc">
+<link rel="canonical" href="https://chunystory.github.io/support.html">
+<meta name="theme-color" content="#F5F1EA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16120F" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="alternate" hreflang="ko" href="https://chunystory.github.io/support.html?lang=ko">
+<link rel="alternate" hreflang="en" href="https://chunystory.github.io/support.html?lang=en">
+<link rel="alternate" hreflang="ja" href="https://chunystory.github.io/support.html?lang=ja">
+<link rel="alternate" hreflang="es" href="https://chunystory.github.io/support.html?lang=es">
+<link rel="alternate" hreflang="x-default" href="https://chunystory.github.io/support.html">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-jp-dynamic-subset.min.css">
 <style>
-  :root {
-    color-scheme: light dark;
-    --canvas: #F5F1EA; --surface: #FDFCFA; --ink: #211E1B; --ink-2: #56504A;
-    --ink-3: #6C655D; --line: #E6DFD4; --accent: #BE2D1A;
+/* privacy · support 두 페이지가 함께 쓰는 꼴. index 는 제 스타일을 따로 든다. */
+:root {
+  color-scheme: light;
+  --canvas: #F5F1EA; --surface: #FDFCFA; --ink: #211E1B;
+  --ink-2: #56504A; --ink-3: #6C655D; --line: #E6DFD4; --line-2: #877D71;
+  --accent: #BE2D1A;
+  --sans: "Pretendard Variable", Pretendard, "Pretendard JP Variable", "Pretendard JP",
+          -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Hiragino Sans",
+          "Noto Sans KR", "Noto Sans JP", "Malgun Gothic", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --canvas: #16120F; --surface: #211D19; --ink: #F0EAE3;
+    --ink-2: #B8AFA5; --ink-3: #9E958A; --line: #3A342E; --line-2: #7E756A;
+    --accent: #E8ACA4;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --canvas: #16120F; --surface: #211D19; --ink: #F0EAE3; --ink-2: #B8AFA5;
-      --ink-3: #9E958A; --line: #3A342E; --accent: #E8ACA4;
-    }
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; background: var(--canvas); color: var(--ink);
-    font: 16px/1.75 -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
-          "Malgun Gothic", sans-serif;
-    word-break: keep-all;
-  }
-  main { max-width: 36rem; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
-  h1 { font-size: 2.1rem; letter-spacing: -.02em; margin: 0 0 .75rem; }
-  h2 { font-size: 1.2rem; margin: 2.5rem 0 .75rem; padding-top: 1.5rem; border-top: 1px solid var(--line); letter-spacing: -.01em; }
-  p, dd { color: var(--ink-2); }
-  p { margin: 0 0 1.25rem; }
-  strong { color: var(--ink); }
-  .lead {
-    background: var(--surface); border: 1px solid var(--line);
-    border-radius: .6rem; padding: 1.25rem; margin: 1.5rem 0 0;
-  }
-  .lead p { margin: 0; }
-  dl { margin: 0; }
-  dt { font-weight: 600; margin-top: 1.25rem; }
-  dd { margin: .25rem 0 0; }
-  .links { display: flex; gap: 1.25rem; flex-wrap: wrap; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
-  a { color: var(--accent); }
-  small { color: var(--ink-3); display: block; margin-top: 2.5rem; font-size: .85rem; }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: #16120F; --surface: #211D19; --ink: #F0EAE3;
+  --ink-2: #B8AFA5; --ink-3: #9E958A; --line: #3A342E; --line-2: #7E756A;
+  --accent: #E8ACA4;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--canvas); color: var(--ink);
+  font: 16px/1.75 var(--sans); letter-spacing: -.01em;
+  word-break: keep-all; -webkit-font-smoothing: antialiased;
+}
+:root[lang="en"] body, :root[lang="es"] body { letter-spacing: 0; word-break: normal; overflow-wrap: anywhere; }
+:root[lang="ja"] body { word-break: normal; line-break: strict; overflow-wrap: anywhere; }
+
+/* 머리띠 — index 와 같은 자리, 같은 고르개 */
+.bar {
+  position: sticky; top: 0; z-index: 10;
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  background: color-mix(in srgb, var(--canvas) 78%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+}
+.bar .row { max-width: 44rem; margin: 0 auto; padding: 0 1.25rem; display: flex; align-items: center; gap: .75rem; height: 3.5rem; }
+.bar a.home { display: flex; align-items: center; gap: .6rem; text-decoration: none; color: var(--ink); }
+.bar img { width: 28px; height: 28px; border-radius: 8px; }
+.bar b { font-size: 1rem; font-weight: 700; letter-spacing: -.02em; white-space: nowrap; }
+.prefs { margin-left: auto; display: flex; align-items: center; gap: .4rem; }
+.prefs select {
+  appearance: none; -webkit-appearance: none; font: inherit; font-size: .8125rem; font-weight: 600;
+  color: var(--ink); background: color-mix(in srgb, var(--surface) 70%, transparent);
+  border: 1px solid var(--line-2); border-radius: 999px; height: 2rem; padding: 0 1.6rem 0 .75rem;
+  cursor: pointer; letter-spacing: 0;
+  background-image: linear-gradient(45deg, transparent 50%, var(--ink-3) 50%), linear-gradient(135deg, var(--ink-3) 50%, transparent 50%);
+  background-position: calc(100% - 13px) 55%, calc(100% - 9px) 55%;
+  background-size: 4px 4px; background-repeat: no-repeat;
+}
+.prefs select:hover { border-color: var(--ink); }
+a:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+main { max-width: 44rem; margin: 0 auto; padding: 2.5rem 1.25rem 6rem; }
+h1 { font-size: 1.9rem; letter-spacing: -.02em; margin: 0 0 .5rem; line-height: 1.3; text-wrap: balance; }
+.sub { color: var(--ink-3); font-size: .9rem; margin: 0 0 2rem; }
+h2 {
+  font-size: 1.2rem; margin: 2.75rem 0 .75rem; padding-top: 1.5rem;
+  border-top: 1px solid var(--line); letter-spacing: -.01em; line-height: 1.4;
+}
+h3 { font-size: 1rem; margin: 1.5rem 0 .5rem; line-height: 1.5; }
+p, li, dd { color: var(--ink-2); }
+p { margin: 0 0 1rem; }
+strong { color: var(--ink); }
+ul { padding-left: 1.2rem; }
+li { margin: .35rem 0; }
+code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: .9em; letter-spacing: 0; }
+.scroll { overflow-x: auto; margin: 1rem 0; }
+/* 칸 너비를 못 박는다 — 자동으로 두면 좁은 화면에서 첫 칸이 한 글자까지 좁아진다.
+   `overflow-wrap: anywhere` 가 최소 너비를 한 글자로 만들기 때문이라, 표 안에서는
+   낱말이 칸보다 길 때만 쪼개는 break-word 로 되돌린다(「Kept / sent / ence / s」). */
+table { width: 100%; border-collapse: collapse; font-size: .95rem; table-layout: fixed; }
+th, td { text-align: left; padding: .6rem .5rem; border-bottom: 1px solid var(--line); vertical-align: top; overflow-wrap: break-word; }
+th:first-child, td:first-child { width: 34%; }
+.who th:first-child, .who td:first-child { width: 33%; }
+.who th:last-child, .who td:last-child { width: 17%; }
+th { color: var(--ink-3); font-weight: 600; font-size: .85rem; }
+/* 좁은 화면에서는 첫 칸을 더 준다 — 34% 로는 「Measurements」 한 낱말이 넘쳐 쪼개진다. */
+@media (max-width: 560px) {
+  table { font-size: .9rem; }
+  th:first-child, td:first-child { width: 40%; }
+  .who th:first-child, .who td:first-child { width: 34%; }
+  .who th:last-child, .who td:last-child { width: 20%; }
+}
+.lead {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: .6rem; padding: 1.25rem; margin: 0 0 2rem;
+}
+.lead p:last-child { margin-bottom: 0; }
+a { color: var(--accent); }
+dl { margin: 0; }
+dt { font-weight: 600; color: var(--ink); margin-top: 1.25rem; }
+dd { margin: .25rem 0 0; }
+.links { display: flex; gap: 1.25rem; flex-wrap: wrap; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+footer, small.foot { display: block; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); font-size: .85rem; color: var(--ink-3); }
+.links + small.foot { margin-top: 1.5rem; border-top: 0; padding-top: 0; }
 </style>
 </head>
 <body>
+
+<header class="bar">
+  <div class="row">
+    <a class="home" href="/"><img src="/icon-192.png" alt="" width="28" height="28"><b data-i="brand">말온도</b></a>
+    <div class="prefs">
+      <select id="lang" aria-label="페이지 언어" data-i-aria-label="pref.lang">
+        <option value="ko">한국어</option>
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="es">Español</option>
+      </select>
+    </div>
+  </div>
+</header>
+
 <main>
-  <h1>말온도 지원</h1>
-  <p>쓰다가 막히는 것, 잘못된 것, 바라는 것이 있으면 아래로 적어 주세요. 어느 화면에서 무엇을 하다 그랬는지와 기기 이름, 앱 버전(서랍 → 앱 정보)을 함께 주시면 빨리 짚어 볼 수 있습니다.</p>
+  <h1 data-i="title">말온도 지원</h1>
+  <p data-i="lede">쓰다가 막히는 것, 잘못된 것, 바라는 것이 있으면 아래로 적어 주세요. 어느 화면에서 무엇을 하다 그랬는지와 기기 이름, 앱 버전(서랍 → 앱 정보)을 함께 주시면 빨리 짚어 볼 수 있습니다.</p>
   <div class="lead">
-    <p><strong>이메일:</strong> <a href="mailto:chuny4u@gmail.com">chuny4u@gmail.com</a></p>
+    <p data-i="mail"><strong>이메일:</strong> <a href="mailto:chuny4u@gmail.com">chuny4u@gmail.com</a></p>
+    <p data-i="mail.note">한국어 · English · 日本語 · Español 어느 언어로 적으셔도 됩니다.</p>
   </div>
 
-  <h2>자주 묻는 것</h2>
+  <h2 data-i="faq.h">자주 묻는 것</h2>
   <dl>
-    <dt>계정이 필요한가요?</dt>
-    <dd>없습니다. 회원가입도 로그인도 없이 바로 씁니다.</dd>
+    <dt data-i="q1">계정이 필요한가요?</dt>
+    <dd data-i="a1">없습니다. 회원가입도 로그인도 없이 바로 씁니다.</dd>
 
-    <dt>내가 적은 것은 어디에 남나요?</dt>
-    <dd>이 기기 안에만 남습니다. 문장을 만드는 순간에만 적은 상황이 Google Gemini 로 전송되고, 저희는 그 내용을 저장하지 않습니다. 무엇이 나가고 무엇이 남는지는 <a href="/privacy.html">개인정보처리방침</a>에 전부 적어 두었습니다.</dd>
+    <dt data-i="q2">내가 적은 것은 어디에 남나요?</dt>
+    <dd data-i="a2">이 기기 안에만 남습니다. 문장을 만드는 순간에만 적은 상황이 Google Gemini 로 전송되고, 저희는 그 내용을 저장하지 않습니다. 무엇이 나가고 무엇이 남는지는 <a href="/privacy.html">개인정보처리방침</a>에 전부 적어 두었습니다.</dd>
 
-    <dt>다른 기기로 옮기려면?</dt>
-    <dd>서랍 → 데이터와 프라이버시 → 내보내기로 파일을 만들고, 새 기기에서 복원합니다.</dd>
+    <dt data-i="q3">언어는 어떻게 바꾸나요?</dt>
+    <dd data-i="a3">서랍 → <strong>언어와 단위</strong>에서 한국어 · English · 日本語 · Español 중에 고릅니다. 기본은 기기 설정을 따릅니다. 화면뿐 아니라 말온도가 지어 오는 문장과 편지, 알림까지 고른 언어로 옵니다. 이미 담아두신 문장은 적힌 그대로 두고 번역하지 않습니다.</dd>
 
-    <dt>광고는 왜 나오나요?</dt>
-    <dd>하루치를 다 쓴 자리에서만 광고 보기가 열립니다. 끝까지 보면 그날 한도가 다시 찹니다. 보는 것은 언제나 선택입니다.</dd>
+    <dt data-i="q4">온도를 °F 로 볼 수 있나요?</dt>
+    <dd data-i="a4">같은 자리(서랍 → 언어와 단위)에서 ℃ 와 °F 중에 고릅니다. 재거나 고른 값은 언제나 섭씨로 남고 보이는 단위만 바뀌므로, 단위를 바꿔도 지난 기록은 그대로입니다.</dd>
 
-    <dt>모두 지우려면?</dt>
-    <dd>서랍 → 데이터와 프라이버시 → 모두 지우기. 기기 안의 기록과 설정, 익명 ID 가 함께 지워집니다. 앱을 지워도 같습니다.</dd>
+    <dt data-i="q5">다른 기기로 옮기려면?</dt>
+    <dd data-i="a5">서랍 → 데이터와 프라이버시 → 내보내기로 파일을 만들고, 새 기기에서 복원합니다. 이 파일은 저희에게 오지 않습니다.</dd>
+
+    <dt data-i="q6">광고는 왜 나오나요?</dt>
+    <dd data-i="a6">하루치를 다 쓴 자리에서만 광고 보기가 열립니다. 끝까지 보면 그날 한도가 다시 찹니다. 보는 것은 언제나 선택이고, 「놓아주기」와 「오늘 한 칸」에는 광고도 하루치도 없습니다.</dd>
+
+    <dt data-i="q7">모두 지우려면?</dt>
+    <dd data-i="a7">서랍 → 데이터와 프라이버시 → 모두 지우기. 기기 안의 기록과 설정, 익명 ID 가 함께 지워집니다. 앱을 지워도 같습니다.</dd>
   </dl>
 
   <div class="links">
-    <a href="/">말온도</a>
-    <a href="/privacy.html">개인정보처리방침</a>
+    <a href="/" data-i="link.home">말온도</a>
+    <a href="/privacy.html" data-i="link.privacy">개인정보처리방침</a>
   </div>
-  <small>© 2026 말온도</small>
+  <small class="foot" data-i="foot">© 2026 말온도</small>
 </main>
+
+<script type="application/json" id="i18n">{"ko":{"meta.title":"말온도 지원","meta.desc":"말온도를 쓰다가 막히는 것, 잘못된 것, 바라는 것을 적어 주세요. 자주 묻는 것도 함께 모았습니다.","brand":"말온도","pref.lang":"페이지 언어","title":"말온도 지원","lede":"쓰다가 막히는 것, 잘못된 것, 바라는 것이 있으면 아래로 적어 주세요. 어느 화면에서 무엇을 하다 그랬는지와 기기 이름, 앱 버전(서랍 → 앱 정보)을 함께 주시면 빨리 짚어 볼 수 있습니다.","mail":"<strong>이메일:<\/strong> <a href=\"mailto:chuny4u@gmail.com\">chuny4u@gmail.com<\/a>","mail.note":"한국어 · English · 日本語 · Español 어느 언어로 적으셔도 됩니다.","faq.h":"자주 묻는 것","q1":"계정이 필요한가요?","a1":"없습니다. 회원가입도 로그인도 없이 바로 씁니다.","q2":"내가 적은 것은 어디에 남나요?","a2":"이 기기 안에만 남습니다. 문장을 만드는 순간에만 적은 상황이 Google Gemini 로 전송되고, 저희는 그 내용을 저장하지 않습니다. 무엇이 나가고 무엇이 남는지는 <a href=\"/privacy.html\">개인정보처리방침<\/a>에 전부 적어 두었습니다.","q3":"언어는 어떻게 바꾸나요?","a3":"서랍 → <strong>언어와 단위<\/strong>에서 한국어 · English · 日本語 · Español 중에 고릅니다. 기본은 기기 설정을 따릅니다. 화면뿐 아니라 말온도가 지어 오는 문장과 편지, 알림까지 고른 언어로 옵니다. 이미 담아두신 문장은 적힌 그대로 두고 번역하지 않습니다.","q4":"온도를 °F 로 볼 수 있나요?","a4":"같은 자리(서랍 → 언어와 단위)에서 ℃ 와 °F 중에 고릅니다. 재거나 고른 값은 언제나 섭씨로 남고 보이는 단위만 바뀌므로, 단위를 바꿔도 지난 기록은 그대로입니다.","q5":"다른 기기로 옮기려면?","a5":"서랍 → 데이터와 프라이버시 → 내보내기로 파일을 만들고, 새 기기에서 복원합니다. 이 파일은 저희에게 오지 않습니다.","q6":"광고는 왜 나오나요?","a6":"하루치를 다 쓴 자리에서만 광고 보기가 열립니다. 끝까지 보면 그날 한도가 다시 찹니다. 보는 것은 언제나 선택이고, 「놓아주기」와 「오늘 한 칸」에는 광고도 하루치도 없습니다.","q7":"모두 지우려면?","a7":"서랍 → 데이터와 프라이버시 → 모두 지우기. 기기 안의 기록과 설정, 익명 ID 가 함께 지워집니다. 앱을 지워도 같습니다.","link.home":"말온도","link.privacy":"개인정보처리방침","foot":"© 2026 말온도"},"en":{"meta.title":"Malondo Support","meta.desc":"Tell us what got in your way, what went wrong, or what you wish Malondo did. Common questions are answered here too.","brand":"Malondo","pref.lang":"Page language","title":"Malondo Support","lede":"If something gets in your way, goes wrong, or you wish it worked differently, write to us below. Telling us which screen you were on and what you were doing, along with your device name and the app version (drawer → About), helps us find it faster.","mail":"<strong>Email:<\/strong> <a href=\"mailto:chuny4u@gmail.com\">chuny4u@gmail.com<\/a>","mail.note":"Write in 한국어, English, 日本語 or Español — whichever you prefer.","faq.h":"Common questions","q1":"Do I need an account?","a1":"No. There is no sign-up and no login; you just start using it.","q2":"Where does what I write end up?","a2":"Only on this device. The situation you typed is sent to Google Gemini at the moment a sentence is written, and we do not store it. Everything that leaves and everything that stays is written out in the <a href=\"/privacy.html\">privacy policy<\/a>.","q3":"How do I change the language?","a3":"Drawer → <strong>Language and units<\/strong>, then pick 한국어, English, 日本語 or Español. By default it follows your device. Not only the screen but the sentences and letters Malondo writes, and the reminders, come in the language you chose. Sentences you already kept stay exactly as written and are not translated.","q4":"Can I see temperatures in °F?","a4":"In the same place (drawer → Language and units), pick ℃ or °F. Every value you measure or choose is always stored in Celsius and only what you see changes, so switching units leaves your history untouched.","q5":"How do I move to another device?","a5":"Drawer → Data and privacy → Export to make a file, then restore it on the new device. That file never comes to us.","q6":"Why are there ads?","a6":"The option to watch an ad opens only where you have used up the daily allowance. Watching one to the end refills that day's limit. Watching is always your choice, and Letting go and Today's square have neither ads nor a daily limit.","q7":"How do I delete everything?","a7":"Drawer → Data and privacy → Delete everything. The records and settings on the device and the anonymous ID go together. Deleting the app does the same.","link.home":"Malondo","link.privacy":"Privacy policy","foot":"© 2026 Malondo"},"ja":{"meta.title":"Malondo サポート","meta.desc":"使っていて困ったこと、おかしなこと、望まれることをお知らせください。よくあるご質問もまとめています。","brand":"Malondo","pref.lang":"ページの言語","title":"Malondo サポート","lede":"使っていて困ったこと、おかしなこと、望まれることがあれば、下記へお知らせください。どの画面で何をしていたときか、端末の名前とアプリのバージョン（ドロワー → アプリ情報）も添えていただけると、早く見つけられます。","mail":"<strong>メール:<\/strong> <a href=\"mailto:chuny4u@gmail.com\">chuny4u@gmail.com<\/a>","mail.note":"한국어 · English · 日本語 · Español、どの言語でお書きになっても大丈夫です。","faq.h":"よくあるご質問","q1":"アカウントは必要ですか？","a1":"不要です。会員登録もログインもなく、そのまま使えます。","q2":"書いたものはどこに残りますか？","a2":"この端末の中だけに残ります。文をつくる瞬間にだけ、お書きになった状況が Google Gemini へ送信され、当方はその内容を保存しません。何が出て何が残るのかは<a href=\"/privacy.html\">プライバシーポリシー<\/a>にすべて記しています。","q3":"言語はどう変えますか？","a3":"ドロワー → <strong>言語と単位<\/strong>で、한국어 · English · 日本語 · Español から選びます。初期設定では端末に合わせます。画面だけでなく、Malondo がつくる文や手紙、通知まで選んだ言語で届きます。すでに保存された文は書かれたままにし、翻訳しません。","q4":"温度を °F で見られますか？","a4":"同じ場所（ドロワー → 言語と単位）で ℃ と °F から選べます。測った値も選んだ値もつねに摂氏で残り、見える単位だけが変わるので、単位を変えてもこれまでの記録はそのままです。","q5":"別の端末へ移すには？","a5":"ドロワー → データとプライバシー → 書き出しでファイルを作り、新しい端末で復元します。このファイルが当方に届くことはありません。","q6":"広告はなぜ出ますか？","a6":"一日分を使い切った場所でだけ、広告を見る選択肢が開きます。最後までご覧になると、その日の上限がまた満ちます。見るかどうかはいつもご自身の選択で、「手放す」と「きょうの一マス」には広告も一日の回数もありません。","q7":"すべて消すには？","a7":"ドロワー → データとプライバシー → すべて消す。端末の中の記録と設定、匿名 ID が一緒に消えます。アプリを削除されても同じです。","link.home":"Malondo","link.privacy":"プライバシーポリシー","foot":"© 2026 Malondo"},"es":{"meta.title":"Soporte de Malondo","meta.desc":"Cuéntanos qué te frenó, qué falló o qué te gustaría que Malondo hiciera. Aquí también respondemos las dudas más frecuentes.","brand":"Malondo","pref.lang":"Idioma de la página","title":"Soporte de Malondo","lede":"Si algo te frena, falla o te gustaría que funcionara de otra manera, escríbenos abajo. Decirnos en qué pantalla estabas y qué hacías, junto con el nombre de tu dispositivo y la versión de la app (cajón → Información), nos ayuda a encontrarlo antes.","mail":"<strong>Correo:<\/strong> <a href=\"mailto:chuny4u@gmail.com\">chuny4u@gmail.com<\/a>","mail.note":"Escribe en 한국어, English, 日本語 o Español, como prefieras.","faq.h":"Dudas frecuentes","q1":"¿Necesito una cuenta?","a1":"No. No hay registro ni inicio de sesión; simplemente empiezas a usarla.","q2":"¿Dónde acaba lo que escribo?","a2":"Solo en este dispositivo. La situación que escribes se envía a Google Gemini en el momento en que se redacta una frase, y nosotros no la guardamos. Todo lo que sale y todo lo que se queda está detallado en la <a href=\"/privacy.html\">política de privacidad<\/a>.","q3":"¿Cómo cambio el idioma?","a3":"Cajón → <strong>Idioma y unidades<\/strong>, y eliges entre 한국어, English, 日本語 y Español. Por defecto sigue tu dispositivo. No solo cambia la pantalla: las frases y las cartas que escribe Malondo, y los recordatorios, llegan en el idioma elegido. Las frases que ya guardaste se quedan tal cual y no se traducen.","q4":"¿Puedo ver las temperaturas en °F?","a4":"En el mismo sitio (cajón → Idioma y unidades) eliges entre ℃ y °F. Todo valor que mides o eliges se guarda siempre en Celsius y solo cambia lo que ves, así que cambiar de unidad no toca tu historial.","q5":"¿Cómo paso a otro dispositivo?","a5":"Cajón → Datos y privacidad → Exportar para crear un archivo, y lo restauras en el nuevo dispositivo. Ese archivo nunca llega a nosotros.","q6":"¿Por qué hay anuncios?","a6":"La opción de ver un anuncio solo se abre donde ya agotaste el cupo del día. Verlo hasta el final vuelve a llenar el límite de esa jornada. Verlo es siempre decisión tuya, y Soltar y La casilla de hoy no tienen ni anuncios ni cupo diario.","q7":"¿Cómo lo borro todo?","a7":"Cajón → Datos y privacidad → Borrar todo. Los registros y ajustes del dispositivo y el identificador anónimo se van juntos. Eliminar la app hace lo mismo.","link.home":"Malondo","link.privacy":"Política de privacidad","foot":"© 2026 Malondo"}}</script>
+<script>
+/* 세 페이지(index · privacy · support)가 함께 쓰는 언어·단위 장치.
+ *
+ * - 표는 페이지마다 <script type="application/json" id="i18n"> 에 실려 온다.
+ *   build.py 가 그 자리에 네 언어를 통째로 넣는다.
+ * - 고른 언어는 localStorage 에 남는다. 같은 출처라 **페이지를 옮겨도 따라온다** —
+ *   홈에서 English 를 고르고 처리방침으로 가면 처리방침도 영어로 선다.
+ * - 온도 단위 단추와 언어 고르개는 없을 수도 있다(support). 없으면 건너뛴다.
+ * - 값이 바뀔 때 다시 그려야 하는 것(홈의 다이얼)은 onChange 로 건다.
+ */
+(function () {
+  var LANGS = ['ko', 'en', 'ja', 'es'];
+  var dict;
+  try {
+    dict = JSON.parse(document.getElementById('i18n').textContent);
+  } catch (e) {
+    return; // 표가 없으면 HTML 에 구워진 한국어가 그대로 선다.
+  }
+
+  var lang = 'ko', unit = 'c', hooks = [];
+
+  function keep(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  function recall(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+
+  function deviceLang() {
+    var list = navigator.languages || [navigator.language || 'ko'];
+    for (var i = 0; i < list.length; i++) {
+      var t = String(list[i]).slice(0, 2).toLowerCase();
+      if (LANGS.indexOf(t) >= 0) return t;
+    }
+    return 'ko';
+  }
+
+  // 일상에서 화씨를 쓰는 여덟 나라 — lib/temperature_unit.dart 와 같은 목록
+  function deviceUnit() {
+    var list = navigator.languages || [navigator.language || ''];
+    for (var i = 0; i < list.length; i++) {
+      var m = /[-_]([A-Za-z]{2})\b/.exec(String(list[i]));
+      if (m && 'US BS BZ KY FM LR MH PW'.split(' ').indexOf(m[1].toUpperCase()) >= 0) return 'f';
+    }
+    return 'c';
+  }
+
+  function t(k) {
+    var d = dict[lang] || dict.ko;
+    if (d && d[k] != null) return d[k];
+    return (dict.ko && dict.ko[k]) || '';
+  }
+
+  function fmtC(c) { return unit === 'f' ? (c * 9 / 5 + 32).toFixed(1) : c.toFixed(1); }
+  function sym() { return unit === 'f' ? '°F' : '℃'; }
+  // 차이는 절대 온도가 아니다 — 32 를 더하지 않는다.
+  function fmtD(d) { return (unit === 'f' ? d * 9 / 5 : d).toFixed(1) + sym(); }
+
+  function expand(s) {
+    return String(s)
+      .replace(/\{c:([\d.]+)\}/g, function (_, c) {
+        return '<span class="tv" data-c="' + c + '">' + fmtC(+c) + sym() + '</span>';
+      })
+      .replace(/\{d:([\d.]+)\}/g, function (_, d) {
+        return '<span class="tv" data-d="' + d + '">' + fmtD(+d) + '</span>';
+      });
+  }
+
+  function strip(s) { return s.replace(/<[^>]+>/g, ''); }
+
+  function paintUnits() {
+    Array.prototype.forEach.call(document.querySelectorAll('.tv[data-c]'), function (el) {
+      var v = fmtC(+el.getAttribute('data-c'));
+      if (el.classList.contains('bare')) el.textContent = v;
+      else if (el.querySelector('small')) el.innerHTML = v + '<small>' + sym() + '</small>';
+      else el.textContent = v + sym();
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.tv[data-d]'), function (el) {
+      el.textContent = fmtD(+el.getAttribute('data-d'));
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.unit-h'), function (el) {
+      el.textContent = sym();
+    });
+    var b = document.getElementById('unit');
+    if (b) b.textContent = unit === 'f' ? '°F' : '℃';
+    Array.prototype.forEach.call(document.querySelectorAll('[data-unit]'), function (x) {
+      x.classList.toggle('on', x.getAttribute('data-unit') === unit);
+    });
+    fire();
+  }
+
+  function apply() {
+    document.documentElement.lang = lang;
+    Array.prototype.forEach.call(document.querySelectorAll('[data-i]'), function (el) {
+      var s = expand(t(el.getAttribute('data-i')));
+      if (el.namespaceURI === 'http://www.w3.org/2000/svg' || el.tagName === 'TITLE') el.textContent = strip(s);
+      else el.innerHTML = s;
+    });
+    ['alt', 'aria-label', 'aria-roledescription', 'content'].forEach(function (a) {
+      Array.prototype.forEach.call(document.querySelectorAll('[data-i-' + a + ']'), function (el) {
+        el.setAttribute(a, strip(expand(t(el.getAttribute('data-i-' + a)))));
+      });
+    });
+    var sel = document.getElementById('lang');
+    if (sel) sel.value = lang;
+    Array.prototype.forEach.call(document.querySelectorAll('#fan li'), function (li) {
+      li.classList.toggle('on', li.getAttribute('data-lang') === lang);
+    });
+    paintUnits();
+  }
+
+  function fire() { hooks.forEach(function (fn) { try { fn(); } catch (e) {} }); }
+
+  var api = {
+    get lang() { return lang; },
+    get unit() { return unit; },
+    langs: LANGS,
+    t: t, fmtC: fmtC, sym: sym, fmtD: fmtD, apply: apply,
+    setLang: function (l, remember) {
+      if (LANGS.indexOf(l) < 0) return;
+      lang = l;
+      if (remember) keep('malondo.lang', l);
+      apply();
+    },
+    setUnit: function (u, remember) {
+      unit = u === 'f' ? 'f' : 'c';
+      if (remember) keep('malondo.unit', unit);
+      paintUnits();
+    },
+    onChange: function (fn) { hooks.push(fn); },
+  };
+
+  // 셋 다 아는 값인지 보고 받는다 — 표에 없는 이름이 들어오면 한국어로 선다.
+  function pick(v) { return (v && LANGS.indexOf(v) >= 0) ? v : null; }
+  var q = pick(new URLSearchParams(location.search).get('lang'));
+  lang = q || pick(recall('malondo.lang')) || deviceLang();
+  unit = recall('malondo.unit') === 'f' ? 'f' : (recall('malondo.unit') === 'c' ? 'c' : deviceUnit());
+
+  var sel = document.getElementById('lang');
+  if (sel) sel.addEventListener('change', function (e) { api.setLang(e.target.value, true); });
+  var ub = document.getElementById('unit');
+  if (ub) ub.addEventListener('click', function () { api.setUnit(unit === 'f' ? 'c' : 'f', true); });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-unit]'), function (x) {
+    x.addEventListener('click', function () { api.setUnit(x.getAttribute('data-unit'), true); });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('#fan li button'), function (b) {
+    b.addEventListener('click', function () { api.setLang(b.parentNode.getAttribute('data-lang'), true); });
+  });
+
+  window.MalondoI18n = api;
+  apply();
+})();
+</script>
 </body>
 </html>
