@@ -149,7 +149,7 @@
   .facts { list-style: none; margin: 1.1rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .25rem 0; font-size: .875rem; color: var(--ink-3); }
   .facts li + li::before { content: "·"; margin: 0 .6rem; color: var(--line-2); }
   .stores { list-style: none; margin: 1.6rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .6rem; }
-  .store { display: inline-flex; align-items: center; gap: .5rem; padding: .6rem 1rem; border: 1px solid var(--line-2); border-radius: .75rem; color: var(--ink); font-size: .9375rem; text-decoration: none; background: color-mix(in srgb, var(--surface) 70%, transparent); }
+  .store { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 0 .5rem; padding: .6rem 1rem; border: 1px solid var(--line-2); border-radius: .75rem; color: var(--ink); font-size: .9375rem; text-decoration: none; background: color-mix(in srgb, var(--surface) 70%, transparent); max-width: 100%; }
   .store small { color: var(--ink-3); }
   .store.soon { color: var(--ink-2); }
 
@@ -192,7 +192,10 @@
   .track.dragging { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; }
   .slide { flex: 0 0 min(300px, 78vw); scroll-snap-align: center; display: grid; gap: 1rem; text-align: center; transition: transform .5s cubic-bezier(.2,.7,.2,1), opacity .5s; transform: scale(.93); opacity: .55; }
   .slide.on { transform: none; opacity: 1; }
+  /* 글은 span 하나에 담는다 — h3 를 그리드로 두고 글을 바로 넣으면 맨 글자가
+     익명 칸이 되어 <br> 이 죽고 낱말 덩어리마다 줄이 바뀐다. */
   .slide h3 { font-size: 1.125rem; font-weight: 700; line-height: 1.3; min-height: 3.9em; display: grid; align-content: end; }
+  .slide h3 > span { display: block; }
   .slide p { font-size: .875rem; color: var(--ink-3); margin: -.4rem 0 0; }
   .phone { position: relative; width: 100%; aspect-ratio: 1284 / 2778; border-radius: 14% / 6.5%; background: var(--frame-in); box-shadow: 0 0 0 3px var(--frame-in), 0 0 0 11px var(--frame), 0 0 0 12px var(--frame-edge), 0 28px 50px -18px var(--shadow); margin: 12px auto 24px; }
   .phone img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
@@ -349,8 +352,10 @@
   .nots li { padding: .8rem 0; border-top: 1px solid var(--line); font-size: .9375rem; color: var(--ink-2); }
   .nots b { margin-right: .3rem; }
   .outs { list-style: none; margin: 1.25rem 0 0; padding: 0; display: grid; gap: .75rem; }
-  .outs li { display: grid; grid-template-columns: 1.2rem 1fr; gap: .6rem; font-size: .9375rem; color: var(--ink-2); }
-  .outs li::before { content: ""; width: 10px; height: 10px; border-radius: 50%; margin-top: .55rem; background: var(--line-2); }
+  /* 그리드로 두지 않는다 — <b> 뒤의 맨 글자가 익명 그리드 칸이 되어 1.2rem 칸에
+     떨어지면 낱말 하나마다 줄이 바뀐다. 점은 자리를 잡아 놓고 글은 그냥 흐르게 둔다. */
+  .outs li { position: relative; padding-left: 1.8rem; font-size: .9375rem; color: var(--ink-2); }
+  .outs li::before { content: ""; position: absolute; left: 0; top: .55rem; width: 10px; height: 10px; border-radius: 50%; background: var(--line-2); }
   .outs li.never::before { background: var(--g1); }
   .outs b { display: block; }
 
@@ -452,19 +457,19 @@
     <p data-reveal data-delay="2" data-i="shots.lede">옆으로 넘겨 보세요. 열세 장면입니다.</p>
   </div>
   <div class="track" id="track" tabindex="0" aria-roledescription="넘겨보기" data-i-aria-roledescription="shots.role" aria-label="앱 화면 열세 장" data-i-aria-label="shots.aria">
-    <article class="slide"><h3 data-i="slide.1.h">오늘 내 말의 <span class="grad">온도</span>는<br>몇 도였을까요?</h3><p data-i="slide.1.p">하루하루의 말온도가 달력에 쌓여요</p><div class="phone"><img src="/shots/01-home.webp" alt="홈 화면. 위에는 만질 수 있는 온도 자, 아래에는 9월 말온도 36.6℃와 하루하루 온도가 표정으로 찍힌 달력." data-i-alt="slide.1.alt" loading="eager" width="720" height="1558"></div></article>
-    <article class="slide"><h3 data-i="slide.2.h">누구와 몇 번,<br>어떤 <span class="grad">온도</span>로 말했는지</h3><p data-i="slide.2.p">이번 달·이번 주·오늘을 한 장에서</p><div class="phone"><img src="/shots/02-relations.webp" alt="홈의 「누구와의 말」 카드. 반원 고리 위에 배우자 38.0℃ 3번이 서 있고, 옆에 가족·연인·직장동료·친구 목록이 있습니다." data-i-alt="slide.2.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3 data-i="slide.3.h">목표 온도를 고르고<br><span class="grad">20초</span>만 말해보세요</h3><p data-i="slide.3.p">목소리는 기기 안에서만 들어요</p><div class="phone"><img src="/shots/03-measure.webp" alt="말온도 재기 화면. 여섯 말투 중 따뜻하게 38.2℃를 목표로 고르고, 아래 인장 모양의 녹음 버튼을 누릅니다." data-i-alt="slide.3.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3 data-i="slide.4.h">말하는 동안<br>온도가 <span class="grad">실시간</span>으로</h3><p data-i="slide.4.p">목표보다 차가운지 뜨거운지 바로 알려줘요</p><div class="phone"><img src="/shots/04-live.webp" alt="녹음 중 화면. 지금 내 말의 온도 36.6℃, 일치도 73, 결 지문과 파형이 움직입니다." data-i-alt="slide.4.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3 data-i="slide.5.h">목표와 얼마나<br>가까웠는지 <span class="grad">한눈에</span></h3><p data-i="slide.5.p">차분함·음량·말과 쉼까지 다섯 축으로</p><div class="phone"><img src="/shots/05-result.webp" alt="측정 결과 화면. 이번 말온도 37.2℃ 유쾌하게, 목표 36.5℃와의 차이 +0.7도, 온도 흐름 그래프." data-i-alt="slide.5.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3 data-i="slide.6.h">다시 들으며<br>온도의 <span class="grad">흐름</span>을 따라가요</h3><p data-i="slide.6.p">이 화면을 나가면 녹음은 바로 지워져요</p><div class="phone"><img src="/shots/06-playback.webp" alt="내 목소리 듣기 화면. 재생 위치에 따라 온도 흐름 위의 점이 따라갑니다." data-i-alt="slide.6.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3 data-i="slide.7.h">건넬 말이 필요한 날도,<br><span class="grad">마음</span>부터 풀어야 하는 날도</h3><p data-i="slide.7.p">대화 탭은 네 갈래로 열려요</p><div class="phone"><img src="/shots/07-hub.webp" alt="대화 탭. 건넬 말을 찾을래요, 마음부터 풀래요, 오늘 한 칸 남기기, 놓아주기 네 갈림길과 오늘 남은 횟수." data-i-alt="slide.7.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3 data-i="slide.8.h">지금 이 사람에게<br><span class="grad">건넬 수 있는 말</span></h3><p data-i="slide.8.p">상황과 온도에 맞춘 네 가지 문장</p><div class="phone"><img src="/shots/08-sentences.webp" alt="추천 문장 화면. 연인에게 담백하게 건넬 문장 한 장과 복사·담아둠 버튼." data-i-alt="slide.8.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3 data-i="slide.9.h">추천받은 문장을<br><span class="grad">소리 내어</span> 연습해요</h3><p data-i="slide.9.p">목표 온도에 맞춰 말하는 연습</p><div class="phone"><img src="/shots/09-practice.webp" alt="문장 연습 화면. 추천 문장을 읽는 동안 온도 36.9℃와 일치도 76이 실시간으로 뜹니다." data-i-alt="slide.9.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3 data-i="slide.10.h">아무한테도 못 한 이야기,<br>적으면 <span class="grad">답장</span>이 와요</h3><p data-i="slide.10.p">여기 적은 글은 남지 않아요</p><div class="phone"><img src="/shots/10-letter.webp" alt="털어놓기 화면. 있었던 일을 적는 칸과 여기 적은 글은 남기지 않는다는 안내." data-i-alt="slide.10.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3 data-i="slide.11.h">오래 남은 일 하나는<br>답장 없이 <span class="grad">놓아줘요</span></h3><p data-i="slide.11.p">적은 글은 파일에 한 번도 쓰지 않아요</p><div class="phone"><img src="/shots/11-letting-go.webp" alt="놓아주기 화면. 백 자 안에 적은 두 줄이 빈 종이 가운데 서 있고, 아래에 「길게 눌러 놓아주세요」 손잡이가 있습니다." data-i-alt="slide.11.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3 data-i="slide.12.h">마음에 든 문장은<br><span class="grad">담아두고</span> 다시 꺼내요</h3><p data-i="slide.12.p">상대로 거르고, 본문으로 찾고, 자주 쓰는 건 고정</p><div class="phone"><img src="/shots/12-saved.webp" alt="저장 탭. 담아둔 문장 네 개가 목표와 상대로 거를 수 있는 칩과 검색 칸 아래 정리되어 있습니다." data-i-alt="slide.12.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3 data-i="slide.13.h">네 가지 언어,<br>두 가지 <span class="grad">단위</span></h3><p data-i="slide.13.p">화면도, 지어 오는 문장도 그 언어로</p><div class="phone"><img src="/shots/13-language.webp" alt="언어 시트. 기기 설정 따르기 · 한국어 · English · 日本語 · Español 과, 아래 온도 단위 섭씨·화씨 선택." data-i-alt="slide.13.alt" loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3><span data-i="slide.1.h">오늘 내 말의 <span class="grad">온도</span>는<br>몇 도였을까요?</span></h3><p data-i="slide.1.p">하루하루의 말온도가 달력에 쌓여요</p><div class="phone"><img src="/shots/01-home.webp" alt="홈 화면. 위에는 만질 수 있는 온도 자, 아래에는 9월 말온도 36.6℃와 하루하루 온도가 표정으로 찍힌 달력." data-i-alt="slide.1.alt" loading="eager" width="720" height="1558"></div></article>
+    <article class="slide"><h3><span data-i="slide.2.h">누구와 몇 번,<br>어떤 <span class="grad">온도</span>로 말했는지</span></h3><p data-i="slide.2.p">이번 달·이번 주·오늘을 한 장에서</p><div class="phone"><img src="/shots/02-relations.webp" alt="홈의 「누구와의 말」 카드. 반원 고리 위에 배우자 38.0℃ 3번이 서 있고, 옆에 가족·연인·직장동료·친구 목록이 있습니다." data-i-alt="slide.2.alt" loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3><span data-i="slide.3.h">목표 온도를 고르고<br><span class="grad">20초</span>만 말해보세요</span></h3><p data-i="slide.3.p">목소리는 기기 안에서만 들어요</p><div class="phone"><img src="/shots/03-measure.webp" alt="말온도 재기 화면. 여섯 말투 중 따뜻하게 38.2℃를 목표로 고르고, 아래 인장 모양의 녹음 버튼을 누릅니다." data-i-alt="slide.3.alt" loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3><span data-i="slide.4.h">말하는 동안<br>온도가 <span class="grad">실시간</span>으로</span></h3><p data-i="slide.4.p">목표보다 차가운지 뜨거운지 바로 알려줘요</p><div class="phone"><img src="/shots/04-live.webp" alt="녹음 중 화면. 지금 내 말의 온도 36.6℃, 일치도 73, 결 지문과 파형이 움직입니다." data-i-alt="slide.4.alt" loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3><span data-i="slide.5.h">목표와 얼마나<br>가까웠는지 <span class="grad">한눈에</span></span></h3><p data-i="slide.5.p">차분함·음량·말과 쉼까지 다섯 축으로</p><div class="phone"><img src="/shots/05-result.webp" alt="측정 결과 화면. 이번 말온도 37.2℃ 유쾌하게, 목표 36.5℃와의 차이 +0.7도, 온도 흐름 그래프." data-i-alt="slide.5.alt" loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3><span data-i="slide.6.h">다시 들으며<br>온도의 <span class="grad">흐름</span>을 따라가요</span></h3><p data-i="slide.6.p">이 화면을 나가면 녹음은 바로 지워져요</p><div class="phone"><img src="/shots/06-playback.webp" alt="내 목소리 듣기 화면. 재생 위치에 따라 온도 흐름 위의 점이 따라갑니다." data-i-alt="slide.6.alt" loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3><span data-i="slide.7.h">건넬 말이 필요한 날도,<br><span class="grad">마음</span>부터 풀어야 하는 날도</span></h3><p data-i="slide.7.p">대화 탭은 네 갈래로 열려요</p><div class="phone"><img src="/shots/07-hub.webp" alt="대화 탭. 건넬 말을 찾을래요, 마음부터 풀래요, 오늘 한 칸 남기기, 놓아주기 네 갈림길과 오늘 남은 횟수." data-i-alt="slide.7.alt" loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3><span data-i="slide.8.h">지금 이 사람에게<br><span class="grad">건넬 수 있는 말</span></span></h3><p data-i="slide.8.p">상황과 온도에 맞춘 네 가지 문장</p><div class="phone"><img src="/shots/08-sentences.webp" alt="추천 문장 화면. 연인에게 담백하게 건넬 문장 한 장과 복사·담아둠 버튼." data-i-alt="slide.8.alt" loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3><span data-i="slide.9.h">추천받은 문장을<br><span class="grad">소리 내어</span> 연습해요</span></h3><p data-i="slide.9.p">목표 온도에 맞춰 말하는 연습</p><div class="phone"><img src="/shots/09-practice.webp" alt="문장 연습 화면. 추천 문장을 읽는 동안 온도 36.9℃와 일치도 76이 실시간으로 뜹니다." data-i-alt="slide.9.alt" loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3><span data-i="slide.10.h">아무한테도 못 한 이야기,<br>적으면 <span class="grad">답장</span>이 와요</span></h3><p data-i="slide.10.p">여기 적은 글은 남지 않아요</p><div class="phone"><img src="/shots/10-letter.webp" alt="털어놓기 화면. 있었던 일을 적는 칸과 여기 적은 글은 남기지 않는다는 안내." data-i-alt="slide.10.alt" loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3><span data-i="slide.11.h">오래 남은 일 하나는<br>답장 없이 <span class="grad">놓아줘요</span></span></h3><p data-i="slide.11.p">적은 글은 파일에 한 번도 쓰지 않아요</p><div class="phone"><img src="/shots/11-letting-go.webp" alt="놓아주기 화면. 백 자 안에 적은 두 줄이 빈 종이 가운데 서 있고, 아래에 「길게 눌러 놓아주세요」 손잡이가 있습니다." data-i-alt="slide.11.alt" loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3><span data-i="slide.12.h">마음에 든 문장은<br><span class="grad">담아두고</span> 다시 꺼내요</span></h3><p data-i="slide.12.p">상대로 거르고, 본문으로 찾고, 자주 쓰는 건 고정</p><div class="phone"><img src="/shots/12-saved.webp" alt="저장 탭. 담아둔 문장 네 개가 목표와 상대로 거를 수 있는 칩과 검색 칸 아래 정리되어 있습니다." data-i-alt="slide.12.alt" loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3><span data-i="slide.13.h">네 가지 언어,<br>두 가지 <span class="grad">단위</span></span></h3><p data-i="slide.13.p">화면도, 지어 오는 문장도 그 언어로</p><div class="phone"><img src="/shots/13-language.webp" alt="언어 시트. 기기 설정 따르기 · 한국어 · English · 日本語 · Español 과, 아래 온도 단위 섭씨·화씨 선택." data-i-alt="slide.13.alt" loading="lazy" width="720" height="1558"></div></article>
   </div>
   <div class="ctl">
     <button type="button" id="prev" aria-label="이전 화면" data-i-aria-label="shots.prev">‹</button>
