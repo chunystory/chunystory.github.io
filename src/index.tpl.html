@@ -223,15 +223,19 @@
   .langs .wide { position: relative; z-index: 1; }
   .langs .head { text-align: center; max-width: 42rem; margin: 0 auto; }
   .fan { list-style: none; margin: 2.25rem auto 0; padding: 0 .5rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 1.25rem; max-width: 30rem; }
-  @media (min-width: 720px) { .fan { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 60rem; gap: 1.5rem; align-items: end; } }
-  .fan li { display: grid; gap: .7rem; text-align: center; }
-  .fan button { appearance: none; border: 0; padding: 0; background: none; cursor: pointer; display: grid; gap: .7rem; width: 100%; color: inherit; font: inherit; }
+  @media (min-width: 720px) { .fan { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 60rem; gap: 1.5rem; } }
+  /* 위를 맞춘다 — 아래를 맞추면 두 줄짜리 스페인어 자막 때문에 그 폰만 한 줄만큼
+     위로 밀려 올라간다. 넷의 폰 높이는 같으므로 위를 맞추면 폰도 이름도 함께 선다.
+     칸이 늘어나 도형이 눌리지 않게 안쪽도 위로 모은다. */
+  .fan { align-items: start; }
+  .fan li { display: grid; align-content: start; gap: .7rem; text-align: center; }
+  .fan button { appearance: none; border: 0; padding: 0; background: none; cursor: pointer; display: grid; align-content: start; gap: .7rem; width: 100%; color: inherit; font: inherit; }
   .fan .phone { margin: 10px auto 18px; transform: translateY(0) scale(.94); opacity: .72; transition: transform .5s cubic-bezier(.2,.7,.2,1), opacity .5s; }
   .fan .phone::after { top: 2.2%; }
   .fan li.on .phone { transform: none; opacity: 1; }
   .fan button:hover .phone { opacity: 1; }
   .fan .name { font-weight: 700; font-size: 1rem; letter-spacing: 0; }
-  .fan .say { font-size: .8125rem; color: var(--ink-3); font-family: var(--serif); letter-spacing: 0; }
+  .fan .say { font-size: .8125rem; line-height: 1.5; color: var(--ink-3); font-family: var(--serif); letter-spacing: 0; min-height: 3em; }
   .fan li.on .name { color: var(--accent); }
   .langs .cols { display: grid; gap: 1.25rem; margin: 2.25rem auto 0; max-width: 44rem; }
   @media (min-width: 720px) { .langs .cols { grid-template-columns: 1fr 1fr; gap: 2rem; } }
