@@ -5,7 +5,7 @@
   "pref.lang": "Page language",
 
   "title": "Malondo Privacy Policy",
-  "dates": "Effective 6 September 2026 · Last updated 22 September 2026",
+  "dates": "Effective 6 September 2026 · Last updated 23 September 2026",
 
   "lead.1": "<strong>Malondo has no sign-up.</strong> We do not ask for your name, email or a password. What you write and what you measure stay on this device and never reach our server — we do not have one. Firebase creates <strong>a single anonymous ID with no name</strong> so that requests can be counted per person against a daily limit (section 1).",
   "lead.2": "That said, <strong>at the moment a sentence is written, the situation you typed is sent to Google.</strong> Not storing and not sending are different promises, so this document states the difference plainly.",
@@ -14,7 +14,7 @@
   "s1.h": "1. What leaves your device",
 
   "s1.a.h": "When a sentence is written — Google Gemini",
-  "s1.a.1": "When suggestions are written, the <strong>relationship, conversation goal, word temperature, the situation or draft you typed, your tone settings and the language you chose</strong> are sent through Firebase AI Logic to the Google Gemini API.",
+  "s1.a.1": "When suggestions are written, the <strong>relationship, conversation goal, word temperature, the situation or draft you typed, your tone settings (sentence length, formality, expressions to avoid) and the language you chose</strong> are sent through Firebase AI Logic to the Google Gemini API. <strong>The voice reference in the Tone tab (Default · Male · Female) is not sent.</strong>",
   "s1.a.2": "When you receive a letter in Unwind first, <strong>the story you wrote, the tone you chose, the temperature and length of the reply, and the person involved (if you chose one)</strong> go the same way.",
   "s1.a.3": "If you use Rework this one sentence, the chosen suggestion and the direction of the rework are also sent to Google Gemini. Drafts and rework requests are not saved on the device automatically.",
   "s1.a.4": "<strong>An anonymous user ID that identifies this installation</strong> goes along with the request. It is a random name created by Firebase Authentication's anonymous sign-in, made without a name, email or phone number, and it cannot say who you are. It has exactly one use: <strong>counting requests per person against a daily limit</strong>. Tapping Delete everything removes this ID and takes a new name.",
@@ -53,7 +53,7 @@
   "s3.r1.a": "Kept sentences",
   "s3.r1.b": "The sentences you chose to keep",
   "s3.r2.a": "Tone settings",
-  "s3.r2.b": "Sentence length · formality · expressions to avoid · whether tone learning is allowed",
+  "s3.r2.b": "Sentence length · formality · expressions to avoid · whether tone learning is allowed · voice reference (Default · Male · Female — used only on the device, to set the usual pitch range when measuring word temperature)",
   "s3.r3.a": "Last choices",
   "s3.r3.b": "Relationship · conversation goal · word temperature. They are pre-filled next time. The situation you typed is not here",
   "s3.r4.a": "Measurements",
@@ -128,5 +128,5 @@
 
   "link.home": "Malondo",
   "link.support": "Support",
-  "foot": "Malondo · Privacy Policy · 22 September 2026"
+  "foot": "Malondo · Privacy Policy · 23 September 2026"
 }

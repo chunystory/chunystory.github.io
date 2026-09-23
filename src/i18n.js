@@ -49,7 +49,10 @@
   function fmtC(c) { return unit === 'f' ? (c * 9 / 5 + 32).toFixed(1) : c.toFixed(1); }
   function sym() { return unit === 'f' ? '°F' : '℃'; }
   // 차이는 절대 온도가 아니다 — 32 를 더하지 않는다.
-  function fmtD(d) { return (unit === 'f' ? d * 9 / 5 : d).toFixed(1) + sym(); }
+  // 자릿수는 글에 적은 대로 지킨다 — {d:0.45} 는 0.45℃ · 0.81°F. 한 자리로 깎으면
+  // 판정 띠 ±0.45℃ 가 「0.5℃」로 섰다.
+  function places(s) { var i = String(s).indexOf('.'); return i < 0 ? 1 : Math.max(1, String(s).length - i - 1); }
+  function fmtD(d, p) { return (unit === 'f' ? d * 9 / 5 : d).toFixed(p == null ? 1 : p) + sym(); }
 
   function expand(s) {
     return String(s)
@@ -57,7 +60,7 @@
         return '<span class="tv" data-c="' + c + '">' + fmtC(+c) + sym() + '</span>';
       })
       .replace(/\{d:([\d.]+)\}/g, function (_, d) {
-        return '<span class="tv" data-d="' + d + '">' + fmtD(+d) + '</span>';
+        return '<span class="tv" data-d="' + d + '">' + fmtD(+d, places(d)) + '</span>';
       });
   }
 
@@ -71,7 +74,8 @@
       else el.textContent = v + sym();
     });
     Array.prototype.forEach.call(document.querySelectorAll('.tv[data-d]'), function (el) {
-      el.textContent = fmtD(+el.getAttribute('data-d'));
+      var d = el.getAttribute('data-d');
+      el.textContent = fmtD(+d, places(d));
     });
     Array.prototype.forEach.call(document.querySelectorAll('.unit-h'), function (el) {
       el.textContent = sym();

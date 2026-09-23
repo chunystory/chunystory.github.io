@@ -2,7 +2,7 @@
   "_": "말온도 버전 표. 이 파일의 원본은 저장소의 docs/version.json 이고, 사는 곳은 https://chunystory.github.io/version.json 이다. 앱은 이것을 받아만 가고(lib/update_gate.dart) 아무 값도 보내지 않는다. min_build 아래는 막히고, latest_build 아래는 권유를 본다. min_build 를 아직 스토어에 없는 번호로 적으면 전원이 잠기므로, test/version_table_test.dart 가 그것을 세운다.",
   "ios": {
     "min_build": 0,
-    "latest_build": 10
+    "latest_build": 13
   },
   "android": {
     "min_build": 0,

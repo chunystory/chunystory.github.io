@@ -32,12 +32,19 @@ PAGES = [
 ]
 
 # 틀이 쓰지 않아도 되는 키 — 자바스크립트가 직접 부른다.
-SCRIPT_ONLY = {"dial.warmer", "dial.cooler", "store.play"}
+SCRIPT_ONLY = {"dial.warmer", "dial.cooler", "store.play",
+               "film.cap.2", "film.cap.3", "film.cap.4", "film.cap.5", "film.cap.6", "film.play"}
+
+
+def places(literal: str) -> int:
+    """글에 적은 소수 자릿수(적어도 한 자리)."""
+    return max(1, len(literal.split(".", 1)[1])) if "." in literal else 1
 
 
 def expand(s: str) -> str:
     s = re.sub(r"\{c:([\d.]+)\}", lambda m: f'<span class="tv" data-c="{m[1]}">{float(m[1]):.1f}℃</span>', s)
-    s = re.sub(r"\{d:([\d.]+)\}", lambda m: f'<span class="tv" data-d="{m[1]}">{float(m[1]):.1f}℃</span>', s)
+    # 차이는 글에 적은 자릿수를 지킨다({d:0.45} → 0.45℃). i18n.js 의 places() 와 같은 규칙이다.
+    s = re.sub(r"\{d:([\d.]+)\}", lambda m: f'<span class="tv" data-d="{m[1]}">{float(m[1]):.{places(m[1])}f}℃</span>', s)
     return s
 
 

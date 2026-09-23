@@ -5,7 +5,7 @@
   "pref.lang": "Idioma de la página",
 
   "title": "Política de privacidad de Malondo",
-  "dates": "En vigor desde el 6 de septiembre de 2026 · Última actualización 22 de septiembre de 2026",
+  "dates": "En vigor desde el 6 de septiembre de 2026 · Última actualización 23 de septiembre de 2026",
 
   "lead.1": "<strong>Malondo no tiene registro.</strong> No pedimos tu nombre, tu correo ni una contraseña. Lo que escribes y lo que mides se queda en este dispositivo y nunca llega a nuestro servidor: no tenemos ninguno. Firebase crea <strong>un único identificador anónimo sin nombre</strong> para contar las peticiones por persona frente a un límite diario (sección 1).",
   "lead.2": "Dicho esto, <strong>en el momento en que se escribe una frase, la situación que escribiste se envía a Google.</strong> No guardar y no enviar son promesas distintas, así que este documento deja clara la diferencia.",
@@ -14,7 +14,7 @@
   "s1.h": "1. Qué sale de tu dispositivo",
 
   "s1.a.h": "Al escribir una frase — Google Gemini",
-  "s1.a.1": "Al redactar las sugerencias, se envían a la API de Google Gemini, a través de Firebase AI Logic, <strong>la relación, el objetivo de la conversación, la temperatura de las palabras, la situación o el borrador que escribiste, tus ajustes de tono y el idioma que elegiste</strong>.",
+  "s1.a.1": "Al redactar las sugerencias, se envían a la API de Google Gemini, a través de Firebase AI Logic, <strong>la relación, el objetivo de la conversación, la temperatura de las palabras, la situación o el borrador que escribiste, tus ajustes de tono (extensión de la frase, tratamiento formal, expresiones a evitar) y el idioma que elegiste</strong>. <strong>La referencia de voz de la pestaña Tono (Estándar · Hombre · Mujer) no se envía.</strong>",
   "s1.a.2": "Cuando recibes una carta en Desahogarme primero, van por la misma vía <strong>lo que escribiste, el tono elegido, la temperatura y la extensión de la respuesta y la persona implicada (si la elegiste)</strong>.",
   "s1.a.3": "Si usas Ajustar solo esta frase, también se envían a Google Gemini la sugerencia elegida y la dirección del ajuste. Los borradores y las peticiones de ajuste no se guardan automáticamente en el dispositivo.",
   "s1.a.4": "Con la petición viaja <strong>un identificador de usuario anónimo que señala a esta instalación</strong>. Es un nombre aleatorio creado por el inicio de sesión anónimo de Firebase Authentication, generado sin nombre, correo ni teléfono, y no puede decir quién eres. Tiene un solo uso: <strong>contar las peticiones por persona frente a un límite diario</strong>. Al pulsar Borrar todo se elimina ese identificador y se toma un nombre nuevo.",
@@ -53,7 +53,7 @@
   "s3.r1.a": "Frases guardadas",
   "s3.r1.b": "Las frases que decidiste guardar",
   "s3.r2.a": "Ajustes de tono",
-  "s3.r2.b": "Extensión de la frase · tratamiento formal · expresiones a evitar · si permites el aprendizaje de tono",
+  "s3.r2.b": "Extensión de la frase · tratamiento formal · expresiones a evitar · si permites el aprendizaje de tono · referencia de voz (Estándar · Hombre · Mujer — solo se usa en el dispositivo, para fijar el rango habitual de entonación al medir la temperatura de las palabras)",
   "s3.r3.a": "Últimas elecciones",
   "s3.r3.b": "Relación · objetivo de la conversación · temperatura. Aparecen ya puestas la próxima vez. La situación que escribiste no está aquí",
   "s3.r4.a": "Mediciones",
@@ -128,5 +128,5 @@
 
   "link.home": "Malondo",
   "link.support": "Soporte",
-  "foot": "Malondo · Política de privacidad · 22 de septiembre de 2026"
+  "foot": "Malondo · Política de privacidad · 23 de septiembre de 2026"
 }
