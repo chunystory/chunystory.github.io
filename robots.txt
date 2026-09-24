@@ -1,0 +1,7 @@
+# Malondo - https://chunystory.github.io
+# Every search engine is welcome. src/ holds the build sources, not pages.
+User-agent: *
+Allow: /
+Disallow: /src/
+
+Sitemap: https://chunystory.github.io/sitemap.xml

@@ -1,33 +1,35 @@
 <!doctype html>
-<html lang="ko">
+<!-- build.py 가 이 틀을 언어마다 제 주소에 굽는다 — / · /en/ · /ja/ · /es/. data-paged 는 i18n.js 에게
+     「이 페이지는 언어마다 주소가 있다」고 알린다(기기 언어로 글을 바꿔 달지 않는다). -->
+<html lang="{{LANG}}" data-paged>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title data-i="meta.title"></title>
 <meta name="description" data-i-content="meta.desc">
-<link rel="canonical" href="https://chunystory.github.io/">
+<meta name="keywords" data-i-content="meta.keywords">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="{{URL}}">
+{{HREFLANG}}
 <meta name="theme-color" content="#F5F1EA" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#16120F" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="alternate" hreflang="ko" href="https://chunystory.github.io/?lang=ko">
-<link rel="alternate" hreflang="en" href="https://chunystory.github.io/?lang=en">
-<link rel="alternate" hreflang="ja" href="https://chunystory.github.io/?lang=ja">
-<link rel="alternate" hreflang="es" href="https://chunystory.github.io/?lang=es">
-<link rel="alternate" hreflang="x-default" href="https://chunystory.github.io/">
 <meta property="og:type" content="website">
-<meta property="og:locale" content="ko_KR">
-<meta property="og:locale:alternate" content="en_US">
-<meta property="og:locale:alternate" content="ja_JP">
-<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale" content="{{OG_LOCALE}}">
+{{OG_LOCALE_ALT}}
 <meta property="og:site_name" content="말온도 · Malondo">
 <meta property="og:title" data-i-content="meta.title">
 <meta property="og:description" data-i-content="meta.desc">
-<meta property="og:url" content="https://chunystory.github.io/">
-<meta property="og:image" content="https://chunystory.github.io/icon-1024.png">
-<meta property="og:image:width" content="1024">
-<meta property="og:image:height" content="1024">
-<meta name="twitter:card" content="summary">
+<meta property="og:url" content="{{URL}}">
+<!-- 1200×630 한 장씩, 언어마다. 원본은 src/og.py 가 짓는다. -->
+<meta property="og:image" content="https://chunystory.github.io/og/{{LANG}}.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" data-i-content="meta.og.alt">
+<meta name="twitter:card" content="summary_large_image">
+<!-- 검색 엔진이 읽는 이 페이지의 뜻(사이트 이름 · 앱 · 자주 묻는 것). build.py 가 이 페이지의 언어로 짓는다. -->
+<script type="application/ld+json">{{JSON_LD}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- 앱과 같은 고딕. 쓰는 글자만 받아오는 동적 서브셋이라 가볍다. 못 받으면 시스템 고딕으로 선다. 일본어는 Pretendard JP 가 받는다. -->
@@ -388,6 +390,25 @@
   footer .links { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; margin: 0 0 1rem; padding: 0; list-style: none; }
   footer p { margin: 0; color: var(--ink-3); }
 
+  /* ── 자주 묻는 것 — 물음은 h3, 답은 접어 둔다. 접힌 글도 검색 엔진은 읽는다. ── */
+  .qa { margin: 1.5rem 0 0; border-bottom: 1px solid var(--line); }
+  .qa details { margin: 0; }
+  .qa summary { align-items: flex-start; padding: 1.05rem 0; }
+  .qa summary::before { margin-top: .5em; }
+  .qa summary h3 { font-size: 1rem; font-weight: 600; line-height: 1.55; letter-spacing: -.015em; text-wrap: pretty; }
+  .qa details p { margin: -.25rem 0 1.25rem 1.45rem; font-size: .9375rem; }
+
+  /* ── 다른 언어 권유 — 기기 언어가 이 페이지와 다를 때, 처음 손이 닿으면 한 번 ── */
+  .suggest { position: fixed; z-index: 20; left: 50%; bottom: max(1rem, env(safe-area-inset-bottom)); transform: translateX(-50%);
+    display: flex; align-items: center; gap: .5rem; width: max-content; max-width: calc(100vw - 2rem);
+    padding: .4rem .4rem .4rem 1rem; border: 1px solid var(--line-2); border-radius: 1.4rem; background: var(--surface);
+    box-shadow: 0 16px 36px -18px var(--shadow); font-size: .875rem; line-height: 1.4; color: var(--ink-2); letter-spacing: 0; word-break: normal; }
+  .suggest[hidden] { display: none; }
+  .suggest .say { text-wrap: balance; }
+  .suggest .go { appearance: none; -webkit-appearance: none; font: inherit; font-weight: 600; color: var(--accent); background: var(--accent-soft); border: 1px solid var(--accent); border-radius: 999px; padding: .35rem .85rem; cursor: pointer; white-space: nowrap; }
+  .suggest .x { appearance: none; -webkit-appearance: none; font: inherit; font-size: 1.1rem; line-height: 1; color: var(--ink-3); background: none; border: 0; width: 2rem; height: 2rem; border-radius: 50%; cursor: pointer; flex: none; }
+  .suggest .x:hover { color: var(--ink); background: var(--sunken); }
+
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .blob, .wave i, .ramp.wake::after { animation: none !important; }
@@ -420,6 +441,9 @@
     </div>
   </div>
 </header>
+
+<!-- 다른 언어 권유. 글은 권하는 언어로 i18n.js 가 채운다 — data-i 를 달지 않는다(달면 페이지 언어로 덮인다). -->
+<div class="suggest" id="suggest" hidden><span class="say"></span><button type="button" class="go"></button><button type="button" class="x">×</button></div>
 
 <main>
 
@@ -572,8 +596,8 @@
     <!-- 설명 영상 — 언어 넷 × 단위 둘. 숫자는 앱의 분석 코드가 합성 목소리 셋을 실제로 잰 값이다. -->
     <figure class="film" data-reveal>
       <div class="frame">
-        <video id="film" muted loop playsinline preload="metadata" poster="/video/how-ko-c.webp" data-i-aria-label="film.aria">
-          <source id="filmSrc" src="/video/how-ko-c.mp4" type="video/mp4">
+        <video id="film" muted loop playsinline preload="metadata" poster="/video/how-{{LANG}}-c.webp" data-i-aria-label="film.aria">
+          <source id="filmSrc" src="/video/how-{{LANG}}-c.mp4" type="video/mp4">
         </video>
         <button type="button" class="toggle" id="filmToggle" data-i="film.pause"></button>
       </div>
@@ -738,6 +762,28 @@
       <li class="never" data-reveal data-i="data.5"></li>
     </ul>
     <p data-reveal style="margin-top:1.25rem" data-i="data.after"></p>
+  </div>
+</section>
+
+<!-- 자주 묻는 것 — 사람들이 검색창에 적는 말(사과 문자 · 말투 · 목소리 톤 · 털어놓기 …)로 묻고 답한다.
+     JSON-LD 의 FAQPage 가 이 글을 그대로 옮긴다. 물음을 더하면 네 표에 faq.N.q · faq.N.a 를 함께 더하고 여기 한 줄.
+     Google Play 가 열리면 faq.10.a 네 표도 함께 고친다. -->
+<section class="plain faq" id="faq" aria-labelledby="faq-title">
+  <div class="wrap">
+    <span class="eyebrow" data-reveal data-i="faq.eyebrow"></span>
+    <h2 id="faq-title" data-reveal data-delay="1" data-i="faq.title"></h2>
+    <div class="qa" data-reveal data-delay="2">
+      <details><summary><h3 data-i="faq.1.q"></h3></summary><p data-i="faq.1.a"></p></details>
+      <details><summary><h3 data-i="faq.2.q"></h3></summary><p data-i="faq.2.a"></p></details>
+      <details><summary><h3 data-i="faq.3.q"></h3></summary><p data-i="faq.3.a"></p></details>
+      <details><summary><h3 data-i="faq.4.q"></h3></summary><p data-i="faq.4.a"></p></details>
+      <details><summary><h3 data-i="faq.5.q"></h3></summary><p data-i="faq.5.a"></p></details>
+      <details><summary><h3 data-i="faq.6.q"></h3></summary><p data-i="faq.6.a"></p></details>
+      <details><summary><h3 data-i="faq.7.q"></h3></summary><p data-i="faq.7.a"></p></details>
+      <details><summary><h3 data-i="faq.8.q"></h3></summary><p data-i="faq.8.a"></p></details>
+      <details><summary><h3 data-i="faq.9.q"></h3></summary><p data-i="faq.9.a"></p></details>
+      <details><summary><h3 data-i="faq.10.q"></h3></summary><p data-i="faq.10.a"></p></details>
+    </div>
   </div>
 </section>
 

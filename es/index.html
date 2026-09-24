@@ -1,15 +1,15 @@
 <!doctype html>
 <!-- build.py 가 이 틀을 언어마다 제 주소에 굽는다 — / · /en/ · /ja/ · /es/. data-paged 는 i18n.js 에게
      「이 페이지는 언어마다 주소가 있다」고 알린다(기기 언어로 글을 바꿔 달지 않는다). -->
-<html lang="ko" data-paged>
+<html lang="es" data-paged>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title data-i="meta.title">말온도 — 말투의 온도를 재고, 건넬 말을 찾는 AI 대화 코치</title>
-<meta name="description" content="사과·거절·부탁·위로처럼 말하기 어려운 순간, 지금 이 사람에게 건넬 한두 문장을 AI 가 네 가지로 제안합니다. 20초 말하면 억양·빠르기·쉼·소리 크기로 내 말투의 온도를 기기 안에서 잽니다. 계정 없이 무료로 쓰는 아이폰 앱." data-i-content="meta.desc">
-<meta name="keywords" content="말온도, 말의 온도, 말투, 말투 교정, 말투 분석, 목소리 톤, 대화법, 대화 코치, AI 대화 코치, 사과 문자, 거절 문자, 위로의 말, 부탁하는 법, 갈등 대화, 말하기 연습, 감정 기록, Malondo" data-i-content="meta.keywords">
+<title data-i="meta.title">Malondo — coach de conversación con IA para lo que cuesta decir</title>
+<meta name="description" content="¿Pedir perdón, decir que no, pedir ayuda o consolar a alguien? Malondo te sugiere cuatro formas de decírselo a esta persona, ahora. Habla 20 segundos y mide la temperatura de tu tono de voz en tu dispositivo. Gratis y sin cuenta." data-i-content="meta.desc">
+<meta name="keywords" content="Malondo, 말온도, coach de conversación, IA, qué decir, cómo pedir perdón, mensaje de disculpa, cómo decir que no, palabras de consuelo, tono de voz, practicar hablar, comunicación en pareja" data-i-content="meta.keywords">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="https://chunystory.github.io/">
+<link rel="canonical" href="https://chunystory.github.io/es/">
 <link rel="alternate" hreflang="ko" href="https://chunystory.github.io/">
 <link rel="alternate" hreflang="en" href="https://chunystory.github.io/en/">
 <link rel="alternate" hreflang="ja" href="https://chunystory.github.io/ja/">
@@ -20,22 +20,22 @@
 <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
-<meta property="og:locale" content="ko_KR">
+<meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="ko_KR">
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:locale:alternate" content="ja_JP">
-<meta property="og:locale:alternate" content="es_ES">
 <meta property="og:site_name" content="말온도 · Malondo">
-<meta property="og:title" content="말온도 — 말투의 온도를 재고, 건넬 말을 찾는 AI 대화 코치" data-i-content="meta.title">
-<meta property="og:description" content="사과·거절·부탁·위로처럼 말하기 어려운 순간, 지금 이 사람에게 건넬 한두 문장을 AI 가 네 가지로 제안합니다. 20초 말하면 억양·빠르기·쉼·소리 크기로 내 말투의 온도를 기기 안에서 잽니다. 계정 없이 무료로 쓰는 아이폰 앱." data-i-content="meta.desc">
-<meta property="og:url" content="https://chunystory.github.io/">
+<meta property="og:title" content="Malondo — coach de conversación con IA para lo que cuesta decir" data-i-content="meta.title">
+<meta property="og:description" content="¿Pedir perdón, decir que no, pedir ayuda o consolar a alguien? Malondo te sugiere cuatro formas de decírselo a esta persona, ahora. Habla 20 segundos y mide la temperatura de tu tono de voz en tu dispositivo. Gratis y sin cuenta." data-i-content="meta.desc">
+<meta property="og:url" content="https://chunystory.github.io/es/">
 <!-- 1200×630 한 장씩, 언어마다. 원본은 src/og.py 가 짓는다. -->
-<meta property="og:image" content="https://chunystory.github.io/og/ko.jpg">
+<meta property="og:image" content="https://chunystory.github.io/og/es.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="말온도 — 오늘 내 말의 온도는 몇 도였을까요? 말의 온도를 재는 대화 코치의 홈 화면." data-i-content="meta.og.alt">
+<meta property="og:image:alt" content="Malondo — ¿Qué temperatura tuvieron mis palabras hoy? La pantalla de inicio de un coach de conversación que mide la temperatura de tus palabras." data-i-content="meta.og.alt">
 <meta name="twitter:card" content="summary_large_image">
 <!-- 검색 엔진이 읽는 이 페이지의 뜻(사이트 이름 · 앱 · 자주 묻는 것). build.py 가 이 페이지의 언어로 짓는다. -->
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://chunystory.github.io/#website","url":"https://chunystory.github.io/","name":"말온도","alternateName":"Malondo","inLanguage":["ko","en","ja","es"]},{"@type":"MobileApplication","@id":"https://chunystory.github.io/#app","name":"말온도","alternateName":"Malondo","description":"사과·거절·부탁·위로처럼 말하기 어려운 순간, 지금 이 사람에게 건넬 한두 문장을 AI 가 네 가지로 제안합니다. 20초 말하면 억양·빠르기·쉼·소리 크기로 내 말투의 온도를 기기 안에서 잽니다. 계정 없이 무료로 쓰는 아이폰 앱.","url":"https://chunystory.github.io/","applicationCategory":"LifestyleApplication","operatingSystem":"iOS 15.0 or later","inLanguage":["ko","en","ja","es"],"installUrl":"https://apps.apple.com/kr/app/id6809147797","image":"https://chunystory.github.io/icon-1024.png","screenshot":["https://chunystory.github.io/shots/01-home.webp","https://chunystory.github.io/shots/08-sentences.webp","https://chunystory.github.io/shots/03-measure.webp","https://chunystory.github.io/shots/05-result.webp"],"featureList":["건넬 말","마음부터 풀기","놓아주기","오늘 한 칸","말온도 재기","돌아보기 · 누구와의 말"],"keywords":"말온도, 말의 온도, 말투, 말투 교정, 말투 분석, 목소리 톤, 대화법, 대화 코치, AI 대화 코치, 사과 문자, 거절 문자, 위로의 말, 부탁하는 법, 갈등 대화, 말하기 연습, 감정 기록, Malondo","offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}},{"@type":"FAQPage","@id":"https://chunystory.github.io/#faq","url":"https://chunystory.github.io/","inLanguage":"ko","mainEntity":[{"@type":"Question","name":"말온도는 어떤 앱인가요?","acceptedAnswer":{"@type":"Answer","text":"말하기 어려운 순간에 무슨 말을 할지 같이 고르는 AI 대화 코치입니다. 사과·거절·부탁·위로처럼 첫 문장이 나오지 않을 때, 지금 이 사람에게 건넬 한두 문장을 네 가지로 제안합니다. 20초쯤 소리 내어 말하면 목소리로 내 말투의 온도를 재 주기도 합니다. 계정 없이 무료로 씁니다."}},{"@type":"Question","name":"「말의 온도」는 무슨 뜻인가요?","acceptedAnswer":{"@type":"Answer","text":"같은 말도 어떤 결로 하느냐에 따라 차갑게도 따뜻하게도 들립니다. 말온도는 그 결에 온도를 붙였습니다. 단호하게 35.0℃ · 차분하게 35.7℃ · 담백하게 36.5℃ · 유쾌하게 37.1℃ · 공감하며 37.7℃ · 따뜻하게 38.2℃. 여섯 말투가 한 줄 위에 서서, 문장을 고를 때 정하는 온도와 목소리로 잰 온도를 같은 자로 견줍니다. 체온을 재는 것이 아니라 말의 결에 붙인 비유입니다."}},{"@type":"Question","name":"사과 문자나 거절 메시지를 어떻게 써야 할지 모르겠어요.","acceptedAnswer":{"@type":"Answer","text":"「건넬 말을 찾을래요」에서 누구에게(배우자 · 연인 · 가족 · 친구 · 직장동료 · 상사), 무엇을(사과하기 · 거절하기 · 부탁하기 · 위로하기 · 갈등 풀기 · 마음 전하기 · 의견 말하기), 어떤 결로 말할지 고르고 있었던 일을 한두 줄 적으면, 가는 길이 서로 다른 문장 네 장이 옵니다. 장마다 왜 이렇게 말하는지, 상대가 답해 왔을 때 이어 갈 한마디, 조심할 점이 붙습니다. 이미 써 둔 글은 「내 문장 다듬기」로 뜻은 두고 표현만 고쳐 받습니다."}},{"@type":"Question","name":"싸운 뒤 먼저 연락하거나 위로의 말 한마디를 건넬 때도 쓸 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"네. 갈등 풀기와 위로하기, 마음 전하기가 그 자리입니다. 상대를 이기거나 설득하는 문장이 아니라 내 마음과 내 경계를 함께 전하는 문장을 만들고, 「대화 연습」으로 건넨 다음 오갈 말을 미리 한 번 걸어 봅니다. 앱이 대신 보내는 일은 없습니다. 고르고, 내 말로 다듬어, 복사해서 내가 보냅니다."}},{"@type":"Question","name":"내 말투나 목소리 톤이 차갑게 들리는지 알 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"「말온도 재기」에서 20초쯤 소리 내어 말하면 억양과 빠르기, 쉼과 소리의 크기를 기기 안에서 읽어 말의 온도를 잽니다. 고른 목표 온도에 얼마나 닿았는지가 말하는 동안 실시간으로 보이고, 끝나면 다섯 축의 결 지문 위에 내 목소리와 목표를 겹쳐 어디가 벌어졌는지 보여 줍니다. 점수 대신 다음에 해 볼 것 한 가지를 적어 주어서, 추천받은 문장을 소리 내어 읽으며 말투를 부드럽게 바꿔 보는 말하기 연습으로도 씁니다."}},{"@type":"Question","name":"누구에게도 못 한 이야기를 털어놓을 곳이 필요해요.","acceptedAnswer":{"@type":"Answer","text":"「마음부터 풀래요」에 있었던 일을 적고 어떤 답이 필요한지만 고르면(그냥 들어주세요 · 정리해 주세요 · 다르게 봐 주세요 · 어떻게 할지 알려주세요 · 내 몫이 어디까지인지) 편지 한 통이 옵니다. 적은 이야기도 답장도 남지 않습니다. 답장이 필요 없는 날에는 「놓아주기」에 오래 남은 일 하나를 백 자 안에 적어 손으로 지우고, 그날의 마음은 「오늘 한 칸」으로 달력에 남깁니다."}},{"@type":"Question","name":"녹음한 목소리나 적은 글은 어디에 남나요?","acceptedAnswer":{"@type":"Answer","text":"목소리는 기기 밖으로 나가지 않습니다. 분석은 모두 기기 안에서 하고, 결과 화면을 벗어나면 녹음 파일은 바로 지워집니다. 회원가입이 없고, 적은 상황과 받은 문장은 서버에 남지 않습니다. 문장과 편지를 만드는 순간에만 적은 상황과 고른 관계·목표·온도가 Google Gemini 로 전송됩니다. 나가는 것의 전체 목록은 개인정보처리방침에 적어 두었습니다."}},{"@type":"Question","name":"무료인가요? 광고는 있나요?","acceptedAnswer":{"@type":"Answer","text":"무료이고 인앱결제가 없습니다. 건넬 말은 하루 세 번, 편지는 하루 두 통까지 받고, 다 쓴 날에만 원하면 보상형 광고 한 편을 보고 다시 채웁니다. 「놓아주기」와 「오늘 한 칸」에는 횟수도 광고도 없습니다."}},{"@type":"Question","name":"심리 상담을 대신할 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"아닙니다. 말온도는 의료나 심리 상담 서비스가 아니고, 감정이나 인격, 관계를 진단하지 않습니다. 자해나 폭력이 걱정되는 이야기가 읽히면 문장을 제안하는 대신 상담 전화를 먼저 안내합니다."}},{"@type":"Question","name":"안드로이드에서도 쓸 수 있나요? 어떤 언어로 나오나요?","acceptedAnswer":{"@type":"Answer","text":"지금은 아이폰(App Store)에서 받을 수 있고, 안드로이드(Google Play)는 준비 중입니다. 화면과 추천 문장이 한국어 · English · 日本語 · Español 네 가지 언어로 나오고, 온도는 ℃ 와 °F 중에 고릅니다."}}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://chunystory.github.io/#website","url":"https://chunystory.github.io/","name":"말온도","alternateName":"Malondo","inLanguage":["ko","en","ja","es"]},{"@type":"MobileApplication","@id":"https://chunystory.github.io/#app","name":"Malondo","alternateName":"말온도","description":"¿Pedir perdón, decir que no, pedir ayuda o consolar a alguien? Malondo te sugiere cuatro formas de decírselo a esta persona, ahora. Habla 20 segundos y mide la temperatura de tu tono de voz en tu dispositivo. Gratis y sin cuenta.","url":"https://chunystory.github.io/es/","applicationCategory":"LifestyleApplication","operatingSystem":"iOS 15.0 or later","inLanguage":["ko","en","ja","es"],"installUrl":"https://apps.apple.com/kr/app/id6809147797","image":"https://chunystory.github.io/icon-1024.png","screenshot":["https://chunystory.github.io/shots/01-home.webp","https://chunystory.github.io/shots/08-sentences.webp","https://chunystory.github.io/shots/03-measure.webp","https://chunystory.github.io/shots/05-result.webp"],"featureList":["Qué decir","Desahogarme primero","Soltar","La casilla de hoy","Medir","Repasar · Con quién hablaste"],"keywords":"Malondo, 말온도, coach de conversación, IA, qué decir, cómo pedir perdón, mensaje de disculpa, cómo decir que no, palabras de consuelo, tono de voz, practicar hablar, comunicación en pareja","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}},{"@type":"FAQPage","@id":"https://chunystory.github.io/es/#faq","url":"https://chunystory.github.io/es/","inLanguage":"es","mainEntity":[{"@type":"Question","name":"¿Qué es Malondo?","acceptedAnswer":{"@type":"Answer","text":"Un coach de conversación con IA para los momentos en que hablar cuesta. Cuando no sale la primera frase de una disculpa, un no, un favor o un consuelo, te sugiere cuatro formas de decírselo a esta persona, ahora. Si hablas en voz alta unos veinte segundos, también mide la temperatura de tu tono de voz. Es gratis y no necesita cuenta."}},{"@type":"Question","name":"¿Qué significa «la temperatura de tus palabras»?","acceptedAnswer":{"@type":"Answer","text":"Las mismas palabras pueden sonar frías o cálidas según cómo las digas. Malondo le pone temperatura a ese tono: Firme 35.0℃ · Calma 35.7℃ · Sobrio 36.5℃ · Alegre 37.1℃ · Atento 37.7℃ · Cálido 38.2℃. Los seis tonos están en una misma línea, así que la temperatura que eliges para una frase y la que se mide con tu voz usan la misma escala. Es una metáfora de cómo llegan tus palabras, no tu temperatura corporal."}},{"@type":"Question","name":"No sé cómo escribir un mensaje para pedir perdón o para decir que no.","acceptedAnswer":{"@type":"Answer","text":"En «Quiero buscar qué decir» eliges a quién (Cónyuge · Pareja · Familia · Amigo · Colega · Jefe), qué (Disculparme · Decir que no · Pedir algo · Consolar · Resolver un conflicto · Decir cómo me siento · Dar mi opinión) y en qué tono, y escribes una o dos líneas sobre lo que pasó. Llegan cuatro frases, cada una por un camino distinto, y cada tarjeta dice por qué habla así, qué decir cuando te respondan y con qué tener cuidado. Lo que ya escribiste puede pasar por «Ajustar mi frase»: el sentido queda y solo cambia la forma."}},{"@type":"Question","name":"¿Sirve para dar el primer paso después de una pelea o para encontrar palabras de consuelo?","acceptedAnswer":{"@type":"Answer","text":"Sí. Para eso están Resolver un conflicto, Consolar y Decir cómo me siento. No escribe frases para ganar ni para convencer, sino frases que llevan a la vez lo que sientes y tus límites, y con Practicar recorres de antemano lo que puede venir después. La app nunca envía nada por ti. Eliges, lo ajustas con tus palabras, lo copias y lo envías tú."}},{"@type":"Question","name":"¿Puedo saber si mi tono de voz suena frío?","acceptedAnswer":{"@type":"Answer","text":"En Medir, habla en voz alta unos veinte segundos: Malondo lee la entonación, el ritmo, las pausas y el volumen de tu voz en tu dispositivo y mide la temperatura de tus palabras. Mientras hablas ves en directo cuánto te acercas a la temperatura objetivo que elegiste, y al terminar una huella de cinco ejes pone tu voz sobre la del objetivo para mostrar dónde se separan. En lugar de una nota te señala una cosa que probar, así que también sirve para practicar: lee en voz alta una frase sugerida y suaviza el tono."}},{"@type":"Question","name":"Necesito un lugar para desahogarme.","acceptedAnswer":{"@type":"Answer","text":"En «Primero desahogarme» escribes lo que pasó y eliges solo qué tipo de respuesta necesitas (Solo escúchame · Ayúdame a ordenarlo · Muéstrame otro ángulo · Dime qué hacer · Qué me toca a mí), y llega una carta. Ni lo que escribiste ni la respuesta se guardan. Los días en que no necesitas respuesta, en Soltar escribes una cosa que se quedó demasiado tiempo, en cien caracteres o menos, y la borras con la mano; y en La casilla de hoy dejas en el calendario cómo te sentiste."}},{"@type":"Question","name":"¿Dónde quedan mis grabaciones y lo que escribo?","acceptedAnswer":{"@type":"Answer","text":"Tu voz nunca sale del dispositivo. Todo el análisis se hace en él, y la grabación se borra en cuanto sales de la pantalla de resultados. No hay registro, y lo que escribes y las frases que recibes no se guardan en un servidor. Solo mientras se crean las frases o una carta, la situación que escribiste y la relación, el objetivo y la temperatura que elegiste se envían a Google Gemini. La lista completa de lo que sale está en la política de privacidad."}},{"@type":"Question","name":"¿Es gratis? ¿Tiene anuncios?","acceptedAnswer":{"@type":"Answer","text":"Es gratis y no tiene compras dentro de la app. Recibes tres tandas de frases y dos cartas al día; los días en que las agotas, si quieres, ves un anuncio con recompensa para recargarlas. Soltar y La casilla de hoy no tienen límite ni anuncios."}},{"@type":"Question","name":"¿Sustituye a la terapia?","acceptedAnswer":{"@type":"Answer","text":"No. Malondo no es un servicio médico ni de terapia, y no diagnostica emociones, personalidad ni relaciones. Si se leen señales de autolesión o violencia, antes que cualquier sugerencia aparecen orientación y teléfonos de ayuda."}},{"@type":"Question","name":"¿Está en Android? ¿En qué idiomas?","acceptedAnswer":{"@type":"Answer","text":"Por ahora se descarga en iPhone (App Store); Android (Google Play) está en camino. Las pantallas y las frases sugeridas llegan en 한국어 · English · 日本語 · Español, y la temperatura se puede ver en ℃ o °F."}}]}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- 앱과 같은 고딕. 쓰는 글자만 받아오는 동적 서브셋이라 가볍다. 못 받으면 시스템 고딕으로 선다. 일본어는 Pretendard JP 가 받는다. -->
@@ -429,21 +429,21 @@
 <header class="bar">
   <div class="wide">
     <img src="/icon-192.png" alt="" width="30" height="30">
-    <b data-i="brand">말온도</b>
-    <nav aria-label="바로 가기" data-i-aria-label="nav.aria">
-      <a href="#shots" data-i="nav.shots">화면</a>
-      <a href="#langs" data-i="nav.langs">네 가지 언어</a>
-      <a href="#how" data-i="nav.how">어떻게 재나요</a>
-      <a href="/support.html" data-i="nav.support">지원</a>
+    <b data-i="brand">Malondo</b>
+    <nav aria-label="Ir a" data-i-aria-label="nav.aria">
+      <a href="#shots" data-i="nav.shots">Pantallas</a>
+      <a href="#langs" data-i="nav.langs">Cuatro idiomas</a>
+      <a href="#how" data-i="nav.how">Cómo mide</a>
+      <a href="/support.html" data-i="nav.support">Soporte</a>
     </nav>
     <div class="prefs">
-      <select id="lang" aria-label="페이지 언어" data-i-aria-label="pref.lang">
+      <select id="lang" aria-label="Idioma de la página" data-i-aria-label="pref.lang">
         <option value="ko">한국어</option>
         <option value="en">English</option>
         <option value="ja">日本語</option>
         <option value="es">Español</option>
       </select>
-      <button type="button" id="unit" aria-label="온도 단위" data-i-aria-label="pref.unit">℃</button>
+      <button type="button" id="unit" aria-label="Unidad de temperatura" data-i-aria-label="pref.unit">℃</button>
     </div>
   </div>
 </header>
@@ -457,89 +457,89 @@
   <div class="blobs" aria-hidden="true"><i class="blob a"></i><i class="blob b"></i><i class="blob c"></i></div>
   <div class="wide">
     <div>
-      <span class="eyebrow" data-reveal data-i="hero.eyebrow">말의 온도를 재는 대화 코치</span>
-      <h1 id="hero-title" data-reveal data-delay="1" data-i="hero.title">오늘 내 말의 <span class="grad">온도</span>는<br>몇 도였을까요?</h1>
-      <p class="lede" data-reveal data-delay="2" data-i="hero.lede">말하기 어려운 순간에, 지금 이 사람에게 건넬 한두 문장을 찾습니다. 억양과 빠르기, 쉼과 소리의 크기를 기기 안에서 읽어 말의 온도를 잽니다.</p>
+      <span class="eyebrow" data-reveal data-i="hero.eyebrow">Un coach de conversación que mide la temperatura de tus palabras</span>
+      <h1 id="hero-title" data-reveal data-delay="1" data-i="hero.title">¿Qué <span class="grad">temperatura</span> tuvieron<br>mis palabras hoy?</h1>
+      <p class="lede" data-reveal data-delay="2" data-i="hero.lede">Para los momentos en que hablar cuesta, Malondo te ayuda a encontrar la frase o dos que decirle a esta persona, ahora. Lee la entonación, el ritmo, las pausas y el volumen de tu voz en tu dispositivo y mide la temperatura de tus palabras.</p>
       <ul class="stores" data-reveal data-delay="3">
-        <li><a class="store" href="https://apps.apple.com/kr/app/id6809147797" data-i="store.ios">App Store 에서 받기</a></li>
-        <!-- Google Play 출시 뒤: <li><a class="store" href="https://play.google.com/store/apps/details?id=com.malondo.malondo_app" data-i="store.play">Google Play 에서 받기</a></li> -->
-        <li><span class="store soon" data-i="store.play.soon">Google Play <small>심사 전</small></span></li>
+        <li><a class="store" href="https://apps.apple.com/kr/app/id6809147797" data-i="store.ios">Descargar en el App Store</a></li>
+        <!-- Google Play 출시 뒤: <li><a class="store" href="https://play.google.com/store/apps/details?id=com.malondo.malondo_app" data-i="store.play">Descargar en Google Play</a></li> -->
+        <li><span class="store soon" data-i="store.play.soon">Google Play <small>en revisión</small></span></li>
       </ul>
       <ul class="facts" data-reveal data-delay="3">
-        <li data-i="fact.1">아이폰</li><li data-i="fact.2">안드로이드</li><li data-i="fact.3">무료</li><li data-i="fact.4">인앱결제 없음</li><li data-i="fact.5">계정 없음</li><li data-i="fact.6">네 가지 언어</li>
+        <li data-i="fact.1">iPhone</li><li data-i="fact.2">Android</li><li data-i="fact.3">Gratis</li><li data-i="fact.4">Sin compras dentro de la app</li><li data-i="fact.5">Sin cuenta</li><li data-i="fact.6">Cuatro idiomas</li>
       </ul>
     </div>
     <div class="dial-wrap" data-reveal data-delay="2">
-      <div class="dial" id="dial" role="img" aria-label="말온도 다이얼. 35.0℃ 단호하게부터 38.2℃ 따뜻하게까지 여섯 말투 위로 바늘이 움직입니다." data-i-aria-label="dial.aria">
+      <div class="dial" id="dial" role="img" aria-label="Dial de temperatura de las palabras. La aguja recorre seis tonos, de Firme a 35.0℃ hasta Cálido a 38.2℃." data-i-aria-label="dial.aria">
         <div class="ring"></div>
         <div class="needle" id="needle"><i></i></div>
         <div class="dial-core">
           <div class="num" id="num">36.5<small>℃</small></div>
-          <div class="tone" id="tone" data-i="tone.3">담백하게</div>
-          <div class="drift" id="drift" data-i="dial.origin">원점입니다</div>
+          <div class="tone" id="tone" data-i="tone.3">Sobrio</div>
+          <div class="drift" id="drift" data-i="dial.origin">Justo en el origen</div>
         </div>
       </div>
       <div class="wave" aria-hidden="true">
         <i style="--h:40%;animation-delay:-.1s"></i><i style="--h:70%;animation-delay:-.5s"></i><i style="--h:95%;animation-delay:-.9s"></i><i style="--h:60%;animation-delay:-.2s"></i><i style="--h:85%;animation-delay:-.7s"></i><i style="--h:45%;animation-delay:-1.1s"></i><i style="--h:90%;animation-delay:-.4s"></i><i style="--h:65%;animation-delay:-.8s"></i><i style="--h:35%;animation-delay:-.3s"></i><i style="--h:80%;animation-delay:-1s"></i><i style="--h:55%;animation-delay:-.6s"></i><i style="--h:92%;animation-delay:-1.2s"></i><i style="--h:48%;animation-delay:-.15s"></i><i style="--h:75%;animation-delay:-.55s"></i><i style="--h:38%;animation-delay:-.95s"></i>
       </div>
-      <p class="dial-note" data-i="dial.note">여섯 말투가 한 줄 위에 있습니다. <span class="tv" data-c="36.5">36.5℃</span> 담백하게가 원점이고, 말하는 동안 바늘이 이렇게 움직입니다.</p>
+      <p class="dial-note" data-i="dial.note">Seis tonos sobre una misma línea. Sobrio, a <span class="tv" data-c="36.5">36.5℃</span>, es el origen, y mientras hablas la aguja se mueve así.</p>
     </div>
   </div>
 </section>
 
 <section class="moments" aria-labelledby="moments-title">
   <div class="wrap">
-    <h2 id="moments-title" class="eyebrow" data-reveal data-i="moments.eyebrow">이런 순간을 위해</h2>
+    <h2 id="moments-title" class="eyebrow" data-reveal data-i="moments.eyebrow">Para momentos como estos</h2>
     <ul>
-      <li data-reveal data-delay="1" data-i="moments.1">사과해야 하는데 첫 문장이 안 나올 때.</li>
-      <li data-reveal data-delay="2" data-i="moments.2">거절하고 싶은데 사이가 걱정될 때.</li>
-      <li data-reveal data-delay="3" data-i="moments.3">위로하려다 되레 긁을까 망설여질 때.</li>
+      <li data-reveal data-delay="1" data-i="moments.1">Cuando debes una disculpa y la primera frase no sale.</li>
+      <li data-reveal data-delay="2" data-i="moments.2">Cuando quieres decir que no y te preocupa lo que costará.</li>
+      <li data-reveal data-delay="3" data-i="moments.3">Cuando quieres consolar y temes herir sin querer.</li>
     </ul>
     <i class="sep" aria-hidden="true" data-reveal data-delay="3"></i>
-    <p class="tail" data-reveal data-delay="3" data-i="moments.tail">그 한두 문장을, <b>말온도</b>가 같이 고민합니다. 대신 보내지는 않습니다. 고르고, 내 말로 다듬고, 내가 보냅니다.</p>
+    <p class="tail" data-reveal data-delay="3" data-i="moments.tail">Esa frase o dos es lo que <b>Malondo</b> piensa contigo. Nunca envía nada por ti. Eliges, lo ajustas con tus palabras y lo envías tú.</p>
   </div>
 </section>
 
 <section class="shots" id="shots" aria-labelledby="shots-title">
   <div class="head">
-    <span class="eyebrow" data-reveal data-i="shots.eyebrow">화면으로 보기</span>
-    <h2 id="shots-title" data-reveal data-delay="1" data-i="shots.title">재고, 건네고, <span class="grad">풀어 놓는</span> 자리</h2>
-    <p data-reveal data-delay="2" data-i="shots.lede">옆으로 넘겨 보세요. 열세 장면입니다.</p>
+    <span class="eyebrow" data-reveal data-i="shots.eyebrow">En pantalla</span>
+    <h2 id="shots-title" data-reveal data-delay="1" data-i="shots.title">Un lugar para medir, para decirlo<br>y para <span class="grad">soltarlo</span></h2>
+    <p data-reveal data-delay="2" data-i="shots.lede">Desliza. Trece escenas.</p>
   </div>
-  <div class="track" id="track" tabindex="0" aria-roledescription="넘겨보기" data-i-aria-roledescription="shots.role" aria-label="앱 화면 열세 장" data-i-aria-label="shots.aria">
-    <article class="slide"><h3><span data-i="slide.1.h">오늘 내 말의 <span class="grad">온도</span>는<br>몇 도였을까요?</span></h3><p data-i="slide.1.p">하루하루의 말온도가 달력에 쌓여요</p><div class="phone"><img src="/shots/01-home.webp" alt="홈 화면. 위에는 만질 수 있는 온도 자, 아래에는 9월 말온도 36.6℃와 하루하루 온도가 표정으로 찍힌 달력." data-i-alt="slide.1.alt" loading="eager" width="720" height="1558"></div></article>
-    <article class="slide"><h3><span data-i="slide.2.h">누구와 몇 번,<br>어떤 <span class="grad">온도</span>로 말했는지</span></h3><p data-i="slide.2.p">이번 달·이번 주·오늘을 한 장에서</p><div class="phone"><img src="/shots/02-relations.webp" alt="홈의 「누구와의 말」 카드. 반원 고리 위에 배우자 38.0℃ 3번이 서 있고, 옆에 가족·연인·직장동료·친구 목록이 있습니다." data-i-alt="slide.2.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3><span data-i="slide.3.h">목표 온도를 고르고<br><span class="grad">20초</span>만 말해보세요</span></h3><p data-i="slide.3.p">목소리는 기기 안에서만 들어요</p><div class="phone"><img src="/shots/03-measure.webp" alt="말온도 재기 화면. 여섯 말투 중 따뜻하게 38.2℃를 목표로 고르고, 아래 인장 모양의 녹음 버튼을 누릅니다." data-i-alt="slide.3.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3><span data-i="slide.4.h">말하는 동안<br>온도가 <span class="grad">실시간</span>으로</span></h3><p data-i="slide.4.p">목표보다 차가운지 뜨거운지 바로 알려줘요</p><div class="phone"><img src="/shots/04-live.webp" alt="녹음 중 화면. 지금 내 말의 온도 36.6℃, 일치도 73, 결 지문과 파형이 움직입니다." data-i-alt="slide.4.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3><span data-i="slide.5.h">목표와 얼마나<br>가까웠는지 <span class="grad">한눈에</span></span></h3><p data-i="slide.5.p">차분함·음량·말과 쉼까지 다섯 축으로</p><div class="phone"><img src="/shots/05-result.webp" alt="측정 결과 화면. 이번 말온도 37.2℃ 유쾌하게, 목표 36.5℃와의 차이 +0.7도, 온도 흐름 그래프." data-i-alt="slide.5.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3><span data-i="slide.6.h">다시 들으며<br>온도의 <span class="grad">흐름</span>을 따라가요</span></h3><p data-i="slide.6.p">이 화면을 나가면 녹음은 바로 지워져요</p><div class="phone"><img src="/shots/06-playback.webp" alt="내 목소리 듣기 화면. 재생 위치에 따라 온도 흐름 위의 점이 따라갑니다." data-i-alt="slide.6.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3><span data-i="slide.7.h">건넬 말이 필요한 날도,<br><span class="grad">마음</span>부터 풀어야 하는 날도</span></h3><p data-i="slide.7.p">대화 탭은 네 갈래로 열려요</p><div class="phone"><img src="/shots/07-hub.webp" alt="대화 탭. 건넬 말을 찾을래요, 마음부터 풀래요, 오늘 한 칸 남기기, 놓아주기 네 갈림길과 오늘 남은 횟수." data-i-alt="slide.7.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3><span data-i="slide.8.h">지금 이 사람에게<br><span class="grad">건넬 수 있는 말</span></span></h3><p data-i="slide.8.p">상황과 온도에 맞춘 네 가지 문장</p><div class="phone"><img src="/shots/08-sentences.webp" alt="추천 문장 화면. 연인에게 담백하게 건넬 문장 한 장과 복사·담아둠 버튼." data-i-alt="slide.8.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3><span data-i="slide.9.h">추천받은 문장을<br><span class="grad">소리 내어</span> 연습해요</span></h3><p data-i="slide.9.p">목표 온도에 맞춰 말하는 연습</p><div class="phone"><img src="/shots/09-practice.webp" alt="문장 연습 화면. 추천 문장을 읽는 동안 온도 36.9℃와 일치도 76이 실시간으로 뜹니다." data-i-alt="slide.9.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3><span data-i="slide.10.h">아무한테도 못 한 이야기,<br>적으면 <span class="grad">답장</span>이 와요</span></h3><p data-i="slide.10.p">여기 적은 글은 남지 않아요</p><div class="phone"><img src="/shots/10-letter.webp" alt="털어놓기 화면. 있었던 일을 적는 칸과 여기 적은 글은 남기지 않는다는 안내." data-i-alt="slide.10.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3><span data-i="slide.11.h">오래 남은 일 하나는<br>답장 없이 <span class="grad">놓아줘요</span></span></h3><p data-i="slide.11.p">적은 글은 파일에 한 번도 쓰지 않아요</p><div class="phone"><img src="/shots/11-letting-go.webp" alt="놓아주기 화면. 백 자 안에 적은 두 줄이 빈 종이 가운데 서 있고, 아래에 「길게 눌러 놓아주세요」 손잡이가 있습니다." data-i-alt="slide.11.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3><span data-i="slide.12.h">마음에 든 문장은<br><span class="grad">담아두고</span> 다시 꺼내요</span></h3><p data-i="slide.12.p">상대로 거르고, 본문으로 찾고, 자주 쓰는 건 고정</p><div class="phone"><img src="/shots/12-saved.webp" alt="저장 탭. 담아둔 문장 네 개가 목표와 상대로 거를 수 있는 칩과 검색 칸 아래 정리되어 있습니다." data-i-alt="slide.12.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3><span data-i="slide.13.h">네 가지 언어,<br>두 가지 <span class="grad">단위</span></span></h3><p data-i="slide.13.p">화면도, 지어 오는 문장도 그 언어로</p><div class="phone"><img src="/shots/13-language.webp" alt="언어 시트. 기기 설정 따르기 · 한국어 · English · 日本語 · Español 과, 아래 온도 단위 섭씨·화씨 선택." data-i-alt="slide.13.alt" loading="lazy" width="720" height="1558"></div></article>
+  <div class="track" id="track" tabindex="0" aria-roledescription="carrusel" data-i-aria-roledescription="shots.role" aria-label="Trece pantallas de la app" data-i-aria-label="shots.aria">
+    <article class="slide"><h3><span data-i="slide.1.h">¿Qué <span class="grad">temperatura</span> tuvieron<br>mis palabras hoy?</span></h3><p data-i="slide.1.p">La temperatura de cada día se posa en el calendario</p><div class="phone"><img src="/shots/01-home.webp" alt="Pantalla de inicio. Arriba una regla de temperatura que se puede tocar; abajo la temperatura del mes, 36.6℃, y un calendario con la temperatura de cada día dibujada como una cara." data-i-alt="slide.1.alt" loading="eager" width="720" height="1558"></div></article>
+    <article class="slide"><h3><span data-i="slide.2.h">Con quién hablaste, cuántas veces<br>y con qué <span class="grad">temperatura</span></span></h3><p data-i="slide.2.p">Este mes, esta semana y hoy en una sola tarjeta</p><div class="phone"><img src="/shots/02-relations.webp" alt="Tarjeta «Con quién hablaste» en Inicio. Sobre un medio anillo, Cónyuge a 38.0℃, 3 veces, y al lado la lista Familia, Pareja, Colega y Amigo." data-i-alt="slide.2.alt" loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3><span data-i="slide.3.h">Elige una temperatura objetivo<br>y habla <span class="grad">20 segundos</span></span></h3><p data-i="slide.3.p">Tu voz solo se escucha en tu dispositivo</p><div class="phone"><img src="/shots/03-measure.webp" alt="Pantalla Medir. Entre seis tonos, Cálido a 38.2℃ está elegido como objetivo, con un botón de grabar en forma de sello debajo." data-i-alt="slide.3.alt" loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3><span data-i="slide.4.h">Mientras hablas,<br>la temperatura se mueve <span class="grad">en vivo</span></span></h3><p data-i="slide.4.p">Ves al momento si vas más frío o más caliente que el objetivo</p><div class="phone"><img src="/shots/04-live.webp" alt="Pantalla de grabación. Temperatura actual 36.6℃, coincidencia 73, con huella y onda en movimiento." data-i-alt="slide.4.alt" loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3><span data-i="slide.5.h">Cuánto te acercaste<br>al objetivo, <span class="grad">de un vistazo</span></span></h3><p data-i="slide.5.p">Cinco ejes, de la serenidad al habla y las pausas</p><div class="phone"><img src="/shots/05-result.webp" alt="Pantalla de resultado. Esta toma 37.2℃ Alegre, +0.7° respecto al objetivo de 36.5℃, y una gráfica de la temperatura en el tiempo." data-i-alt="slide.5.alt" loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3><span data-i="slide.6.h">Vuelve a escucharte y sigue<br>el <span class="grad">flujo</span> de la temperatura</span></h3><p data-i="slide.6.p">La grabación se borra en cuanto sales</p><div class="phone"><img src="/shots/06-playback.webp" alt="Pantalla de reproducción. Un punto sobre la curva de temperatura sigue la posición de reproducción." data-i-alt="slide.6.alt" loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3><span data-i="slide.7.h">Días en que necesitas palabras<br>y días en que primero hay que <span class="grad">desahogarse</span></span></h3><p data-i="slide.7.p">La pestaña Hablar se abre de cuatro maneras</p><div class="phone"><img src="/shots/07-hub.webp" alt="Pestaña Hablar. Cuatro puertas — buscar qué decir, desahogarme primero, marcar la casilla de hoy, soltar — con los usos que quedan hoy." data-i-alt="slide.7.alt" loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3><span data-i="slide.8.h">Lo que podrías decirle<br>a <span class="grad">esta persona</span>, ahora</span></h3><p data-i="slide.8.p">Cuatro frases ajustadas a la situación y a la temperatura</p><div class="phone"><img src="/shots/08-sentences.webp" alt="Pantalla de sugerencias. Una tarjeta en tono sobrio para la pareja, con botones de copiar y guardar." data-i-alt="slide.8.alt" loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3><span data-i="slide.9.h">Practica la frase sugerida<br><span class="grad">en voz alta</span></span></h3><p data-i="slide.9.p">Práctica de habla a la temperatura objetivo</p><div class="phone"><img src="/shots/09-practice.webp" alt="Pantalla de práctica. Mientras lees la frase sugerida, la temperatura 36.9℃ y la coincidencia 76 se actualizan en vivo." data-i-alt="slide.9.alt" loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3><span data-i="slide.10.h">Lo que no pudiste contarle a nadie:<br>escríbelo y llega una <span class="grad">carta</span></span></h3><p data-i="slide.10.p">Nada de lo que escribas aquí se guarda</p><div class="phone"><img src="/shots/10-letter.webp" alt="Pantalla Desahogarme. Un campo para lo que pasó y un aviso de que nada de lo escrito aquí se guarda." data-i-alt="slide.10.alt" loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3><span data-i="slide.11.h">Aquello que se quedó demasiado tiempo:<br><span class="grad">suéltalo</span>, sin respuesta</span></h3><p data-i="slide.11.p">El texto nunca se escribe en un archivo</p><div class="phone"><img src="/shots/11-letting-go.webp" alt="Pantalla Soltar. Dos líneas de cien caracteres como máximo en medio de un papel en blanco, con un asa de mantener pulsado debajo." data-i-alt="slide.11.alt" loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3><span data-i="slide.12.h">Guarda las frases que te gustan<br>y <span class="grad">vuelve a sacarlas</span></span></h3><p data-i="slide.12.p">Filtra por persona, busca en el texto, fija las que más usas</p><div class="phone"><img src="/shots/12-saved.webp" alt="Pestaña Frases. Cuatro frases guardadas bajo un campo de búsqueda y fichas que filtran por objetivo y por persona." data-i-alt="slide.12.alt" loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3><span data-i="slide.13.h">Cuatro idiomas,<br>dos <span class="grad">unidades</span></span></h3><p data-i="slide.13.p">La pantalla y las frases que escribe, en tu idioma</p><div class="phone"><img src="/shots/13-language.webp" alt="Hoja de idioma. Según el dispositivo · 한국어 · English · 日本語 · Español, y debajo Celsius y Fahrenheit." data-i-alt="slide.13.alt" loading="lazy" width="720" height="1558"></div></article>
   </div>
   <div class="ctl">
-    <button type="button" id="prev" aria-label="이전 화면" data-i-aria-label="shots.prev">‹</button>
+    <button type="button" id="prev" aria-label="Pantalla anterior" data-i-aria-label="shots.prev">‹</button>
     <div class="dots" id="dots" aria-hidden="true"></div>
-    <button type="button" id="next" aria-label="다음 화면" data-i-aria-label="shots.next">›</button>
+    <button type="button" id="next" aria-label="Pantalla siguiente" data-i-aria-label="shots.next">›</button>
   </div>
 </section>
 
 <section class="plain" aria-labelledby="ask-title">
   <div class="wrap">
-    <q class="q" data-reveal data-i="ask.q">지금 이 사람에게, 내 말투로, 어떤 한두 문장을 건네면 좋을까?</q>
-    <h2 id="ask-title" data-reveal data-delay="1" data-i="ask.title">이 한 질문에만 답하려고 만든 앱입니다</h2>
-    <p data-reveal data-delay="2" data-i="ask.lede">부탁, 거절, 사과, 위로, 갈등. 할 말은 이미 마음에 있는데 첫 문장이 나오지 않아 창을 열어 두고 한참을 앉아 있게 되는 순간을 위한 것입니다. 앱이 대신 보내는 일은 없습니다. 고르고, 내 말로 다듬고, 복사해 내가 보냅니다.</p>
+    <q class="q" data-reveal data-i="ask.q">A esta persona, con mi manera de hablar, ¿qué frase o dos debería decirle?</q>
+    <h2 id="ask-title" data-reveal data-delay="1" data-i="ask.title">Una app hecha para responder solo a esta pregunta</h2>
+    <p data-reveal data-delay="2" data-i="ask.lede">Un favor, un no, una disculpa, un consuelo, un conflicto. Las palabras ya están dentro de ti, pero la primera frase no sale y te quedas demasiado tiempo con la ventana abierta. Para ese momento es esto. La app nunca envía nada por ti. Eliges, lo ajustas con tus palabras, lo copias y lo envías tú.</p>
     <ul class="does">
-      <li data-reveal><i></i><b data-i="does.1.h">건넬 말</b><span data-i="does.1.p">누구에게, 무엇을, 어떤 결로 말할지 고르고 있었던 일을 한두 줄 적으면, 가는 길이 서로 다른 문장 네 장이 옵니다. 장마다 왜 이렇게 말하는지, 상대가 답해 왔을 때 이어 갈 한마디, 조심할 점이 붙습니다. 이미 써 둔 글은 「내 문장 다듬기」로 뜻은 두고 표현만 고쳐 받고, 마음에 든 한 장은 「다시 다듬기」로 더 짧게·덜 딱딱하게, 「대화 연습」으로 건넨 다음을 미리 한 번 걸어 봅니다.</span></li>
-      <li data-reveal data-delay="1"><i></i><b data-i="does.2.h">마음부터 풀기</b><span data-i="does.2.p">건넬 말이 아직 아닌 날에는 있었던 일을 적고 어떤 답이 필요한지만 고릅니다. 그냥 들어주세요 · 정리해 주세요 · 다르게 봐 주세요 · 어떻게 할지 알려주세요 · 내 몫이 어디까지인지. 편지 한 통이 옵니다. 적은 이야기도 답장도 남기지 않습니다.</span></li>
-      <li data-reveal data-delay="2"><i></i><b data-i="does.3.h">놓아주기</b><span data-i="does.3.p">오래 남은 일 하나를 백 자 안에 적고, 답장 없이 손으로 지웁니다. 길게 누르는 동안 글이 흐려지거나, 먹처럼 풀리거나, 모래로 흘러내립니다. 만들 것이 없는 화면이라 적은 글이 기기 밖으로 한 자도 나가지 않고, 파일에도 한 번도 쓰지 않습니다. 남는 것은 달력의 점 하나뿐이고, 하루치도 광고도 없습니다.</span></li>
-      <li data-reveal><i></i><b data-i="does.4.h">오늘 한 칸</b><span data-i="does.4.p">말을 고르지 않는 날엔 이것만 해도 됩니다. 오늘의 마음과 오늘 어떤 온도로 말했는지를 골라 달력에 남깁니다. 하루에 한 칸이라 고쳐 남겨도 횟수가 늘지 않고 그 하나만 바뀝니다.</span></li>
-      <li data-reveal data-delay="1"><i></i><b data-i="does.5.h">말온도 재기</b><span data-i="does.5.p">20초쯤 소리 내어 말하면 목소리의 크기와 쉼, 억양을 기기 안에서 읽어 말의 온도를 잽니다. 끝나면 결 지문 한 장이 서서, 다섯 축 위에 내 목소리의 결을 목표한 결 위로 겹쳐 보여줍니다. 점수가 아니라 다음에 해볼 것 한 가지를 먼저 적습니다.</span></li>
-      <li data-reveal data-delay="2"><i></i><b data-i="does.6.h">돌아보기 · 누구와의 말</b><span data-i="does.6.p">문장을 건넨 다음 날, 실제로 어땠는지 셋 중 하나로 돌아봅니다. 조금 풀렸어요 · 비슷했어요 · 더 어려워졌어요. 「누구와의 말」은 이번 달·이번 주·오늘, 누구와 몇 번 어떤 온도로 말했는지를 한 장에 모읍니다. 아직 말하지 않은 상대는 0 이 아니라 「아직」이라고 적습니다.</span></li>
+      <li data-reveal><i></i><b data-i="does.1.h">Qué decir</b><span data-i="does.1.p">Elige a quién, qué y en qué tono, escribe una o dos líneas sobre lo que pasó, y llegan cuatro frases, cada una por un camino distinto. Cada tarjeta dice por qué habla así, qué decir cuando te respondan y con qué tener cuidado. Algo que ya escribiste puede ajustarse para que el sentido quede y solo cambie la forma; una tarjeta que te guste puede ajustarse otra vez, más corta, más suave, y con Practicar recorres de antemano lo que viene después.</span></li>
+      <li data-reveal data-delay="1"><i></i><b data-i="does.2.h">Desahogarme primero</b><span data-i="does.2.p">Los días en que todavía no necesitas palabras, escribe lo que pasó y elige solo qué tipo de respuesta necesitas. Solo escúchame · Ayúdame a ordenarlo · Muéstrame otro ángulo · Dime qué hacer · Qué me toca a mí. Llega una carta. Ni lo que escribiste ni la respuesta se guardan.</span></li>
+      <li data-reveal data-delay="2"><i></i><b data-i="does.3.h">Soltar</b><span data-i="does.3.p">Escribe una sola cosa que se quedó demasiado tiempo, en cien caracteres o menos, y bórrala con la mano, sin respuesta. Mientras mantienes pulsado, las palabras se difuminan, se deshacen como tinta o se escurren como arena. No se genera nada, así que ni un carácter sale del dispositivo ni se escribe nunca en un archivo. Solo queda un punto en el calendario. Sin límite diario, sin anuncios.</span></li>
+      <li data-reveal><i></i><b data-i="does.4.h">La casilla de hoy</b><span data-i="does.4.p">Los días en que no eliges ninguna frase, con esto basta. Elige cómo te sentiste hoy y con qué temperatura hablaste, y queda en el calendario. Una casilla por día: si la cambias después, cambia esa casilla y nada más.</span></li>
+      <li data-reveal data-delay="1"><i></i><b data-i="does.5.h">Medir</b><span data-i="does.5.p">Habla en voz alta unos veinte segundos y el volumen, las pausas y la entonación de tu voz se leen en tu dispositivo para medir la temperatura de tus palabras. Al terminar aparece una huella: la textura de tu voz sobre la del objetivo, en cinco ejes. En lugar de una nota, señala una cosa que probar la próxima vez.</span></li>
+      <li data-reveal data-delay="2"><i></i><b data-i="does.6.h">Repasar · Con quién hablaste</b><span data-i="does.6.p">Al día siguiente de decir algo, repasas cómo fue con una de tres respuestas: Se aligeró un poco · Igual que antes · Se puso más difícil. La tarjeta «Con quién hablaste» reúne este mes, esta semana y hoy en una sola: con quién, cuántas veces y con qué temperatura. Alguien con quien aún no hablaste aparece como «Aún no», no como 0.</span></li>
     </ul>
   </div>
 </section>
@@ -548,26 +548,26 @@
   <div class="blobs" aria-hidden="true"><i class="blob b" style="top:-10%"></i><i class="blob a" style="top:40%;left:-14%"></i></div>
   <div class="wide">
     <div class="head">
-      <span class="eyebrow" data-reveal data-i="langs.eyebrow">네 가지 언어</span>
-      <h2 id="langs-title" data-reveal data-delay="1" data-i="langs.title">화면도, 지어 오는 문장도<br><span class="grad">같은 언어</span>로</h2>
-      <p data-reveal data-delay="2" data-i="langs.lede">한국어 · English · 日本語 · Español. 기본은 기기 설정을 따르고, 서랍 → 언어와 단위에서 바꿉니다.</p>
+      <span class="eyebrow" data-reveal data-i="langs.eyebrow">Cuatro idiomas</span>
+      <h2 id="langs-title" data-reveal data-delay="1" data-i="langs.title">La pantalla y las frases que escribe,<br>en el <span class="grad">mismo idioma</span></h2>
+      <p data-reveal data-delay="2" data-i="langs.lede">한국어 · English · 日本語 · Español. Por defecto sigue tu dispositivo, y se cambia en el cajón, en Idioma y unidades.</p>
     </div>
     <ul class="fan" id="fan" data-reveal data-delay="2">
-      <li data-lang="ko"><button type="button" aria-label="이 페이지를 한국어로 보기" data-i-aria-label="langs.pick.ko"><div class="phone"><img src="/shots/lang-ko.webp" alt="한국어 홈 화면" data-i-alt="langs.alt.ko" loading="eager" width="720" height="1558"></div><span class="name">한국어</span><span class="say">오늘 내 말의 온도는</span></button></li>
-      <li data-lang="en"><button type="button" aria-label="이 페이지를 영어로 보기" data-i-aria-label="langs.pick.en"><div class="phone"><img src="/shots/lang-en.webp" alt="영어 홈 화면. Malondo, Temperature · touch, Sep · 22d, Plain." data-i-alt="langs.alt.en" loading="eager" width="720" height="1558"></div><span class="name">English</span><span class="say">How warm were my words today</span></button></li>
-      <li data-lang="ja"><button type="button" aria-label="이 페이지를 일본어로 보기" data-i-aria-label="langs.pick.ja"><div class="phone"><img src="/shots/lang-ja.webp" alt="일본어 홈 화면. 言葉の温度 · 触れて, 9月 · 22日, あっさり." data-i-alt="langs.alt.ja" loading="eager" width="720" height="1558"></div><span class="name">日本語</span><span class="say">きょうの言葉の温度は</span></button></li>
-      <li data-lang="es"><button type="button" aria-label="이 페이지를 스페인어로 보기" data-i-aria-label="langs.pick.es"><div class="phone"><img src="/shots/lang-es.webp" alt="스페인어 홈 화면. Temperatura · toca, sep · 22d, Sobrio." data-i-alt="langs.alt.es" loading="eager" width="720" height="1558"></div><span class="name">Español</span><span class="say">Qué temperatura tuvieron mis palabras hoy</span></button></li>
+      <li data-lang="ko"><button type="button" aria-label="Ver esta página en coreano" data-i-aria-label="langs.pick.ko"><div class="phone"><img src="/shots/lang-ko.webp" alt="Pantalla de inicio en coreano" data-i-alt="langs.alt.ko" loading="eager" width="720" height="1558"></div><span class="name">한국어</span><span class="say">오늘 내 말의 온도는</span></button></li>
+      <li data-lang="en"><button type="button" aria-label="Ver esta página en inglés" data-i-aria-label="langs.pick.en"><div class="phone"><img src="/shots/lang-en.webp" alt="Pantalla de inicio en inglés. Malondo, Temperature · touch, Sep · 22d, Plain." data-i-alt="langs.alt.en" loading="eager" width="720" height="1558"></div><span class="name">English</span><span class="say">How warm were my words today</span></button></li>
+      <li data-lang="ja"><button type="button" aria-label="Ver esta página en japonés" data-i-aria-label="langs.pick.ja"><div class="phone"><img src="/shots/lang-ja.webp" alt="Pantalla de inicio en japonés. 言葉の温度 · 触れて, 9月 · 22日, あっさり." data-i-alt="langs.alt.ja" loading="eager" width="720" height="1558"></div><span class="name">日本語</span><span class="say">きょうの言葉の温度は</span></button></li>
+      <li data-lang="es"><button type="button" aria-label="Ver esta página en español" data-i-aria-label="langs.pick.es"><div class="phone"><img src="/shots/lang-es.webp" alt="Pantalla de inicio en español. Temperatura · toca, sep · 22d, Sobrio." data-i-alt="langs.alt.es" loading="eager" width="720" height="1558"></div><span class="name">Español</span><span class="say">Qué temperatura tuvieron mis palabras hoy</span></button></li>
     </ul>
-    <p class="hint" data-reveal data-i="langs.hint">폰 하나를 누르면 이 페이지도 그 언어로 바뀝니다.</p>
+    <p class="hint" data-reveal data-i="langs.hint">Toca un teléfono y esta página también cambia a ese idioma.</p>
     <div class="cols">
       <div data-reveal>
-        <h3 data-i="langs.a.h">화면만 바뀌는 것이 아닙니다</h3>
-        <p data-i="langs.a.p">말온도가 지어 오는 문장 네 장과 편지 한 통, 알림 한 줄과 홈 위젯까지 고른 언어로 옵니다. 존댓말과 반말, です・ます 같은 말끝도 언어마다 제 문법으로 갑니다. 내가 적어 둔 글은 번역하지 않고 적은 그대로 둡니다.</p>
+        <h3 data-i="langs.a.h">No cambia solo la pantalla</h3>
+        <p data-i="langs.a.p">Las cuatro frases, la carta, el recordatorio del día y el widget de inicio llegan en el idioma que elegiste. El registro, formal e informal, です・ます, sigue la gramática de cada idioma. Lo que escribiste tú nunca se traduce; queda tal como lo escribiste.</p>
       </div>
       <div data-reveal data-delay="1">
-        <h3 data-i="langs.b.h">℃ 와 °F 도 고릅니다</h3>
-        <p data-i="langs.b.p">잰 값도 고른 값도 언제나 섭씨로 남고 보이는 단위만 바뀝니다. 그래서 단위를 바꿔도 지난 기록은 그대로입니다. 이 페이지의 온도도 여기서 바꿔 볼 수 있습니다.</p>
-        <div class="units" role="group" aria-label="온도 단위" data-i-aria-label="pref.unit">
+        <h3 data-i="langs.b.h">℃ o °F, como prefieras</h3>
+        <p data-i="langs.b.p">Todo valor que mides o eliges se guarda siempre en Celsius; solo cambia lo que ves. Por eso cambiar de unidad no toca tu historial. También puedes probarlo en esta página.</p>
+        <div class="units" role="group" aria-label="Unidad de temperatura" data-i-aria-label="pref.unit">
           <button type="button" data-unit="c">℃</button>
           <button type="button" data-unit="f">°F</button>
         </div>
@@ -578,80 +578,80 @@
 
 <section class="plain" id="scale" aria-labelledby="scale-title">
   <div class="wrap">
-    <span class="eyebrow" data-reveal data-i="scale.eyebrow">말온도</span>
-    <h2 id="scale-title" data-reveal data-delay="1" data-i="scale.title">체온이 아니라, 말의 결에 붙인 온도</h2>
-    <p data-reveal data-delay="2" data-i="scale.lede">여섯 가지 말투에 차가운 쪽부터 따뜻한 쪽으로 온도를 하나씩 붙였습니다. <span class="tv" data-c="36.5">36.5℃</span>, 담백하게가 원점입니다. 왼쪽으로 가면 말이 식고 오른쪽으로 가면 데워집니다. 문장을 고를 때 정하는 온도와 목소리로 잰 온도가 같은 여섯 칸, 같은 자라 둘을 바로 견줄 수 있습니다.</p>
-    <ol class="ramp" id="ramp" aria-label="여섯 말투와 온도. 35.0℃ 단호하게부터 38.2℃ 따뜻하게까지" data-i-aria-label="scale.aria">
-      <li class="stop s1 first above" style="--p:0%"><div class="lab"><svg class="ls" width="28" height="6" viewBox="0 0 28 6" aria-hidden="true"><line x1="1" y1="3" x2="27" y2="3" stroke-width="1.5" stroke-dasharray="0.1 3.4"/></svg><b class="tv" data-c="35.0">35.0<small>℃</small></b><span data-i="tone.1">단호하게</span><em data-i="tone.d.1">흔들리지 않고 또렷한 말</em></div></li>
-      <li class="stop s2 below" style="--p:21.875%"><div class="lab"><svg class="ls" width="28" height="6" viewBox="0 0 28 6" aria-hidden="true"><line x1="1" y1="3" x2="27" y2="3" stroke-width="1.5" stroke-dasharray="4 3"/></svg><b class="tv" data-c="35.7">35.7<small>℃</small></b><span data-i="tone.2">차분하게</span><em data-i="tone.d.2">낮고 고르게 가라앉은 결</em></div></li>
-      <li class="stop s3 above origin" style="--p:46.875%"><div class="lab"><svg class="ls" width="28" height="6" viewBox="0 0 28 6" aria-hidden="true"><line x1="1" y1="3" x2="27" y2="3" stroke-width="2" stroke-dasharray="7 4"/></svg><b class="tv" data-c="36.5">36.5<small>℃</small></b><span data-i="tone.3">담백하게</span><i data-i="scale.origin">원점</i><em data-i="tone.d.3">군더더기 없이 담담한 말</em></div></li>
-      <li class="stop s4 below" style="--p:65.625%"><div class="lab"><svg class="ls" width="28" height="6" viewBox="0 0 28 6" aria-hidden="true"><line x1="1" y1="3" x2="27" y2="3" stroke-width="2.5" stroke-dasharray="12 5"/></svg><b class="tv" data-c="37.1">37.1<small>℃</small></b><span data-i="tone.4">유쾌하게</span><em data-i="tone.d.4">가볍고 빠른 리듬</em></div></li>
-      <li class="stop s5 above" style="--p:84.375%"><div class="lab"><svg class="ls" width="28" height="6" viewBox="0 0 28 6" aria-hidden="true"><line x1="1" y1="3" x2="27" y2="3" stroke-width="3"/></svg><b class="tv" data-c="37.7">37.7<small>℃</small></b><span data-i="tone.5">공감하며</span><em data-i="tone.d.5">상대의 결을 먼저 살피는 말</em></div></li>
-      <li class="stop s6 last below" style="--p:100%"><div class="lab"><svg class="ls" width="28" height="6" viewBox="0 0 28 6" aria-hidden="true"><line x1="1" y1="3" x2="27" y2="3" stroke-width="3.5"/></svg><b class="tv" data-c="38.2">38.2<small>℃</small></b><span data-i="tone.6">따뜻하게</span><em data-i="tone.d.6">마음이 묻어나는 온기</em></div></li>
+    <span class="eyebrow" data-reveal data-i="scale.eyebrow">Temperatura de las palabras</span>
+    <h2 id="scale-title" data-reveal data-delay="1" data-i="scale.title">No es fiebre: una temperatura puesta a la textura del habla</h2>
+    <p data-reveal data-delay="2" data-i="scale.lede">Seis tonos, cada uno con una temperatura, del frío al cálido. Sobrio, a <span class="tv" data-c="36.5">36.5℃</span>, es el origen. Hacia la izquierda las palabras se enfrían; hacia la derecha se templan. La temperatura que eliges al escoger una frase y la que se mide desde tu voz comparten las mismas seis marcas y la misma escala, así que se comparan directamente.</p>
+    <ol class="ramp" id="ramp" aria-label="Seis tonos y sus temperaturas, de Firme a 35.0℃ hasta Cálido a 38.2℃" data-i-aria-label="scale.aria">
+      <li class="stop s1 first above" style="--p:0%"><div class="lab"><svg class="ls" width="28" height="6" viewBox="0 0 28 6" aria-hidden="true"><line x1="1" y1="3" x2="27" y2="3" stroke-width="1.5" stroke-dasharray="0.1 3.4"/></svg><b class="tv" data-c="35.0">35.0<small>℃</small></b><span data-i="tone.1">Firme</span><em data-i="tone.d.1">Claro y sin titubeos</em></div></li>
+      <li class="stop s2 below" style="--p:21.875%"><div class="lab"><svg class="ls" width="28" height="6" viewBox="0 0 28 6" aria-hidden="true"><line x1="1" y1="3" x2="27" y2="3" stroke-width="1.5" stroke-dasharray="4 3"/></svg><b class="tv" data-c="35.7">35.7<small>℃</small></b><span data-i="tone.2">Calma</span><em data-i="tone.d.2">Bajo y asentado con regularidad</em></div></li>
+      <li class="stop s3 above origin" style="--p:46.875%"><div class="lab"><svg class="ls" width="28" height="6" viewBox="0 0 28 6" aria-hidden="true"><line x1="1" y1="3" x2="27" y2="3" stroke-width="2" stroke-dasharray="7 4"/></svg><b class="tv" data-c="36.5">36.5<small>℃</small></b><span data-i="tone.3">Sobrio</span><i data-i="scale.origin">origen</i><em data-i="tone.d.3">Sencillo, sin nada de más</em></div></li>
+      <li class="stop s4 below" style="--p:65.625%"><div class="lab"><svg class="ls" width="28" height="6" viewBox="0 0 28 6" aria-hidden="true"><line x1="1" y1="3" x2="27" y2="3" stroke-width="2.5" stroke-dasharray="12 5"/></svg><b class="tv" data-c="37.1">37.1<small>℃</small></b><span data-i="tone.4">Alegre</span><em data-i="tone.d.4">Un ritmo ligero y rápido</em></div></li>
+      <li class="stop s5 above" style="--p:84.375%"><div class="lab"><svg class="ls" width="28" height="6" viewBox="0 0 28 6" aria-hidden="true"><line x1="1" y1="3" x2="27" y2="3" stroke-width="3"/></svg><b class="tv" data-c="37.7">37.7<small>℃</small></b><span data-i="tone.5">Atento</span><em data-i="tone.d.5">Que mira primero a la otra persona</em></div></li>
+      <li class="stop s6 last below" style="--p:100%"><div class="lab"><svg class="ls" width="28" height="6" viewBox="0 0 28 6" aria-hidden="true"><line x1="1" y1="3" x2="27" y2="3" stroke-width="3.5"/></svg><b class="tv" data-c="38.2">38.2<small>℃</small></b><span data-i="tone.6">Cálido</span><em data-i="tone.d.6">Calidez que se oye</em></div></li>
     </ol>
-    <p class="ramp-note" data-i="scale.note">앱 안에서 온도는 색 하나로 전하지 않습니다. 색과 숫자와 이름과 선의 모양 넷이 함께 말합니다.</p>
+    <p class="ramp-note" data-i="scale.note">Dentro de la app, la temperatura nunca se transmite solo con un color. Color, número, nombre y forma de la línea hablan juntos.</p>
   </div>
 </section>
 
 <section class="plain" id="how" aria-labelledby="how-title">
   <div class="wrap">
-    <span class="eyebrow" data-reveal data-i="how.eyebrow">어떻게 재나요</span>
-    <h2 id="how-title" data-reveal data-delay="1" data-i="how.title">소리에서 온도까지, <span class="grad">여섯 걸음</span></h2>
-    <p data-reveal data-delay="2" data-i="how.lede">재는 동안 화면의 바늘은 최근 4.5초를 보고, 방의 바닥 소음 위로 올라온 소리에서 움직입니다. 마치면 회차 전체를 한 번 다시 재서 그 값이 남습니다. 남는 것은 회차마다 온도 하나와 시각뿐입니다.</p>
+    <span class="eyebrow" data-reveal data-i="how.eyebrow">Cómo mide</span>
+    <h2 id="how-title" data-reveal data-delay="1" data-i="how.title">Del sonido a la temperatura, en <span class="grad">seis pasos</span></h2>
+    <p data-reveal data-delay="2" data-i="how.lede">Mientras grabas, la aguja mira los últimos 4,5 segundos y se mueve con cualquier sonido que sobresalga del ruido de fondo de la sala. Al terminar, la toma entera se mide otra vez y ese valor se conserva. Por toma solo queda una temperatura y la hora.</p>
 
     <!-- 설명 영상 — 언어 넷 × 단위 둘. 숫자는 앱의 분석 코드가 합성 목소리 셋을 실제로 잰 값이다. -->
     <figure class="film" data-reveal>
       <div class="frame">
-        <video id="film" muted loop playsinline preload="metadata" poster="/video/how-ko-c.webp" aria-label="말온도를 재는 여섯 걸음을 보여 주는 설명 영상. 소리는 없습니다." data-i-aria-label="film.aria">
-          <source id="filmSrc" src="/video/how-ko-c.mp4" type="video/mp4">
+        <video id="film" muted loop playsinline preload="metadata" poster="/video/how-es-c.webp" aria-label="Video explicativo de los seis pasos para medir la temperatura de las palabras. No tiene sonido." data-i-aria-label="film.aria">
+          <source id="filmSrc" src="/video/how-es-c.mp4" type="video/mp4">
         </video>
-        <button type="button" class="toggle" id="filmToggle" data-i="film.pause">멈춤</button>
+        <button type="button" class="toggle" id="filmToggle" data-i="film.pause">Pausa</button>
       </div>
-      <figcaption><span class="cap" id="filmCap" data-i="film.cap.1">① 70ms 한 칸마다 소리의 크기와 음높이를 읽습니다.</span><span class="src" data-i="film.src">영상 속 목소리 셋은 합성음이고, 숫자는 앱의 분석 코드가 그 소리를 실제로 잰 값입니다.</span></figcaption>
+      <figcaption><span class="cap" id="filmCap" data-i="film.cap.1">① Cada 70 ms lee el volumen y la altura de la voz.</span><span class="src" data-i="film.src">Las tres voces son sintéticas; los números son lo que el propio código de análisis de la app midió en ellas.</span></figcaption>
     </figure>
     <ol class="steps">
       <li data-reveal>
-        <h3 data-i="step.1.h">듣습니다</h3>
-        <p data-i="step.1.p">70ms 마다 한 칸을 읽습니다. 칸마다 음량(dBFS), 자기상관으로 찾은 음높이(Hz), 목소리 대역(300~3400Hz)의 몫, 그리고 칸 안의 10ms 음량 일곱 개가 함께 옵니다.</p>
-        <div class="f"><span data-i="step.1.f">70ms 마다 · 음량 dBFS · 음높이 Hz · 10ms 음량 × 7</span></div>
+        <h3 data-i="step.1.h">Escucha</h3>
+        <p data-i="step.1.p">Lee un cuadro cada 70 ms. Cada cuadro trae el volumen (dBFS), la altura hallada por autocorrelación (Hz), la proporción de la banda de voz (300–3400 Hz) y siete volúmenes de 10 ms dentro del cuadro.</p>
+        <div class="f"><span data-i="step.1.f">cada 70 ms · volumen dBFS · altura Hz · volumen de 10 ms × 7</span></div>
       </li>
       <li data-reveal>
-        <h3 data-i="step.2.h">방을 빼고, 말소리를 가립니다</h3>
-        <p data-i="step.2.p">방의 바닥 소음을 녹음 내내 따라가며 그 위로 올라온 소리를 잽니다. 목소리 대역과 초당 3~5번 출렁이는 음절의 리듬이 함께 있는 자리는 말소리로 가려, 음높이를 그 자리에서만 읽습니다. 남은 칸에서는 방이 얹은 몫을 뺍니다.</p>
-        <div class="f"><span>x′ = 10·log<sub>10</sub>( 10<sup>x/10</sup> − 10<sup>floor/10</sup> ) <span class="k" data-i="step.2.f">— 12dB 넘게는 깎지 않음</span></span></div>
+        <h3 data-i="step.2.h">Quita la sala y distingue el habla</h3>
+        <p data-i="step.2.p">Sigue el ruido de fondo de la sala durante toda la grabación y mide lo que sobresale de él. Donde aparecen juntos la banda de voz y el ritmo de 3 a 5 sílabas por segundo, marca habla y solo ahí lee la altura. A los cuadros que quedan se les resta la parte que puso la sala.</p>
+        <div class="f"><span>x′ = 10·log<sub>10</sub>( 10<sup>x/10</sup> − 10<sup>floor/10</sup> ) <span class="k" data-i="step.2.f">— nunca recorta más de 12 dB</span></span></div>
       </li>
       <li data-reveal>
-        <h3 data-i="step.3.h">다섯 가지를 사람의 자로 잽니다</h3>
-        <p data-i="step.3.p">점수부터 매기지 않고, 사람이 쓰는 단위로 먼저 잽니다. 억양 폭은 자기 가운데 음높이에서 흩어진 반음이라 목소리가 높든 낮든 같은 자입니다. 빠르기는 10ms 음량에서 골로 갈린 봉우리(음절의 모음)를 소리가 난 시간으로 나눈 값, 쉰 몫은 말이 시작해서 끝나기까지 소리가 없던 몫, 크기는 방을 뺀 평균, 고른 음량은 그 흩어짐입니다.</p>
+        <h3 data-i="step.3.h">Mide cinco cosas en unidades humanas</h3>
+        <p data-i="step.3.p">Antes de puntuar, mide en las unidades que usa la gente. El rango tonal es la dispersión en semitonos alrededor de tu propia altura central, así que voces agudas y graves comparten regla. El ritmo es el número de picos separados por valles en el volumen de 10 ms (las vocales de las sílabas) dividido por el tiempo con sonido; las pausas son la parte en silencio desde la primera palabra hasta la última; el volumen es la media sin la sala, y la regularidad es su dispersión.</p>
         <div class="f">
-          <span data-i="step.3.f1">억양 폭 = σ( 12·log<sub>2</sub>( f / f̃ ) ) <span class="k">— 반음, f̃ 는 자기 가운데</span></span>
-          <span data-i="step.3.f2">빠르기 = 봉우리 수 ÷ 소리 난 시간 <span class="k">— 음절/초</span></span>
-          <span data-i="step.3.f3">쉰 몫 = 조용한 칸 ÷ 첫 말에서 끝 말까지</span>
-          <span data-i="step.3.f4">크기 = μ(dBFS) · 흩어짐 = σ(dB) <span class="k">— 방을 뺀 값</span></span>
+          <span data-i="step.3.f1">rango tonal = σ( 12·log<sub>2</sub>( f / f̃ ) ) <span class="k">— semitonos, f̃ es tu centro</span></span>
+          <span data-i="step.3.f2">ritmo = picos ÷ tiempo con sonido <span class="k">— sílabas/s</span></span>
+          <span data-i="step.3.f3">pausas = cuadros en silencio ÷ de la primera palabra a la última</span>
+          <span data-i="step.3.f4">volumen = μ(dBFS) · dispersión = σ(dB) <span class="k">— sin la sala</span></span>
         </div>
       </li>
       <li data-reveal>
-        <h3 data-i="step.4.h">보통 사람의 낭독에 앉힙니다</h3>
-        <p data-i="step.4.p">다섯 값을 모두 같은 규칙으로 0~100 에 앉힙니다. 50 은 한국어 낭독 226개(FLEURS)의 중앙값이고, 사분위 폭 하나가 25점입니다. 그래서 보통 낭독의 가운데 절반이 37.5~62.5 에 들고, 여섯 말투의 기준도 사람이 실제로 내는 범위 안에 섭니다. 억양의 「보통」만은 말투 탭의 목소리 기준(기본 · 남성 · 여성)을 따릅니다.</p>
-        <div class="f"><span data-i="step.4.f">점수 = 50 + 25 × ( 값 − 중앙값 ) ÷ 사분위 폭</span></div>
+        <h3 data-i="step.4.h">Los sitúa sobre la lectura habitual</h3>
+        <p data-i="step.4.p">Los cinco valores van a 0–100 con una sola regla. 50 es la mediana de 226 lecturas en coreano (FLEURS) y un rango intercuartílico vale 25 puntos. Así, la mitad central de la lectura habitual cae entre 37,5 y 62,5, y las referencias de los seis tonos quedan dentro de lo que la gente produce de verdad. Solo la entonación «habitual» sigue la referencia de voz de la pestaña Tono (Estándar · Hombre · Mujer).</p>
+        <div class="f"><span data-i="step.4.f">puntuación = 50 + 25 × ( valor − mediana ) ÷ RIC</span></div>
       </li>
       <li data-reveal>
-        <h3 data-i="step.5.h">온도로 모읍니다</h3>
-        <p data-i="step.5.p">말온도는 다섯 점수를 무게대로 더한 값입니다. 억양이 거의 정하고, 크기는 조금 식히고(크고 또렷할수록 단호하게 쪽), 쉼은 조금 데웁니다. 빠르기와 고른 음량은 온도를 움직이지 않고, 여섯 말투 중 어느 쪽에 가까운지 — 결의 모양 — 만 가릅니다. 더한 값이라 칸마다 방향이 하나이고, 결과는 언제나 <span class="tv" data-c="34.7">34.7℃</span>~<span class="tv" data-c="38.5">38.5℃</span> 안에 섭니다.</p>
+        <h3 data-i="step.5.h">Los suma en una temperatura</h3>
+        <p data-i="step.5.p">La temperatura de las palabras es la suma ponderada de las cinco puntuaciones. La entonación decide casi todo; el volumen la enfría un poco (cuanto más fuerte y nítido, más cerca de Firme); las pausas la calientan un poco. El ritmo y la regularidad no mueven la temperatura: solo dicen a cuál de los seis tonos te pareces, la forma de tu textura. Como es una suma, cada medida empuja en un solo sentido y el resultado siempre queda entre <span class="tv" data-c="34.7">34.7℃</span> y <span class="tv" data-c="38.5">38.5℃</span>.</p>
         <div class="f">
-          <span data-i="step.5.f">말온도(℃) = 36.5 + 1.0·(억양 − 50)/25 − 0.25·(힘 − 50)/25 + 0.1·(쉼 − 50)/25</span>
-          <span data-i="step.5.f2"><span class="k">빠르기 × 0 · 고른 음량 × 0 — 결의 모양(일치도)에만 쓰입니다</span></span>
+          <span data-i="step.5.f">temperatura (℃) = 36.5 + 1.0·(entonación − 50)/25 − 0.25·(fuerza − 50)/25 + 0.1·(pausas − 50)/25</span>
+          <span data-i="step.5.f2"><span class="k">ritmo × 0 · volumen parejo × 0 — solo para la forma (coincidencia)</span></span>
         </div>
       </li>
       <li data-reveal>
-        <h3 data-i="step.6.h">목표와 견주고, 한 가지를 권합니다</h3>
-        <p data-i="step.6.p">목표에서 <span class="tv" data-d="0.45">0.45℃</span> 안이면 목표대로 말한 것으로 봅니다. 같은 사람이 같은 결로 읽어도 문장마다 억양이 달라, 15초 회차의 흔들림이 표준편차 <span class="tv" data-d="0.44">0.44℃</span> 남짓이기 때문입니다 — 한 번 잰 값으로 이웃한 말투까지 가르지는 않습니다. 벗어나면 온도를 움직이는 칸 가운데 「무게 × 목표까지 남은 점수」가 가장 큰 칸 하나를 권합니다. 무게의 방향이 칸마다 하나라서, 권한 대로 말하면 온도는 반드시 목표 쪽으로 갑니다.</p>
-        <div class="f"><span data-i="step.6.f">맞춤 = | 말온도 − 목표 | ≤ <span class="tv" data-d="0.45">0.45℃</span> · 권하는 칸 = 가장 큰 ( 무게 × 남은 점수 )</span></div>
+        <h3 data-i="step.6.h">Compara con tu objetivo y sugiere una cosa</h3>
+        <p data-i="step.6.p">A menos de <span class="tv" data-d="0.45">0.45℃</span> del objetivo cuenta como en el objetivo. Incluso la misma persona leyendo igual varía de una frase a otra, y una toma de 15 segundos oscila alrededor de <span class="tv" data-d="0.44">0.44℃</span> (una desviación típica): por eso una sola lectura no separa tonos vecinos. Fuera del objetivo, sugiere la medida con el mayor peso × puntos que faltan hasta el objetivo. Cada peso apunta en un solo sentido, así que seguir la sugerencia siempre acerca la temperatura al objetivo.</p>
+        <div class="f"><span data-i="step.6.f">en el objetivo = | temperatura − objetivo | ≤ <span class="tv" data-d="0.45">0.45℃</span> · sugerencia = mayor ( peso × puntos que faltan )</span></div>
       </li>
     </ol>
 
     <figure data-reveal>
-      <svg class="fp" viewBox="-62 15 424 262" role="img" aria-label="다섯 축의 결 지문. 점선은 담백하게의 기준 결, 채움은 보기용 목소리의 결." data-i-aria-label="fp.aria">
+      <svg class="fp" viewBox="-62 15 424 262" role="img" aria-label="Huella de cinco ejes. La línea de puntos es la referencia de Sobrio; la forma rellena, una voz de muestra." data-i-aria-label="fp.aria">
         <polygon class="fp-grid" points="150,40 254.6,116 214.7,239 85.3,239 45.4,116"/>
         <polygon class="fp-grid" points="150,95 202.3,133 182.3,194.5 117.7,194.5 97.7,133"/>
         <g class="fp-axis">
@@ -664,110 +664,110 @@
         <polygon class="fp-target" points="150.0,95.0 202.3,133.0 182.3,194.5 117.7,194.5 97.7,133.0"/>
         <polygon class="fp-me" points="150.0,100.5 220.1,127.2 184.3,197.2 117.7,194.5 98.7,133.3"/>
         <g class="fp-label">
-          <text x="150" y="30" text-anchor="middle" data-i="axis.1">차분함</text>
-          <text x="262" y="114" text-anchor="start" data-i="axis.2">고른 음량</text>
-          <text x="222" y="258" text-anchor="start" data-i="axis.3">말과 쉼</text>
-          <text x="78" y="258" text-anchor="end" data-i="axis.4">목소리의 힘</text>
-          <text x="38" y="114" text-anchor="end" data-i="axis.5">억양</text>
+          <text x="150" y="30" text-anchor="middle" data-i="axis.1">Serenidad</text>
+          <text x="262" y="114" text-anchor="start" data-i="axis.2">Volumen parejo</text>
+          <text x="222" y="258" text-anchor="start" data-i="axis.3">Habla y pausas</text>
+          <text x="78" y="258" text-anchor="end" data-i="axis.4">Fuerza de la voz</text>
+          <text x="38" y="114" text-anchor="end" data-i="axis.5">Entonación</text>
         </g>
       </svg>
       <div class="fp-side">
-        <p class="result"><b class="tv" data-c="36.47">36.5<small>℃</small></b><span data-i="fp.result">담백하게에 가장 닮은 결</span></p>
+        <p class="result"><b class="tv" data-c="36.47">36.5<small>℃</small></b><span data-i="fp.result">la textura más parecida a Sobrio</span></p>
         <table class="vals">
-          <thead><tr><th scope="col" data-i="fp.axis">축</th><th scope="col"><span class="key tg"></span><span data-i="tone.3">담백하게</span></th><th scope="col"><span class="key"></span><span data-i="fp.sample">보통 목소리</span></th></tr></thead>
+          <thead><tr><th scope="col" data-i="fp.axis">Eje</th><th scope="col"><span class="key tg"></span><span data-i="tone.3">Sobrio</span></th><th scope="col"><span class="key"></span><span data-i="fp.sample">Voz habitual</span></th></tr></thead>
           <tbody>
-            <tr><td data-i="axis.1">차분함</td><td>50</td><td class="me">45</td></tr>
-            <tr><td data-i="axis.2">고른 음량</td><td>50</td><td class="me">67</td></tr>
-            <tr><td data-i="axis.3">말과 쉼</td><td>50</td><td class="me">53</td></tr>
-            <tr><td data-i="axis.4">목소리의 힘</td><td>50</td><td class="me">50</td></tr>
-            <tr><td data-i="axis.5">억양</td><td>50</td><td class="me">49</td></tr>
+            <tr><td data-i="axis.1">Serenidad</td><td>50</td><td class="me">45</td></tr>
+            <tr><td data-i="axis.2">Volumen parejo</td><td>50</td><td class="me">67</td></tr>
+            <tr><td data-i="axis.3">Habla y pausas</td><td>50</td><td class="me">53</td></tr>
+            <tr><td data-i="axis.4">Fuerza de la voz</td><td>50</td><td class="me">50</td></tr>
+            <tr><td data-i="axis.5">Entonación</td><td>50</td><td class="me">49</td></tr>
           </tbody>
         </table>
       </div>
-      <figcaption data-i="fp.caption">결 지문. 점선은 담백하게(다섯 칸 모두 50 — 보통 사람의 낭독), 채움은 영상 속 보통 목소리입니다. 온도는 억양 49 가 거의 정해 <span class="tv" data-c="36.47">36.5℃</span> 남짓이고, 다섯 칸이 어떻게 벌어졌는지가 결의 모양입니다. 결과 화면에서 같은 그림으로 목표의 결과 내 결을 겹쳐 봅니다.</figcaption>
+      <figcaption data-i="fp.caption">La huella. La línea discontinua es Sobrio (las cinco en 50: la lectura habitual); la forma rellena es la voz habitual del video. La entonación en 49 deja la temperatura cerca de <span class="tv" data-c="36.47">36.5℃</span>, y cómo se separan las cinco es la forma de la textura. La pantalla de resultado usa el mismo dibujo para superponer tu textura a la del objetivo.</figcaption>
     </figure>
 
     <details>
-      <summary data-i="table.summary">여섯 말투의 기준 결 보기</summary>
+      <summary data-i="table.summary">Ver las seis texturas de referencia</summary>
       <div class="scroll">
         <table class="tones">
           <thead>
-            <tr><th scope="col" data-i="table.tone">말투</th><th scope="col" class="unit-h">℃</th><th scope="col" data-i="axis.1">차분함</th><th scope="col" data-i="axis.2">고른 음량</th><th scope="col" data-i="axis.3">말과 쉼</th><th scope="col" data-i="axis.4">목소리의 힘</th><th scope="col" data-i="axis.5">억양</th></tr>
+            <tr><th scope="col" data-i="table.tone">Tono</th><th scope="col" class="unit-h">℃</th><th scope="col" data-i="axis.1">Serenidad</th><th scope="col" data-i="axis.2">Volumen parejo</th><th scope="col" data-i="axis.3">Habla y pausas</th><th scope="col" data-i="axis.4">Fuerza de la voz</th><th scope="col" data-i="axis.5">Entonación</th></tr>
           </thead>
           <tbody>
-            <tr class="t1"><td data-i="tone.1">단호하게</td><td class="tv bare" data-c="35.0">35.0</td><td>50</td><td>75</td><td>38</td><td>75</td><td>20</td></tr>
-            <tr class="t2"><td data-i="tone.2">차분하게</td><td class="tv bare" data-c="35.7">35.7</td><td>75</td><td>75</td><td>62</td><td>25</td><td>23</td></tr>
-            <tr class="t3"><td data-i="tone.3">담백하게</td><td class="tv bare" data-c="36.5">36.5</td><td>50</td><td>50</td><td>50</td><td>50</td><td>50</td></tr>
-            <tr class="t4"><td data-i="tone.4">유쾌하게</td><td class="tv bare" data-c="37.1">37.1</td><td>25</td><td>25</td><td>31</td><td>69</td><td>72</td></tr>
-            <tr class="t5"><td data-i="tone.5">공감하며</td><td class="tv bare" data-c="37.7">37.7</td><td>69</td><td>62</td><td>69</td><td>38</td><td>75</td></tr>
-            <tr class="t6"><td data-i="tone.6">따뜻하게</td><td class="tv bare" data-c="38.2">38.2</td><td>62</td><td>50</td><td>56</td><td>38</td><td>89</td></tr>
+            <tr class="t1"><td data-i="tone.1">Firme</td><td class="tv bare" data-c="35.0">35.0</td><td>50</td><td>75</td><td>38</td><td>75</td><td>20</td></tr>
+            <tr class="t2"><td data-i="tone.2">Calma</td><td class="tv bare" data-c="35.7">35.7</td><td>75</td><td>75</td><td>62</td><td>25</td><td>23</td></tr>
+            <tr class="t3"><td data-i="tone.3">Sobrio</td><td class="tv bare" data-c="36.5">36.5</td><td>50</td><td>50</td><td>50</td><td>50</td><td>50</td></tr>
+            <tr class="t4"><td data-i="tone.4">Alegre</td><td class="tv bare" data-c="37.1">37.1</td><td>25</td><td>25</td><td>31</td><td>69</td><td>72</td></tr>
+            <tr class="t5"><td data-i="tone.5">Atento</td><td class="tv bare" data-c="37.7">37.7</td><td>69</td><td>62</td><td>69</td><td>38</td><td>75</td></tr>
+            <tr class="t6"><td data-i="tone.6">Cálido</td><td class="tv bare" data-c="38.2">38.2</td><td>62</td><td>50</td><td>56</td><td>38</td><td>89</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="table-note" data-i="table.note">앱이 들고 있는 상수 그대로입니다. 담백하게는 보통 사람의 낭독(다섯 칸 모두 50)이고, 나머지 다섯은 이름이 말하는 쪽으로 사분위 폭 ½~1½ 만큼 옮겨 앉힌 뒤 억양 칸을 온도식에서 풀었습니다. 옮겨 앉힌 거리는 아직 실측이 아니라 판단입니다.</p>
+      <p class="table-note" data-i="table.note">Exactamente las constantes que lleva la app. Sobrio es la lectura habitual (las cinco en 50); los otros cinco se movieron ½–1½ rangos intercuartílicos en el sentido que dice su nombre y luego se despejó su entonación de la fórmula de temperatura. Cuánto se movieron todavía es un criterio, no una medición.</p>
     </details>
 
     <details>
-      <summary data-i="norms.summary">눈금을 앉힌 값 보기</summary>
+      <summary data-i="norms.summary">Ver los valores de la escala</summary>
       <div class="scroll">
         <table class="tones norms">
           <thead>
-            <tr><th scope="col" data-i="norms.axis">칸</th><th scope="col" data-i="norms.raw">재는 것</th><th scope="col" data-i="norms.median">50점 (중앙값)</th><th scope="col" data-i="norms.iqr">25점 (사분위 폭)</th></tr>
+            <tr><th scope="col" data-i="norms.axis">Medida</th><th scope="col" data-i="norms.raw">Qué se mide</th><th scope="col" data-i="norms.median">50 puntos (mediana)</th><th scope="col" data-i="norms.iqr">25 puntos (RIC)</th></tr>
           </thead>
           <tbody>
-            <tr><td data-i="axis.1">차분함</td><td data-i="norms.1.raw">빠르기 — 센 음절/초, 느릴수록 높음</td><td>5.24</td><td>0.56</td></tr>
-            <tr><td data-i="axis.2">고른 음량</td><td data-i="norms.2.raw">크기의 흩어짐 — 작을수록 높음</td><td>7.46 dB</td><td>2.19 dB</td></tr>
-            <tr><td data-i="axis.3">말과 쉼</td><td data-i="norms.3.raw">쉰 몫 — 많을수록 높음</td><td>0.099</td><td>0.107</td></tr>
-            <tr><td data-i="axis.4">목소리의 힘</td><td data-i="norms.4.raw">방을 뺀 평균 크기</td><td>−42 dBFS</td><td>6 dB</td></tr>
-            <tr><td data-i="axis.5">억양</td><td data-i="norms.5.raw">억양 폭 (반음)</td><td data-i="norms.5.median">남성 2.56<br>기본 2.84<br>여성 3.12</td><td data-i="norms.5.iqr">남성 0.63<br>기본 0.69<br>여성 0.56</td></tr>
+            <tr><td data-i="axis.1">Serenidad</td><td data-i="norms.1.raw">Ritmo — sílabas contadas/s, más lento es más alto</td><td>5.24</td><td>0.56</td></tr>
+            <tr><td data-i="axis.2">Volumen parejo</td><td data-i="norms.2.raw">Dispersión del volumen — menor es más alto</td><td>7.46 dB</td><td>2.19 dB</td></tr>
+            <tr><td data-i="axis.3">Habla y pausas</td><td data-i="norms.3.raw">Proporción de pausas — más es más alto</td><td>0.099</td><td>0.107</td></tr>
+            <tr><td data-i="axis.4">Fuerza de la voz</td><td data-i="norms.4.raw">Volumen medio sin la sala</td><td>−42 dBFS</td><td>6 dB</td></tr>
+            <tr><td data-i="axis.5">Entonación</td><td data-i="norms.5.raw">Rango tonal (semitonos)</td><td data-i="norms.5.median">Hombre 2.56<br>Estándar 2.84<br>Mujer 3.12</td><td data-i="norms.5.iqr">Hombre 0.63<br>Estándar 0.69<br>Mujer 0.56</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="table-note" data-i="norms.note">FLEURS 한국어 낭독 226개(CC-BY-4.0)를 발화마다 평균 −42dBFS 로 맞춘 뒤, 앱과 같은 코드로 잰 값입니다. 크기의 50점(−42dBFS)은 말뭉치가 정할 수 없어 실기기에서 폰을 들고 말한 값의 한가운데를 앉혔고, 25점을 6dB — 폰과 입 사이가 두 배 멀어지는 만큼 — 로 두었습니다. 빠르기는 받침 없는 음절이 이어지면 둘이 하나로 세어져 실제 음절의 0.8배 남짓으로 나오지만, 눈금도 같은 방식으로 쟀으니 그 몫은 지워집니다.</p>
+      <p class="table-note" data-i="norms.note">Medido con el propio código de la app sobre 226 lecturas en coreano de FLEURS (CC-BY-4.0), cada una llevada antes a una media de −42 dBFS. El corpus no puede decir cuánto volumen valen 50 puntos, así que se fijó −42 dBFS, el centro de lo que graba un teléfono en la mano en una sala tranquila, con 25 puntos = 6 dB, lo que baja cuando el teléfono se aleja al doble. El ritmo cuenta cerca de 0,8 de las sílabas reales, porque las sílabas sin consonante final que se encadenan se funden en una; la escala se midió igual, así que esa parte se compensa.</p>
     </details>
   </div>
 </section>
 
 <section class="plain why" aria-labelledby="why-title">
   <div class="wrap">
-    <span class="eyebrow" data-reveal data-i="why.eyebrow">왜 온도인가요</span>
-    <h2 id="why-title" data-reveal data-delay="1" data-i="why.title">왜 목소리에서 온도가 나오나요</h2>
+    <span class="eyebrow" data-reveal data-i="why.eyebrow">Por qué temperatura</span>
+    <h2 id="why-title" data-reveal data-delay="1" data-i="why.title">¿Por qué de una voz sale una temperatura?</h2>
     <dl>
-      <div data-reveal><dt data-i="why.1.h">체온을 재는 것이 아닙니다</dt><dd data-i="why.1.p">말온도는 말의 결에 붙인 비유입니다. 물리적으로 재는 것은 억양의 폭, 말의 빠르기, 쉼의 몫, 소리의 크기와 그 흩어짐 다섯이고, 모두 마이크가 기기 안에서 확실히 잴 수 있는 양입니다.</dd></div>
-      <div data-reveal data-delay="1"><dt data-i="why.2.h">온도가 되는 자리는 선언입니다</dt><dd data-i="why.2.p">여섯 말투에 온도를 하나씩 붙이고, 내 목소리를 같은 식에 넣어 한 줄 위의 숫자로 옮깁니다. 여섯 말투의 기준을 그 식에 넣으면 제 온도가 나오게 앉혔기 때문에, 문장을 고를 때의 온도와 목소리로 잰 온도를 같은 자 위에서 견줄 수 있습니다.</dd></div>
-      <div data-reveal data-delay="2"><dt data-i="why.3.h">방과 목소리 높이를 타지 않습니다</dt><dd data-i="why.3.p">바닥 소음을 빼서 카페와 침실이 같은 자 위에 섭니다. 억양은 절대 피치가 아니라 자기 가운데에서 벌어진 반음으로 잽니다. 그래도 같은 낭독에서 여성 화자가 억양을 더 넓게 써서(중앙 2.56 대 3.12반음), 말투 탭에서 목소리 기준을 고르면 억양의 「보통」을 그쪽에 맞춥니다. 처음 값은 남녀의 한가운데입니다. 폰을 두 배 가까이 대도 온도는 <span class="tv" data-d="0.25">0.25℃</span> 남짓만 움직입니다.</dd></div>
-      <div data-reveal data-delay="3"><dt data-i="why.4.h">눈금은 사람의 목소리로 맞췄습니다</dt><dd data-i="why.4.p">다섯 칸의 50점은 한국어 낭독 226개의 중앙값이고, 담백하게는 그 자리 그대로입니다. 빠르기를 세는 방법도 대본의 실제 음절 수를 정답으로 골랐습니다. 다른 다섯 말투를 얼마나 옮겨 앉힐지는 아직 판단이라, 말투별로 읽은 녹음이 모이는 대로 고쳐 갑니다.</dd></div>
+      <div data-reveal><dt data-i="why.1.h">No es temperatura corporal</dt><dd data-i="why.1.p">La temperatura de las palabras es una metáfora puesta a la textura del habla. Lo que se mide físicamente son cinco cosas —el rango tonal, el ritmo, la proporción de pausas, el volumen y su variación—, todas cantidades que un micrófono puede medir con fiabilidad, en el dispositivo.</dd></div>
+      <div data-reveal data-delay="1"><dt data-i="why.2.h">Donde se vuelve temperatura es una declaración</dt><dd data-i="why.2.p">A seis tonos se les da una temperatura a cada uno, y tu voz pasa por la misma fórmula hasta un número sobre una línea. Las referencias de los seis tonos se colocaron para que la fórmula devuelva su propia temperatura; por eso la temperatura que eliges para una frase y la medida desde tu voz se pueden comparar en la misma escala.</dd></div>
+      <div data-reveal data-delay="2"><dt data-i="why.3.h">No depende de la sala ni de lo aguda que sea tu voz</dt><dd data-i="why.3.p">Restar el ruido de fondo pone una cafetería y un dormitorio en la misma escala. La entonación no se mide como frecuencia absoluta sino en semitonos desde tu propio centro. Aun así, en las mismas lecturas las mujeres usaron un rango más amplio (medianas de 2,56 frente a 3,12 semitonos), así que elegir una referencia de voz en la pestaña Tono ajusta la entonación «habitual» a ese lado. Por defecto queda justo en medio. Acercar el teléfono al doble mueve la temperatura solo unos <span class="tv" data-d="0.25">0.25℃</span>.</dd></div>
+      <div data-reveal data-delay="3"><dt data-i="why.4.h">La escala se afinó con voces humanas</dt><dd data-i="why.4.p">El 50 de cada medida es la mediana de 226 lecturas en coreano, y Sobrio está justo ahí. La forma de contar el ritmo también se eligió frente al número real de sílabas de los guiones. Cuánto mover los otros cinco tonos todavía es un criterio, y se corregirá a medida que lleguen grabaciones leídas en cada tono.</dd></div>
     </dl>
   </div>
 </section>
 
 <section class="plain" aria-labelledby="not-title">
   <div class="wrap">
-    <span class="eyebrow" data-reveal data-i="not.eyebrow">하지 않는 것</span>
-    <h2 id="not-title" data-reveal data-delay="1" data-i="not.title">이 앱의 성격은 하지 않기로 한 것들이 정합니다</h2>
+    <span class="eyebrow" data-reveal data-i="not.eyebrow">Lo que no hace</span>
+    <h2 id="not-title" data-reveal data-delay="1" data-i="not.title">El carácter de esta app lo definen las cosas que decidió no hacer</h2>
     <ul class="nots">
-      <li data-reveal data-i="not.1"><b>진단하지 않습니다.</b>음량으로 읽은 값을 감정, 인격, 정신건강, 관계의 질을 판정하는 정보로 쓰지 않습니다. 의료와 상담을 대신하지 않습니다.</li>
-      <li data-reveal data-i="not.2"><b>성적표를 만들지 않습니다.</b>그래프의 기준선은 <span class="tv" data-c="36.5">36.5℃</span>가 아니라 내 평균입니다. 비교 대상이 나 자신뿐이라 등급이 생기지 않습니다. 점수도 연속 기록도 없습니다. 아직 말하지 않은 상대는 0 이 아니라 「아직」입니다 — 0℃ 는 아주 차갑게 말했다는 뜻이 되니까요.</li>
-      <li data-reveal data-i="not.3"><b>상대를 조종하는 문장을 만들지 않습니다.</b>상대를 이기거나 설득하는 문장이 아니라, 내 마음과 내 경계를 함께 전하는 문장을 만듭니다.</li>
-      <li data-reveal data-i="not.4"><b>위험 앞에서는 물러납니다.</b>자해, 폭력, 협박 신호가 읽히면 추천보다 먼저 안내와 상담 전화가 서고, 그 화면에서는 광고도 닫힙니다.</li>
-      <li data-reveal data-i="not.5"><b>글을 쌓아 두지 않습니다.</b>계정이 없고, 적은 글과 받은 문장은 서버에 남지 않습니다. 「놓아주기」에 적는 글은 임시 저장도 없어 기기의 파일에도 한 번도 쓰지 않고, 남는 것은 놓아준 날짜와 횟수뿐입니다. 「모두 지우기」 한 번으로 기기의 기록과 익명 ID 가 함께 사라집니다.</li>
+      <li data-reveal data-i="not.1"><b>No diagnostica.</b> Los valores leídos del volumen nunca se usan para juzgar emociones, personalidad, salud mental ni la calidad de una relación. No sustituye la atención médica ni la terapia.</li>
+      <li data-reveal data-i="not.2"><b>No reparte boletines de notas.</b> La línea base de la gráfica es tu propio promedio, no <span class="tv" data-c="36.5">36.5℃</span>. Solo te comparas contigo, así que no aparecen categorías. Sin puntuaciones, sin rachas. Alguien con quien aún no hablaste aparece como «Aún no», no como 0, porque 0℃ significaría que hablaste muy fríamente.</li>
+      <li data-reveal data-i="not.3"><b>No escribe frases para manipular.</b> No frases para ganar ni para convencer, sino frases que transmiten a la vez lo que sientes y tus límites.</li>
+      <li data-reveal data-i="not.4"><b>Ante el peligro, da un paso atrás.</b> Si se leen señales de autolesión, violencia o amenazas, antes que cualquier sugerencia aparecen orientación y teléfonos de ayuda, y en esa pantalla se cierran los anuncios.</li>
+      <li data-reveal data-i="not.5"><b>No acumula lo que escribes.</b> No hay cuenta, y lo que escribes y lo que recibes no se guardan en un servidor. El texto de Soltar ni siquiera tiene borrador: nunca se escribe en un archivo del dispositivo y solo quedan la fecha y el número de veces. Un toque en Borrar todo elimina a la vez los registros del dispositivo y el ID anónimo.</li>
     </ul>
   </div>
 </section>
 
 <section class="plain" aria-labelledby="data-title">
   <div class="wrap">
-    <span class="eyebrow" data-reveal data-i="data.eyebrow">데이터</span>
-    <h2 id="data-title" data-reveal data-delay="1" data-i="data.title">기기 밖으로 나가는 것</h2>
-    <p data-reveal data-delay="2" data-i="data.lede">음성은 기기 밖으로 나가지 않습니다. 음량과 주파수 분석은 전부 기기 안에서 이루어지고, 남는 것은 회차마다 온도 하나와 시각뿐입니다. 밖으로 나가는 길은 넷이고, 앱 안의 데이터 시트에서 같은 목록을 봅니다.</p>
+    <span class="eyebrow" data-reveal data-i="data.eyebrow">Datos</span>
+    <h2 id="data-title" data-reveal data-delay="1" data-i="data.title">Lo que sale de tu dispositivo</h2>
+    <p data-reveal data-delay="2" data-i="data.lede">Tu voz nunca sale del dispositivo. El análisis de volumen y de frecuencia se hace entero en él, y por toma solo queda una temperatura y la hora. Hay cuatro vías por las que algo sale, y la hoja de datos de la app muestra la misma lista.</p>
     <ul class="outs">
-      <li data-reveal data-i="data.1"><b>문장과 편지를 만들 때</b>관계 · 목표 · 온도 · 내가 적은 상황 또는 초안 · 말투 설정(문장 길이 · 존댓말 · 피하고 싶은 표현) · 고른 언어가 Google Gemini 로 갑니다. 이 설치를 가리키는 익명 ID 하나가 함께 가서 하루 횟수를 셉니다. 「놓아주기」와 「오늘 한 칸」은 아무것도 만들지 않아 아무것도 나가지 않습니다.</li>
-      <li data-reveal data-i="data.2"><b>광고를 띄울 때</b>광고 식별자 · 기기 정보 · 대략적인 위치가 Google AdMob 으로 갑니다. 적은 상황과 관계는 보내지 않습니다.</li>
-      <li data-reveal data-i="data.3"><b>앱이 갑자기 꺼졌을 때</b>켜 두었을 때만, 충돌한 자리 · 기기 모델 · OS 와 앱 버전이 Firebase 로 갑니다. 적은 글과 받은 문장은 담기지 않습니다.</li>
-      <li data-reveal data-i="data.4"><b>새 버전이 있는지 볼 때</b>버전 표 한 장을 이 홈페이지에서 받아만 갑니다. 앱 버전을 포함해 어떤 값도 보내지 않습니다.</li>
-      <li class="never" data-reveal data-i="data.5"><b>한 번도 나가지 않는 것</b>녹음과 음량 · 담아둔 문장 · 사용 기록 · 대화 회고 · 상대별 기록 · 놓아주기에 적은 글 · 말투 탭의 목소리 기준.</li>
+      <li data-reveal data-i="data.1"><b>Al escribir frases o una carta</b>Relación · objetivo · temperatura · la situación o el borrador que escribiste · tus ajustes de tono (longitud · trato · palabras a evitar) · el idioma elegido van a Google Gemini. Los acompaña un ID anónimo de esta instalación para contar el límite diario. Soltar y La casilla de hoy no generan nada, así que nada sale.</li>
+      <li data-reveal data-i="data.2"><b>Al mostrar un anuncio</b>Identificador de publicidad · información del dispositivo · ubicación aproximada van a Google AdMob. Tu situación y tus relaciones no se envían.</li>
+      <li data-reveal data-i="data.3"><b>Si la app se cierra de golpe</b>Solo si lo activaste: dónde falló · modelo del dispositivo · versión del sistema y de la app van a Firebase. Nada de lo que escribiste o recibiste se incluye.</li>
+      <li data-reveal data-i="data.4"><b>Al comprobar si hay una versión nueva</b>Solo descarga una tabla de versiones de esta web. No envía nada, ni siquiera la versión de la app.</li>
+      <li class="never" data-reveal data-i="data.5"><b>Lo que nunca sale</b>Grabaciones y volumen · frases guardadas · historial de uso · repasos · registros por persona · lo escrito en Soltar · la referencia de voz de la pestaña Tono.</li>
     </ul>
-    <p data-reveal style="margin-top:1.25rem" data-i="data.after">저장하지 않는 것과 전송하지 않는 것은 다른 약속이라, 나가는 것의 완전한 목록을 <a href="/privacy.html">개인정보처리방침</a>에 적었습니다.</p>
+    <p data-reveal style="margin-top:1.25rem" data-i="data.after">No guardar y no enviar son promesas distintas, así que la lista completa de lo que sale está en la <a href="/privacy.html">política de privacidad</a>.</p>
   </div>
 </section>
 
@@ -776,19 +776,19 @@
      Google Play 가 열리면 faq.10.a 네 표도 함께 고친다. -->
 <section class="plain faq" id="faq" aria-labelledby="faq-title">
   <div class="wrap">
-    <span class="eyebrow" data-reveal data-i="faq.eyebrow">자주 묻는 것</span>
-    <h2 id="faq-title" data-reveal data-delay="1" data-i="faq.title">사과 문자부터 목소리 톤까지, 궁금하실 것들</h2>
+    <span class="eyebrow" data-reveal data-i="faq.eyebrow">Preguntas frecuentes</span>
+    <h2 id="faq-title" data-reveal data-delay="1" data-i="faq.title">De un mensaje de disculpa a tu tono de voz</h2>
     <div class="qa" data-reveal data-delay="2">
-      <details><summary><h3 data-i="faq.1.q">말온도는 어떤 앱인가요?</h3></summary><p data-i="faq.1.a">말하기 어려운 순간에 무슨 말을 할지 같이 고르는 AI 대화 코치입니다. 사과·거절·부탁·위로처럼 첫 문장이 나오지 않을 때, 지금 이 사람에게 건넬 한두 문장을 네 가지로 제안합니다. 20초쯤 소리 내어 말하면 목소리로 내 말투의 온도를 재 주기도 합니다. 계정 없이 무료로 씁니다.</p></details>
-      <details><summary><h3 data-i="faq.2.q">「말의 온도」는 무슨 뜻인가요?</h3></summary><p data-i="faq.2.a">같은 말도 어떤 결로 하느냐에 따라 차갑게도 따뜻하게도 들립니다. 말온도는 그 결에 온도를 붙였습니다. 단호하게 <span class="tv" data-c="35.0">35.0℃</span> · 차분하게 <span class="tv" data-c="35.7">35.7℃</span> · 담백하게 <span class="tv" data-c="36.5">36.5℃</span> · 유쾌하게 <span class="tv" data-c="37.1">37.1℃</span> · 공감하며 <span class="tv" data-c="37.7">37.7℃</span> · 따뜻하게 <span class="tv" data-c="38.2">38.2℃</span>. 여섯 말투가 한 줄 위에 서서, 문장을 고를 때 정하는 온도와 목소리로 잰 온도를 같은 자로 견줍니다. 체온을 재는 것이 아니라 말의 결에 붙인 비유입니다.</p></details>
-      <details><summary><h3 data-i="faq.3.q">사과 문자나 거절 메시지를 어떻게 써야 할지 모르겠어요.</h3></summary><p data-i="faq.3.a">「건넬 말을 찾을래요」에서 누구에게(배우자 · 연인 · 가족 · 친구 · 직장동료 · 상사), 무엇을(사과하기 · 거절하기 · 부탁하기 · 위로하기 · 갈등 풀기 · 마음 전하기 · 의견 말하기), 어떤 결로 말할지 고르고 있었던 일을 한두 줄 적으면, 가는 길이 서로 다른 문장 네 장이 옵니다. 장마다 왜 이렇게 말하는지, 상대가 답해 왔을 때 이어 갈 한마디, 조심할 점이 붙습니다. 이미 써 둔 글은 「내 문장 다듬기」로 뜻은 두고 표현만 고쳐 받습니다.</p></details>
-      <details><summary><h3 data-i="faq.4.q">싸운 뒤 먼저 연락하거나 위로의 말 한마디를 건넬 때도 쓸 수 있나요?</h3></summary><p data-i="faq.4.a">네. 갈등 풀기와 위로하기, 마음 전하기가 그 자리입니다. 상대를 이기거나 설득하는 문장이 아니라 내 마음과 내 경계를 함께 전하는 문장을 만들고, 「대화 연습」으로 건넨 다음 오갈 말을 미리 한 번 걸어 봅니다. 앱이 대신 보내는 일은 없습니다. 고르고, 내 말로 다듬어, 복사해서 내가 보냅니다.</p></details>
-      <details><summary><h3 data-i="faq.5.q">내 말투나 목소리 톤이 차갑게 들리는지 알 수 있나요?</h3></summary><p data-i="faq.5.a">「말온도 재기」에서 20초쯤 소리 내어 말하면 억양과 빠르기, 쉼과 소리의 크기를 기기 안에서 읽어 말의 온도를 잽니다. 고른 목표 온도에 얼마나 닿았는지가 말하는 동안 실시간으로 보이고, 끝나면 다섯 축의 결 지문 위에 내 목소리와 목표를 겹쳐 어디가 벌어졌는지 보여 줍니다. 점수 대신 다음에 해 볼 것 한 가지를 적어 주어서, 추천받은 문장을 소리 내어 읽으며 말투를 부드럽게 바꿔 보는 말하기 연습으로도 씁니다.</p></details>
-      <details><summary><h3 data-i="faq.6.q">누구에게도 못 한 이야기를 털어놓을 곳이 필요해요.</h3></summary><p data-i="faq.6.a">「마음부터 풀래요」에 있었던 일을 적고 어떤 답이 필요한지만 고르면(그냥 들어주세요 · 정리해 주세요 · 다르게 봐 주세요 · 어떻게 할지 알려주세요 · 내 몫이 어디까지인지) 편지 한 통이 옵니다. 적은 이야기도 답장도 남지 않습니다. 답장이 필요 없는 날에는 「놓아주기」에 오래 남은 일 하나를 백 자 안에 적어 손으로 지우고, 그날의 마음은 「오늘 한 칸」으로 달력에 남깁니다.</p></details>
-      <details><summary><h3 data-i="faq.7.q">녹음한 목소리나 적은 글은 어디에 남나요?</h3></summary><p data-i="faq.7.a">목소리는 기기 밖으로 나가지 않습니다. 분석은 모두 기기 안에서 하고, 결과 화면을 벗어나면 녹음 파일은 바로 지워집니다. 회원가입이 없고, 적은 상황과 받은 문장은 서버에 남지 않습니다. 문장과 편지를 만드는 순간에만 적은 상황과 고른 관계·목표·온도가 Google Gemini 로 전송됩니다. 나가는 것의 전체 목록은 <a href="/privacy.html">개인정보처리방침</a>에 적어 두었습니다.</p></details>
-      <details><summary><h3 data-i="faq.8.q">무료인가요? 광고는 있나요?</h3></summary><p data-i="faq.8.a">무료이고 인앱결제가 없습니다. 건넬 말은 하루 세 번, 편지는 하루 두 통까지 받고, 다 쓴 날에만 원하면 보상형 광고 한 편을 보고 다시 채웁니다. 「놓아주기」와 「오늘 한 칸」에는 횟수도 광고도 없습니다.</p></details>
-      <details><summary><h3 data-i="faq.9.q">심리 상담을 대신할 수 있나요?</h3></summary><p data-i="faq.9.a">아닙니다. 말온도는 의료나 심리 상담 서비스가 아니고, 감정이나 인격, 관계를 진단하지 않습니다. 자해나 폭력이 걱정되는 이야기가 읽히면 문장을 제안하는 대신 상담 전화를 먼저 안내합니다.</p></details>
-      <details><summary><h3 data-i="faq.10.q">안드로이드에서도 쓸 수 있나요? 어떤 언어로 나오나요?</h3></summary><p data-i="faq.10.a">지금은 아이폰(App Store)에서 받을 수 있고, 안드로이드(Google Play)는 준비 중입니다. 화면과 추천 문장이 한국어 · English · 日本語 · Español 네 가지 언어로 나오고, 온도는 ℃ 와 °F 중에 고릅니다.</p></details>
+      <details><summary><h3 data-i="faq.1.q">¿Qué es Malondo?</h3></summary><p data-i="faq.1.a">Un coach de conversación con IA para los momentos en que hablar cuesta. Cuando no sale la primera frase de una disculpa, un no, un favor o un consuelo, te sugiere cuatro formas de decírselo a esta persona, ahora. Si hablas en voz alta unos veinte segundos, también mide la temperatura de tu tono de voz. Es gratis y no necesita cuenta.</p></details>
+      <details><summary><h3 data-i="faq.2.q">¿Qué significa «la temperatura de tus palabras»?</h3></summary><p data-i="faq.2.a">Las mismas palabras pueden sonar frías o cálidas según cómo las digas. Malondo le pone temperatura a ese tono: Firme <span class="tv" data-c="35.0">35.0℃</span> · Calma <span class="tv" data-c="35.7">35.7℃</span> · Sobrio <span class="tv" data-c="36.5">36.5℃</span> · Alegre <span class="tv" data-c="37.1">37.1℃</span> · Atento <span class="tv" data-c="37.7">37.7℃</span> · Cálido <span class="tv" data-c="38.2">38.2℃</span>. Los seis tonos están en una misma línea, así que la temperatura que eliges para una frase y la que se mide con tu voz usan la misma escala. Es una metáfora de cómo llegan tus palabras, no tu temperatura corporal.</p></details>
+      <details><summary><h3 data-i="faq.3.q">No sé cómo escribir un mensaje para pedir perdón o para decir que no.</h3></summary><p data-i="faq.3.a">En «Quiero buscar qué decir» eliges a quién (Cónyuge · Pareja · Familia · Amigo · Colega · Jefe), qué (Disculparme · Decir que no · Pedir algo · Consolar · Resolver un conflicto · Decir cómo me siento · Dar mi opinión) y en qué tono, y escribes una o dos líneas sobre lo que pasó. Llegan cuatro frases, cada una por un camino distinto, y cada tarjeta dice por qué habla así, qué decir cuando te respondan y con qué tener cuidado. Lo que ya escribiste puede pasar por «Ajustar mi frase»: el sentido queda y solo cambia la forma.</p></details>
+      <details><summary><h3 data-i="faq.4.q">¿Sirve para dar el primer paso después de una pelea o para encontrar palabras de consuelo?</h3></summary><p data-i="faq.4.a">Sí. Para eso están Resolver un conflicto, Consolar y Decir cómo me siento. No escribe frases para ganar ni para convencer, sino frases que llevan a la vez lo que sientes y tus límites, y con Practicar recorres de antemano lo que puede venir después. La app nunca envía nada por ti. Eliges, lo ajustas con tus palabras, lo copias y lo envías tú.</p></details>
+      <details><summary><h3 data-i="faq.5.q">¿Puedo saber si mi tono de voz suena frío?</h3></summary><p data-i="faq.5.a">En Medir, habla en voz alta unos veinte segundos: Malondo lee la entonación, el ritmo, las pausas y el volumen de tu voz en tu dispositivo y mide la temperatura de tus palabras. Mientras hablas ves en directo cuánto te acercas a la temperatura objetivo que elegiste, y al terminar una huella de cinco ejes pone tu voz sobre la del objetivo para mostrar dónde se separan. En lugar de una nota te señala una cosa que probar, así que también sirve para practicar: lee en voz alta una frase sugerida y suaviza el tono.</p></details>
+      <details><summary><h3 data-i="faq.6.q">Necesito un lugar para desahogarme.</h3></summary><p data-i="faq.6.a">En «Primero desahogarme» escribes lo que pasó y eliges solo qué tipo de respuesta necesitas (Solo escúchame · Ayúdame a ordenarlo · Muéstrame otro ángulo · Dime qué hacer · Qué me toca a mí), y llega una carta. Ni lo que escribiste ni la respuesta se guardan. Los días en que no necesitas respuesta, en Soltar escribes una cosa que se quedó demasiado tiempo, en cien caracteres o menos, y la borras con la mano; y en La casilla de hoy dejas en el calendario cómo te sentiste.</p></details>
+      <details><summary><h3 data-i="faq.7.q">¿Dónde quedan mis grabaciones y lo que escribo?</h3></summary><p data-i="faq.7.a">Tu voz nunca sale del dispositivo. Todo el análisis se hace en él, y la grabación se borra en cuanto sales de la pantalla de resultados. No hay registro, y lo que escribes y las frases que recibes no se guardan en un servidor. Solo mientras se crean las frases o una carta, la situación que escribiste y la relación, el objetivo y la temperatura que elegiste se envían a Google Gemini. La lista completa de lo que sale está en la <a href="/privacy.html">política de privacidad</a>.</p></details>
+      <details><summary><h3 data-i="faq.8.q">¿Es gratis? ¿Tiene anuncios?</h3></summary><p data-i="faq.8.a">Es gratis y no tiene compras dentro de la app. Recibes tres tandas de frases y dos cartas al día; los días en que las agotas, si quieres, ves un anuncio con recompensa para recargarlas. Soltar y La casilla de hoy no tienen límite ni anuncios.</p></details>
+      <details><summary><h3 data-i="faq.9.q">¿Sustituye a la terapia?</h3></summary><p data-i="faq.9.a">No. Malondo no es un servicio médico ni de terapia, y no diagnostica emociones, personalidad ni relaciones. Si se leen señales de autolesión o violencia, antes que cualquier sugerencia aparecen orientación y teléfonos de ayuda.</p></details>
+      <details><summary><h3 data-i="faq.10.q">¿Está en Android? ¿En qué idiomas?</h3></summary><p data-i="faq.10.a">Por ahora se descarga en iPhone (App Store); Android (Google Play) está en camino. Las pantallas y las frases sugeridas llegan en 한국어 · English · 日本語 · Español, y la temperatura se puede ver en ℃ o °F.</p></details>
     </div>
   </div>
 </section>
@@ -796,15 +796,15 @@
 <section class="get" aria-labelledby="get-title">
   <div class="blobs" aria-hidden="true"><i class="blob a" style="top:10%"></i><i class="blob c" style="bottom:-30%"></i></div>
   <div class="wrap">
-    <span class="eyebrow" data-reveal data-i="get.eyebrow">받기</span>
-    <h2 id="get-title" data-reveal data-delay="1" data-i="get.title">아이폰과 안드로이드에서, <span class="grad">무료로</span></h2>
-    <p data-reveal data-delay="2" data-i="get.lede">인앱결제가 없습니다. 하루치를 다 쓴 날에만 스스로 여는 보상형 광고 한 자리가 전부입니다. 한국어 · English · 日本語 · Español 로 나옵니다.</p>
+    <span class="eyebrow" data-reveal data-i="get.eyebrow">Descargar</span>
+    <h2 id="get-title" data-reveal data-delay="1" data-i="get.title">En iPhone y Android, <span class="grad">gratis</span></h2>
+    <p data-reveal data-delay="2" data-i="get.lede">Sin compras dentro de la app. El único anuncio es uno con recompensa que abres tú, los días en que agotaste el cupo diario. Disponible en 한국어 · English · 日本語 · Español.</p>
     <ul class="stores" data-reveal data-delay="3">
-      <li><a class="store" href="https://apps.apple.com/kr/app/id6809147797" data-i="store.ios">App Store 에서 받기</a></li>
-      <!-- Google Play 출시 뒤: <li><a class="store" href="https://play.google.com/store/apps/details?id=com.malondo.malondo_app" data-i="store.play">Google Play 에서 받기</a></li> -->
-      <li><span class="store soon" data-i="store.play.soon2">Google Play <small>심사 전입니다 · 준비되면 링크가 붙습니다</small></span></li>
+      <li><a class="store" href="https://apps.apple.com/kr/app/id6809147797" data-i="store.ios">Descargar en el App Store</a></li>
+      <!-- Google Play 출시 뒤: <li><a class="store" href="https://play.google.com/store/apps/details?id=com.malondo.malondo_app" data-i="store.play">Descargar en Google Play</a></li> -->
+      <li><span class="store soon" data-i="store.play.soon2">Google Play <small>pendiente de revisión · el enlace aparecerá aquí</small></span></li>
     </ul>
-    <p class="after" data-reveal data-delay="3" data-i="get.after">쓰다가 막히는 것이나 바라는 것이 있으면 <a href="/support.html">지원 페이지</a>에 적어 주세요.</p>
+    <p class="after" data-reveal data-delay="3" data-i="get.after">Si algo te frena o hay algo que te gustaría que hiciera, cuéntanoslo en la <a href="/support.html">página de soporte</a>.</p>
   </div>
 </section>
 
@@ -813,11 +813,11 @@
 <footer>
   <div class="wrap">
     <ul class="links">
-      <li><a href="/support.html" data-i="nav.support">지원</a></li>
-      <li><a href="/privacy.html" data-i="foot.privacy">개인정보처리방침</a></li>
-      <li><a href="mailto:chuny4u@gmail.com" data-i="foot.mail">문의 chuny4u@gmail.com</a></li>
+      <li><a href="/support.html" data-i="nav.support">Soporte</a></li>
+      <li><a href="/privacy.html" data-i="foot.privacy">Política de privacidad</a></li>
+      <li><a href="mailto:chuny4u@gmail.com" data-i="foot.mail">Contacto chuny4u@gmail.com</a></li>
     </ul>
-    <p data-i="foot.copy">© 2026 말온도</p>
+    <p data-i="foot.copy">© 2026 Malondo</p>
   </div>
 </footer>
 
