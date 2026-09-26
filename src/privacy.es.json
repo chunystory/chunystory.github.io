@@ -5,7 +5,7 @@
   "pref.lang": "Idioma de la página",
 
   "title": "Política de privacidad de Malondo",
-  "dates": "En vigor desde el 6 de septiembre de 2026 · Última actualización 24 de septiembre de 2026",
+  "dates": "En vigor desde el 6 de septiembre de 2026 · Última actualización 26 de septiembre de 2026",
 
   "lead.1": "<strong>Malondo no tiene registro.</strong> No pedimos tu nombre, tu correo ni una contraseña. Lo que escribes y lo que mides se queda en este dispositivo y nunca llega a nuestro servidor: no tenemos ninguno. Firebase crea <strong>un único identificador anónimo sin nombre</strong> para contar las peticiones por persona frente a un límite diario (sección 1).",
   "lead.2": "Dicho esto, <strong>en el momento en que se escribe una frase, la situación que escribiste se envía a Google.</strong> No guardar y no enviar son promesas distintas, así que este documento deja clara la diferencia.",
@@ -41,11 +41,14 @@
   "s1.e.4": "<strong>Repasos</strong>: solo la relación, el objetivo, la temperatura y la respuesta que elegiste tú",
   "s1.e.5": "<strong>Registros por persona</strong>: solo la fecha, la persona, el nombre de la temperatura elegida y el ℃ medido al leer las palabras para esa persona, guardados en el dispositivo como una sola línea",
   "s1.e.6": "<strong>Lo escrito en Soltar</strong>: en esa pantalla no se genera nada, así que nunca se transmite a ninguna parte ni se escribe jamás en un archivo del dispositivo",
+  "s1.e.7": "<strong>Lo que creas en el escritorio junto a la ventana</strong>: trazos copiados · garabatos · cartas · palabras amables · flores de palabras · crestas de voz. Solo salen por la hoja de compartir del sistema, cuando tú mismo tocas Compartir o Enviar como postal",
 
   "s2.h": "2. Micrófono",
   "s2.1": "Medir la temperatura de tus palabras necesita permiso de micrófono. Tu dispositivo lo pregunta la primera vez que grabas.",
   "s2.2": "<strong>Tu voz nunca sale del dispositivo.</strong> El análisis de volumen y de frecuencia se hace entero en él, y por toma solo queda <strong>una temperatura en ℃ y la hora</strong>. El audio, las muestras de volumen y los valores de frecuencia no se guardan de ninguna forma.",
   "s2.3": "El archivo de grabación se crea temporalmente para que puedas escuchar tu propia voz una vez en la pantalla de resultado, y <strong>se borra en cuanto sales de esa pantalla</strong>.",
+  "s2.4": "Una <strong>cresta de voz</strong> que guardas desde un resultado (Guardar) no conserva sonido: solo líneas de números de tono · volumen · temperatura.",
+  "s2.5": "Cuando <strong>apagas la vela de la noche con el aliento</strong>, el micrófono se abre solo mientras está activo Apagar con el aliento. Lee <strong>solo la fuerza</strong> del aliento, no cuenta la voz como aliento y borra cada fragmento grabado en cuanto se detiene. Una pulsación larga apaga la vela igual, así que puedes usarla sin micrófono.",
 
   "s3.h": "3. Qué se queda en tu dispositivo",
   "s3.1": "Lo siguiente se guarda en un único archivo del directorio de documentos de la app (<code>malondo_state.json</code>).",
@@ -71,6 +74,18 @@
   "s3.r9.b": "Cómo te sentiste ese día y la temperatura. Valores que elegiste tú",
   "s3.r10.a": "Días en que soltaste",
   "s3.r10.b": "La fecha en que usaste Soltar y cuántas veces ese día. Se ve como un punto en el calendario. <strong>Lo que escribiste no se guarda</strong>",
+  "s3.desk.1.a": "Cuaderno de copias",
+  "s3.desk.1.b": "Las frases que copiaste con Copiar a mano y los trazos de tu dedo (coordenadas sobre el papel), y a quién iban dirigidas (si lo elegiste)",
+  "s3.desk.2.a": "Garabatos",
+  "s3.desk.2.b": "Los trazos de los garabatos que guardaste con Conservar en Dibujar de Soltar, y la temperatura de cada línea",
+  "s3.desk.3.a": "Cartas para después",
+  "s3.desk.3.b": "El texto de la carta que escribiste · el destinatario (tú o un nombre de relación) · el día en que la sellaste · el día en que se abre · la temperatura del sello. Una respuesta solo entra cuando tocas Doblar en un sobre. El modo silencioso oculta el destinatario",
+  "s3.desk.4.a": "Palabras amables",
+  "s3.desk.4.b": "La línea que escribiste · quién la dijo (nombre de relación) · la fecha · el color del papel",
+  "s3.desk.5.a": "Flores de palabras",
+  "s3.desk.5.b": "En cada medición, los cinco ejes de tu voz · los ejes del objetivo · para quién (nombre de relación) · cuándo la prensaste en el herbario",
+  "s3.desk.6.a": "Crestas de voz",
+  "s3.desk.6.b": "Líneas de tono · volumen · temperatura de las mediciones que guardaste. No se conserva sonido",
   "s3.r11.a": "Conteos anónimos",
   "s3.r11.b": "Cuántas veces se pidieron, copiaron y guardaron sugerencias, y la satisfacción. <strong>No incluye el texto de ninguna frase</strong>",
   "s3.r12.a": "Cifras de aprendizaje de tono",
@@ -83,12 +98,13 @@
   "s3.r15.b": "Apariencia · <strong>idioma · unidad de temperatura</strong> · tipografía de lectura · hora del recordatorio · modo silencioso · capas del calendario · el interruptor de informes de fallos",
   "s3.r16.a": "Nombre de la instalación",
   "s3.r16.b": "Un nombre aleatorio para esta instalación. No señala ni a una persona ni a un dispositivo y <strong>nunca se transmite a ninguna parte</strong>",
-  "s3.2": "<strong>La situación que escribiste, las sugerencias que recibiste, lo que contaste y su respuesta no se guardan.</strong> Los repasos tampoco conservan ningún texto original.",
+  "s3.2": "<strong>La situación que escribiste, las sugerencias que recibiste, lo que contaste y su respuesta no se guardan.</strong> Los repasos tampoco conservan ningún texto original. Solo lo que eliges conservar —cartas · palabras amables · el cuaderno de copias · respuestas que doblaste en un sobre— queda en el dispositivo, como en la tabla de arriba.",
   "s3.3": "El identificador de usuario anónimo no vive en este archivo, sino en el almacenamiento de autenticación de Firebase del dispositivo. Los valores que lee el widget de inicio (la temperatura y las casillas de este mes) están en una capa más, el almacenamiento compartido de la app en el dispositivo; con el modo silencioso activado solo queda la temperatura.",
   "s3.4": "Este archivo está <strong>excluido</strong> de la copia de seguridad automática (Google Drive) y de la transferencia entre dispositivos en Android, y de la copia de iCloud en iOS. Para cambiar de dispositivo, usa la exportación de la sección 6.",
 
   "s4.h": "4. Notificaciones",
   "s4.1": "Puedes activar un recordatorio al día (desactivado por defecto). La programación y la presentación ocurren <strong>enteramente en el dispositivo</strong>, sin pasar por nuestro servidor ni por un servicio de notificaciones push. El texto de la notificación no contiene ni relación ni situación.",
+  "s4.2": "Si al sellar una carta eliges el día en que se abre, esa noche a las 21:00 llega una línea. <strong>No contiene ni el destinatario ni lo que escribiste</strong>, y en modo silencioso no se programa.",
 
   "s5.h": "5. Menores de 14 años",
   "s5.1": "Malondo <strong>no está dirigido a menores.</strong> No recogemos a sabiendas información personal de menores de 14 años.",
@@ -98,9 +114,9 @@
   "s6.2": "<strong>Puedes borrarlo todo en cualquier momento:</strong>",
   "s6.li.1": "Dentro de la app: cajón → <strong>Datos y privacidad</strong> → <strong>Borrar todo</strong>",
   "s6.li.2": "Si eliminas la app, los valores del dispositivo desaparecen con ella",
-  "s6.3": "Borrar todo elimina las frases guardadas, las mediciones, los repasos, los registros por persona, los días en que soltaste, los ajustes de tono y el nombre de la instalación; vacía también el widget de inicio y <strong>borra el identificador de usuario anónimo y toma un nombre nuevo.</strong> Quedan cuatro cosas: los usos de hoy (que vuelven a 0 al cambiar el día), el interruptor del modo silencioso, el de informes de fallos, y el idioma y la unidad de temperatura que elegiste. El diálogo de confirmación de la app explica por qué.",
+  "s6.3": "Borrar todo elimina las frases guardadas, las mediciones, los repasos, los registros por persona, los días en que soltaste, lo que creaste en el escritorio junto a la ventana, los ajustes de tono y el nombre de la instalación; vacía también el widget de inicio y <strong>borra el identificador de usuario anónimo y toma un nombre nuevo.</strong> Quedan cuatro cosas: los usos de hoy (que vuelven a 0 al cambiar el día), el interruptor del modo silencioso, el de informes de fallos, y el idioma y la unidad de temperatura que elegiste. El diálogo de confirmación de la app explica por qué.",
   "s6.4": "Como no hay registro, no hay cuenta que cerrar. Si eliminas la app, los valores del dispositivo desaparecen, y lo único que queda en un servidor es un identificador anónimo vacío que no contiene información personal alguna.",
-  "s6.5": "Para cambiar de dispositivo existe una <strong>exportación</strong> (cajón → Datos y privacidad). Genera un único archivo que mueves tú, y <strong>nosotros nunca recibimos ese archivo.</strong>",
+  "s6.5": "Para cambiar de dispositivo existe una <strong>exportación</strong> (cajón → Datos y privacidad). Genera un único archivo que mueves tú, y <strong>nosotros nunca recibimos ese archivo.</strong> El archivo contiene tus registros y frases guardadas · lo que creaste en el escritorio junto a la ventana · los ajustes y el aprendizaje de tono · los ajustes de la app. Es texto que cualquiera puede abrir, así que revísalo una vez más al elegir a dónde enviarlo. Al importarlo en un dispositivo nuevo, lo que ya había se queda como está y solo se añade lo que falta; los ajustes solo se aplican donde ese dispositivo aún no los ha cambiado.",
 
   "s7.h": "7. Terceros",
   "s7.th.1": "Quién",
@@ -129,5 +145,5 @@
 
   "link.home": "Malondo",
   "link.support": "Soporte",
-  "foot": "Malondo · Política de privacidad · 23 de septiembre de 2026"
+  "foot": "Malondo · Política de privacidad · 26 de septiembre de 2026"
 }

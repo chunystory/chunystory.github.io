@@ -5,7 +5,7 @@
   "pref.lang": "Page language",
 
   "title": "Malondo Privacy Policy",
-  "dates": "Effective 6 September 2026 · Last updated 24 September 2026",
+  "dates": "Effective 6 September 2026 · Last updated 26 September 2026",
 
   "lead.1": "<strong>Malondo has no sign-up.</strong> We do not ask for your name, email or a password. What you write and what you measure stay on this device and never reach our server — we do not have one. Firebase creates <strong>a single anonymous ID with no name</strong> so that requests can be counted per person against a daily limit (section 1).",
   "lead.2": "That said, <strong>at the moment a sentence is written, the situation you typed is sent to Google.</strong> Not storing and not sending are different promises, so this document states the difference plainly.",
@@ -41,11 +41,14 @@
   "s1.e.4": "<strong>Look-backs</strong> — only the relationship, goal, temperature and the answer you chose yourself",
   "s1.e.5": "<strong>Per-person records</strong> — only the date, the person, the name of the temperature you chose and the ℃ measured while reading words meant for that person, kept on the device as a single line",
   "s1.e.6": "<strong>Anything written in Letting go</strong> — nothing is generated on that screen, so it is never transmitted anywhere and never written to a file on the device",
+  "s1.e.7": "<strong>What you make at the Window desk</strong> — traced strokes · doodles · letters · kind words · word flowers · voice ridges. They leave the device only through the system share sheet, when you yourself tap Pass it on or Send as a postcard",
 
   "s2.h": "2. Microphone",
   "s2.1": "Measuring the temperature of your words needs microphone permission. Your device asks the first time you record.",
   "s2.2": "<strong>Your voice never leaves the device.</strong> Loudness and frequency analysis happen entirely on it, and all that remains per take is <strong>one temperature in ℃ and a timestamp</strong>. Audio, loudness samples and frequency values are not stored in any form.",
   "s2.3": "The recording file is created temporarily so that you can listen to your own voice once on the result screen, and it is <strong>deleted the moment you leave that screen</strong>.",
+  "s2.4": "A <strong>voice ridge</strong> you keep from a result (Keep) holds no sound — only lines of numbers for pitch · loudness · temperature.",
+  "s2.5": "When you <strong>blow out the night candle with your breath</strong>, the microphone opens only while Blow it out is on. It reads <strong>only the strength</strong> of your breath, does not count speech as breath, and deletes each recorded fragment the moment it stops. A long press puts the candle out just the same, so you can use it without the microphone.",
 
   "s3.h": "3. What stays on your device",
   "s3.1": "The following is stored in a single file in the app's documents directory (<code>malondo_state.json</code>).",
@@ -71,6 +74,18 @@
   "s3.r9.b": "How you felt that day and the temperature. Values you chose yourself",
   "s3.r10.a": "Days you let go",
   "s3.r10.b": "The date you used Letting go and how many times that day. Shown as a dot on the calendar. <strong>What you wrote is not kept</strong>",
+  "s3.desk.1.a": "Tracing notebook",
+  "s3.desk.1.b": "Sentences you copied with Tracing and your finger strokes (coordinates on the paper), and who it was meant for (if you chose)",
+  "s3.desk.2.a": "Doodles",
+  "s3.desk.2.b": "The strokes of doodles you kept with Keep it in Letting go's Draw, and the temperature of each line",
+  "s3.desk.3.a": "Letters to later",
+  "s3.desk.3.b": "The letter you wrote · the recipient (yourself or a relationship name) · the day it was sealed · the day it opens · the temperature of the seal. A reply comes in only when you tap Fold into an envelope. Quiet mode hides the recipient",
+  "s3.desk.4.a": "Kind words",
+  "s3.desk.4.b": "The line you wrote · who said it (relationship name) · the date · the paper colour",
+  "s3.desk.5.a": "Word flowers",
+  "s3.desk.5.b": "For each measurement, the five axes of your voice · the target's axes · for whom (relationship name) · when you pressed it into the book",
+  "s3.desk.6.a": "Voice ridges",
+  "s3.desk.6.b": "Lines of pitch · loudness · temperature from readings you kept. No sound is kept",
   "s3.r11.a": "Anonymous counts",
   "s3.r11.b": "How often suggestions were requested, copied and kept, and satisfaction. <strong>No sentence text is included</strong>",
   "s3.r12.a": "Tone-learning numbers",
@@ -83,12 +98,13 @@
   "s3.r15.b": "Appearance · <strong>language · temperature unit</strong> · reading type · reminder time · quiet mode · calendar layers · the crash-report switch",
   "s3.r16.a": "Installation name",
   "s3.r16.b": "One random name for this installation. It points to neither a person nor a device and is <strong>never transmitted anywhere</strong>",
-  "s3.2": "<strong>The situation you typed, the suggestions you received, the story you shared and its reply are not stored.</strong> Look-backs keep no original text either.",
+  "s3.2": "<strong>The situation you typed, the suggestions you received, the story you shared and its reply are not stored.</strong> Look-backs keep no original text either. Only what you choose to keep — letters · kind words · the tracing notebook · replies you folded into an envelope — stays on the device, as in the table above.",
   "s3.3": "The anonymous user ID lives not in this file but in the device's Firebase authentication storage. The values the home-screen widget reads (temperature and this month's squares) sit in one more layer, the app's shared storage on the device; with quiet mode on, only the temperature remains.",
   "s3.4": "This file is <strong>excluded</strong> from automatic backup (Google Drive) and device-to-device transfer on Android, and from iCloud backup on iOS. To move to a new device, use the export in section 6.",
 
   "s4.h": "4. Notifications",
   "s4.1": "You can turn on one reminder a day (off by default). Scheduling and display happen <strong>entirely on the device</strong>, passing through neither our server nor a push service. Notification text contains no relationship and no situation.",
+  "s4.2": "If you set an opening day when you seal a letter, one line arrives at 9 pm that evening. <strong>It contains neither the recipient nor what you wrote</strong>, and it is not scheduled in quiet mode.",
 
   "s5.h": "5. Children under 14",
   "s5.1": "Malondo is <strong>not directed at children.</strong> We do not knowingly collect personal information from children under 14.",
@@ -98,9 +114,9 @@
   "s6.2": "<strong>You can delete everything at any time:</strong>",
   "s6.li.1": "In the app — drawer → <strong>Data and privacy</strong> → <strong>Delete everything</strong>",
   "s6.li.2": "Deleting the app removes the values on the device with it",
-  "s6.3": "Delete everything removes kept sentences, measurements, look-backs, per-person records, days you let go, tone settings and the installation name, clears the home-screen widget, and <strong>deletes the anonymous user ID and takes a new name.</strong> Four things remain — today's count (which returns to 0 when the day changes), the quiet-mode switch, the crash-report switch, and the language and temperature unit you chose — and the app's confirmation dialog says why.",
+  "s6.3": "Delete everything removes kept sentences, measurements, look-backs, per-person records, days you let go, what you made at the Window desk, tone settings and the installation name, clears the home-screen widget, and <strong>deletes the anonymous user ID and takes a new name.</strong> Four things remain — today's count (which returns to 0 when the day changes), the quiet-mode switch, the crash-report switch, and the language and temperature unit you chose — and the app's confirmation dialog says why.",
   "s6.4": "Since there is no sign-up, there is no account to close. Deleting the app removes the values on the device, and all that remains on a server is one empty anonymous ID that holds no personal information.",
-  "s6.5": "For moving to a new device there is an <strong>export</strong> (drawer → Data and privacy). It produces a single file that you move yourself, and <strong>we never receive that file.</strong>",
+  "s6.5": "For moving to a new device there is an <strong>export</strong> (drawer → Data and privacy). It produces a single file that you move yourself, and <strong>we never receive that file.</strong> The file holds your records and kept sentences · what you made at the Window desk · tone settings and learning · app settings. It is plain text anyone can open, so please take a second look when choosing where to send it. Importing on a new device leaves what is already there as it is and adds only what is missing; settings follow only where that device has not changed them yet.",
 
   "s7.h": "7. Third parties",
   "s7.th.1": "Who",
@@ -129,5 +145,5 @@
 
   "link.home": "Malondo",
   "link.support": "Support",
-  "foot": "Malondo · Privacy Policy · 23 September 2026"
+  "foot": "Malondo · Privacy Policy · 26 September 2026"
 }

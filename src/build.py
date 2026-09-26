@@ -53,7 +53,14 @@ PAGED = {"index.html"}
 # 틀이 쓰지 않아도 되는 키 — 자바스크립트가 직접 부른다.
 SCRIPT_ONLY = {"dial.warmer", "dial.cooler", "store.play",
                "film.cap.2", "film.cap.3", "film.cap.4", "film.cap.5", "film.cap.6", "film.play",
-               "suggest.say", "suggest.go", "suggest.close"}
+               "suggest.say", "suggest.go", "suggest.close",
+               "tour.video", "desk.night", "desk.day", "desk.yours",
+               "trace.aria", "trace.hint", "trace.left", "trace.done", "trace.count",
+               "jar.placeholder", "jar.empty", "jar.count", "jar.when", "jar.aria", "jar.clearAsk",
+               "day.aria", "day.head", "day.mine.head"}
+# 머무는 자리들(js/play.js)이 이름으로 부르는 키 묶음 — 방문 인사, 서른 줄의 오늘의 문장,
+# 책상의 일곱 물건, 하루 한 장의 순간들.
+SCRIPT_PREFIXES = ("visit.", "trace.line.", "desk.o.", "day.m.", "day.mine.")
 
 FILL = re.compile(r'(<([a-zA-Z0-9]+)\b[^>]*\bdata-i="([^"]+)"[^>]*>)(</\2>)')
 ATTR = re.compile(r'data-i-(alt|aria-label|aria-roledescription|content)="([^"]+)"')
@@ -124,8 +131,8 @@ def json_ld(lang: str, t: dict, url: str) -> str:
             "inLanguage": LANGS,
             "installUrl": APP_STORE,
             "image": f"{SITE}/icon-1024.png",
-            "screenshot": [f"{SITE}/shots/{n}.webp" for n in ("01-home", "08-sentences", "03-measure", "05-result")],
-            "featureList": [text(t[f"does.{i}.h"]) for i in range(1, 7)],
+            "screenshot": [f"{SITE}/shots/{lang}/{n}.webp" for n in ("home", "phrases", "measure", "result", "desk", "day")],
+            "featureList": [text(t[f"does.{i}.h"]) for i in range(1, 9)],
             "keywords": text(t["meta.keywords"]),
             "offers": {"@type": "Offer", "price": "0", "priceCurrency": CURRENCY[lang]},
         },
@@ -175,7 +182,7 @@ def build(tpl_name: str, prefix: str, out_name: str, i18n_js: str, page_css: str
     tpl = (ROOT / tpl_name).read_text(encoding="utf-8")
     used = set(re.findall(r'data-i(?:-[a-z-]+)?="([^"]+)"', tpl))
     unknown = used - keys
-    unused = keys - used - SCRIPT_ONLY
+    unused = {k for k in keys - used - SCRIPT_ONLY if not k.startswith(SCRIPT_PREFIXES)}
     if unknown:
         ok = False
         print(f"  {out_name}: 틀에는 있는데 표에 없는 키 {sorted(unknown)}")

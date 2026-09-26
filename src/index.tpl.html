@@ -38,7 +38,7 @@
 <!-- 앱과 같은 고딕. 쓰는 글자만 받아오는 동적 서브셋이라 가볍다. 못 받으면 시스템 고딕으로 선다. 일본어는 Pretendard JP 가 받는다. -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-jp-dynamic-subset.min.css">
-<!-- 부리체는 앱의 질문 한 줄과 「이런 순간」에만 쓴다. 마루 부리는 굵기당 3.2MB 라 웹에서는 고운 바탕으로 대신한다. -->
+<!-- 부리체는 앱의 질문 한 줄과 「이런 순간」 · 오늘의 문장 · 받은 말에 쓴다. 마루 부리는 굵기당 3.2MB 라 웹에서는 고운 바탕으로 대신한다. -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400&family=Shippori+Mincho:wght@400&family=Lora:ital,wght@0,400;1,400&display=swap">
 <style>
   :root {
@@ -46,13 +46,15 @@
     --canvas: #F5F1EA; --surface: #FDFCFA; --sunken: #F0EBE2;
     --ink: #211E1B; --ink-2: #56504A; --ink-3: #6C655D;
     --line: #E6DFD4; --line-2: #877D71;
-    --accent: #BE2D1A; --accent-soft: #F9EAE8;
-    /* 온도 램프 — 그래픽용(r) 과 글자용(ri). lib/theme/malondo_palette.dart 와 같은 값 */
+    --accent: #BE2D1A; --accent-soft: #F9EAE8; --on-accent: #FFFFFF;
+    /* 온도 램프 — 그래픽용(r) · 글자용(ri) · 옅은 바탕(t). lib/theme/malondo_palette.dart 와 같은 값 */
     --r1: #2B4669; --r2: #325D57; --r3: #6D6359; --r4: #976A23; --r5: #C76138; --r6: #D76656;
     --r1i: #2B4669; --r2i: #325D57; --r3i: #6D6359; --r4i: #895B13; --r5i: #AA451E; --r6i: #BE2D1A;
+    --t1: #E8EEF6; --t2: #E3F0EE; --t3: #EEEDEB; --t4: #F6ECDD; --t5: #F8EBE5; --t6: #F9EAE8;
     /* 헤드라인 강조 — 스토어 스크린샷의 청록→금→살구 */
     --g1: #2F7A6E; --g2: #B5832C; --g3: #D3664F;
     --blob1: rgba(156,208,198,.55); --blob2: rgba(234,205,150,.55); --blob3: rgba(242,181,161,.6);
+    --sun: rgba(250,232,196,.8); --room: rgba(234,205,150,.16);
     --frame: #3A3532; --frame-edge: #6B645F; --frame-in: #0A0908;
     --shadow: rgba(58,34,24,.42);
     --sans: "Pretendard Variable", Pretendard, "Pretendard JP Variable", "Pretendard JP", -apple-system, BlinkMacSystemFont,
@@ -67,11 +69,13 @@
       --canvas: #16120F; --surface: #211D19; --sunken: #100D0B;
       --ink: #F0EAE3; --ink-2: #B8AFA5; --ink-3: #9E958A;
       --line: #3A342E; --line-2: #7E756A;
-      --accent: #E8ACA4; --accent-soft: #40221E;
+      --accent: #E8ACA4; --accent-soft: #40221E; --on-accent: #211D19;
       --r1: #7496C3; --r2: #50AA9E; --r3: #AEA396; --r4: #CDA669; --r5: #DFA690; --r6: #E8ACA4;
       --r1i: #7496C3; --r2i: #50AA9E; --r3i: #AEA396; --r4i: #CDA669; --r5i: #DFA690; --r6i: #E8ACA4;
+      --t1: #222B37; --t2: #1D2D2B; --t3: #2D2A26; --t4: #32291B; --t5: #3A251D; --t6: #40221E;
       --g1: #50AA9E; --g2: #CDA669; --g3: #E8ACA4;
       --blob1: rgba(80,170,158,.18); --blob2: rgba(205,166,105,.16); --blob3: rgba(232,172,164,.18);
+      --sun: rgba(205,166,105,.16); --room: rgba(205,166,105,.06);
       --frame: #2B2622; --frame-edge: #4A423C; --frame-in: #050404;
       --shadow: rgba(0,0,0,.7);
     }
@@ -81,17 +85,19 @@
     --canvas: #16120F; --surface: #211D19; --sunken: #100D0B;
     --ink: #F0EAE3; --ink-2: #B8AFA5; --ink-3: #9E958A;
     --line: #3A342E; --line-2: #7E756A;
-    --accent: #E8ACA4; --accent-soft: #40221E;
+    --accent: #E8ACA4; --accent-soft: #40221E; --on-accent: #211D19;
     --r1: #7496C3; --r2: #50AA9E; --r3: #AEA396; --r4: #CDA669; --r5: #DFA690; --r6: #E8ACA4;
     --r1i: #7496C3; --r2i: #50AA9E; --r3i: #AEA396; --r4i: #CDA669; --r5i: #DFA690; --r6i: #E8ACA4;
+    --t1: #222B37; --t2: #1D2D2B; --t3: #2D2A26; --t4: #32291B; --t5: #3A251D; --t6: #40221E;
     --g1: #50AA9E; --g2: #CDA669; --g3: #E8ACA4;
     --blob1: rgba(80,170,158,.18); --blob2: rgba(205,166,105,.16); --blob3: rgba(232,172,164,.18);
+    --sun: rgba(205,166,105,.16); --room: rgba(205,166,105,.06);
     --frame: #2B2622; --frame-edge: #4A423C; --frame-in: #050404;
     --shadow: rgba(0,0,0,.7);
   }
 
   * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 4.25rem; }
   body {
     margin: 0; background: var(--canvas); color: var(--ink);
     font: 16px/1.75 var(--sans); letter-spacing: -.01em;
@@ -107,7 +113,7 @@
   strong, b { color: var(--ink); font-weight: 600; }
   a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; }
   a:hover { text-decoration-thickness: 2px; }
-  a:focus-visible, button:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+  a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible, canvas:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
   sub, sup { font-size: .72em; line-height: 0; }
   small { font-size: .8125rem; }
   .grad { background: linear-gradient(90deg, var(--g1), var(--g2) 55%, var(--g3)); -webkit-background-clip: text; background-clip: text; color: transparent; }
@@ -115,6 +121,15 @@
   h2 { font-size: clamp(1.6rem, 3.2vw, 2.1rem); font-weight: 700; margin: 0 0 1rem; }
   h3 { font-size: 1.0625rem; font-weight: 600; }
   .tv { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .head-c { text-align: center; max-width: 42rem; margin: 0 auto 1.75rem; }
+  .btn { appearance: none; -webkit-appearance: none; font: inherit; font-size: .9375rem; font-weight: 600; letter-spacing: 0; color: var(--on-accent); background: var(--accent); border: 0; border-radius: .8rem; padding: .7rem 1.15rem; cursor: pointer; white-space: nowrap; transition: transform .2s, filter .2s; }
+  .btn:hover { filter: brightness(1.06); }
+  .btn:active { transform: scale(.97); }
+  .ghost { appearance: none; -webkit-appearance: none; font: inherit; font-size: .8125rem; font-weight: 600; letter-spacing: 0; color: var(--ink-2); background: var(--surface); border: 1px solid var(--line-2); border-radius: 999px; padding: .35rem .9rem; cursor: pointer; transition: border-color .2s, color .2s; }
+  .ghost:hover { border-color: var(--ink); color: var(--ink); }
+  .ghost[hidden] { display: none; }
+  .local { font-size: .8125rem; color: var(--ink-3); margin: .9rem 0 0; }
+  .local::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--g1); margin: 0 .45rem .1rem 0; }
 
   /* ── 나타나기 ── */
   html.js [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
@@ -122,6 +137,7 @@
   html.js [data-reveal][data-delay="1"] { transition-delay: .08s; }
   html.js [data-reveal][data-delay="2"] { transition-delay: .16s; }
   html.js [data-reveal][data-delay="3"] { transition-delay: .24s; }
+  html.js [data-reveal][data-delay="4"] { transition-delay: .32s; }
 
   /* ── 머리 ── */
   .bar { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); background: color-mix(in srgb, var(--canvas) 78%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent); }
@@ -137,18 +153,20 @@
   .prefs select { padding-right: 1.6rem; background-image: linear-gradient(45deg, transparent 50%, var(--ink-3) 50%), linear-gradient(135deg, var(--ink-3) 50%, transparent 50%); background-position: calc(100% - 13px) 55%, calc(100% - 9px) 55%; background-size: 4px 4px; background-repeat: no-repeat; }
   .prefs button { min-width: 2.6rem; font-variant-numeric: tabular-nums; }
   .prefs button:hover, .prefs select:hover { border-color: var(--ink); }
-  @media (max-width: 640px) { .bar nav { display: none; } .prefs { margin-left: auto; } }
+  @media (max-width: 1080px) { .bar nav .wide-only { display: none; } }
+  @media (max-width: 760px) { .bar nav { display: none; } .prefs { margin-left: auto; } }
 
   /* ── 영웅 ── */
-  .hero { position: relative; overflow: hidden; padding: 4rem 0 3.5rem; }
-  .blobs { position: absolute; inset: -20% -10%; pointer-events: none; filter: blur(60px); z-index: 0; }
+  .hero { position: relative; overflow: hidden; padding: 3.5rem 0 3.5rem; }
+  .blobs { position: absolute; inset: -20% -10%; pointer-events: none; filter: blur(60px); z-index: 0; transform: translate3d(var(--mx, 0), var(--my, 0), 0); transition: transform 1.4s cubic-bezier(.2,.7,.2,1); }
   .blob { position: absolute; border-radius: 50%; will-change: transform; }
   .blob.a { width: 46vw; height: 30vw; left: -8%; top: 55%; background: var(--blob1); animation: drift 26s ease-in-out infinite alternate; }
   .blob.b { width: 40vw; height: 26vw; right: -6%; top: 6%; background: var(--blob2); animation: drift 31s ease-in-out infinite alternate-reverse; }
   .blob.c { width: 50vw; height: 30vw; right: 4%; bottom: -8%; background: var(--blob3); animation: drift 37s ease-in-out infinite alternate; }
   @keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(6vw, -4vw) scale(1.12); } }
+  html.night .hero .blob.b { background: rgba(234,190,120,.5); }
   .hero .wide { position: relative; z-index: 1; display: grid; gap: 2.5rem; align-items: center; }
-  @media (min-width: 880px) { .hero .wide { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 3rem; } .hero { padding: 5.5rem 0 5rem; } }
+  @media (min-width: 880px) { .hero .wide { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 3rem; } .hero { padding: 4.5rem 0 5rem; } }
   .hero h1 { font-size: clamp(2.2rem, 5.2vw, 3.6rem); font-weight: 700; line-height: 1.18; }
   .hero .lede { margin: 1.4rem 0 0; font-size: 1.125rem; max-width: 36ch; }
   .facts { list-style: none; margin: 1.1rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .25rem 0; font-size: .875rem; color: var(--ink-3); }
@@ -157,6 +175,19 @@
   .store { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 0 .5rem; padding: .6rem 1rem; border: 1px solid var(--line-2); border-radius: .75rem; color: var(--ink); font-size: .9375rem; text-decoration: none; background: color-mix(in srgb, var(--surface) 70%, transparent); max-width: 100%; }
   .store small { color: var(--ink-3); }
   .store.soon { color: var(--ink-2); }
+  .new-chip { display: inline-flex; align-items: center; gap: .5rem; margin: 1.1rem 0 0; padding: .35rem .85rem .35rem .45rem; border-radius: 999px; background: color-mix(in srgb, var(--surface) 75%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line)); color: var(--ink); font-size: .8125rem; font-weight: 600; text-decoration: none; letter-spacing: 0; }
+  .new-chip i { width: 22px; height: 22px; border-radius: 50%; background: var(--accent-soft); display: grid; place-items: center; font-style: normal; color: var(--accent); font-size: .75rem; }
+  .new-chip:hover { border-color: var(--accent); }
+  .new-chip::after { content: "→"; color: var(--accent); transition: transform .3s; }
+  .new-chip:hover::after { transform: translateX(3px); }
+
+  /* 방문 인사 — 다시 오면 며칠 만인지, 절기, 밤 */
+  .visit { list-style: none; margin: 0 0 1.15rem; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem; min-height: 1.9rem; }
+  .visit[hidden] { display: none; }
+  .visit li { font-size: .8125rem; line-height: 1.4; color: var(--ink-2); background: color-mix(in srgb, var(--surface) 72%, transparent); border: 1px solid var(--line); border-radius: 999px; padding: .3rem .8rem; letter-spacing: 0;
+    animation: chip .8s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(.3s + var(--k, 0) * .22s); }
+  .visit li:first-child { color: var(--ink); border-color: color-mix(in srgb, var(--accent) 30%, var(--line)); }
+  @keyframes chip { from { opacity: 0; transform: translateY(6px); } }
 
   /* 다이얼 */
   .dial-wrap { display: grid; justify-items: center; gap: 1.1rem; }
@@ -177,6 +208,13 @@
   .wave i:nth-child(3n) { background: var(--r6); }
   @keyframes wave { 0%, 100% { height: 22%; } 50% { height: var(--h, 80%); } }
   .dial-note { font-size: .8125rem; color: var(--ink-3); text-align: center; max-width: 32ch; }
+  /* 오늘의 문장 — 날마다 바뀌는 한 줄. 스크립트가 채운다. */
+  .today-line { display: grid; gap: .35rem; width: min(320px, 86vw); padding: .85rem 1.1rem .95rem; border-radius: 1rem; background: color-mix(in srgb, var(--surface) 80%, transparent); border: 1px solid var(--line); text-decoration: none; color: var(--ink); position: relative; overflow: hidden; transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, border-color .3s; }
+  .today-line[hidden] { display: none; }
+  .today-line::before { content: ""; position: absolute; left: 0; top: .9rem; bottom: .9rem; width: 3px; border-radius: 2px; background: var(--line-c, var(--accent)); }
+  .today-line:hover { transform: translateY(-2px); box-shadow: 0 16px 34px -26px var(--shadow); border-color: var(--line-2); }
+  .today-line span { font-size: .75rem; font-weight: 600; color: var(--ink-3); letter-spacing: 0; }
+  .today-line q { quotes: none; font-family: var(--serif); font-size: 1.125rem; line-height: 1.55; white-space: pre-line; }
 
   /* ── 이런 순간 ── */
   .moments { padding: 1.5rem 0 3.5rem; }
@@ -188,6 +226,54 @@
   .moments .tail { margin: 1.6rem auto 0; font-size: 1rem; color: var(--ink-3); max-width: 34ch; }
   .moments .tail b { color: var(--accent); font-weight: 600; }
   .moments .sep { display: block; width: 28px; height: 2px; border-radius: 1px; margin: 1.4rem auto 0; background: linear-gradient(90deg, var(--g1), var(--g2), var(--g3)); }
+
+  /* ── 폰 틀 — 17 Pro Max(1320×2868). 섬은 사진 속 아일랜드 자리를 덮는다 ── */
+  .phone { position: relative; width: 100%; aspect-ratio: 1320 / 2868; border-radius: 14% / 6.4%; background: var(--frame-in); box-shadow: 0 0 0 3px var(--frame-in), 0 0 0 11px var(--frame), 0 0 0 12px var(--frame-edge), 0 28px 50px -18px var(--shadow); margin: 12px auto 24px; }
+  .phone img, .phone video { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; background: #F5F1EA; }
+  .phone::after { content: ""; position: absolute; left: 50%; top: 1.3%; width: 29.6%; height: 4.2%; margin-left: -14.8%; border-radius: 999px; background: #070606; pointer-events: none; }
+  .phone.small { box-shadow: 0 0 0 2px var(--frame-in), 0 0 0 7px var(--frame), 0 0 0 8px var(--frame-edge), 0 18px 32px -16px var(--shadow); margin: 8px auto 14px; }
+  [data-tilt] { transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+
+  /* ── 움직이는 화면 ── */
+  .tour { padding: 3.5rem 0 3.25rem; border-top: 1px solid var(--line); position: relative; overflow: hidden; }
+  .tour .blobs { opacity: .55; }
+  .tour .wide { position: relative; z-index: 1; }
+  .tour-body { display: grid; gap: .5rem; justify-items: center; }
+  .tour .stage { width: min(270px, 68vw); }
+  .clips { list-style: none; position: relative; margin: 0 -1.25rem; padding: .25rem 1.25rem .9rem; display: flex; gap: .6rem; overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; width: calc(100% + 2.5rem); counter-reset: clip; }
+  .clips::-webkit-scrollbar { display: none; }
+  .clips li { flex: 0 0 min(15.5rem, 74vw); scroll-snap-align: center; display: flex; }
+  .clips button { appearance: none; -webkit-appearance: none; width: 100%; text-align: left; font: inherit; color: inherit; letter-spacing: inherit; background: color-mix(in srgb, var(--surface) 88%, transparent); border: 1px solid var(--line); border-radius: 1rem; padding: .8rem 1rem 1rem; cursor: pointer; position: relative; overflow: hidden; display: grid; align-content: start; gap: .2rem; transition: border-color .3s, background .3s, transform .35s cubic-bezier(.2,.7,.2,1); }
+  .clips button::before { counter-increment: clip; content: counter(clip, decimal-leading-zero); font-family: var(--mono); font-size: .72rem; font-weight: 600; color: var(--ink-3); letter-spacing: .02em; }
+  .clips b { font-size: .9688rem; line-height: 1.4; }
+  .clips span { font-size: .8125rem; line-height: 1.55; color: var(--ink-3); }
+  .clips .bar { position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: linear-gradient(90deg, var(--g1), var(--g2), var(--g3)); transform-origin: left; transform: scaleX(var(--p, 0)); opacity: 0; transition: opacity .3s; }
+  .clips button.on { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); background: color-mix(in srgb, var(--accent-soft) 55%, var(--surface)); }
+  .clips button.on::before { color: var(--accent); }
+  .clips button.on .bar { opacity: 1; }
+  .clips button:hover { border-color: var(--line-2); transform: translateY(-2px); }
+  @media (min-width: 900px) {
+    .tour-body { grid-template-columns: 290px minmax(0, 1fr); align-items: start; gap: 3.5rem; max-width: 62rem; margin: 0 auto; justify-items: stretch; }
+    .tour .stage { width: 290px; position: sticky; top: 5rem; }
+    .clips { display: grid; grid-template-columns: 1fr 1fr; overflow: visible; margin: 0; padding: 0; width: auto; }
+    .clips li { flex: none; }
+  }
+
+  /* ── 다섯 개의 문 ── */
+  .split { display: grid; gap: 2rem; align-items: start; }
+  @media (min-width: 900px) { .split { grid-template-columns: minmax(0, 1fr) 270px; gap: 4rem; } .split .side { position: sticky; top: 5rem; } }
+  @media (max-width: 899px) { .split .side { display: none; } }
+  .doors { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; gap: .6rem; }
+  .doors button { appearance: none; -webkit-appearance: none; width: 100%; display: flex; align-items: center; gap: .6rem; text-align: left; font: inherit; color: inherit; letter-spacing: inherit; background: var(--surface); border: 1px solid var(--line); border-radius: 1.1rem; padding: .8rem .5rem .8rem 1.1rem; cursor: pointer; transition: border-color .3s, transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s; }
+  .doors button:hover { border-color: var(--line-2); transform: translateY(-2px); box-shadow: 0 16px 30px -26px var(--shadow); }
+  .doors button:active { transform: scale(.985); }
+  .doors .txt { flex: 1 1 auto; min-width: 0; display: grid; gap: .08rem; }
+  .doors .txt b { font-size: 1rem; }
+  .doors .txt > span { font-size: .875rem; color: var(--ink-2); }
+  .doors .txt small { font-size: .78rem; color: var(--ink-3); }
+  .doors canvas { flex: none; display: block; }
+  .doors li.new button { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); background: color-mix(in srgb, var(--accent-soft) 35%, var(--surface)); }
+  .doors-foot { margin: 1rem 0 0; }
 
   /* ── 화면 넘겨보기 ── */
   .shots { padding: 3.5rem 0 3rem; border-top: 1px solid var(--line); }
@@ -202,15 +288,120 @@
   .slide h3 { font-size: 1.125rem; font-weight: 700; line-height: 1.3; min-height: 3.9em; display: grid; align-content: end; }
   .slide h3 > span { display: block; }
   .slide p { font-size: .875rem; color: var(--ink-3); margin: -.4rem 0 0; }
-  .phone { position: relative; width: 100%; aspect-ratio: 1284 / 2778; border-radius: 14% / 6.5%; background: var(--frame-in); box-shadow: 0 0 0 3px var(--frame-in), 0 0 0 11px var(--frame), 0 0 0 12px var(--frame-edge), 0 28px 50px -18px var(--shadow); margin: 12px auto 24px; }
-  .phone img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
-  .phone::after { content: ""; position: absolute; left: 50%; top: 2.2%; width: 27%; height: 3.4%; margin-left: -13.5%; border-radius: 999px; background: #070606; }
   .ctl { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: .25rem; }
   .ctl button { appearance: none; border: 1px solid var(--line-2); background: var(--surface); color: var(--ink); width: 40px; height: 40px; border-radius: 50%; font-size: 1.1rem; cursor: pointer; display: grid; place-items: center; }
   .ctl button:hover { border-color: var(--ink); }
-  .dots { display: flex; gap: 7px; }
-  .dots i { width: 7px; height: 7px; border-radius: 50%; background: var(--line-2); opacity: .45; transition: all .3s; }
-  .dots i.on { opacity: 1; background: var(--accent); width: 20px; border-radius: 4px; }
+  .dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; max-width: 70vw; }
+  .dots i { width: 6px; height: 6px; border-radius: 50%; background: var(--line-2); opacity: .45; transition: all .3s; }
+  .dots i.on { opacity: 1; background: var(--accent); width: 18px; border-radius: 4px; }
+
+  /* ── 창가 책상 ── */
+  .desk-sec { padding: 3.5rem 0 3.25rem; border-top: 1px solid var(--line); position: relative; overflow: hidden; }
+  .room { position: relative; max-width: 800px; margin: 0 auto; padding-top: clamp(5.5rem, 24vw, 12.5rem); }
+  .room::before { content: ""; position: absolute; inset: 0 -10% 20% -10%; background: radial-gradient(60% 70% at 50% 30%, var(--room), transparent 70%); pointer-events: none; }
+  /* 창으로 든 볕 — 벽에 비친 창틀. 구름이 지나가듯 천천히 숨 쉰다. 밤에는 없다. */
+  .sunpatch { position: absolute; left: 50%; top: .5rem; width: min(40%, 280px); aspect-ratio: 1.3; transform: translateX(-50%) skewX(-7deg); pointer-events: none; filter: blur(9px); opacity: .7; animation: sunlit 11s ease-in-out infinite alternate;
+    background:
+      linear-gradient(90deg, transparent calc(50% - 3px), var(--canvas) calc(50% - 3px), var(--canvas) calc(50% + 3px), transparent calc(50% + 3px)),
+      linear-gradient(0deg, transparent calc(46% - 3px), var(--canvas) calc(46% - 3px), var(--canvas) calc(46% + 3px), transparent calc(46% + 3px)),
+      var(--sun); border-radius: 6px; }
+  @keyframes sunlit { 0% { opacity: .75; transform: translateX(-50%) skewX(-7deg); } 45% { opacity: .45; } 100% { opacity: .7; transform: translateX(calc(-50% + 10px)) skewX(-8deg); } }
+  .room.night .sunpatch { opacity: 0; animation: none; }
+  .room.night::before { background: radial-gradient(40% 55% at 92% 70%, rgba(234,190,120,.22), transparent 70%); }
+  .moon { display: none; position: absolute; left: 50%; top: 1.5rem; width: 34px; height: 34px; margin-left: -17px; border-radius: 50%; box-shadow: inset -9px 3px 0 0 color-mix(in srgb, var(--ink-3) 70%, transparent); transform: rotate(-20deg); opacity: .8; }
+  .room.night .moon { display: block; }
+  .board { position: relative; }
+  .board canvas { display: block; margin: 0 auto; }
+  .desk-hits button { position: absolute; appearance: none; -webkit-appearance: none; background: none; border: 0; padding: 0; cursor: pointer; border-radius: 12px; }
+  .desk-hits button:hover { background: color-mix(in srgb, var(--accent) 6%, transparent); }
+  .desk-hits button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .desk-labels { position: relative; height: 2.8em; font-size: clamp(.64rem, 1.9vw, .8125rem); line-height: 1.3; color: var(--ink-3); }
+  .desk-labels span { position: absolute; top: .3rem; text-align: center; padding: 0 2px; letter-spacing: 0; transition: color .3s, border-color .3s, background .3s; overflow-wrap: normal; word-break: keep-all; hyphens: auto; cursor: pointer; }
+  :root[lang="ja"] .desk-labels span { word-break: normal; line-break: strict; }
+  .desk-labels span.on { color: var(--accent); font-weight: 600; }
+  /* 좁은 화면 — 물건 아래에 이름을 놓으면 낱말이 글자마다 끊긴다. 이름은 누를 수 있는 칩 한 줄로. */
+  @media (max-width: 599px) {
+    .desk-labels { height: auto; display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem; margin: .8rem auto 0; font-size: .78rem; max-width: 26rem; }
+    .desk-labels span { position: static; width: auto !important; left: auto !important; padding: .28rem .7rem; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--ink-2); white-space: nowrap; }
+    .desk-labels span.on { border-color: var(--accent); background: var(--accent-soft); }
+  }
+  .desk-status { text-align: center; margin: .9rem auto 0; max-width: 36rem; font-size: .875rem; color: var(--ink-3); }
+  .desk-status b { color: var(--ink-2); font-weight: 600; }
+  .desk-detail { display: grid; grid-template-columns: 128px minmax(0, 1fr); gap: 1.4rem; align-items: center; max-width: 36rem; margin: 1.5rem auto 0; padding: 1.1rem 1.25rem; background: var(--surface); border: 1px solid var(--line); border-radius: 1.25rem; box-shadow: 0 22px 44px -32px var(--shadow); }
+  .desk-detail[hidden] { display: none; }
+  .desk-detail.in { animation: rise .55s cubic-bezier(.2,.7,.2,1) both; }
+  .desk-detail .phone { width: 116px; }
+  .desk-detail h3 { font-size: 1.125rem; margin: 0 0 .35rem; }
+  .desk-detail p { font-size: .9375rem; margin: 0 0 .9rem; }
+  @keyframes rise { from { opacity: 0; transform: translateY(12px) scale(.985); } }
+  @media (max-width: 420px) { .desk-detail { grid-template-columns: 96px minmax(0, 1fr); gap: 1rem; padding: 1rem; } .desk-detail .phone { width: 88px; } }
+
+  /* ── 오늘의 문장 — 따라 적기 ── */
+  .sheet { margin: 1.5rem 0 0; background: var(--surface); border: 1px solid var(--line); border-radius: 1.25rem; padding: 1rem 1rem 1.15rem; box-shadow: 0 26px 48px -38px var(--shadow); }
+  .sheet-top { display: flex; justify-content: space-between; align-items: center; gap: .5rem; flex-wrap: wrap; font-size: .8125rem; color: var(--ink-3); margin: 0 .25rem .7rem; }
+  .trace-tone { display: inline-flex; align-items: center; gap: .45rem; font-weight: 600; color: var(--ink-2); }
+  .trace-tone i { width: 9px; height: 9px; border-radius: 50%; }
+  .paper { position: relative; font-family: var(--serif); border-radius: .8rem; background: color-mix(in srgb, var(--canvas) 45%, var(--surface)); overflow: hidden; touch-action: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; height: clamp(170px, 42vw, 236px); }
+  .paper canvas { position: absolute; left: 0; top: 0; }
+  #traceInk { cursor: crosshair; }
+  .stamp { position: absolute; right: 9%; bottom: 10%; width: 72px; height: 72px; border: 2.2px solid currentColor; border-radius: 50%; display: grid; place-content: center; text-align: center; transform: rotate(-12deg); opacity: .86; font-family: var(--sans); line-height: 1.15; pointer-events: none; box-shadow: inset 0 0 0 3px transparent, inset 0 0 0 4px currentColor; }
+  .stamp[hidden] { display: none; }
+  .stamp b { color: inherit; font-size: .95rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .stamp span { font-size: .62rem; font-weight: 700; letter-spacing: 0; }
+  .stamp.in { animation: stamp .6s cubic-bezier(.2,.9,.3,1.25) both; }
+  @keyframes stamp { from { opacity: 0; transform: rotate(-12deg) scale(1.7); } 60% { opacity: .95; transform: rotate(-12deg) scale(.93); } to { opacity: .86; transform: rotate(-12deg) scale(1); } }
+  .sheet-foot { display: flex; align-items: center; gap: .75rem; margin: .85rem .25rem 0; font-size: .875rem; color: var(--ink-2); flex-wrap: wrap; }
+  .sheet-foot > span { min-width: 9rem; }
+  .progress { flex: 1 1 6rem; height: 3px; border-radius: 2px; background: var(--line); position: relative; overflow: hidden; }
+  .progress::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--g1), var(--g2), var(--g3)); transform-origin: left; transform: scaleX(var(--p, 0)); transition: transform .45s cubic-bezier(.2,.7,.2,1); }
+  .sheet-week { display: flex; align-items: center; gap: .6rem; margin: .9rem .25rem 0; font-size: .8125rem; color: var(--ink-3); flex-wrap: wrap; }
+  .week { display: inline-flex; gap: 5px; }
+  .week i { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid var(--line-2); }
+  .week i.on { background: var(--accent); border-color: var(--accent); }
+  .week i.today { box-shadow: 0 0 0 2px var(--surface), 0 0 0 3.5px color-mix(in srgb, var(--accent) 45%, transparent); }
+
+  /* ── 받은 말 병 ── */
+  .jar-split { display: grid; gap: 1.25rem; align-items: center; }
+  @media (min-width: 860px) { .jar-split { grid-template-columns: minmax(0, 1fr) 400px; gap: 3.5rem; } }
+  .jar-form { margin: 1.4rem 0 0; position: relative; }
+  .jar-form label { display: block; font-size: .8125rem; font-weight: 600; color: var(--ink-2); margin: 0 0 .45rem; }
+  .jar-form .row { display: flex; gap: .5rem; }
+  .jar-form input { flex: 1; min-width: 0; font: inherit; font-family: var(--serif); font-size: 1rem; color: var(--ink); background: var(--surface); border: 1px solid var(--line-2); border-radius: .8rem; padding: .7rem .95rem; letter-spacing: 0; }
+  .jar-form input::placeholder { color: var(--ink-3); opacity: .8; }
+  .jar-form input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent); }
+  .strip { position: absolute; left: 0; right: 6rem; bottom: 0; height: 2.9rem; display: flex; align-items: center; padding: 0 .95rem; font-family: var(--serif); color: var(--ink); background: var(--t4); border: 1px solid var(--line-2); border-radius: .5rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; pointer-events: none; }
+  .strip[hidden] { display: none; }
+  .strip.fold { animation: fold .62s cubic-bezier(.4,0,.2,1) both; }
+  @keyframes fold { 0% { transform: none; opacity: 1; } 50% { transform: scaleX(.12) rotate(-10deg); border-radius: 40%; color: transparent; opacity: 1; } 100% { transform: translate(48vw, -30px) scale(.06) rotate(200deg); opacity: 0; color: transparent; } }
+  @media (max-width: 859px) { @keyframes fold { 0% { transform: none; opacity: 1; } 50% { transform: scaleX(.12) rotate(-10deg); border-radius: 40%; color: transparent; opacity: 1; } 100% { transform: translate(0, 140px) scale(.06) rotate(200deg); opacity: 0; color: transparent; } } }
+  .jar-actions { display: flex; gap: .5rem; margin-top: 1rem; flex-wrap: wrap; }
+  .jar-stage { position: relative; display: grid; justify-items: center; }
+  .jar-stage canvas { cursor: pointer; display: block; max-width: 100%; }
+  .jar-count { font-size: .875rem; color: var(--ink-3); margin: .2rem 0 0; text-align: center; min-height: 1.6em; }
+  .jar-card { position: absolute; left: 50%; top: 6%; width: min(19rem, 94%); transform: translateX(-50%); background: var(--surface); border: 1px solid var(--line); border-radius: 1rem; padding: 1rem 1.15rem .9rem; box-shadow: 0 26px 50px -28px var(--shadow); text-align: center; z-index: 2; }
+  .jar-card[hidden] { display: none; }
+  .jar-card q { display: block; quotes: none; font-family: var(--serif); font-size: 1.0625rem; line-height: 1.65; color: var(--ink); overflow-wrap: anywhere; }
+  .jar-card small { display: block; margin: .5rem 0 .75rem; color: var(--ink-3); }
+  .jar-card.in { animation: unfold .6s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes unfold { from { opacity: 0; transform: translateX(-50%) scale(.6) rotate(-8deg); } }
+
+  /* ── 하루 한 장 ── */
+  .day-card { margin: 1.5rem 0 0; background: var(--surface); border: 1px solid var(--line); border-radius: 1.25rem; padding: 1.1rem 1.1rem 1.15rem; box-shadow: 0 26px 48px -38px var(--shadow); }
+  .day-top { display: flex; align-items: flex-start; justify-content: space-between; gap: .75rem; flex-wrap: wrap; }
+  .day-date b { display: block; font-size: 1.2rem; font-weight: 700; }
+  .day-date span { display: block; font-family: var(--serif); font-size: 1.02rem; color: var(--ink-2); margin-top: .2rem; }
+  .seg { display: inline-flex; border: 1px solid var(--line-2); border-radius: 999px; padding: 2px; flex: none; }
+  .seg button { appearance: none; -webkit-appearance: none; font: inherit; font-size: .8125rem; font-weight: 600; letter-spacing: 0; color: var(--ink-2); background: none; border: 0; border-radius: 999px; padding: .3rem .8rem; cursor: pointer; }
+  .seg button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); }
+  .ribbon { margin: .8rem 0 .35rem; }
+  .ribbon canvas { display: block; }
+  .day-list { list-style: none; margin: 0; padding: 0; }
+  .day-list li { display: grid; grid-template-columns: 3.1rem 12px minmax(0, 1fr) auto; align-items: center; gap: .6rem; padding: .42rem .15rem; border-top: 1px solid var(--line); font-size: .875rem; color: var(--ink-2); opacity: 0; }
+  .day-list time { font-variant-numeric: tabular-nums; color: var(--ink-3); font-size: .8125rem; }
+  .day-list b { font-weight: 600; font-size: .8125rem; color: var(--ink-2); white-space: nowrap; }
+  .day-empty { font-size: .875rem; color: var(--ink-3); margin: .6rem 0 0; }
+  .day-empty[hidden] { display: none; }
+  .day-foot { margin-top: .9rem; }
 
   /* ── 구획 ── */
   section.plain { padding: 3.5rem 0; border-top: 1px solid var(--line); }
@@ -220,7 +411,8 @@
   .does li { padding: 1.25rem 1.25rem 1.35rem; border: 1px solid var(--line); border-radius: 1rem; background: var(--surface); font-size: .9375rem; color: var(--ink-2); }
   .does li i { display: block; width: 34px; height: 4px; border-radius: 2px; margin-bottom: 1rem; background: linear-gradient(90deg, var(--g1), var(--g2), var(--g3)); }
   .does b { display: block; margin-bottom: .3rem; font-size: 1.0625rem; }
-  @media (min-width: 720px) { .does { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; } }
+  .does li.new i { width: 52px; }
+  @media (min-width: 640px) { .does { grid-template-columns: repeat(2, 1fr); gap: 1.1rem; } }
 
   /* ── 네 가지 언어 ── */
   .langs { padding: 3.5rem 0 3rem; border-top: 1px solid var(--line); position: relative; overflow: hidden; }
@@ -236,9 +428,9 @@
   .fan li { display: grid; align-content: start; gap: .7rem; text-align: center; }
   .fan button { appearance: none; border: 0; padding: 0; background: none; cursor: pointer; display: grid; align-content: start; gap: .7rem; width: 100%; color: inherit; font: inherit; }
   .fan .phone { margin: 10px auto 18px; transform: translateY(0) scale(.94); opacity: .72; transition: transform .5s cubic-bezier(.2,.7,.2,1), opacity .5s; }
-  .fan .phone::after { top: 2.2%; }
   .fan li.on .phone { transform: none; opacity: 1; }
-  .fan button:hover .phone { opacity: 1; }
+  .fan button:hover .phone { opacity: 1; transform: translateY(-4px) scale(.96); }
+  .fan li.on button:hover .phone { transform: translateY(-4px); }
   .fan .name { font-weight: 700; font-size: 1rem; letter-spacing: 0; }
   .fan .say { font-size: .8125rem; line-height: 1.5; color: var(--ink-3); font-family: var(--serif); letter-spacing: 0; min-height: 3em; }
   .fan li.on .name { color: var(--accent); }
@@ -414,9 +606,10 @@
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .blob, .wave i, .ramp.wake::after { animation: none !important; }
+    .blob, .wave i, .ramp.wake::after, .sunpatch, .visit li { animation: none !important; }
     html.js [data-reveal] { opacity: 1; transform: none; transition: none; }
-    .needle, .slide, .dial-core .num, .dial-core .tone, .fan .phone { transition: none; }
+    .needle, .slide, .dial-core .num, .dial-core .tone, .fan .phone, [data-tilt], .blobs, .doors button, .clips button { transition: none; }
+    .stamp.in, .desk-detail.in, .jar-card.in, .strip.fold { animation: none; }
     html.js .fp-me { transform: none; opacity: 1; transition: none; }
   }
 </style>
@@ -428,9 +621,11 @@
     <img src="/icon-192.png" alt="" width="30" height="30">
     <b data-i="brand"></b>
     <nav data-i-aria-label="nav.aria">
-      <a href="#shots" data-i="nav.shots"></a>
-      <a href="#langs" data-i="nav.langs"></a>
-      <a href="#how" data-i="nav.how"></a>
+      <a href="#tour" data-i="nav.shots"></a>
+      <a href="#desk" data-i="nav.desk"></a>
+      <a href="#trace" data-i="nav.trace"></a>
+      <a href="#langs" class="wide-only" data-i="nav.langs"></a>
+      <a href="#how" class="wide-only" data-i="nav.how"></a>
       <a href="/support.html" data-i="nav.support"></a>
     </nav>
     <div class="prefs">
@@ -450,10 +645,12 @@
 
 <main>
 
-<section class="hero" aria-labelledby="hero-title">
+<section class="hero" id="top" aria-labelledby="hero-title">
   <div class="blobs" aria-hidden="true"><i class="blob a"></i><i class="blob b"></i><i class="blob c"></i></div>
   <div class="wide">
     <div>
+      <!-- 다시 오면 며칠 만인지 · 절기(한국어 · 일본어) · 밤. js/play.js 가 채운다. -->
+      <ul class="visit" id="visit" hidden aria-live="polite"></ul>
       <span class="eyebrow" data-reveal data-i="hero.eyebrow"></span>
       <h1 id="hero-title" data-reveal data-delay="1" data-i="hero.title"></h1>
       <p class="lede" data-reveal data-delay="2" data-i="hero.lede"></p>
@@ -465,6 +662,7 @@
       <ul class="facts" data-reveal data-delay="3">
         <li data-i="fact.1"></li><li data-i="fact.2"></li><li data-i="fact.3"></li><li data-i="fact.4"></li><li data-i="fact.5"></li><li data-i="fact.6"></li>
       </ul>
+      <div data-reveal data-delay="4"><a class="new-chip" href="#desk"><i aria-hidden="true">✦</i><span data-i="hero.new"></span></a></div>
     </div>
     <div class="dial-wrap" data-reveal data-delay="2">
       <div class="dial" id="dial" role="img" data-i-aria-label="dial.aria">
@@ -480,6 +678,8 @@
         <i style="--h:40%;animation-delay:-.1s"></i><i style="--h:70%;animation-delay:-.5s"></i><i style="--h:95%;animation-delay:-.9s"></i><i style="--h:60%;animation-delay:-.2s"></i><i style="--h:85%;animation-delay:-.7s"></i><i style="--h:45%;animation-delay:-1.1s"></i><i style="--h:90%;animation-delay:-.4s"></i><i style="--h:65%;animation-delay:-.8s"></i><i style="--h:35%;animation-delay:-.3s"></i><i style="--h:80%;animation-delay:-1s"></i><i style="--h:55%;animation-delay:-.6s"></i><i style="--h:92%;animation-delay:-1.2s"></i><i style="--h:48%;animation-delay:-.15s"></i><i style="--h:75%;animation-delay:-.55s"></i><i style="--h:38%;animation-delay:-.95s"></i>
       </div>
       <p class="dial-note" data-i="dial.note"></p>
+      <!-- 오늘의 문장 — 앱의 따라 쓰기와 같은 날 같은 문장. 스크립트가 채운다. -->
+      <a class="today-line" id="heroLine" href="#trace" hidden data-i-aria-label="hero.today.aria"><span data-i="hero.today"></span><q></q></a>
     </div>
   </div>
 </section>
@@ -497,6 +697,58 @@
   </div>
 </section>
 
+<!-- 움직이는 화면 — 앱을 시뮬레이터에서 실제로 움직여 녹화한 아홉 편(언어마다). 보일 때만 돈다. -->
+<section class="tour" id="tour" aria-labelledby="tour-title">
+  <div class="blobs" aria-hidden="true"><i class="blob b" style="top:20%;right:-20%"></i><i class="blob a" style="top:50%;left:-20%"></i></div>
+  <div class="wide">
+    <div class="head-c">
+      <span class="eyebrow" data-reveal data-i="tour.eyebrow"></span>
+      <h2 id="tour-title" data-reveal data-delay="1" data-i="tour.title"></h2>
+      <p data-reveal data-delay="2" data-i="tour.lede"></p>
+    </div>
+    <div class="tour-body">
+      <div class="stage" data-reveal>
+        <div class="phone" data-tilt><video id="tourVideo" muted playsinline preload="none" width="600" height="1304" poster="/video/tour-{{LANG}}-doors.webp"></video></div>
+      </div>
+      <ol class="clips" role="tablist" data-i-aria-label="tour.aria" data-reveal data-delay="1">
+        <li><button type="button" role="tab" data-clip="doors"><b data-i="tour.1.h"></b><span data-i="tour.1.p"></span><i class="bar"></i></button></li>
+        <li><button type="button" role="tab" data-clip="measure"><b data-i="tour.2.h"></b><span data-i="tour.2.p"></span><i class="bar"></i></button></li>
+        <li><button type="button" role="tab" data-clip="day"><b data-i="tour.3.h"></b><span data-i="tour.3.p"></span><i class="bar"></i></button></li>
+        <li><button type="button" role="tab" data-clip="desk"><b data-i="tour.4.h"></b><span data-i="tour.4.p"></span><i class="bar"></i></button></li>
+        <li><button type="button" role="tab" data-clip="trace"><b data-i="tour.5.h"></b><span data-i="tour.5.p"></span><i class="bar"></i></button></li>
+        <li><button type="button" role="tab" data-clip="letter"><b data-i="tour.6.h"></b><span data-i="tour.6.p"></span><i class="bar"></i></button></li>
+        <li><button type="button" role="tab" data-clip="jar"><b data-i="tour.7.h"></b><span data-i="tour.7.p"></span><i class="bar"></i></button></li>
+        <li><button type="button" role="tab" data-clip="musicbox"><b data-i="tour.8.h"></b><span data-i="tour.8.p"></span><i class="bar"></i></button></li>
+        <li><button type="button" role="tab" data-clip="letgo"><b data-i="tour.9.h"></b><span data-i="tour.9.p"></span><i class="bar"></i></button></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 대화 탭의 다섯 문 — 들판 그림은 js/art.js 가 앱의 _MeadowPainter 를 그대로 옮긴 것. -->
+<section class="plain" id="talk" aria-labelledby="doors-title">
+  <div class="wide">
+    <div class="split">
+      <div>
+        <span class="eyebrow" data-reveal data-i="doors.eyebrow"></span>
+        <h2 id="doors-title" data-reveal data-delay="1" data-i="doors.title"></h2>
+        <p data-reveal data-delay="2" data-i="doors.lede"></p>
+        <ul class="doors" id="doors">
+          <li data-reveal><button type="button" data-scene="phrases"><span class="txt"><b data-i="doors.1.h"></b><span data-i="doors.1.p"></span><small data-i="doors.1.n"></small></span><canvas aria-hidden="true"></canvas></button></li>
+          <li data-reveal data-delay="1"><button type="button" data-scene="letter"><span class="txt"><b data-i="doors.2.h"></b><span data-i="doors.2.p"></span><small data-i="doors.2.n"></small></span><canvas aria-hidden="true"></canvas></button></li>
+          <li data-reveal data-delay="2"><button type="button" data-scene="dayMark"><span class="txt"><b data-i="doors.3.h"></b><span data-i="doors.3.p"></span><small data-i="doors.3.n"></small></span><canvas aria-hidden="true"></canvas></button></li>
+          <li data-reveal data-delay="3"><button type="button" data-scene="lettingGo"><span class="txt"><b data-i="doors.4.h"></b><span data-i="doors.4.p"></span><small data-i="doors.4.n"></small></span><canvas aria-hidden="true"></canvas></button></li>
+          <li class="new" data-reveal data-delay="4"><button type="button" data-scene="desk"><span class="txt"><b data-i="doors.5.h"></b><span data-i="doors.5.p"></span><small data-i="doors.5.n"></small></span><canvas aria-hidden="true"></canvas></button></li>
+        </ul>
+        <div class="doors-foot" data-reveal><button type="button" class="ghost" id="doorsReplay" data-i="doors.replay"></button></div>
+      </div>
+      <div class="side" data-reveal data-delay="2">
+        <div class="phone" data-tilt><img data-shot="doors" src="/shots/{{LANG}}/doors.webp" data-i-alt="slide.4.alt" loading="lazy" width="720" height="1564"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="shots" id="shots" aria-labelledby="shots-title">
   <div class="head">
     <span class="eyebrow" data-reveal data-i="shots.eyebrow"></span>
@@ -504,24 +756,129 @@
     <p data-reveal data-delay="2" data-i="shots.lede"></p>
   </div>
   <div class="track" id="track" tabindex="0" data-i-aria-roledescription="shots.role" data-i-aria-label="shots.aria">
-    <article class="slide"><h3><span data-i="slide.1.h"></span></h3><p data-i="slide.1.p"></p><div class="phone"><img src="/shots/01-home.webp" data-i-alt="slide.1.alt" loading="eager" width="720" height="1558"></div></article>
-    <article class="slide"><h3><span data-i="slide.2.h"></span></h3><p data-i="slide.2.p"></p><div class="phone"><img src="/shots/02-relations.webp" data-i-alt="slide.2.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3><span data-i="slide.3.h"></span></h3><p data-i="slide.3.p"></p><div class="phone"><img src="/shots/03-measure.webp" data-i-alt="slide.3.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3><span data-i="slide.4.h"></span></h3><p data-i="slide.4.p"></p><div class="phone"><img src="/shots/04-live.webp" data-i-alt="slide.4.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3><span data-i="slide.5.h"></span></h3><p data-i="slide.5.p"></p><div class="phone"><img src="/shots/05-result.webp" data-i-alt="slide.5.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3><span data-i="slide.6.h"></span></h3><p data-i="slide.6.p"></p><div class="phone"><img src="/shots/06-playback.webp" data-i-alt="slide.6.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3><span data-i="slide.7.h"></span></h3><p data-i="slide.7.p"></p><div class="phone"><img src="/shots/07-hub.webp" data-i-alt="slide.7.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3><span data-i="slide.8.h"></span></h3><p data-i="slide.8.p"></p><div class="phone"><img src="/shots/08-sentences.webp" data-i-alt="slide.8.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3><span data-i="slide.9.h"></span></h3><p data-i="slide.9.p"></p><div class="phone"><img src="/shots/09-practice.webp" data-i-alt="slide.9.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3><span data-i="slide.10.h"></span></h3><p data-i="slide.10.p"></p><div class="phone"><img src="/shots/10-letter.webp" data-i-alt="slide.10.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3><span data-i="slide.11.h"></span></h3><p data-i="slide.11.p"></p><div class="phone"><img src="/shots/11-letting-go.webp" data-i-alt="slide.11.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3><span data-i="slide.12.h"></span></h3><p data-i="slide.12.p"></p><div class="phone"><img src="/shots/12-saved.webp" data-i-alt="slide.12.alt" loading="lazy" width="720" height="1558"></div></article>
-    <article class="slide"><h3><span data-i="slide.13.h"></span></h3><p data-i="slide.13.p"></p><div class="phone"><img src="/shots/13-language.webp" data-i-alt="slide.13.alt" loading="lazy" width="720" height="1558"></div></article>
+    <article class="slide"><h3><span data-i="slide.1.h"></span></h3><p data-i="slide.1.p"></p><div class="phone"><img data-shot="home" src="/shots/{{LANG}}/home.webp" data-i-alt="slide.1.alt" loading="eager" width="720" height="1564"></div></article>
+    <article class="slide"><h3><span data-i="slide.2.h"></span></h3><p data-i="slide.2.p"></p><div class="phone"><img data-shot="measure" src="/shots/{{LANG}}/measure.webp" data-i-alt="slide.2.alt" loading="lazy" width="720" height="1564"></div></article>
+    <article class="slide"><h3><span data-i="slide.3.h"></span></h3><p data-i="slide.3.p"></p><div class="phone"><img data-shot="result" src="/shots/{{LANG}}/result.webp" data-i-alt="slide.3.alt" loading="lazy" width="720" height="1564"></div></article>
+    <article class="slide"><h3><span data-i="slide.4.h"></span></h3><p data-i="slide.4.p"></p><div class="phone"><img data-shot="doors" src="/shots/{{LANG}}/doors.webp" data-i-alt="slide.4.alt" loading="lazy" width="720" height="1564"></div></article>
+    <article class="slide"><h3><span data-i="slide.5.h"></span></h3><p data-i="slide.5.p"></p><div class="phone"><img data-shot="phrases" src="/shots/{{LANG}}/phrases.webp" data-i-alt="slide.5.alt" loading="lazy" width="720" height="1564"></div></article>
+    <article class="slide"><h3><span data-i="slide.6.h"></span></h3><p data-i="slide.6.p"></p><div class="phone"><img data-shot="letter" src="/shots/{{LANG}}/letter.webp" data-i-alt="slide.6.alt" loading="lazy" width="720" height="1564"></div></article>
+    <article class="slide"><h3><span data-i="slide.7.h"></span></h3><p data-i="slide.7.p"></p><div class="phone"><img data-shot="lettinggo" src="/shots/{{LANG}}/lettinggo.webp" data-i-alt="slide.7.alt" loading="lazy" width="720" height="1564"></div></article>
+    <article class="slide"><h3><span data-i="slide.8.h"></span></h3><p data-i="slide.8.p"></p><div class="phone"><img data-shot="daymark" src="/shots/{{LANG}}/daymark.webp" data-i-alt="slide.8.alt" loading="lazy" width="720" height="1564"></div></article>
+    <article class="slide"><h3><span data-i="slide.9.h"></span></h3><p data-i="slide.9.p"></p><div class="phone"><img data-shot="day" src="/shots/{{LANG}}/day.webp" data-i-alt="slide.9.alt" loading="lazy" width="720" height="1564"></div></article>
+    <article class="slide"><h3><span data-i="slide.10.h"></span></h3><p data-i="slide.10.p"></p><div class="phone"><img data-shot="people" src="/shots/{{LANG}}/people.webp" data-i-alt="slide.10.alt" loading="lazy" width="720" height="1564"></div></article>
+    <article class="slide"><h3><span data-i="slide.11.h"></span></h3><p data-i="slide.11.p"></p><div class="phone"><img data-shot="desk" src="/shots/{{LANG}}/desk.webp" data-i-alt="slide.11.alt" loading="lazy" width="720" height="1564"></div></article>
+    <article class="slide"><h3><span data-i="slide.12.h"></span></h3><p data-i="slide.12.p"></p><div class="phone"><img data-shot="tracepage" src="/shots/{{LANG}}/tracepage.webp" data-i-alt="slide.12.alt" loading="lazy" width="720" height="1564"></div></article>
+    <article class="slide"><h3><span data-i="slide.13.h"></span></h3><p data-i="slide.13.p"></p><div class="phone"><img data-shot="letterbox" src="/shots/{{LANG}}/letterbox.webp" data-i-alt="slide.13.alt" loading="lazy" width="720" height="1564"></div></article>
+    <article class="slide"><h3><span data-i="slide.14.h"></span></h3><p data-i="slide.14.p"></p><div class="phone"><img data-shot="jar" src="/shots/{{LANG}}/jar.webp" data-i-alt="slide.14.alt" loading="lazy" width="720" height="1564"></div></article>
+    <article class="slide"><h3><span data-i="slide.15.h"></span></h3><p data-i="slide.15.p"></p><div class="phone"><img data-shot="musicbox" src="/shots/{{LANG}}/musicbox.webp" data-i-alt="slide.15.alt" loading="lazy" width="720" height="1564"></div></article>
+    <article class="slide"><h3><span data-i="slide.16.h"></span></h3><p data-i="slide.16.p"></p><div class="phone"><img data-shot="candle" src="/shots/{{LANG}}/candle.webp" data-i-alt="slide.16.alt" loading="lazy" width="720" height="1564"></div></article>
   </div>
   <div class="ctl">
     <button type="button" id="prev" data-i-aria-label="shots.prev">‹</button>
     <div class="dots" id="dots" aria-hidden="true"></div>
     <button type="button" id="next" data-i-aria-label="shots.next">›</button>
+  </div>
+</section>
+
+<!-- 창가 책상 — 책상 그림은 js/art.js(앱의 _DeskPainter). 밤(20시~4시)에는 촛불이 켜진다.
+     이 페이지에서 옮겨 적은 장 · 접은 별이 책상 위에 쌓인다(localStorage). -->
+<section class="desk-sec" id="desk" aria-labelledby="desk-title">
+  <div class="wide">
+    <div class="head-c">
+      <span class="eyebrow" data-reveal data-i="desk.eyebrow"></span>
+      <h2 id="desk-title" data-reveal data-delay="1" data-i="desk.title"></h2>
+      <p data-reveal data-delay="2" data-i="desk.lede"></p>
+    </div>
+    <div class="room" id="deskStage" data-reveal>
+      <i class="sunpatch" aria-hidden="true"></i><i class="moon" aria-hidden="true"></i>
+      <div class="board" id="deskBoard">
+        <canvas id="deskCanvas" role="img" data-i-aria-label="desk.aria"></canvas>
+        <div class="desk-hits" id="deskHits"></div>
+      </div>
+      <div class="desk-labels" id="deskLabels" aria-hidden="true"></div>
+    </div>
+    <p class="desk-status" data-reveal><b data-i="desk.hint"></b> · <span id="deskStatus"></span></p>
+    <div class="desk-detail" id="deskDetail" hidden aria-live="polite">
+      <div class="phone small"><img alt="" width="720" height="1564"></div>
+      <div><h3></h3><p></p><button type="button" class="ghost close" data-i="desk.close"></button></div>
+    </div>
+  </div>
+</section>
+
+<!-- 오늘의 문장 — 앱의 TraceLine.of(오늘)과 같은 줄(2026-01-01 부터 날수 % 30). -->
+<section class="plain" id="trace" aria-labelledby="trace-title">
+  <div class="wrap">
+    <span class="eyebrow" data-reveal data-i="trace.eyebrow"></span>
+    <h2 id="trace-title" data-reveal data-delay="1" data-i="trace.title"></h2>
+    <p data-reveal data-delay="2" data-i="trace.lede"></p>
+    <div class="sheet" data-reveal>
+      <div class="sheet-top"><span class="trace-tone" id="traceTone"></span><span id="traceDate"></span></div>
+      <div class="paper" id="tracePaper" role="img">
+        <canvas id="traceGuide" aria-hidden="true"></canvas>
+        <canvas id="traceInk" aria-hidden="true"></canvas>
+        <div class="stamp" id="traceStamp" hidden><b></b><span></span></div>
+      </div>
+      <div class="sheet-foot">
+        <span id="traceLeft" aria-live="polite"></span>
+        <i class="progress" id="traceProgress"></i>
+        <button type="button" class="ghost" id="traceErase" data-i="trace.erase"></button>
+        <button type="button" class="ghost" id="traceAgain" hidden data-i="trace.again"></button>
+      </div>
+      <div class="sheet-week"><span data-i="trace.week"></span><span class="week" id="traceWeek"></span><span id="traceCount"></span></div>
+      <p class="local" data-i="trace.local"></p>
+    </div>
+  </div>
+</section>
+
+<section class="plain" id="jar" aria-labelledby="jar-title">
+  <div class="wide">
+    <div class="jar-split">
+      <div>
+        <span class="eyebrow" data-reveal data-i="jar.eyebrow"></span>
+        <h2 id="jar-title" data-reveal data-delay="1" data-i="jar.title"></h2>
+        <p data-reveal data-delay="2" data-i="jar.lede"></p>
+        <form class="jar-form" id="jarForm" data-reveal data-delay="2" autocomplete="off">
+          <label for="jarInput" data-i="jar.label"></label>
+          <div class="row"><input id="jarInput" name="word" maxlength="80" enterkeyhint="done"><button type="submit" class="btn" data-i="jar.fold"></button></div>
+          <div class="strip" id="jarStrip" hidden></div>
+        </form>
+        <div class="jar-actions" data-reveal data-delay="3">
+          <button type="button" class="ghost" id="jarTake" data-i="jar.take"></button>
+          <button type="button" class="ghost" id="jarClear" data-i="jar.clear"></button>
+        </div>
+        <p class="local" data-i="jar.local"></p>
+      </div>
+      <div class="jar-stage" data-reveal data-delay="1">
+        <canvas id="jarCanvas" role="img" tabindex="0"></canvas>
+        <p class="jar-count" id="jarCount" aria-live="polite"></p>
+        <div class="jar-card" id="jarCard" hidden aria-live="polite"><q></q><small></small><button type="button" class="ghost" data-i="jar.back"></button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="plain" id="day" aria-labelledby="day-title">
+  <div class="wide">
+    <div class="split">
+      <div>
+        <span class="eyebrow" data-reveal data-i="day.eyebrow"></span>
+        <h2 id="day-title" data-reveal data-delay="1" data-i="day.title"></h2>
+        <p data-reveal data-delay="2" data-i="day.lede"></p>
+        <div class="day-card" id="dayCard" data-reveal>
+          <div class="day-top">
+            <div class="day-date"><b id="dayDate"></b><span id="dayHead"></span></div>
+            <div class="seg" role="group"><button type="button" data-day="sample" aria-pressed="true" data-i="day.sample"></button><button type="button" data-day="mine" aria-pressed="false" data-i="day.mine"></button></div>
+          </div>
+          <div class="ribbon"><canvas id="dayRibbon" role="img"></canvas></div>
+          <ol class="day-list" id="dayList"></ol>
+          <p class="day-empty" id="dayEmpty" hidden data-i="day.mine.empty"></p>
+          <div class="day-foot"><button type="button" class="ghost" id="dayReplay" data-i="day.replay"></button></div>
+        </div>
+      </div>
+      <div class="side" data-reveal data-delay="2">
+        <div class="phone" data-tilt><img data-shot="day" src="/shots/{{LANG}}/day.webp" data-i-alt="slide.9.alt" loading="lazy" width="720" height="1564"></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -533,10 +890,12 @@
     <ul class="does">
       <li data-reveal><i></i><b data-i="does.1.h"></b><span data-i="does.1.p"></span></li>
       <li data-reveal data-delay="1"><i></i><b data-i="does.2.h"></b><span data-i="does.2.p"></span></li>
-      <li data-reveal data-delay="2"><i></i><b data-i="does.3.h"></b><span data-i="does.3.p"></span></li>
-      <li data-reveal><i></i><b data-i="does.4.h"></b><span data-i="does.4.p"></span></li>
-      <li data-reveal data-delay="1"><i></i><b data-i="does.5.h"></b><span data-i="does.5.p"></span></li>
-      <li data-reveal data-delay="2"><i></i><b data-i="does.6.h"></b><span data-i="does.6.p"></span></li>
+      <li data-reveal><i></i><b data-i="does.3.h"></b><span data-i="does.3.p"></span></li>
+      <li data-reveal data-delay="1"><i></i><b data-i="does.4.h"></b><span data-i="does.4.p"></span></li>
+      <li data-reveal><i></i><b data-i="does.5.h"></b><span data-i="does.5.p"></span></li>
+      <li data-reveal data-delay="1"><i></i><b data-i="does.6.h"></b><span data-i="does.6.p"></span></li>
+      <li class="new" data-reveal><i></i><b data-i="does.7.h"></b><span data-i="does.7.p"></span></li>
+      <li class="new" data-reveal data-delay="1"><i></i><b data-i="does.8.h"></b><span data-i="does.8.p"></span></li>
     </ul>
   </div>
 </section>
@@ -550,10 +909,10 @@
       <p data-reveal data-delay="2" data-i="langs.lede"></p>
     </div>
     <ul class="fan" id="fan" data-reveal data-delay="2">
-      <li data-lang="ko"><button type="button" data-i-aria-label="langs.pick.ko"><div class="phone"><img src="/shots/lang-ko.webp" data-i-alt="langs.alt.ko" loading="eager" width="720" height="1558"></div><span class="name">한국어</span><span class="say">오늘 내 말의 온도는</span></button></li>
-      <li data-lang="en"><button type="button" data-i-aria-label="langs.pick.en"><div class="phone"><img src="/shots/lang-en.webp" data-i-alt="langs.alt.en" loading="eager" width="720" height="1558"></div><span class="name">English</span><span class="say">How warm were my words today</span></button></li>
-      <li data-lang="ja"><button type="button" data-i-aria-label="langs.pick.ja"><div class="phone"><img src="/shots/lang-ja.webp" data-i-alt="langs.alt.ja" loading="eager" width="720" height="1558"></div><span class="name">日本語</span><span class="say">きょうの言葉の温度は</span></button></li>
-      <li data-lang="es"><button type="button" data-i-aria-label="langs.pick.es"><div class="phone"><img src="/shots/lang-es.webp" data-i-alt="langs.alt.es" loading="eager" width="720" height="1558"></div><span class="name">Español</span><span class="say">Qué temperatura tuvieron mis palabras hoy</span></button></li>
+      <li data-lang="ko"><button type="button" data-i-aria-label="langs.pick.ko"><div class="phone"><img src="/shots/ko/home.webp" data-i-alt="langs.alt.ko" loading="lazy" width="720" height="1564"></div><span class="name">한국어</span><span class="say">오늘 내 말의 온도는</span></button></li>
+      <li data-lang="en"><button type="button" data-i-aria-label="langs.pick.en"><div class="phone"><img src="/shots/en/home.webp" data-i-alt="langs.alt.en" loading="lazy" width="720" height="1564"></div><span class="name">English</span><span class="say">How warm were my words today</span></button></li>
+      <li data-lang="ja"><button type="button" data-i-aria-label="langs.pick.ja"><div class="phone"><img src="/shots/ja/home.webp" data-i-alt="langs.alt.ja" loading="lazy" width="720" height="1564"></div><span class="name">日本語</span><span class="say">きょうの言葉の温度は</span></button></li>
+      <li data-lang="es"><button type="button" data-i-aria-label="langs.pick.es"><div class="phone"><img src="/shots/es/home.webp" data-i-alt="langs.alt.es" loading="lazy" width="720" height="1564"></div><span class="name">Español</span><span class="say">Qué temperatura tuvieron mis palabras hoy</span></button></li>
     </ul>
     <p class="hint" data-reveal data-i="langs.hint"></p>
     <div class="cols">
@@ -782,7 +1141,9 @@
       <details><summary><h3 data-i="faq.4.q"></h3></summary><p data-i="faq.4.a"></p></details>
       <details><summary><h3 data-i="faq.5.q"></h3></summary><p data-i="faq.5.a"></p></details>
       <details><summary><h3 data-i="faq.6.q"></h3></summary><p data-i="faq.6.a"></p></details>
+      <details><summary><h3 data-i="faq.11.q"></h3></summary><p data-i="faq.11.a"></p></details>
       <details><summary><h3 data-i="faq.7.q"></h3></summary><p data-i="faq.7.a"></p></details>
+      <details><summary><h3 data-i="faq.12.q"></h3></summary><p data-i="faq.12.a"></p></details>
       <details><summary><h3 data-i="faq.8.q"></h3></summary><p data-i="faq.8.a"></p></details>
       <details><summary><h3 data-i="faq.9.q"></h3></summary><p data-i="faq.9.a"></p></details>
       <details><summary><h3 data-i="faq.10.q"></h3></summary><p data-i="faq.10.a"></p></details>
@@ -998,5 +1359,8 @@
   }
 })();
 </script>
+<!-- 앱의 선 그림(들판 · 책상)과 머무는 자리들 — 둘 다 이 브라우저 안에서만 돈다. -->
+<script defer src="/js/art.js"></script>
+<script defer src="/js/play.js"></script>
 </body>
 </html>

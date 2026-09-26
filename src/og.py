@@ -5,7 +5,7 @@
 
 - 링크를 카카오톡 · 네이버 · X 에 붙였을 때 뜨는 큰 그림이다. 첫 화면(영웅 구획)을
   한 장으로 옮긴다 — 맨 위 이름, 눈썹 글, 제목(온도에 무지개), 아래 사실 한 줄, 오른쪽
-  폰에는 그 언어의 홈 화면(shots/lang-*.webp).
+  폰에는 그 언어의 홈 화면(shots/{lang}/home.webp — 17 Pro Max 1320×2868).
 - 글은 네 표의 brand · hero.eyebrow · hero.title · fact.* 에서 온다. 그 문구를 고치면
   다시 돌린다.
 - 헤드리스 크롬으로 찍고 sips(macOS)로 JPEG 로 줄인다. 글꼴은 사이트와 같은 Pretendard
@@ -49,10 +49,10 @@ PAGE = """<!doctype html>
   :root[lang="en"] h1, :root[lang="es"] h1 {{ letter-spacing: -.02em; }}
   .grad {{ background: linear-gradient(90deg, #2F7A6E, #B5832C 55%, #D3664F); -webkit-background-clip: text; background-clip: text; color: transparent; }}
   .facts {{ font-size: 22px; color: #6C655D; }}
-  .phone {{ position: absolute; right: 92px; top: 66px; width: 286px; aspect-ratio: 1284 / 2778; border-radius: 14% / 6.5%; background: #0A0908;
+  .phone {{ position: absolute; right: 92px; top: 66px; width: 286px; aspect-ratio: 1320 / 2868; border-radius: 14% / 6.4%; background: #0A0908;
     box-shadow: 0 0 0 3px #0A0908, 0 0 0 11px #3A3532, 0 0 0 12px #6B645F, 0 40px 70px -24px rgba(58,34,24,.5); }}
   .phone img {{ display: block; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }}
-  .phone::after {{ content: ""; position: absolute; left: 50%; top: 2.2%; width: 27%; height: 3.4%; margin-left: -13.5%; border-radius: 999px; background: #070606; }}
+  .phone::after {{ content: ""; position: absolute; left: 50%; top: 1.3%; width: 29.6%; height: 4.2%; margin-left: -14.8%; border-radius: 999px; background: #070606; }}
 </style>
 </head>
 <body>
@@ -104,7 +104,7 @@ def main() -> int:
                 lang=lang,
                 title_px=TITLE_PX[lang],
                 icon=(OUT / "icon-192.png").as_uri(),
-                shot=(OUT / "shots" / f"lang-{lang}.webp").as_uri(),
+                shot=(OUT / "shots" / lang / "home.webp").as_uri(),
                 brand=t["brand"],
                 eyebrow=t["hero.eyebrow"],
                 title=t["hero.title"],
