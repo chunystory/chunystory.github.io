@@ -654,10 +654,10 @@
       <span class="eyebrow" data-reveal data-i="hero.eyebrow"></span>
       <h1 id="hero-title" data-reveal data-delay="1" data-i="hero.title"></h1>
       <p class="lede" data-reveal data-delay="2" data-i="hero.lede"></p>
+      <!-- Google Play 링크의 referrer 는 Play Console 「사용자 획득」에서 어느 단추로 왔는지(hero · get) 가른다. -->
       <ul class="stores" data-reveal data-delay="3">
         <li><a class="store" href="https://apps.apple.com/kr/app/id6809147797" data-i="store.ios"></a></li>
-        <!-- Google Play 출시 뒤: <li><a class="store" href="https://play.google.com/store/apps/details?id=com.malondo.malondo_app" data-i="store.play"></a></li> -->
-        <li><span class="store soon" data-i="store.play.soon"></span></li>
+        <li><a class="store" href="https://play.google.com/store/apps/details?id=com.malondo.malondo_app&amp;referrer=utm_source%3Dhomepage%26utm_campaign%3Dhero" data-i="store.play"></a></li>
       </ul>
       <ul class="facts" data-reveal data-delay="3">
         <li data-i="fact.1"></li><li data-i="fact.2"></li><li data-i="fact.3"></li><li data-i="fact.4"></li><li data-i="fact.5"></li><li data-i="fact.6"></li>
@@ -1128,8 +1128,7 @@
 </section>
 
 <!-- 자주 묻는 것 — 사람들이 검색창에 적는 말(사과 문자 · 말투 · 목소리 톤 · 털어놓기 …)로 묻고 답한다.
-     JSON-LD 의 FAQPage 가 이 글을 그대로 옮긴다. 물음을 더하면 네 표에 faq.N.q · faq.N.a 를 함께 더하고 여기 한 줄.
-     Google Play 가 열리면 faq.10.a 네 표도 함께 고친다. -->
+     JSON-LD 의 FAQPage 가 이 글을 그대로 옮긴다. 물음을 더하면 네 표에 faq.N.q · faq.N.a 를 함께 더하고 여기 한 줄. -->
 <section class="plain faq" id="faq" aria-labelledby="faq-title">
   <div class="wrap">
     <span class="eyebrow" data-reveal data-i="faq.eyebrow"></span>
@@ -1159,8 +1158,7 @@
     <p data-reveal data-delay="2" data-i="get.lede"></p>
     <ul class="stores" data-reveal data-delay="3">
       <li><a class="store" href="https://apps.apple.com/kr/app/id6809147797" data-i="store.ios"></a></li>
-      <!-- Google Play 출시 뒤: <li><a class="store" href="https://play.google.com/store/apps/details?id=com.malondo.malondo_app" data-i="store.play"></a></li> -->
-      <li><span class="store soon" data-i="store.play.soon2"></span></li>
+      <li><a class="store" href="https://play.google.com/store/apps/details?id=com.malondo.malondo_app&amp;referrer=utm_source%3Dhomepage%26utm_campaign%3Dget" data-i="store.play"></a></li>
     </ul>
     <p class="after" data-reveal data-delay="3" data-i="get.after"></p>
   </div>

@@ -20,8 +20,6 @@
   "hero.today.aria": "Go to today's line",
   "store.ios": "Get it on the App Store",
   "store.play": "Get it on Google Play",
-  "store.play.soon": "Google Play <small>in review</small>",
-  "store.play.soon2": "Google Play <small>not yet reviewed · the link will appear here</small>",
   "fact.1": "iPhone",
   "fact.2": "Android",
   "fact.3": "Free",
@@ -267,7 +265,7 @@
   "faq.9.q": "Can it replace therapy or counselling?",
   "faq.9.a": "No. Malondo is not a medical or counselling service, and it does not diagnose emotions, personality or relationships. When signs of self-harm or violence are read, guidance and helpline numbers come before any suggestion.",
   "faq.10.q": "Is it on Android? Which languages does it speak?",
-  "faq.10.a": "Right now you can get it on iPhone (App Store); Android (Google Play) is on the way. Screens and suggested sentences come in 한국어 · English · 日本語 · Español, and temperatures can be shown in ℃ or °F.",
+  "faq.10.a": "Yes. It's free on iPhone (App Store) and on Android (Google Play). Screens and suggested sentences come in 한국어 · English · 日本語 · Español, and temperatures can be shown in ℃ or °F.",
 
   "suggest.say": "This page is also available in English.",
   "suggest.go": "Read in English",

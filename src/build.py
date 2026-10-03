@@ -40,6 +40,7 @@ X_DEFAULT = "en"
 OG_LOCALE = {"ko": "ko_KR", "en": "en_US", "ja": "ja_JP", "es": "es_ES"}
 CURRENCY = {"ko": "KRW", "en": "USD", "ja": "JPY", "es": "EUR"}
 APP_STORE = "https://apps.apple.com/kr/app/id6809147797"
+PLAY = "https://play.google.com/store/apps/details?id=com.malondo.malondo_app"
 
 # (틀, 표 이름의 접두, 내놓을 파일). 접두가 빈 것은 index 다.
 PAGES = [
@@ -51,7 +52,7 @@ PAGES = [
 PAGED = {"index.html"}
 
 # 틀이 쓰지 않아도 되는 키 — 자바스크립트가 직접 부른다.
-SCRIPT_ONLY = {"dial.warmer", "dial.cooler", "store.play",
+SCRIPT_ONLY = {"dial.warmer", "dial.cooler",
                "film.cap.2", "film.cap.3", "film.cap.4", "film.cap.5", "film.cap.6", "film.play",
                "suggest.say", "suggest.go", "suggest.close",
                "tour.video", "desk.night", "desk.day", "desk.yours",
@@ -127,9 +128,9 @@ def json_ld(lang: str, t: dict, url: str) -> str:
             "description": text(t["meta.desc"]),
             "url": url,
             "applicationCategory": "LifestyleApplication",
-            "operatingSystem": "iOS 15.0 or later",
+            "operatingSystem": "iOS 15.0 or later, Android 7.0 or later",
             "inLanguage": LANGS,
-            "installUrl": APP_STORE,
+            "installUrl": [APP_STORE, PLAY],
             "image": f"{SITE}/icon-1024.png",
             "screenshot": [f"{SITE}/shots/{lang}/{n}.webp" for n in ("home", "phrases", "measure", "result", "desk", "day")],
             "featureList": [text(t[f"does.{i}.h"]) for i in range(1, 9)],

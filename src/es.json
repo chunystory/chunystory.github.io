@@ -20,8 +20,6 @@
   "hero.today.aria": "Ir a la frase de hoy",
   "store.ios": "Descargar en el App Store",
   "store.play": "Descargar en Google Play",
-  "store.play.soon": "Google Play <small>en revisión</small>",
-  "store.play.soon2": "Google Play <small>pendiente de revisión · el enlace aparecerá aquí</small>",
   "fact.1": "iPhone",
   "fact.2": "Android",
   "fact.3": "Gratis",
@@ -267,7 +265,7 @@
   "faq.9.q": "¿Sustituye a la terapia?",
   "faq.9.a": "No. Malondo no es un servicio médico ni de terapia, y no diagnostica emociones, personalidad ni relaciones. Si se leen señales de autolesión o violencia, antes que cualquier sugerencia aparecen orientación y teléfonos de ayuda.",
   "faq.10.q": "¿Está en Android? ¿En qué idiomas?",
-  "faq.10.a": "Por ahora se descarga en iPhone (App Store); Android (Google Play) está en camino. Las pantallas y las frases sugeridas llegan en 한국어 · English · 日本語 · Español, y la temperatura se puede ver en ℃ o °F.",
+  "faq.10.a": "Sí. Se descarga gratis en iPhone (App Store) y en Android (Google Play). Las pantallas y las frases sugeridas llegan en 한국어 · English · 日本語 · Español, y la temperatura se puede ver en ℃ o °F.",
 
   "suggest.say": "Esta página también está en español.",
   "suggest.go": "Ver en español",

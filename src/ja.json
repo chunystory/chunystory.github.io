@@ -19,8 +19,6 @@
   "hero.today.aria": "きょうの文へ",
   "store.ios": "App Store で入手",
   "store.play": "Google Play で入手",
-  "store.play.soon": "Google Play <small>審査前</small>",
-  "store.play.soon2": "Google Play <small>審査前です · 準備ができたらリンクが付きます</small>",
   "fact.1": "iPhone",
   "fact.2": "Android",
   "fact.3": "無料",
@@ -253,7 +251,7 @@
   "faq.9.q": "カウンセリングの代わりになりますか？",
   "faq.9.a": "なりません。Malondo は医療や心理カウンセリングのサービスではなく、感情や人格、関係を診断しません。自傷や暴力が心配される内容が読まれたら、文を提案する代わりに相談窓口の案内を先に出します。",
   "faq.10.q": "Android でも使えますか？ どの言語に対応していますか？",
-  "faq.10.a": "いまは iPhone（App Store）で入手でき、Android（Google Play）は準備中です。画面と提案される文は 한국어 · English · 日本語 · Español の四つの言語で届き、温度は ℃ と °F から選べます。",
+  "faq.10.a": "iPhone は App Store、Android は Google Play から無料で入手できます。画面と提案される文は 한국어 · English · 日本語 · Español の四つの言語で届き、温度は ℃ と °F から選べます。",
 
   "suggest.say": "このページは日本語でも読めます。",
   "suggest.go": "日本語で見る",
