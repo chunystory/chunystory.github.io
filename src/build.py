@@ -20,6 +20,14 @@
   달라진 주소를 검색 엔진에 바로 알리려면 `python3 src/indexnow.py`.
 
 한 페이지의 네 표에서 키가 어긋나거나, 틀이 표에 없는 키를 부르면 멈춘다.
+
+1.0.10 리뉴얼(2026-10-06) 뒤의 첫 페이지가 쓰는 그림과 영상:
+- `shots/{lang}/*.webp` — 17 Pro Max 시뮬레이터에서 찍은 실제 앱 화면(720폭). 샘플 다이어리
+  다섯 쪽(day-*)과 서랍 칸(drawer-*)은 촬영용 진입점이 심은 꾸밈이다.
+- `video/{lang}/*.mp4 · .webp` — 같은 진입점이 손짓을 포인터 이벤트로 넣어 녹화한 장면(576폭,
+  포스터는 장면의 핵심 자리). `video/tour-{lang}-*` · `how-*` 는 그 전 판의 영상이다.
+- `stickers/*.webp` — 앱의 StickerArt 를 투명 바탕으로 구운 그림. 효과 실험실과 직접 꾸며 보기
+  (`js/decor.js`)가 앱의 효과 이름 그대로(`fx.e.*`) 웹에서 흉내 낸다.
 """
 import datetime
 import html
@@ -55,13 +63,18 @@ PAGED = {"index.html"}
 SCRIPT_ONLY = {"dial.warmer", "dial.cooler",
                "film.cap.2", "film.cap.3", "film.cap.4", "film.cap.5", "film.cap.6", "film.play",
                "suggest.say", "suggest.go", "suggest.close",
-               "tour.video", "desk.night", "desk.day", "desk.yours",
+               "desk.night", "desk.day", "desk.yours",
                "trace.aria", "trace.hint", "trace.left", "trace.done", "trace.count",
                "jar.placeholder", "jar.empty", "jar.count", "jar.when", "jar.aria", "jar.clearAsk",
-               "day.aria", "day.head", "day.mine.head"}
+               "fx.now"}
 # 머무는 자리들(js/play.js)이 이름으로 부르는 키 묶음 — 방문 인사, 서른 줄의 오늘의 문장,
-# 책상의 일곱 물건, 하루 한 장의 순간들.
-SCRIPT_PREFIXES = ("visit.", "trace.line.", "desk.o.", "day.m.", "day.mine.")
+# 책상의 일곱 물건. 그리고 효과 실험실(js/decor.js)의 효과 이름 마흔아홉과 갈래 넷 — 앱의
+# sticker_effects.dart 와 같은 이름이고, 번역은 앱의 표(assets/i18n)에서 옮겼다.
+SCRIPT_PREFIXES = ("visit.", "trace.line.", "desk.o.", "fx.e.", "fx.g.")
+
+# JSON-LD 의 featureList — 꾸미는 다이어리부터, 그다음 말온도가 처음부터 해 온 일.
+FEATURES = ("auto.title", "drawer.title", "fx.title", "paper.title", "month.title", "f.talk.h", "f.letter.h",
+            "f.measure.h", "f.mark.h", "f.letgo.h", "f.people.h", "desk.title")
 
 FILL = re.compile(r'(<([a-zA-Z0-9]+)\b[^>]*\bdata-i="([^"]+)"[^>]*>)(</\2>)')
 ATTR = re.compile(r'data-i-(alt|aria-label|aria-roledescription|content)="([^"]+)"')
@@ -132,8 +145,8 @@ def json_ld(lang: str, t: dict, url: str) -> str:
             "inLanguage": LANGS,
             "installUrl": [APP_STORE, PLAY],
             "image": f"{SITE}/icon-1024.png",
-            "screenshot": [f"{SITE}/shots/{lang}/{n}.webp" for n in ("home", "phrases", "measure", "result", "desk", "day")],
-            "featureList": [text(t[f"does.{i}.h"]) for i in range(1, 9)],
+            "screenshot": [f"{SITE}/shots/{lang}/{n}.webp" for n in ("home", "day-full", "drawer-deco", "effects", "month-page", "phrases")],
+            "featureList": [text(t[k]) for k in FEATURES],
             "keywords": text(t["meta.keywords"]),
             "offers": {"@type": "Offer", "price": "0", "priceCurrency": CURRENCY[lang]},
         },

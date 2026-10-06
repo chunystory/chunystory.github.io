@@ -4,8 +4,9 @@
     python3 src/og.py
 
 - 링크를 카카오톡 · 네이버 · X 에 붙였을 때 뜨는 큰 그림이다. 첫 화면(영웅 구획)을
-  한 장으로 옮긴다 — 맨 위 이름, 눈썹 글, 제목(온도에 무지개), 아래 사실 한 줄, 오른쪽
-  폰에는 그 언어의 홈 화면(shots/{lang}/home.webp — 17 Pro Max 1320×2868).
+  한 장으로 옮긴다 — 맨 위 이름, 눈썹 글, 제목(스티커에 무지개), 아래 사실 한 줄, 오른쪽
+  폰에는 그 언어의 꾸민 하루 쪽(shots/{lang}/day-full.webp — 17 Pro Max 1320×2868), 둘레에
+  앱의 스티커 그림 셋(stickers/*.webp, 앱의 StickerArt 를 구운 것). 1.0.10 리뉴얼(2026-10-06).
 - 글은 네 표의 brand · hero.eyebrow · hero.title · fact.* 에서 온다. 그 문구를 고치면
   다시 돌린다.
 - 헤드리스 크롬으로 찍고 sips(macOS)로 JPEG 로 줄인다. 글꼴은 사이트와 같은 Pretendard
@@ -22,8 +23,8 @@ ROOT = Path(__file__).resolve().parent
 OUT = ROOT.parent
 LANGS = ["ko", "en", "ja", "es"]
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-# 제목 글자 크기 — 스페인어 첫 줄이 가장 길다.
-TITLE_PX = {"ko": 66, "en": 68, "ja": 62, "es": 56}
+# 제목 글자 크기 — 제목이 세 줄이다. 스페인어가 가장 길다.
+TITLE_PX = {"ko": 64, "en": 58, "ja": 60, "es": 48}
 
 PAGE = """<!doctype html>
 <html lang="{lang}">
@@ -53,6 +54,7 @@ PAGE = """<!doctype html>
     box-shadow: 0 0 0 3px #0A0908, 0 0 0 11px #3A3532, 0 0 0 12px #6B645F, 0 40px 70px -24px rgba(58,34,24,.5); }}
   .phone img {{ display: block; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }}
   .phone::after {{ content: ""; position: absolute; left: 50%; top: 1.3%; width: 29.6%; height: 4.2%; margin-left: -14.8%; border-radius: 999px; background: #070606; }}
+  .st {{ position: absolute; filter: drop-shadow(0 8px 12px rgba(60,40,20,.2)); }}
 </style>
 </head>
 <body>
@@ -66,6 +68,9 @@ PAGE = """<!doctype html>
     <div class="facts">{facts}</div>
   </div>
   <div class="phone"><img src="{shot}" alt=""></div>
+  <img class="st" src="{flower}" alt="" style="right:332px;top:96px;width:104px;transform:rotate(-12deg)">
+  <img class="st" src="{heart}" alt="" style="right:58px;top:40px;width:78px;transform:rotate(10deg)">
+  <img class="st" src="{globe}" alt="" style="right:340px;top:410px;width:110px;transform:rotate(-6deg)">
 </body>
 </html>
 """
@@ -104,11 +109,14 @@ def main() -> int:
                 lang=lang,
                 title_px=TITLE_PX[lang],
                 icon=(OUT / "icon-192.png").as_uri(),
-                shot=(OUT / "shots" / lang / "home.webp").as_uri(),
+                shot=(OUT / "shots" / lang / "day-full.webp").as_uri(),
+                flower=(OUT / "stickers" / "deco-flower.webp").as_uri(),
+                heart=(OUT / "stickers" / "deco-heart.webp").as_uri(),
+                globe=(OUT / "stickers" / "desk-globe.webp").as_uri(),
                 brand=t["brand"],
                 eyebrow=t["hero.eyebrow"],
                 title=t["hero.title"],
-                facts=" · ".join(t[f"fact.{i}"] for i in (1, 3, 4, 5)),
+                facts=t["hero.trust"],
             ), encoding="utf-8")
             png = tmp / f"{lang}.png"
             shoot(page, png, tmp / "profile")

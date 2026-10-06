@@ -5,9 +5,9 @@
   "pref.lang": "Page language",
 
   "title": "Malondo Privacy Policy",
-  "dates": "Effective 6 September 2026 · Last updated 26 September 2026",
+  "dates": "Effective 6 September 2026 · Last updated 6 October 2026",
 
-  "lead.1": "<strong>Malondo has no sign-up.</strong> We do not ask for your name, email or a password. What you write and what you measure stay on this device and never reach our server — we do not have one. Firebase creates <strong>a single anonymous ID with no name</strong> so that requests can be counted per person against a daily limit (section 1).",
+  "lead.1": "<strong>Malondo has no sign-up.</strong> We do not ask for your name, email or a password. What you write and what you measure, the diary you decorate and the photos you add stay on this device and never reach our server — we do not have one. Firebase creates <strong>a single anonymous ID with no name</strong> so that requests can be counted per person against a daily limit (section 1).",
   "lead.2": "That said, <strong>at the moment a sentence is written, the situation you typed is sent to Google.</strong> Not storing and not sending are different promises, so this document states the difference plainly.",
   "lead.3": "This policy is available in 한국어, English, 日本語 and Español. <strong>The Korean text is the original</strong>; if a translation differs in meaning, the Korean text governs.",
 
@@ -25,6 +25,7 @@
   "s1.b.h": "When an ad is shown — Google AdMob",
   "s1.b.1": "When you choose to watch an ad, and when an ad is fetched in advance, the <strong>advertising identifier, device information and approximate location</strong> are sent to Google AdMob.",
   "s1.b.2": "<strong>The situation you typed and the relationship you chose are never sent to the ad side.</strong> Where it is required, such as in Europe, ad consent (UMP) is asked for first, and you can change your choice at any time in the app (drawer → Data and privacy).",
+  "s1.b.3": "The same applies when, while decorating a day page, you choose a sticker effect, paper or shape that <strong>opens with one ad</strong>. We ask first, and it opens only when you watch to the end. What you decorated and which photos you added never go to the ad side, and with quiet mode on, no ad is shown at all.",
 
   "s1.c.h": "When the app crashes — Firebase Crashlytics",
   "s1.c.1": "If the app terminates unexpectedly, <strong>where the crash happened, the device model, and the operating-system and app version</strong> are sent to Firebase Crashlytics. It is used only to find out what broke.",
@@ -42,13 +43,16 @@
   "s1.e.5": "<strong>Per-person records</strong> — only the date, the person, the name of the temperature you chose and the ℃ measured while reading words meant for that person, kept on the device as a single line",
   "s1.e.6": "<strong>Anything written in Letting go</strong> — nothing is generated on that screen, so it is never transmitted anywhere and never written to a file on the device",
   "s1.e.7": "<strong>What you make at the Window desk</strong> — traced strokes · doodles · letters · kind words · word flowers · voice ridges. They leave the device only through the system share sheet, when you yourself tap Pass it on or Send as a postcard",
+  "s1.e.8": "<strong>The diary you decorate</strong> — where your stickers sit on day pages and month pages, your handwriting, the names you write on people tags, the words on word stickers, and the photos you add. None of it goes to the model or to ads",
 
-  "s2.h": "2. Microphone",
+  "s2.h": "2. Microphone and photos",
   "s2.1": "Measuring the temperature of your words needs microphone permission. Your device asks the first time you record.",
   "s2.2": "<strong>Your voice never leaves the device.</strong> Loudness and frequency analysis happen entirely on it, and all that remains per take is <strong>one temperature in ℃ and a timestamp</strong>. Audio, loudness samples and frequency values are not stored in any form.",
   "s2.3": "The recording file is created temporarily so that you can listen to your own voice once on the result screen, and it is <strong>deleted the moment you leave that screen</strong>.",
   "s2.4": "A <strong>voice ridge</strong> you keep from a result (Keep) holds no sound — only lines of numbers for pitch · loudness · temperature.",
   "s2.5": "When you <strong>blow out the night candle with your breath</strong>, the microphone opens only while Blow it out is on. It reads <strong>only the strength</strong> of your breath, does not count speech as breath, and deletes each recorded fragment the moment it stops. A long press puts the candle out just the same, so you can use it without the microphone.",
+  "s2.6": "<strong>Picking a photo does not ask for photo permission.</strong> On iOS the system photo picker (PHPicker) runs outside the app and hands over only the one photo you chose; Android also uses the system picker. The app never reads your whole library.",
+  "s2.7": "For the photo you choose, <strong>a single copy is placed in a folder inside the app</strong> and stuck on the day page; the original in your album is left untouched. Photos are never sent off the device and are not included in the export file in section 6 (only where they were stuck goes in). Copies no sticker points to anymore are deleted when you close that page.",
 
   "s3.h": "3. What stays on your device",
   "s3.1": "The following is stored in a single file in the app's documents directory (<code>malondo_state.json</code>).",
@@ -86,6 +90,16 @@
   "s3.desk.5.b": "For each measurement, the five axes of your voice · the target's axes · for whom (relationship name) · when you pressed it into the book",
   "s3.desk.6.a": "Voice ridges",
   "s3.desk.6.b": "Lines of pitch · loudness · temperature from readings you kept. No sound is kept",
+  "s3.decor.1.a": "Decorated day pages",
+  "s3.decor.1.b": "What you moved and stuck on that day's paper yourself — where stickers sit, their size and effects, your handwriting, the names you wrote on people tags, the words on word stickers, the paper and how you styled it, and the cover sticker. The day's record stickers (mood · measurements · kept sentences …) are not stored; they are rebuilt from your records each time. In quiet mode, stickers holding text or photos are covered",
+  "s3.decor.2.a": "Decorated month pages",
+  "s3.decor.2.b": "The stickers you added on each month's page, where each day's cover sticker sits, and the colour, weight and style of the grid lines",
+  "s3.decor.3.a": "Photos you added",
+  "s3.decor.3.b": "Copies of the photos you chose. Kept only in the app's documents folder (<code>decor_photos</code>); the saved file holds just the file names",
+  "s3.decor.4.a": "Opened with an ad",
+  "s3.decor.4.b": "The names of sticker effects, papers and shapes you opened by watching an ad to the end. Kept so you never have to watch the same ad again",
+  "s3.decor.5.a": "Updates you have seen",
+  "s3.decor.5.b": "The names of updates you already opened from the bell on the home screen — kept so the same note never drops twice. The text of the updates is not stored. One date noting whether we showed you a square you filled in ahead of time on its day is kept here too",
   "s3.r11.a": "Anonymous counts",
   "s3.r11.b": "How often suggestions were requested, copied and kept, and satisfaction. <strong>No sentence text is included</strong>",
   "s3.r12.a": "Tone-learning numbers",
@@ -95,12 +109,12 @@
   "s3.r14.a": "Today's count",
   "s3.r14.b": "How many suggestions and letters you received today. It returns to 0 when the day changes",
   "s3.r15.a": "Display settings",
-  "s3.r15.b": "Appearance · <strong>language · temperature unit</strong> · reading type · reminder time · quiet mode · calendar layers · the crash-report switch",
+  "s3.r15.b": "Appearance · <strong>language · temperature unit</strong> · reading type · reminder time · quiet mode · calendar page turn (like a page · slide) · sticker effects · sound and background music · the crash-report switch",
   "s3.r16.a": "Installation name",
   "s3.r16.b": "One random name for this installation. It points to neither a person nor a device and is <strong>never transmitted anywhere</strong>",
-  "s3.2": "<strong>The situation you typed, the suggestions you received, the story you shared and its reply are not stored.</strong> Look-backs keep no original text either. Only what you choose to keep — letters · kind words · the tracing notebook · replies you folded into an envelope — stays on the device, as in the table above.",
+  "s3.2": "<strong>The situation you typed, the suggestions you received, the story you shared and its reply are not stored.</strong> Look-backs keep no original text either. Only what you choose to keep — letters · kind words · the tracing notebook · replies you folded into an envelope · the handwriting and photos you put on day pages — stays on the device, as in the table above.",
   "s3.3": "The anonymous user ID lives not in this file but in the device's Firebase authentication storage. The values the home-screen widget reads (temperature and this month's squares) sit in one more layer, the app's shared storage on the device; with quiet mode on, only the temperature remains.",
-  "s3.4": "This file is <strong>excluded</strong> from automatic backup (Google Drive) and device-to-device transfer on Android, and from iCloud backup on iOS. To move to a new device, use the export in section 6.",
+  "s3.4": "This file is <strong>excluded</strong> from automatic backup (Google Drive) and device-to-device transfer on Android, and from iCloud backup on iOS. The copies of photos stuck on day pages, however, do not carry that mark on iOS, so <strong>if you have iCloud device backup turned on, they can be included in that backup</strong> (it is Apple's backup and never reaches us; on Android, photos are left out of backup too). To move to a new device, use the export in section 6.",
 
   "s4.h": "4. Notifications",
   "s4.1": "You can turn on one reminder a day (off by default). Scheduling and display happen <strong>entirely on the device</strong>, passing through neither our server nor a push service. Notification text contains no relationship and no situation.",
@@ -114,9 +128,9 @@
   "s6.2": "<strong>You can delete everything at any time:</strong>",
   "s6.li.1": "In the app — drawer → <strong>Data and privacy</strong> → <strong>Delete everything</strong>",
   "s6.li.2": "Deleting the app removes the values on the device with it",
-  "s6.3": "Delete everything removes kept sentences, measurements, look-backs, per-person records, days you let go, what you made at the Window desk, tone settings and the installation name, clears the home-screen widget, and <strong>deletes the anonymous user ID and takes a new name.</strong> Four things remain — today's count (which returns to 0 when the day changes), the quiet-mode switch, the crash-report switch, and the language and temperature unit you chose — and the app's confirmation dialog says why.",
+  "s6.3": "Delete everything removes kept sentences, measurements, look-backs, per-person records, days you let go, what you made at the Window desk, <strong>decorated day and month pages and the photos you added (the whole folder)</strong>, updates you have seen, tone settings and the installation name, clears the home-screen widget, and <strong>deletes the anonymous user ID and takes a new name.</strong> What remains: today's count (which returns to 0 when the day changes); the quiet-mode, crash-report, sound and sticker-effect switches; the language, temperature unit and reading type you chose; and what you opened with an ad (so you never have to watch it again). The app's confirmation dialog and data sheet say why.",
   "s6.4": "Since there is no sign-up, there is no account to close. Deleting the app removes the values on the device, and all that remains on a server is one empty anonymous ID that holds no personal information.",
-  "s6.5": "For moving to a new device there is an <strong>export</strong> (drawer → Data and privacy). It produces a single file that you move yourself, and <strong>we never receive that file.</strong> The file holds your records and kept sentences · what you made at the Window desk · tone settings and learning · app settings. It is plain text anyone can open, so please take a second look when choosing where to send it. Importing on a new device leaves what is already there as it is and adds only what is missing; settings follow only where that device has not changed them yet.",
+  "s6.5": "For moving to a new device there is an <strong>export</strong> (drawer → Data and privacy). It produces a single file that you move yourself, and <strong>we never receive that file.</strong> The file holds your records and kept sentences · what you made at the Window desk · decorated day and month pages (<strong>where photos were stuck, but not the photos</strong> — photos stay on the device where you added them) · what you opened with an ad · updates you have seen · tone settings and learning · app settings. It is plain text anyone can open, so please take a second look when choosing where to send it. Importing on a new device leaves what is already there as it is and adds only what is missing (if the same day was decorated on both, the later one is kept); settings follow only where that device has not changed them yet.",
 
   "s7.h": "7. Third parties",
   "s7.th.1": "Who",
@@ -145,5 +159,5 @@
 
   "link.home": "Malondo",
   "link.support": "Support",
-  "foot": "Malondo · Privacy Policy · 26 September 2026"
+  "foot": "Malondo · Privacy Policy · 6 October 2026"
 }
