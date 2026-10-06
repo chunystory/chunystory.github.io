@@ -7,7 +7,7 @@
   "title": "Política de privacidad de Malondo",
   "dates": "En vigor desde el 6 de septiembre de 2026 · Última actualización 6 de octubre de 2026",
 
-  "lead.1": "<strong>Malondo no tiene registro.</strong> No pedimos tu nombre, tu correo ni una contraseña. Lo que escribes y lo que mides, el diario que decoras y las fotos que pegas se quedan en este dispositivo y nunca llegan a nuestro servidor: no tenemos ninguno. Firebase crea <strong>un único identificador anónimo sin nombre</strong> para contar las peticiones por persona frente a un límite diario (sección 1).",
+  "lead.1": "<strong>Malondo no tiene registro.</strong> No pedimos tu nombre, tu correo ni una contraseña. Lo que escribes y lo que mides, el cuaderno que decoras y las fotos que pegas se quedan en este dispositivo y nunca llegan a nuestro servidor: no tenemos ninguno. Firebase crea <strong>un único identificador anónimo sin nombre</strong> para contar las peticiones por persona frente a un límite diario (sección 1).",
   "lead.2": "Dicho esto, <strong>en el momento en que se escribe una frase, la situación que escribiste se envía a Google.</strong> No guardar y no enviar son promesas distintas, así que este documento deja clara la diferencia.",
   "lead.3": "Esta política está disponible en 한국어, English, 日本語 y Español. <strong>El texto original es el coreano</strong>; si una traducción difiere en su sentido, prevalece el coreano.",
 
@@ -43,7 +43,7 @@
   "s1.e.5": "<strong>Registros por persona</strong>: solo la fecha, la persona, el nombre de la temperatura elegida y el ℃ medido al leer las palabras para esa persona, guardados en el dispositivo como una sola línea",
   "s1.e.6": "<strong>Lo escrito en Soltar</strong>: en esa pantalla no se genera nada, así que nunca se transmite a ninguna parte ni se escribe jamás en un archivo del dispositivo",
   "s1.e.7": "<strong>Lo que creas en el escritorio junto a la ventana</strong>: trazos copiados · garabatos · cartas · palabras amables · flores de palabras · crestas de voz. Solo salen por la hoja de compartir del sistema, cuando tú mismo tocas Compartir o Enviar como postal",
-  "s1.e.8": "<strong>El diario que decoras</strong>: dónde están tus pegatinas en las páginas del día y del mes, tu letra a mano, los nombres que escribes en las etiquetas de personas, las palabras de las pegatinas de palabras y las fotos que pegas. Nada de eso va al modelo ni a los anuncios",
+  "s1.e.8": "<strong>El cuaderno que decoras</strong>: dónde están tus pegatinas en las páginas del día y del mes, tu letra a mano, los nombres que escribes en las etiquetas de personas, las palabras de las pegatinas de palabras y las fotos que pegas. Nada de eso va al modelo ni a los anuncios",
 
   "s2.h": "2. Micrófono y fotos",
   "s2.1": "Medir la temperatura de tus palabras necesita permiso de micrófono. Tu dispositivo lo pregunta la primera vez que grabas.",

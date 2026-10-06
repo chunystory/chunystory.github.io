@@ -7,7 +7,7 @@
   "title": "Malondo Privacy Policy",
   "dates": "Effective 6 September 2026 · Last updated 6 October 2026",
 
-  "lead.1": "<strong>Malondo has no sign-up.</strong> We do not ask for your name, email or a password. What you write and what you measure, the diary you decorate and the photos you add stay on this device and never reach our server — we do not have one. Firebase creates <strong>a single anonymous ID with no name</strong> so that requests can be counted per person against a daily limit (section 1).",
+  "lead.1": "<strong>Malondo has no sign-up.</strong> We do not ask for your name, email or a password. What you write and what you measure, the record book you decorate and the photos you add stay on this device and never reach our server — we do not have one. Firebase creates <strong>a single anonymous ID with no name</strong> so that requests can be counted per person against a daily limit (section 1).",
   "lead.2": "That said, <strong>at the moment a sentence is written, the situation you typed is sent to Google.</strong> Not storing and not sending are different promises, so this document states the difference plainly.",
   "lead.3": "This policy is available in 한국어, English, 日本語 and Español. <strong>The Korean text is the original</strong>; if a translation differs in meaning, the Korean text governs.",
 
@@ -43,7 +43,7 @@
   "s1.e.5": "<strong>Per-person records</strong> — only the date, the person, the name of the temperature you chose and the ℃ measured while reading words meant for that person, kept on the device as a single line",
   "s1.e.6": "<strong>Anything written in Letting go</strong> — nothing is generated on that screen, so it is never transmitted anywhere and never written to a file on the device",
   "s1.e.7": "<strong>What you make at the Window desk</strong> — traced strokes · doodles · letters · kind words · word flowers · voice ridges. They leave the device only through the system share sheet, when you yourself tap Pass it on or Send as a postcard",
-  "s1.e.8": "<strong>The diary you decorate</strong> — where your stickers sit on day pages and month pages, your handwriting, the names you write on people tags, the words on word stickers, and the photos you add. None of it goes to the model or to ads",
+  "s1.e.8": "<strong>The record book you decorate</strong> — where your stickers sit on day pages and month pages, your handwriting, the names you write on people tags, the words on word stickers, and the photos you add. None of it goes to the model or to ads",
 
   "s2.h": "2. Microphone and photos",
   "s2.1": "Measuring the temperature of your words needs microphone permission. Your device asks the first time you record.",

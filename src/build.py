@@ -22,12 +22,16 @@
 한 페이지의 네 표에서 키가 어긋나거나, 틀이 표에 없는 키를 부르면 멈춘다.
 
 1.0.10 리뉴얼(2026-10-06) 뒤의 첫 페이지가 쓰는 그림과 영상:
-- `shots/{lang}/*.webp` — 17 Pro Max 시뮬레이터에서 찍은 실제 앱 화면(720폭). 샘플 다이어리
+- `shots/{lang}/*.webp` — 17 Pro Max 시뮬레이터에서 찍은 실제 앱 화면(720폭). 샘플 기록장
   다섯 쪽(day-*)과 서랍 칸(drawer-*)은 촬영용 진입점이 심은 꾸밈이다.
 - `video/{lang}/*.mp4 · .webp` — 같은 진입점이 손짓을 포인터 이벤트로 넣어 녹화한 장면(576폭,
   포스터는 장면의 핵심 자리). `video/tour-{lang}-*` · `how-*` 는 그 전 판의 영상이다.
 - `stickers/*.webp` — 앱의 StickerArt 를 투명 바탕으로 구운 그림. 효과 실험실과 직접 꾸며 보기
   (`js/decor.js`)가 앱의 효과 이름 그대로(`fx.e.*`) 웹에서 흉내 낸다.
+
+이름(2026-10-07): 꾸미는 것을 「다이어리 · 플래너 · 手帳 · diario」라 부르지 않는다 — 일정 · 할 일까지
+기대하게 된다. 말온도가 꾸미는 것은 그날의 말과 온도의 기록이다. 물건은 기록장 · 記録帳 · record book ·
+cuaderno, 하는 일은 기록 꾸미기 · 記録を飾る · decorate your records · decora tus registros.
 """
 import datetime
 import html
@@ -72,7 +76,7 @@ SCRIPT_ONLY = {"dial.warmer", "dial.cooler",
 # sticker_effects.dart 와 같은 이름이고, 번역은 앱의 표(assets/i18n)에서 옮겼다.
 SCRIPT_PREFIXES = ("visit.", "trace.line.", "desk.o.", "fx.e.", "fx.g.")
 
-# JSON-LD 의 featureList — 꾸미는 다이어리부터, 그다음 말온도가 처음부터 해 온 일.
+# JSON-LD 의 featureList — 기록 꾸미기부터, 그다음 말온도가 처음부터 해 온 일.
 FEATURES = ("auto.title", "drawer.title", "fx.title", "paper.title", "month.title", "f.talk.h", "f.letter.h",
             "f.measure.h", "f.mark.h", "f.letgo.h", "f.people.h", "desk.title")
 

@@ -1,7 +1,8 @@
 <!doctype html>
 <!-- build.py 가 이 틀을 언어마다 제 주소에 굽는다 — / · /en/ · /ja/ · /es/. data-paged 는 i18n.js 에게
      「이 페이지는 언어마다 주소가 있다」고 알린다(기기 언어로 글을 바꿔 달지 않는다).
-     2026-10-06 1.0.10 리뉴얼 — 개인정보를 먼저, 그다음 꾸미는 다이어리(스티커 · 효과 · 속지 · 이 달 쪽), 그리고 모든 기능. -->
+     2026-10-06 1.0.10 리뉴얼 — 개인정보를 먼저, 그다음 기록 꾸미기(스티커 · 효과 · 속지 · 이 달 쪽), 그리고 모든 기능.
+     부르는 이름은 build.py 머리말의 「이름」을 따른다. -->
 <html lang="{{LANG}}" data-paged>
 <head>
 <meta charset="utf-8">
@@ -520,7 +521,7 @@
   .suggest .go { appearance: none; -webkit-appearance: none; font: inherit; font-weight: 600; color: var(--accent); background: var(--accent-soft); border: 1px solid var(--accent); border-radius: 999px; padding: .35rem .85rem; cursor: pointer; white-space: nowrap; }
   .suggest .x { appearance: none; -webkit-appearance: none; font: inherit; font-size: 1.1rem; line-height: 1; color: var(--ink-3); background: none; border: 0; width: 2rem; height: 2rem; border-radius: 50%; cursor: pointer; flex: none; }
   .suggest .x:hover { color: var(--ink); background: var(--sunken); }
-  /* ══ 1.0.10 리뉴얼 — 꾸미는 다이어리 ══ */
+  /* ══ 1.0.10 리뉴얼 — 기록 꾸미기 ══ */
   :root { --hand: "Nanum Pen Script", "Yomogi", var(--serif); --paper-dot: color-mix(in srgb, var(--line-2) 34%, transparent); }
   :root[lang="ja"] { --hand: "Yomogi", "Nanum Pen Script", var(--serif); }
   .hand { font-family: var(--hand); letter-spacing: 0; line-height: 1.25; color: var(--ink-2); }
@@ -875,7 +876,7 @@
   </div>
 </section>
 
-<!-- ── 개인정보부터 — 다이어리는 가장 사적인 물건이라 맨 앞에 둔다. 처리방침 전문은 /privacy.html ── -->
+<!-- ── 개인정보부터 — 말과 마음의 기록은 가장 사적인 것이라 맨 앞에 둔다. 처리방침 전문은 /privacy.html ── -->
 <section class="promise" id="privacy" aria-labelledby="privacy-title">
   <div class="wide promise-grid">
     <div>
@@ -897,7 +898,7 @@
   </div>
 </section>
 
-<!-- ── 꾸미는 다이어리 — 홈이 이 달 한 장이 됐다(1.0.10). ── -->
+<!-- ── 기록 꾸미기 — 홈이 이 달 한 장이 됐다(1.0.10). ── -->
 <section class="chapter" id="decor" aria-labelledby="decor-title">
   <div class="wide">
     <div class="head-c">
@@ -1098,7 +1099,7 @@
   </div>
 </section>
 
-<!-- ── 모든 기능 — 다이어리 아래에서 말온도가 처음부터 해 온 일들. ── -->
+<!-- ── 모든 기능 — 기록장 아래에서 말온도가 처음부터 해 온 일들. ── -->
 <section class="chapter tint" id="features" aria-labelledby="features-title">
   <div class="wide">
     <div class="head-c">
@@ -1307,10 +1308,10 @@
       <p data-reveal data-delay="2" data-i="langs.lede"></p>
     </div>
     <ul class="fan" id="fan" data-reveal data-delay="2">
-      <li data-lang="ko"><button type="button" data-i-aria-label="langs.pick.ko"><div class="phone"><img src="/shots/ko/day-full.webp" data-i-alt="langs.alt.ko" loading="lazy" width="720" height="1564"></div><span class="name">한국어</span><span class="say">오늘 한 말이 스티커가 되는 다이어리</span></button></li>
-      <li data-lang="en"><button type="button" data-i-aria-label="langs.pick.en"><div class="phone"><img src="/shots/en/day-full.webp" data-i-alt="langs.alt.en" loading="lazy" width="720" height="1564"></div><span class="name">English</span><span class="say">A diary where today’s words become stickers</span></button></li>
-      <li data-lang="ja"><button type="button" data-i-aria-label="langs.pick.ja"><div class="phone"><img src="/shots/ja/day-full.webp" data-i-alt="langs.alt.ja" loading="lazy" width="720" height="1564"></div><span class="name">日本語</span><span class="say">きょうの言葉がシールになる手帳</span></button></li>
-      <li data-lang="es"><button type="button" data-i-aria-label="langs.pick.es"><div class="phone"><img src="/shots/es/day-full.webp" data-i-alt="langs.alt.es" loading="lazy" width="720" height="1564"></div><span class="name">Español</span><span class="say">Un diario donde tus palabras de hoy se vuelven pegatinas</span></button></li>
+      <li data-lang="ko"><button type="button" data-i-aria-label="langs.pick.ko"><div class="phone"><img src="/shots/ko/day-full.webp" data-i-alt="langs.alt.ko" loading="lazy" width="720" height="1564"></div><span class="name">한국어</span><span class="say">오늘 한 말이 스티커가 되는 기록장</span></button></li>
+      <li data-lang="en"><button type="button" data-i-aria-label="langs.pick.en"><div class="phone"><img src="/shots/en/day-full.webp" data-i-alt="langs.alt.en" loading="lazy" width="720" height="1564"></div><span class="name">English</span><span class="say">A record book where today’s words become stickers</span></button></li>
+      <li data-lang="ja"><button type="button" data-i-aria-label="langs.pick.ja"><div class="phone"><img src="/shots/ja/day-full.webp" data-i-alt="langs.alt.ja" loading="lazy" width="720" height="1564"></div><span class="name">日本語</span><span class="say">きょうの言葉がシールになる記録帳</span></button></li>
+      <li data-lang="es"><button type="button" data-i-aria-label="langs.pick.es"><div class="phone"><img src="/shots/es/day-full.webp" data-i-alt="langs.alt.es" loading="lazy" width="720" height="1564"></div><span class="name">Español</span><span class="say">Un cuaderno donde tus palabras de hoy se vuelven pegatinas</span></button></li>
     </ul>
     <p class="hint" data-reveal data-i="langs.hint"></p>
     <div class="cols">
