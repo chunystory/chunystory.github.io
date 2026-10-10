@@ -5,7 +5,7 @@
   "pref.lang": "Page language",
 
   "title": "Malondo Privacy Policy",
-  "dates": "Effective 6 September 2026 · Last updated 6 October 2026",
+  "dates": "Effective 6 September 2026 · Last updated 11 October 2026",
 
   "lead.1": "<strong>Malondo has no sign-up.</strong> We do not ask for your name, email or a password. What you write and what you measure, the record book you decorate and the photos you add stay on this device and never reach our server — we do not have one. Firebase creates <strong>a single anonymous ID with no name</strong> so that requests can be counted per person against a daily limit (section 1).",
   "lead.2": "That said, <strong>at the moment a sentence is written, the situation you typed is sent to Google.</strong> Not storing and not sending are different promises, so this document states the difference plainly.",
@@ -113,8 +113,8 @@
   "s3.r16.a": "Installation name",
   "s3.r16.b": "One random name for this installation. It points to neither a person nor a device and is <strong>never transmitted anywhere</strong>",
   "s3.2": "<strong>The situation you typed, the suggestions you received, the story you shared and its reply are not stored.</strong> Look-backs keep no original text either. Only what you choose to keep — letters · kind words · the tracing notebook · replies you folded into an envelope · the handwriting and photos you put on day pages — stays on the device, as in the table above.",
-  "s3.3": "The anonymous user ID lives not in this file but in the device's Firebase authentication storage. The values the home-screen widget reads (temperature and this month's squares) sit in one more layer, the app's shared storage on the device; with quiet mode on, only the temperature remains.",
-  "s3.4": "This file is <strong>excluded</strong> from automatic backup (Google Drive) and device-to-device transfer on Android, and from iCloud backup on iOS. The copies of photos stuck on day pages, however, do not carry that mark on iOS, so <strong>if you have iCloud device backup turned on, they can be included in that backup</strong> (it is Apple's backup and never reaches us; on Android, photos are left out of backup too). To move to a new device, use the export in section 6.",
+  "s3.3": "The anonymous user ID lives not in this file but in the device's Firebase authentication storage. What the home-screen widget draws sits in one more layer, the app's shared storage on the device: your temperature, this month's squares (the mood and temperature you left, and the days you measured), a picture baked from your decorated month page (<strong>including photos, handwriting and word stickers you added yourself</strong>), and any square you leave straight from the widget (the app takes it into your records the next time you open it, then deletes it). Person names, kind words, kept sentences and tracing-notebook pages are never put there. With quiet mode on, only the temperature remains of your records, and the widget draws a calendar with dates only. This layer never leaves the device either.",
+  "s3.4": "This file is <strong>excluded</strong> from automatic backup (Google Drive) and device-to-device transfer on Android, and from iCloud backup on iOS. The copies of photos stuck on day pages and the home-screen widget's layer (including the baked picture above), however, do not carry that mark on iOS, so <strong>if you have iCloud device backup turned on, they can be included in that backup</strong> (it is Apple's backup and never reaches us; on Android, photos and the widget layer are left out of backup too). To move to a new device, use the export in section 6.",
 
   "s4.h": "4. Notifications",
   "s4.1": "You can turn on one reminder a day (off by default). Scheduling and display happen <strong>entirely on the device</strong>, passing through neither our server nor a push service. Notification text contains no relationship and no situation.",
