@@ -83,8 +83,8 @@ SCRIPT_ONLY = {"dial.warmer", "dial.cooler",
 SCRIPT_PREFIXES = ("visit.", "trace.line.", "desk.o.", "fx.e.", "fx.g.")
 
 # JSON-LD 의 featureList — 기록 꾸미기부터, 그다음 말온도가 처음부터 해 온 일.
-FEATURES = ("daily.title", "decor.title", "widget.title", "auto.title", "drawer.title", "fx.title", "paper.title", "month.title", "f.talk.h", "f.letter.h",
-            "f.measure.h", "f.mark.h", "f.letgo.h", "f.people.h", "desk.title")
+FEATURES = ("f.talk.h", "f.measure.h", "daily.title", "decor.title", "widget.title", "auto.title", "drawer.title", "fx.title", "paper.title", "month.title", "f.letter.h",
+            "f.mark.h", "f.letgo.h", "f.people.h", "desk.title")
 
 FILL = re.compile(r'(<([a-zA-Z0-9]+)\b[^>]*\bdata-i="([^"]+)"[^>]*>)(</\2>)')
 ATTR = re.compile(r'data-i-(alt|aria-label|aria-roledescription|content)="([^"]+)"')
@@ -155,7 +155,7 @@ def json_ld(lang: str, t: dict, url: str) -> str:
             "inLanguage": LANGS,
             "installUrl": [APP_STORE, PLAY],
             "image": f"{SITE}/icon-1024.png",
-            "screenshot": [f"{SITE}/shots/{lang}/{n}.webp" for n in ("home", "day-full", "widget-large", "month-page", "drawer-deco", "effects", "phrases")],
+            "screenshot": [f"{SITE}/shots/{lang}/{n}.webp" for n in ("rec-mid", "rec-result", "phrases", "day-full", "home", "widget-large", "month-page")],
             "featureList": [text(t[k]) for k in FEATURES],
             "keywords": text(t["meta.keywords"]),
             "offers": {"@type": "Offer", "price": "0", "priceCurrency": CURRENCY[lang]},

@@ -5,7 +5,7 @@
 
 - 링크를 카카오톡 · 네이버 · X 에 붙였을 때 뜨는 큰 그림이다. 첫 화면(영웅 구획)을
   한 장으로 옮긴다 — 맨 위 이름, 눈썹 글, 제목(스티커에 무지개), 아래 사실 한 줄, 오른쪽
-  폰에는 그 언어의 꾸민 하루 쪽(shots/{lang}/day-full.webp — 17 Pro Max 1320×2868), 둘레에
+  폰에는 그 언어의 녹음 중 화면(shots/{lang}/rec-mid.webp — 2026-10-11 부터, 그 전엔 꾸민 하루 쪽), 둘레에
   앱의 스티커 그림 셋(stickers/*.webp, 앱의 StickerArt 를 구운 것). 1.0.10 리뉴얼(2026-10-06).
 - 글은 네 표의 brand · hero.eyebrow · hero.title · fact.* 에서 온다. 그 문구를 고치면
   다시 돌린다.
@@ -68,9 +68,9 @@ PAGE = """<!doctype html>
     <div class="facts">{facts}</div>
   </div>
   <div class="phone"><img src="{shot}" alt=""></div>
-  <img class="st" src="{flower}" alt="" style="right:332px;top:96px;width:104px;transform:rotate(-12deg)">
+  <img class="st" src="{flower}" alt="" style="right:350px;top:236px;width:96px;transform:rotate(-12deg)">
   <img class="st" src="{heart}" alt="" style="right:58px;top:40px;width:78px;transform:rotate(10deg)">
-  <img class="st" src="{globe}" alt="" style="right:340px;top:410px;width:110px;transform:rotate(-6deg)">
+  <img class="st" src="{globe}" alt="" style="right:346px;top:450px;width:104px;transform:rotate(-6deg)">
 </body>
 </html>
 """
@@ -109,7 +109,7 @@ def main() -> int:
                 lang=lang,
                 title_px=TITLE_PX[lang],
                 icon=(OUT / "icon-192.png").as_uri(),
-                shot=(OUT / "shots" / lang / "day-full.webp").as_uri(),
+                shot=(OUT / "shots" / lang / "rec-mid.webp").as_uri(),
                 flower=(OUT / "stickers" / "deco-flower.webp").as_uri(),
                 heart=(OUT / "stickers" / "deco-heart.webp").as_uri(),
                 globe=(OUT / "stickers" / "desk-globe.webp").as_uri(),

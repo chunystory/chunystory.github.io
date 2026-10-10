@@ -3,6 +3,7 @@
      「이 페이지는 언어마다 주소가 있다」고 알린다(기기 언어로 글을 바꿔 달지 않는다).
      2026-10-06 1.0.10 리뉴얼 — 개인정보를 먼저, 그다음 기록 꾸미기(스티커 · 효과 · 속지 · 이 달 쪽), 그리고 모든 기능.
      2026-10-11 1.1.1 리뉴얼 — 개인정보 다음에 하루 한 쪽 · 한 달 한 장 · 홈 화면 위젯을 앞세우고, 이력 페이지(/history.html)를 단다.
+     같은 날 저녁 — 「건네기 힘든 말」과 「소리 내어 재는 말온도」가 가장 먼저다(사용자). 영웅 → #moments → #measure → 개인정보 → 기록장.
      위젯 사진과 영상은 시뮬레이터의 진짜 홈 화면에 위젯을 올려 찍은 것이다(1.1.1 은 아직 스토어 전이라 「곧」이라고 적는다).
      부르는 이름은 build.py 머리말의 「이름」을 따른다. -->
 <html lang="{{LANG}}" data-paged>
@@ -809,6 +810,38 @@
   }
 
 
+
+  /* ── 건네기 힘든 말 — 쪽지 여섯 ── */
+  .moments { background: radial-gradient(110% 70% at 50% 0%, color-mix(in srgb, var(--t6) 65%, transparent), transparent 70%); }
+  .quotes { list-style: none; margin: 0 auto; padding: 0; max-width: 64rem; display: grid; gap: 1.9rem 1.3rem; }
+  @media (min-width: 700px) { .quotes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1040px) { .quotes { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .quotes li { position: relative; padding: 1.4rem 1.3rem 1.1rem; border-radius: .9rem; background: color-mix(in srgb, var(--t) 78%, var(--surface)); rotate: var(--rot); box-shadow: 0 1px 0 color-mix(in srgb, var(--r) 18%, transparent), 0 16px 30px -26px var(--shadow); transition: rotate .5s, translate .5s; }
+  .quotes li:hover { rotate: 0deg; translate: 0 -3px; }
+  .quotes li::before { content: ""; position: absolute; top: -9px; left: 50%; width: 64px; height: 18px; translate: -50% 0; rotate: -3deg; background: color-mix(in srgb, var(--r) 22%, transparent); border-radius: 2px; }
+  .quotes q { display: block; font-family: var(--serif); font-size: 1.12rem; line-height: 1.55; color: var(--ink); quotes: "“" "”"; }
+  :root[lang="ko"] .quotes q { quotes: "“" "”"; }
+  .quotes span { display: inline-block; margin-top: .8rem; font-size: .8rem; font-weight: 600; color: var(--r); letter-spacing: 0; }
+  .quotes-cap { text-align: center; margin: 1.8rem 0 0; font-size: 1.5rem; }
+  .talk-feat { border-top: 0; margin-top: clamp(1rem, 3vw, 2rem); }
+
+  /* ── 말온도 재기 — 세 걸음 ── */
+  .measure .head-c h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); }
+  .steps3 { list-style: none; margin: 0; padding: 0; }
+  .steps3 li { display: grid; gap: .35rem; align-content: start; text-align: center; }
+  .steps3 .phone { width: min(250px, 100%); }
+  .steps3 li:nth-child(2) .phone { box-shadow: 0 0 0 3px var(--frame-in), 0 0 0 11px var(--frame), 0 0 0 12px var(--frame-edge), 0 30px 60px -18px color-mix(in srgb, var(--r6) 45%, var(--shadow)); }
+  .steps3 b { display: inline-flex; justify-content: center; align-items: center; gap: .5rem; font-size: 1.08rem; }
+  .steps3 b i { font-style: normal; width: 1.6rem; height: 1.6rem; border-radius: 50%; display: grid; place-items: center; font-size: .8rem; color: var(--on-accent); background: var(--accent); }
+  .steps3 > li > span { font-size: .9rem; color: var(--ink-3); padding: 0 .6rem; }
+  .measure-foot { display: grid; gap: 2rem; align-items: center; margin: clamp(2.5rem, 6vw, 4rem) auto 0; max-width: 60rem; }
+  @media (min-width: 900px) { .measure-foot { grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); } }
+  .measure-foot .dial-row { margin-top: .6rem; }
+  .measure-promise { padding: 1.4rem 1.5rem; border-radius: 1.2rem; background: color-mix(in srgb, var(--surface) 85%, transparent); box-shadow: inset 0 0 0 1px var(--line); }
+  .trust-line { margin: 0 0 1rem; color: var(--ink-2); line-height: 1.9; }
+  .measure-promise .more { font-weight: 600; }
+  .measure-promise .more::after { content: " →"; }
+
   /* ── 1.1.1 — 하루 한 쪽(펼친 부채) ── */
   .daily { background: radial-gradient(120% 70% at 50% 0%, color-mix(in srgb, var(--t5) 70%, transparent), transparent 70%); }
   .spread { display: flex; justify-content: center; align-items: flex-end; padding: 1rem 1.25rem 0; max-width: 72rem; margin: 0 auto; }
@@ -926,10 +959,11 @@
     <img src="/icon-192.png" alt="" width="30" height="30">
     <b data-i="brand"></b>
     <nav data-i-aria-label="nav.aria">
+      <a href="#moments" data-i="nav.moments"></a>
+      <a href="#measure" data-i="nav.measure"></a>
       <a href="#daily" data-i="nav.daily"></a>
-      <a href="#widget" data-i="nav.widget"></a>
-      <a href="#decor" class="wide-only" data-i="nav.decor"></a>
-      <a href="#features" data-i="nav.features"></a>
+      <a href="#widget" class="wide-only" data-i="nav.widget"></a>
+      <a href="#features" class="wide-only" data-i="nav.features"></a>
       <a href="#privacy" class="wide-only" data-i="nav.privacy"></a>
       <a href="/history.html" class="always" data-i="nav.history"></a>
       <a href="/support.html" class="wide-only" data-i="nav.support"></a>
@@ -984,8 +1018,83 @@
       <div class="floaters front" aria-hidden="true">
         <img src="/stickers/tape-hanji.webp" alt="" style="--x:58%;--y:1%;--w:120px;--r:9deg">
       </div>
-      <div class="phone" data-tilt><video class="reel" data-reel="hero" muted playsinline loop preload="metadata" poster="/video/{{LANG}}/hero.webp" width="600" height="1304" data-i-aria-label="hero.video"></video></div>
+      <div class="phone" data-tilt><video class="reel" data-reel="measure" muted playsinline loop preload="metadata" poster="/video/{{LANG}}/measure.webp" width="576" height="1252" data-i-aria-label="hero.video"></video></div>
       <p class="hand note" data-i="hero.note"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ── 건네기 힘든 말 — 마음은 있는데 첫 문장이 안 나오는 순간들. 그다음이 대화 탭의 건넬 말 찾기(영상). ── -->
+<section class="chapter moments" id="moments" aria-labelledby="moments-title">
+  <div class="wide">
+    <div class="head-c">
+      <span class="eyebrow" data-reveal data-i="moments.eyebrow"></span>
+      <h2 id="moments-title" data-reveal data-delay="1" data-i="moments.title"></h2>
+      <p data-reveal data-delay="2" data-i="moments.lede"></p>
+    </div>
+    <ul class="quotes">
+      <li style="--t:var(--t6);--r:var(--r6i);--rot:-1.6deg" data-reveal><q data-i="m.1.q"></q><span data-i="m.1.t"></span></li>
+      <li style="--t:var(--t2);--r:var(--r2i);--rot:1.2deg" data-reveal data-delay="1"><q data-i="m.2.q"></q><span data-i="m.2.t"></span></li>
+      <li style="--t:var(--t5);--r:var(--r5i);--rot:-.8deg" data-reveal data-delay="2"><q data-i="m.3.q"></q><span data-i="m.3.t"></span></li>
+      <li style="--t:var(--t3);--r:var(--r3i);--rot:1.4deg" data-reveal><q data-i="m.4.q"></q><span data-i="m.4.t"></span></li>
+      <li style="--t:var(--t1);--r:var(--r1i);--rot:-1.2deg" data-reveal data-delay="1"><q data-i="m.5.q"></q><span data-i="m.5.t"></span></li>
+      <li style="--t:var(--t4);--r:var(--r4i);--rot:.9deg" data-reveal data-delay="2"><q data-i="m.6.q"></q><span data-i="m.6.t"></span></li>
+    </ul>
+    <p class="hand quotes-cap" data-reveal data-i="moments.cap"></p>
+    <!-- 대화 탭의 다섯 문 — 들판 그림은 js/art.js 가 앱의 _MeadowPainter 를 그대로 옮긴 것. -->
+    <div class="feat talk-feat" id="talk">
+      <div class="phone-col" data-reveal><div class="phone" data-tilt><video class="reel" data-reel="talk" muted playsinline loop preload="none" poster="/video/{{LANG}}/talk.webp" width="576" height="1252" data-i-aria-label="talk.video"></video></div></div>
+      <div>
+        <span class="kicker" data-reveal data-i="f.talk.k"></span>
+        <h3 data-reveal data-delay="1" data-i="f.talk.h"></h3>
+        <p data-reveal data-delay="2" data-i="f.talk.p"></p>
+        <ul class="doors" id="doors">
+          <li data-reveal><button type="button" data-scene="phrases"><span class="txt"><b data-i="doors.1.h"></b><span data-i="doors.1.p"></span><small data-i="doors.1.n"></small></span><canvas aria-hidden="true"></canvas></button></li>
+          <li data-reveal data-delay="1"><button type="button" data-scene="letter"><span class="txt"><b data-i="doors.2.h"></b><span data-i="doors.2.p"></span><small data-i="doors.2.n"></small></span><canvas aria-hidden="true"></canvas></button></li>
+          <li data-reveal data-delay="2"><button type="button" data-scene="dayMark"><span class="txt"><b data-i="doors.3.h"></b><span data-i="doors.3.p"></span><small data-i="doors.3.n"></small></span><canvas aria-hidden="true"></canvas></button></li>
+          <li data-reveal data-delay="3"><button type="button" data-scene="lettingGo"><span class="txt"><b data-i="doors.4.h"></b><span data-i="doors.4.p"></span><small data-i="doors.4.n"></small></span><canvas aria-hidden="true"></canvas></button></li>
+          <li data-reveal data-delay="4"><button type="button" data-scene="desk"><span class="txt"><b data-i="doors.5.h"></b><span data-i="doors.5.p"></span><small data-i="doors.5.n"></small></span><canvas aria-hidden="true"></canvas></button></li>
+        </ul>
+        <div class="doors-foot" data-reveal><button type="button" class="ghost" id="doorsReplay" data-i="doors.replay"></button></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── 말온도 재기 — 가장 중요한 일. 온도 고르기 → 소리 내어 20초 → 결과 한 장(가짜 목소리로 실제로 잰 화면). ── -->
+<section class="chapter tint measure" id="measure" aria-labelledby="measure-title">
+  <div class="wide">
+    <div class="head-c">
+      <span class="eyebrow" data-reveal data-i="measure.eyebrow"></span>
+      <h2 id="measure-title" data-reveal data-delay="1" data-i="measure.title"></h2>
+      <p data-reveal data-delay="2" data-i="measure.lede"></p>
+    </div>
+    <ol class="row3 steps3">
+      <li data-reveal><div class="phone"><img src="/shots/{{LANG}}/measure.webp" data-i-alt="ms.1.alt" loading="lazy" width="720" height="1564"></div><b><i>1</i><span data-i="ms.1.h"></span></b><span data-i="ms.1.p"></span></li>
+      <li data-reveal data-delay="1"><div class="phone"><img src="/shots/{{LANG}}/rec-mid.webp" data-i-alt="ms.2.alt" loading="lazy" width="720" height="1564"></div><b><i>2</i><span data-i="ms.2.h"></span></b><span data-i="ms.2.p"></span></li>
+      <li data-reveal data-delay="2"><div class="phone"><img src="/shots/{{LANG}}/rec-result.webp" data-i-alt="ms.3.alt" loading="lazy" width="720" height="1564"></div><b><i>3</i><span data-i="ms.3.h"></span></b><span data-i="ms.3.p"></span></li>
+    </ol>
+    <div class="measure-foot">
+      <div>
+        <h3 class="big" data-reveal data-i="measure.dial.h"></h3>
+        <div class="dial-row" data-reveal data-delay="2">
+          <div class="dial small" id="dial" role="img" data-i-aria-label="dial.aria">
+            <div class="ring"></div>
+            <div class="needle" id="needle"><i></i></div>
+            <div class="dial-core">
+              <div class="num" id="num">36.5<small>℃</small></div>
+              <div class="tone" id="tone" data-i="tone.3"></div>
+              <div class="drift" id="drift" data-i="dial.origin"></div>
+            </div>
+          </div>
+          <p class="dial-note" data-i="dial.note"></p>
+        </div>
+      </div>
+      <div class="measure-promise" data-reveal>
+        <p class="trust-line" data-i="measure.trust"></p>
+        <a class="more" href="#how" data-i="measure.how"></a>
+      </div>
     </div>
   </div>
 </section>
@@ -1281,51 +1390,12 @@
       <p data-reveal data-delay="2" data-i="features.lede"></p>
     </div>
 
-    <!-- 대화 탭의 다섯 문 — 들판 그림은 js/art.js 가 앱의 _MeadowPainter 를 그대로 옮긴 것. -->
-    <div class="feat" id="talk">
-      <div class="phone-col" data-reveal><div class="phone"><img src="/shots/{{LANG}}/phrases.webp" data-i-alt="f.talk.alt" loading="lazy" width="720" height="1564"></div></div>
-      <div>
-        <span class="kicker" data-reveal data-i="f.talk.k"></span>
-        <h3 data-reveal data-delay="1" data-i="f.talk.h"></h3>
-        <p data-reveal data-delay="2" data-i="f.talk.p"></p>
-        <ul class="doors" id="doors">
-          <li data-reveal><button type="button" data-scene="phrases"><span class="txt"><b data-i="doors.1.h"></b><span data-i="doors.1.p"></span><small data-i="doors.1.n"></small></span><canvas aria-hidden="true"></canvas></button></li>
-          <li data-reveal data-delay="1"><button type="button" data-scene="letter"><span class="txt"><b data-i="doors.2.h"></b><span data-i="doors.2.p"></span><small data-i="doors.2.n"></small></span><canvas aria-hidden="true"></canvas></button></li>
-          <li data-reveal data-delay="2"><button type="button" data-scene="dayMark"><span class="txt"><b data-i="doors.3.h"></b><span data-i="doors.3.p"></span><small data-i="doors.3.n"></small></span><canvas aria-hidden="true"></canvas></button></li>
-          <li data-reveal data-delay="3"><button type="button" data-scene="lettingGo"><span class="txt"><b data-i="doors.4.h"></b><span data-i="doors.4.p"></span><small data-i="doors.4.n"></small></span><canvas aria-hidden="true"></canvas></button></li>
-          <li data-reveal data-delay="4"><button type="button" data-scene="desk"><span class="txt"><b data-i="doors.5.h"></b><span data-i="doors.5.p"></span><small data-i="doors.5.n"></small></span><canvas aria-hidden="true"></canvas></button></li>
-        </ul>
-        <div class="doors-foot" data-reveal><button type="button" class="ghost" id="doorsReplay" data-i="doors.replay"></button></div>
-      </div>
-    </div>
-
     <div class="feat flip">
       <div class="phone-col" data-reveal><div class="phone"><img src="/shots/{{LANG}}/letter.webp" data-i-alt="f.letter.alt" loading="lazy" width="720" height="1564"></div></div>
       <div>
         <span class="kicker" data-reveal data-i="f.letter.k"></span>
         <h3 data-reveal data-delay="1" data-i="f.letter.h"></h3>
         <p data-reveal data-delay="2" data-i="f.letter.p"></p>
-      </div>
-    </div>
-
-    <div class="feat" id="measure">
-      <div class="phone-col" data-reveal><div class="phone"><video class="reel" data-reel="tour-measure" muted playsinline loop preload="none" poster="/video/tour-{{LANG}}-measure.webp" width="600" height="1304" data-i-aria-label="f.measure.h"></video></div></div>
-      <div>
-        <span class="kicker" data-reveal data-i="f.measure.k"></span>
-        <h3 data-reveal data-delay="1" data-i="f.measure.h"></h3>
-        <p data-reveal data-delay="2" data-i="f.measure.p"></p>
-        <div class="dial-row" data-reveal data-delay="2">
-          <div class="dial small" id="dial" role="img" data-i-aria-label="dial.aria">
-            <div class="ring"></div>
-            <div class="needle" id="needle"><i></i></div>
-            <div class="dial-core">
-              <div class="num" id="num">36.5<small>℃</small></div>
-              <div class="tone" id="tone" data-i="tone.3"></div>
-              <div class="drift" id="drift" data-i="dial.origin"></div>
-            </div>
-          </div>
-          <p class="dial-note" data-i="dial.note"></p>
-        </div>
       </div>
     </div>
 
@@ -1705,16 +1775,16 @@
     <span class="eyebrow" data-reveal data-i="faq.eyebrow"></span>
     <h2 id="faq-title" data-reveal data-delay="1" data-i="faq.title"></h2>
     <div class="qa" data-reveal data-delay="2">
+      <details><summary><h3 data-i="faq.1.q"></h3></summary><p data-i="faq.1.a"></p></details>
+      <details><summary><h3 data-i="faq.3.q"></h3></summary><p data-i="faq.3.a"></p></details>
+      <details><summary><h3 data-i="faq.4.q"></h3></summary><p data-i="faq.4.a"></p></details>
+      <details><summary><h3 data-i="faq.5.q"></h3></summary><p data-i="faq.5.a"></p></details>
+      <details><summary><h3 data-i="faq.2.q"></h3></summary><p data-i="faq.2.a"></p></details>
+      <details><summary><h3 data-i="faq.6.q"></h3></summary><p data-i="faq.6.a"></p></details>
       <details><summary><h3 data-i="faq.17.q"></h3></summary><p data-i="faq.17.a"></p></details>
       <details><summary><h3 data-i="faq.13.q"></h3></summary><p data-i="faq.13.a"></p></details>
       <details><summary><h3 data-i="faq.14.q"></h3></summary><p data-i="faq.14.a"></p></details>
       <details><summary><h3 data-i="faq.15.q"></h3></summary><p data-i="faq.15.a"></p></details>
-      <details><summary><h3 data-i="faq.1.q"></h3></summary><p data-i="faq.1.a"></p></details>
-      <details><summary><h3 data-i="faq.2.q"></h3></summary><p data-i="faq.2.a"></p></details>
-      <details><summary><h3 data-i="faq.3.q"></h3></summary><p data-i="faq.3.a"></p></details>
-      <details><summary><h3 data-i="faq.4.q"></h3></summary><p data-i="faq.4.a"></p></details>
-      <details><summary><h3 data-i="faq.5.q"></h3></summary><p data-i="faq.5.a"></p></details>
-      <details><summary><h3 data-i="faq.6.q"></h3></summary><p data-i="faq.6.a"></p></details>
       <details><summary><h3 data-i="faq.11.q"></h3></summary><p data-i="faq.11.a"></p></details>
       <details><summary><h3 data-i="faq.7.q"></h3></summary><p data-i="faq.7.a"></p></details>
       <details><summary><h3 data-i="faq.16.q"></h3></summary><p data-i="faq.16.a"></p></details>
