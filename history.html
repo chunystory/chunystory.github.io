@@ -1,0 +1,649 @@
+<!doctype html>
+<!-- 업데이트 이력 — build.py 가 한국어로 굽고, 나머지 셋은 i18n.js 가 표에서 바꿔 단다(privacy · support 와 같은 길).
+     글의 원본은 App Store 「버전 기록」에 실제로 나간 출시 노트와 그 날짜(한국 시각)다. 1.1.1 은 아직 스토어에 없어 「곧 나와요」로 선다 —
+     출시되면 날짜를 달고 .soon 을 걷는다. 버전 한 장은 li.ver 하나, 줄마다 data-k 로 새 기능(new) · 다듬음(better) · 고침(fix). -->
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i="meta.title">업데이트 이력 · 말온도</title>
+<meta name="description" content="말온도가 버전마다 새로 얻은 것, 다듬은 것, 고친 것. 2026년 9월 첫 출시부터 지금까지의 기록이에요." data-i-content="meta.desc">
+<link rel="canonical" href="https://chunystory.github.io/history.html">
+<meta name="theme-color" content="#F5F1EA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16120F" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="말온도 · Malondo">
+<meta property="og:title" content="업데이트 이력 · 말온도" data-i-content="meta.title">
+<meta property="og:description" content="말온도가 버전마다 새로 얻은 것, 다듬은 것, 고친 것. 2026년 9월 첫 출시부터 지금까지의 기록이에요." data-i-content="meta.desc">
+<meta property="og:url" content="https://chunystory.github.io/history.html">
+<meta property="og:image" content="https://chunystory.github.io/og/ko.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-jp-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Shippori+Mincho:wght@400;700&family=Lora:wght@400;600&family=Nanum+Pen+Script&family=Yomogi&display=swap">
+<style>
+  :root {
+    color-scheme: light;
+    --canvas: #F5F1EA; --surface: #FDFCFA; --sunken: #F0EBE2;
+    --ink: #211E1B; --ink-2: #56504A; --ink-3: #6C655D;
+    --line: #E6DFD4; --line-2: #877D71; --dot: rgba(120,104,88,.16);
+    --accent: #BE2D1A; --accent-soft: #F9EAE8; --on-accent: #FFFFFF;
+    --r1: #2B4669; --r2: #325D57; --r3: #6D6359; --r4: #976A23; --r5: #C76138; --r6: #D76656;
+    --r2i: #325D57; --r4i: #895B13;
+    --t1: #E8EEF6; --t2: #E3F0EE; --t3: #EEEDEB; --t4: #F6ECDD; --t5: #F8EBE5; --t6: #F9EAE8;
+    --g1: #2F7A6E; --g2: #B5832C; --g3: #D3664F;
+    --blob1: rgba(156,208,198,.5); --blob2: rgba(234,205,150,.5); --blob3: rgba(242,181,161,.55);
+    --tape: rgba(214,190,150,.55); --tape-soon: rgba(190,45,26,.18);
+    --frame: #3A3532; --shadow: rgba(58,34,24,.16);
+    --sans: "Pretendard Variable", Pretendard, "Pretendard JP Variable", "Pretendard JP", -apple-system, BlinkMacSystemFont,
+            "Apple SD Gothic Neo", "Hiragino Sans", "Noto Sans KR", "Noto Sans JP", "Malgun Gothic", sans-serif;
+    --serif: "Gowun Batang", "Shippori Mincho", "Apple Myungjo", "Hiragino Mincho ProN", "Noto Serif KR", serif;
+    --hand: "Nanum Pen Script", "Yomogi", cursive;
+  }
+  :root[lang="en"], :root[lang="es"] { --serif: Lora, "Iowan Old Style", Georgia, serif; }
+  :root[lang="ja"] { --hand: "Yomogi", "Nanum Pen Script", cursive; --serif: "Shippori Mincho", "Hiragino Mincho ProN", serif; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --canvas: #16120F; --surface: #211D19; --sunken: #100D0B;
+      --ink: #F0EAE3; --ink-2: #B8AFA5; --ink-3: #9E958A;
+      --line: #3A342E; --line-2: #7E756A; --dot: rgba(240,234,227,.07);
+      --accent: #E8ACA4; --accent-soft: #40221E; --on-accent: #211D19;
+      --r1: #7496C3; --r2: #50AA9E; --r3: #AEA396; --r4: #CDA669; --r5: #DFA690; --r6: #E8ACA4;
+      --r2i: #50AA9E; --r4i: #CDA669;
+      --t1: #222B37; --t2: #1D2D2B; --t3: #2D2A26; --t4: #32291B; --t5: #3A251D; --t6: #40221E;
+      --g1: #50AA9E; --g2: #CDA669; --g3: #E8ACA4;
+      --blob1: rgba(80,170,158,.16); --blob2: rgba(205,166,105,.14); --blob3: rgba(232,172,164,.16);
+      --tape: rgba(205,166,105,.28); --tape-soon: rgba(232,172,164,.25);
+      --frame: #2B2622; --shadow: rgba(0,0,0,.5);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --canvas: #16120F; --surface: #211D19; --sunken: #100D0B;
+    --ink: #F0EAE3; --ink-2: #B8AFA5; --ink-3: #9E958A;
+    --line: #3A342E; --line-2: #7E756A; --dot: rgba(240,234,227,.07);
+    --accent: #E8ACA4; --accent-soft: #40221E; --on-accent: #211D19;
+    --r1: #7496C3; --r2: #50AA9E; --r3: #AEA396; --r4: #CDA669; --r5: #DFA690; --r6: #E8ACA4;
+    --r2i: #50AA9E; --r4i: #CDA669;
+    --t1: #222B37; --t2: #1D2D2B; --t3: #2D2A26; --t4: #32291B; --t5: #3A251D; --t6: #40221E;
+    --g1: #50AA9E; --g2: #CDA669; --g3: #E8ACA4;
+    --blob1: rgba(80,170,158,.16); --blob2: rgba(205,166,105,.14); --blob3: rgba(232,172,164,.16);
+    --tape: rgba(205,166,105,.28); --tape-soon: rgba(232,172,164,.25);
+    --frame: #2B2622; --shadow: rgba(0,0,0,.5);
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+  body { margin: 0; background: var(--canvas); color: var(--ink); font: 16px/1.75 var(--sans); letter-spacing: -.01em; word-break: keep-all; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  :root[lang="en"] body, :root[lang="es"] body { letter-spacing: 0; word-break: normal; overflow-wrap: anywhere; }
+  :root[lang="ja"] body { word-break: normal; line-break: strict; overflow-wrap: anywhere; }
+  a { color: var(--accent); text-underline-offset: .18em; text-decoration-thickness: 1px; }
+  a:focus-visible, button:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+  .grad { background: linear-gradient(90deg, var(--g1), var(--g2) 55%, var(--g3)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  /* ── 머리 ── */
+  .bar { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); background: color-mix(in srgb, var(--canvas) 78%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent); }
+  .bar .row { max-width: 60rem; margin: 0 auto; padding: 0 1.25rem; display: flex; align-items: center; gap: .75rem; height: 3.5rem; }
+  .bar a.home { display: flex; align-items: center; gap: .6rem; text-decoration: none; color: var(--ink); }
+  .bar img { width: 28px; height: 28px; border-radius: 8px; }
+  .bar b { font-size: 1rem; font-weight: 700; letter-spacing: -.02em; white-space: nowrap; }
+  .bar nav { margin-left: auto; display: flex; gap: 1.1rem; font-size: .875rem; }
+  .bar nav a { color: var(--ink-2); text-decoration: none; white-space: nowrap; }
+  .bar nav a[aria-current] { color: var(--ink); font-weight: 600; }
+  .prefs { margin-left: .9rem; display: flex; align-items: center; }
+  .prefs select { appearance: none; -webkit-appearance: none; font: inherit; font-size: .8125rem; font-weight: 600; color: var(--ink); background: color-mix(in srgb, var(--surface) 70%, transparent); border: 1px solid var(--line-2); border-radius: 999px; height: 2rem; padding: 0 1.6rem 0 .75rem; cursor: pointer; letter-spacing: 0;
+    background-image: linear-gradient(45deg, transparent 50%, var(--ink-3) 50%), linear-gradient(135deg, var(--ink-3) 50%, transparent 50%); background-position: calc(100% - 13px) 55%, calc(100% - 9px) 55%; background-size: 4px 4px; background-repeat: no-repeat; }
+  @media (max-width: 560px) { .bar nav a.wide-only { display: none; } .bar nav { gap: .8rem; } .prefs { margin-left: .5rem; } }
+
+  /* ── 머리말 ── */
+  .hero { position: relative; overflow: hidden; padding: 3.5rem 0 2rem; }
+  .blobs { position: absolute; inset: -30% -10% 0; pointer-events: none; filter: blur(60px); z-index: 0; }
+  .blob { position: absolute; border-radius: 50%; }
+  .blob.a { width: 42vw; height: 26vw; left: -6%; top: 30%; background: var(--blob1); animation: drift 26s ease-in-out infinite alternate; }
+  .blob.b { width: 36vw; height: 24vw; right: -4%; top: 10%; background: var(--blob2); animation: drift 31s ease-in-out infinite alternate-reverse; }
+  .blob.c { width: 40vw; height: 24vw; left: 30%; bottom: -20%; background: var(--blob3); animation: drift 37s ease-in-out infinite alternate; }
+  @keyframes drift { to { transform: translate(5vw, -3vw) scale(1.1); } }
+  .hero .in { position: relative; z-index: 1; max-width: 60rem; margin: 0 auto; padding: 0 1.25rem; }
+  .eyebrow { display: inline-block; font-size: .8125rem; font-weight: 600; color: var(--accent); letter-spacing: .02em; margin-bottom: .6rem; }
+  h1 { margin: 0; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.2; letter-spacing: -.03em; font-weight: 700; text-wrap: balance; }
+  .lede { margin: 1.1rem 0 0; color: var(--ink-2); font-size: 1.0625rem; max-width: 40rem; }
+  .stats { list-style: none; margin: 1.8rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .6rem 1.8rem; }
+  .stats li { display: flex; align-items: baseline; gap: .35rem; color: var(--ink-2); font-size: .9375rem; }
+  .stats b { font-family: var(--hand); font-weight: 400; font-size: 2.6rem; line-height: 1; color: var(--ink); }
+  .stats li:nth-child(1) b { color: var(--r6); } .stats li:nth-child(2) b { color: var(--r4); } .stats li:nth-child(3) b { color: var(--r2); }
+  .filters { display: flex; flex-wrap: wrap; gap: .45rem; margin: 2rem 0 0; }
+  .filters button { appearance: none; font: inherit; font-size: .875rem; font-weight: 600; letter-spacing: 0; color: var(--ink-2); background: color-mix(in srgb, var(--surface) 80%, transparent); border: 1px solid var(--line-2); border-radius: 999px; padding: .38rem 1rem; cursor: pointer; transition: background .25s, color .25s, border-color .25s; display: inline-flex; align-items: center; gap: .45rem; }
+  .filters button i { width: 8px; height: 8px; border-radius: 50%; background: var(--line-2); }
+  .filters button[data-f="new"] i { background: var(--accent); } .filters button[data-f="better"] i { background: var(--r2); } .filters button[data-f="fix"] i { background: var(--r4); }
+  .filters button[aria-pressed="true"] { background: var(--ink); color: var(--canvas); border-color: var(--ink); }
+
+  /* ── 기록장 — 버전 한 장 ── */
+  .book { list-style: none; margin: 0 auto; padding: 1rem 1.25rem 2rem; max-width: 60rem; position: relative; }
+  .book::before { content: ""; position: absolute; left: calc(1.25rem + 7.3rem - 1px); top: 2.2rem; bottom: 3rem; border-left: 2px dotted color-mix(in srgb, var(--line-2) 55%, transparent); }
+  .ver, .mile { position: relative; display: grid; grid-template-columns: 6.2rem minmax(0, 1fr); gap: 0 2.2rem; margin: 0 0 2.4rem; }
+  .ver[hidden], .mile[hidden] { display: none; }
+  .when { text-align: right; padding-top: 1.5rem; }
+  .when .no { display: block; font-family: var(--hand); font-size: 1.9rem; line-height: 1; color: var(--ink); }
+  .when time { display: block; margin-top: .35rem; font-size: .75rem; line-height: 1.35; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .ver::after, .mile::after { content: ""; position: absolute; left: calc(7.3rem - 6px); top: 2rem; width: 12px; height: 12px; border-radius: 50%; background: var(--dotc, var(--r4)); box-shadow: 0 0 0 4px var(--canvas); }
+  .page { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 1.9rem 1.6rem 1.4rem; box-shadow: 0 1px 0 var(--line), 0 18px 40px -26px var(--shadow);
+    background-image: radial-gradient(var(--dot) 1.1px, transparent 1.3px); background-size: 18px 18px; background-position: 9px 9px; }
+  .tape { position: absolute; top: -11px; left: 1.4rem; width: 92px; height: 24px; background: var(--tape); transform: rotate(-2.2deg); border-radius: 2px;
+    -webkit-mask: linear-gradient(90deg, transparent 0 2px, #000 2px calc(100% - 2px), transparent 0), repeating-linear-gradient(0deg, #000 0 3px, transparent 3px 4px); mask: linear-gradient(90deg, #000, #000); }
+  .ver:nth-child(3n+2) .tape { transform: rotate(1.8deg); left: auto; right: 2rem; width: 78px; }
+  .ver:nth-child(3n) .tape { transform: rotate(-1deg); left: 40%; }
+  .page h2 { margin: 0; font-family: var(--serif); font-weight: 700; font-size: clamp(1.25rem, 2.6vw, 1.55rem); line-height: 1.35; letter-spacing: -.02em; text-wrap: balance; }
+  .page .meta { display: flex; flex-wrap: wrap; gap: .4rem; margin: .65rem 0 0; }
+  .badge { display: inline-flex; align-items: center; gap: .35rem; font-size: .75rem; font-weight: 600; letter-spacing: 0; padding: .15rem .6rem; border-radius: 999px; background: var(--t2); color: var(--r2i); }
+  .badge.live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; animation: pulse 2.4s ease-in-out infinite; }
+  @keyframes pulse { 50% { opacity: .25; } }
+  .note { margin: .75rem 0 0; color: var(--ink-3); font-size: .875rem; }
+  .page ul { list-style: none; margin: 1.1rem 0 0; padding: 0; display: grid; gap: .55rem; }
+  .page li { display: grid; grid-template-columns: 4.7em minmax(0, 1fr); gap: .7rem; align-items: baseline; color: var(--ink-2); font-size: .9688rem; line-height: 1.65; }
+  .page li[hidden] { display: none; }
+  .page li .k { font-size: .6875rem; font-weight: 700; letter-spacing: .01em; border-radius: 6px; padding: .12rem .45rem; white-space: nowrap; transform: translateY(-1px); min-width: 3.6em; text-align: center; }
+  .page li[data-k="new"] .k { background: var(--accent-soft); color: var(--accent); }
+  .page li[data-k="better"] .k { background: var(--t2); color: var(--r2i); }
+  .page li[data-k="fix"] .k { background: var(--t4); color: var(--r4i); }
+  .page li[data-k="new"] .t { color: var(--ink); }
+
+  /* 화면 한 장 — 오른쪽에 기대 선 폰 */
+  .shot { float: right; width: 150px; margin: -.4rem -.3rem .8rem 1.4rem; shape-outside: inset(0 round 24px); }
+  .shot .ph { display: block; position: relative; border-radius: 26px; padding: 5px; background: var(--frame); box-shadow: 0 22px 40px -22px var(--shadow), 0 0 0 1px color-mix(in srgb, var(--frame) 70%, #fff 10%); transform: rotate(2.2deg); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+  .ver:nth-child(even) .shot .ph { transform: rotate(-1.8deg); }
+  .shot .ph:hover { transform: rotate(0) scale(1.03); }
+  .shot img { display: block; width: 100%; height: auto; aspect-ratio: 1320/2868; border-radius: 21px; background: var(--sunken); }
+  @media (min-width: 760px) { .shot { width: 188px; margin-right: -.6rem; } }
+  @media (max-width: 560px) {
+    .book::before { left: calc(1.25rem + .5rem - 1px); }
+    .page li { display: block; }
+    .page li .k { display: inline-block; margin-right: .45rem; min-width: 0; }
+    .ver, .mile { grid-template-columns: minmax(0, 1fr); padding-left: 1.6rem; }
+    .ver::after, .mile::after { left: calc(.5rem - 5px); top: .55rem; }
+    .when { text-align: left; padding: 0 0 .9rem; display: flex; align-items: baseline; gap: .7rem; }
+    .when time { margin: 0; }
+    .page { padding: 1.7rem 1.15rem 1.2rem; }
+    .shot { width: 104px; margin: -.2rem -.3rem .5rem .9rem; }
+  }
+
+  /* 곧 나오는 장 — 점선 테 + 도장 */
+  .ver.soon .page { border: 1.5px dashed color-mix(in srgb, var(--accent) 45%, var(--line)); background-color: color-mix(in srgb, var(--surface) 92%, var(--accent-soft)); }
+  .ver.soon .tape { background: var(--tape-soon); }
+  .stamp { position: absolute; top: -.9rem; right: 1.3rem; width: 74px; height: 74px; border-radius: 50%; display: grid; place-items: center; text-align: center; padding: .4rem;
+    border: 2px solid var(--accent); color: var(--accent); font-family: var(--hand); font-size: 1.15rem; line-height: 1.05; transform: rotate(-12deg); background: color-mix(in srgb, var(--surface) 80%, transparent);
+    box-shadow: inset 0 0 0 3px var(--surface), inset 0 0 0 4px color-mix(in srgb, var(--accent) 60%, transparent); z-index: 2; }
+  .ver.soon .shot { margin-top: 3.4rem; }
+  .stamp { white-space: nowrap; padding: .2rem; }
+  :root[lang="ja"] .stamp { font-size: .82rem; }
+  :root[lang="es"] .stamp, :root[lang="en"] .stamp { white-space: normal; font-size: 1.05rem; }
+  @media (max-width: 560px) { .stamp { width: 62px; height: 62px; font-size: 1rem; right: .8rem; } .ver.soon .shot { margin-top: 2.6rem; } }
+
+  /* 이정표 — 한 줄 쪽지 */
+  .mile .page { padding: 1rem 1.3rem; background-image: none; background: color-mix(in srgb, var(--surface) 60%, transparent); border-style: dashed; }
+  .mile .page b { display: block; font-family: var(--serif); font-size: 1.05rem; }
+  .mile .page span { color: var(--ink-2); font-size: .9rem; }
+  .mile .eyebrow { margin: 0 0 .2rem; font-size: .72rem; }
+  .mile.first .page { border-style: solid; background: linear-gradient(120deg, var(--t5), var(--t2)); }
+
+  .end { max-width: 60rem; margin: 0 auto; padding: 0 1.25rem 4rem; color: var(--ink-3); font-size: .9rem; text-align: center; }
+  footer { border-top: 1px solid var(--line); }
+  footer .row { max-width: 60rem; margin: 0 auto; padding: 1.6rem 1.25rem 3rem; display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; font-size: .8125rem; color: var(--ink-3); }
+  footer a { color: var(--ink-2); text-decoration: none; } footer a:hover { text-decoration: underline; }
+  footer small { margin-left: auto; }
+
+  html.js [data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  html.js [data-reveal].in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .blob, .badge.live::before { animation: none; } html.js [data-reveal] { opacity: 1; transform: none; transition: none; } }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="row">
+    <a class="home" href="/" data-home><img src="/icon-192.png" alt="" width="28" height="28"><b data-i="brand">말온도</b></a>
+    <nav aria-label="바로 가기" data-i-aria-label="nav.aria">
+      <a href="/" data-home data-i="nav.home">처음으로</a>
+      <a href="/history.html" aria-current="page" data-i="nav.history">이력</a>
+      <a href="/support.html" class="wide-only" data-i="nav.support">지원</a>
+    </nav>
+    <div class="prefs">
+      <select id="lang" aria-label="언어" data-i-aria-label="pref.lang">
+        <option value="ko">한국어</option>
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="es">Español</option>
+      </select>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero" aria-labelledby="title">
+  <div class="blobs" aria-hidden="true"><i class="blob a"></i><i class="blob b"></i><i class="blob c"></i></div>
+  <div class="in">
+    <span class="eyebrow" data-i="eyebrow">업데이트 이력</span>
+    <h1 id="title" data-i="title">한 장씩 넘겨 온,<br><span class="grad">말온도의 기록장</span></h1>
+    <p class="lede" data-i="lede">2026년 9월 15일 처음 나온 뒤로, 버전마다 무엇이 새로 생기고 무엇을 다듬고 고쳤는지 모아 두었어요. 위에서부터 가장 최근이에요.</p>
+    <ul class="stats">
+      <li><b id="statVersions">11</b><span data-i="stat.versions">개의 버전</span></li>
+      <li><b id="statDays">26</b><span data-i="stat.days">일째 자라는 중</span></li>
+      <li><b>4</b><span data-i="stat.langs">가지 언어</span></li>
+    </ul>
+    <div class="filters" role="group" aria-label="종류로 걸러 보기" data-i-aria-label="filter.aria">
+      <button type="button" data-f="all" aria-pressed="true" data-i="filter.all">전체</button>
+      <button type="button" data-f="new" aria-pressed="false"><i></i><span data-i="filter.new">새 기능</span></button>
+      <button type="button" data-f="better" aria-pressed="false"><i></i><span data-i="filter.better">다듬은 것</span></button>
+      <button type="button" data-f="fix" aria-pressed="false"><i></i><span data-i="filter.fix">고친 것</span></button>
+    </div>
+  </div>
+</section>
+
+<ol class="book" id="book">
+  <li class="ver soon" id="v1.1.1" style="--dotc: var(--accent)" data-reveal>
+    <div class="when"><span class="no">1.1.1</span><time data-i="soon">곧 나와요</time></div>
+    <article class="page">
+      <span class="tape" aria-hidden="true"></span>
+      <span class="stamp" aria-hidden="true" data-i="soon">곧 나와요</span>
+      <figure class="shot"><span class="ph"><img data-shot="widget-large" src="/shots/ko/widget-large.webp" alt="홈 화면의 말온도 위젯 — 일력, 말온도, 꾸민 이 달 한 장" data-i-alt="shot.alt.111" alt="" loading="lazy" width="1320" height="2868"></span></figure>
+      <h2 data-i="v.111.title">홈 화면에 한 장 — 위젯이 기록장이 돼요</h2>
+      <p class="note" data-i="soon.note">다음 업데이트로 준비하고 있어요. 스토어에 나오면 날짜가 붙어요.</p>
+      <ul data-i="v.111.list"><li data-k="new"><span class="k">새 기능</span><span class="t">홈 화면 위젯을 새로 그렸어요. 일력처럼 넘어가는 「오늘 한 장」과, 이 달을 한 장에 담은 「이 달 한 장」(보통 · 크게)이 있어요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">이 달 쪽에서 꾸민 속지 · 대표 스티커 · 사진 · 손글씨가 위젯에도 그대로 붙어요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">오늘 칸이 비어 있으면 앱을 열지 않고 위젯에서 바로 마음과 온도를 골라 남길 수 있어요. (iOS 17 이상 · 안드로이드)</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">잠금 화면에도 이번 주와 오늘 날짜를 올려 둘 수 있어요. 잠금 화면에는 마음이 보이지 않아요. (iOS 16 이상)</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">조용히 쓰기를 켜 두면 위젯은 날짜만 있는 달력이 돼요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">스케치북에 남긴 낙서가 그린 선 둘레로 오린 흰 테 스티커가 돼요. 목소리 능선도 산 모양 그대로 오려 붙어요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">필사 노트가 원고지가 됐어요. 내 글을 적어 따라 쓰고, 펜촉과 서체를 고르고, 여백에 한 줄을 남길 수 있어요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">받은 말 병을 진짜 유리병처럼 새로 만들었어요. 흔들면 종이별이 굴러요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">놓아주기의 사라지는 방법이 아홉 가지, 마지막 장면이 여덟 가지로 늘었어요. 할 때마다 다르게 골라져요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">처음 쓰는 손짓은 손끝 그림으로 살짝 알려 드려요. 도움말에서 끌 수 있어요.</span></li><li data-k="better"><span class="k">다듬음</span><span class="t">달력 칸을 길게 누르면 바로 꾸미기로 들어가요. 다가올 달도 1년 앞까지 넘겨 볼 수 있어요.</span></li><li data-k="better"><span class="k">다듬음</span><span class="t">AI 나 인터넷이 안 될 때는 「AI 없이 할 수 있는 것」을 바로 보여 드려요.</span></li><li data-k="better"><span class="k">다듬음</span><span class="t">문장 · 답장 횟수는 날마다 채워지지 않는다는 것을 화면에 적어 두었어요.</span></li><li data-k="fix"><span class="k">고침</span><span class="t">큰 글자와 좁은 화면에서 글자가 넘치던 자리를 고쳤어요.</span></li><li data-k="fix"><span class="k">고침</span><span class="t">소리가 난 뒤 화면이 쉬지 않고 다시 그려져 배터리를 쓰던 문제를 고쳤어요.</span></li></ul>
+    </article>
+  </li>
+
+  <li class="ver" id="v1.1.0" style="--dotc: var(--r6)" data-reveal>
+    <div class="when"><span class="no">1.1.0</span><time datetime="2026-10-10">2026. 10. 10.</time></div>
+    <article class="page">
+      <span class="tape" aria-hidden="true"></span>
+      <figure class="shot"><span class="ph"><img data-shot="home" src="/shots/ko/home.webp" alt="한 달짜리 기록장이 된 홈" data-i-alt="shot.alt.110" alt="" loading="lazy" width="1320" height="2868"></span></figure>
+      <h2 data-i="v.110.title">홈이 한 달짜리 기록장이 됐어요</h2>
+      <div class="meta"><span class="badge live" data-i="now">지금 스토어에 있어요</span></div>
+      <ul data-i="v.110.list"><li data-k="new"><span class="k">새 기능</span><span class="t">홈이 한 달짜리 기록장으로 바뀌었어요. 날짜를 누르면 그날 쪽이 열리고, 스티커와 사진으로 꾸밀 수 있어요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">그날 남긴 마음과 말온도는 스티커가 되어 알아서 붙어요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">스티커에 반짝이거나 살랑이는 효과를 줄 수 있어요. 움직임이 부담스러우면 메뉴의 「화면과 소리」에서 끌 수 있어요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">화살표, 상대 이름표, 말풍선 스티커는 모양과 색을 골라 붙일 수 있어요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">이 달을 크게 펼쳐 한 번에 꾸미고, 한 해를 한 장에 모아 볼 수 있어요.</span></li><li data-k="better"><span class="k">다듬음</span><span class="t">달력이 책장 넘기듯 넘어가요.</span></li><li data-k="better"><span class="k">다듬음</span><span class="t">창가 책상의 오르골은 스노볼로, 촛불은 창가 풍경으로 새로 그렸어요.</span></li><li data-k="better"><span class="k">다듬음</span><span class="t">따라 쓰기는 한 글자씩 크게 쓸 수 있어요.</span></li><li data-k="better"><span class="k">다듬음</span><span class="t">처음 쓰는 분을 위한 안내를 새로 만들었어요.</span></li><li data-k="better"><span class="k">다듬음</span><span class="t">말온도를 재고 닫으면 원래 보던 화면으로 돌아가요.</span></li><li data-k="better"><span class="k">다듬음</span><span class="t">기록이 많이 쌓여도 가볍게 움직이도록 다듬었어요.</span></li></ul>
+    </article>
+  </li>
+
+  <li class="mile" style="--dotc: #34A853" data-reveal>
+    <div class="when"><time datetime="2026-10-03">2026. 10. 3.</time></div>
+    <div class="page"><span class="eyebrow" data-i="milestone">이정표</span><b data-i="m.play.title">Google Play 에서도 받을 수 있어요</b><span data-i="m.play.body">안드로이드에서도 아이폰과 같은 이름, 같은 번호로 함께 자라요.</span></div>
+  </li>
+
+  <li class="ver" id="v1.0.9" style="--dotc: var(--r5)" data-reveal>
+    <div class="when"><span class="no">1.0.9</span><time datetime="2026-10-03">2026. 10. 3.</time></div>
+    <article class="page"><span class="tape" aria-hidden="true"></span><h2 data-i="v.109.title">지나간 날도, 다가올 날도</h2><ul data-i="v.109.list"><li data-k="new"><span class="k">새 기능</span><span class="t">지나간 날에도 하루 한 칸을 남길 수 있어요. 깜빡하고 못 남긴 날은 달력에서 날짜를 눌러 채워 보세요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">다가올 날의 마음도 미리 적어 둘 수 있어요. 그날 앱을 열면 적어 둔 마음을 먼저 보여 드려요.</span></li><li data-k="better"><span class="k">다듬음</span><span class="t">미리 적어 둔 날은 그날이 오기 전까지 말온도에 반영되지 않아요.</span></li><li data-k="fix"><span class="k">고침</span><span class="t">AI 연결이 잠시 끊겨도 앱을 껐다 켜지 않고 다시 이어져요.</span></li></ul></article>
+  </li>
+
+  <li class="ver" id="v1.0.8" style="--dotc: var(--r4)" data-reveal>
+    <div class="when"><span class="no">1.0.8</span><time datetime="2026-10-02">2026. 10. 2.</time></div>
+    <article class="page"><span class="tape" aria-hidden="true"></span><h2 data-i="v.108.title">홈에 머무를 거리가 생겼어요</h2><ul data-i="v.108.list"><li data-k="new"><span class="k">새 기능</span><span class="t">홈을 아래로 내리면 그림 세 장이 있어요 — 남긴 날이 하늘에 쌓이는 「나의 온기」, 담아둔 말이 이어지는 별자리, 놓아준 마음이 오르는 종이 등불.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">하늘은 지금 시각에 맞춰 새벽 · 아침 · 한낮 · 해 질 녘 · 저녁의 빛으로 바뀌어요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">홈에 들어오면 남긴 칸이 날짜 순서대로 물들고, 오늘 칸은 천천히 숨을 쉬어요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">오늘 한 칸을 남기면 그날의 다른 기록을 하루 한 장으로 이어 보여 드려요. 밤에는 촛불을 끄고 하루를 닫을 수 있어요.</span></li><li data-k="better"><span class="k">다듬음</span><span class="t">위에 열린 화면을 왼쪽 가장자리에서 밀어서 닫을 수 있어요.</span></li><li data-k="better"><span class="k">다듬음</span><span class="t">담아둔 문장은 왼쪽으로 밀어서 지우고, 바로 되돌릴 수 있어요.</span></li><li data-k="better"><span class="k">다듬음</span><span class="t">「읽기 글자」에서 고른 서체와 크기가 앱의 본문 글 전체에 적용돼요.</span></li><li data-k="better"><span class="k">다듬음</span><span class="t">오르골의 「한 달」에서 지난 달의 노래도 들을 수 있어요.</span></li><li data-k="fix"><span class="k">고침</span><span class="t">달력 아래 달 이름이 「1…」로 잘려 보이던 문제를 고쳤어요.</span></li></ul></article>
+  </li>
+
+  <li class="ver" id="v1.0.7" style="--dotc: var(--r3)" data-reveal>
+    <div class="when"><span class="no">1.0.7</span><time datetime="2026-09-27">2026. 9. 27.</time></div>
+    <article class="page">
+      <span class="tape" aria-hidden="true"></span>
+      <figure class="shot"><span class="ph"><img data-shot="desk" src="/shots/ko/desk.webp" alt="창가 책상" data-i-alt="shot.alt.107" alt="" loading="lazy" width="1320" height="2868"></span></figure>
+      <h2 data-i="v.107.title">창가 책상이 생겼어요</h2><ul data-i="v.107.list"><li data-k="new"><span class="k">새 기능</span><span class="t">말을 고르지 않는 날에도 머물 곳, 창가 책상이 생겼어요. 따라 쓰기 · 편지 · 받은 말 병 · 스케치북 · 말꽃 · 오르골 · 촛불이 있어요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">말온도를 재는 동안 종이 위에 온도가 그려지고, 결과는 그 종이에서 한 페이지로 이어져요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">달력의 날짜를 누르면 그날 잰 온도, 담아 둔 문장, 책상에서 만든 것까지 한 장으로 모아 보여 줘요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">온도에 따라 손끝에 오는 느낌과 소리가 달라요. 쉬어가기 · 털어놓기 · 놓아주기에는 잔잔한 음악이 흘러요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">놓아주기에서 적는 대신 그림으로 그려서 놓아줄 수도 있어요.</span></li><li data-k="better"><span class="k">다듬음</span><span class="t">내보내기 파일에 말투 학습과 설정까지 담겨서, 폰을 바꿔도 그대로 이어져요.</span></li><li data-k="fix"><span class="k">고침</span><span class="t">아이폰에서 말온도를 재는 동안 진동이 나지 않던 문제를 고쳤어요.</span></li></ul>
+    </article>
+  </li>
+
+  <li class="ver" id="v1.0.6" style="--dotc: var(--r2)" data-reveal>
+    <div class="when"><span class="no">1.0.6</span><time datetime="2026-09-26">2026. 9. 26.</time></div>
+    <article class="page"><span class="tape" aria-hidden="true"></span><h2 data-i="v.106.title">건넨 말을 돌아보는 길</h2><ul data-i="v.106.list"><li data-k="new"><span class="k">새 기능</span><span class="t">추천 문장을 복사하고 「보냈어요」를 누르면, 다음 날 저녁 알림으로 한 번 물어볼 수 있어요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">받은 말에 답할 때도 쓸 수 있어요. 상대가 보낸 메시지를 붙여 넣으면 건넬 답을 함께 찾아요. 받은 말은 기기에 남기지 않아요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">보내기 전에 20분 식혀 둘 수 있어요. 20분이 지나면 알림이 한 번 와요.</span></li><li data-k="better"><span class="k">다듬음</span><span class="t">홈의 창가, 네 걸음, 털어놓기, 쉬어가기, 놓아주기의 끝을 선과 빛, 번짐으로 새로 그렸어요.</span></li><li data-k="better"><span class="k">다듬음</span><span class="t">털어놓기는 300자 안에서 적고, 적을수록 엉킨 실이 한 가닥으로 풀려요.</span></li><li data-k="better"><span class="k">다듬음</span><span class="t">처음 여는 분께 홈에 보이는 자리를 하나씩 모두 짚어 드려요.</span></li><li data-k="fix"><span class="k">고침</span><span class="t">영어 · 일본어 · 스페인어에서 홈 바닥 카드의 글자가 잘리던 것을 고쳤어요.</span></li></ul></article>
+  </li>
+
+  <li class="ver" id="v1.0.5" style="--dotc: var(--r1)" data-reveal>
+    <div class="when"><span class="no">1.0.5</span><time datetime="2026-09-24">2026. 9. 24.</time></div>
+    <article class="page">
+      <span class="tape" aria-hidden="true"></span>
+      <figure class="shot"><span class="ph"><img data-shot="people" src="/shots/ko/people.webp" alt="상대 탭" data-i-alt="shot.alt.105" alt="" loading="lazy" width="1320" height="2868"></span></figure>
+      <h2 data-i="v.105.title">나를 둘러앉은 사람들 — 「상대」 탭</h2><ul data-i="v.105.list"><li data-k="new"><span class="k">새 기능</span><span class="t">저장 탭이 「상대」 탭이 됐어요. 나를 둘러앉은 사람들에게 어떤 온도로 말해 왔는지 한눈에 봐요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">말투 탭에서 쓰는 상대를 고를 수 있어요. 끈 상대의 지난 기록은 지우지 않고 감춰 둬요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">읽는 글의 서체를 다섯 가지에서 골라요 — Pretendard · 마루부리 · 고운바탕 · 고운돋움 · 나눔손글씨 펜.</span></li><li data-k="better"><span class="k">다듬음</span><span class="t">말온도는 억양을 중심으로 읽고, 「목소리 기준」(기본 · 남성 · 여성)으로 내 목소리의 폭을 맞출 수 있어요. 목소리 기준은 기기 밖으로 나가지 않아요.</span></li><li data-k="better"><span class="k">다듬음</span><span class="t">서랍을 새로 짰어요. 알림 · 언어 · 읽기 글자의 지금 값이 한눈에 보이고, 조용히 쓰기를 바로 켜고 꺼요.</span></li><li data-k="better"><span class="k">다듬음</span><span class="t">영어 · 일본어 · 스페인어로 적은 글에서도 위험 신호를 알아차리고, 한국 밖에서는 그 지역의 응급 번호로 안내해요.</span></li></ul>
+    </article>
+  </li>
+
+  <li class="ver" id="v1.0.4" style="--dotc: var(--r2)" data-reveal>
+    <div class="when"><span class="no">1.0.4</span><time datetime="2026-09-23">2026. 9. 23.</time></div>
+    <article class="page"><span class="tape" aria-hidden="true"></span><h2 data-i="v.104.title">네 가지 언어로 말해요</h2><ul data-i="v.104.list"><li data-k="new"><span class="k">새 기능</span><span class="t">한국어 · English · 日本語 · Español — 화면도, 지어 오는 문장도 고른 언어로 와요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">온도 단위를 ℃ 와 °F 중에 골라요. 단위를 바꿔도 지난 기록은 그대로예요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">홈에 「누구와의 말」 카드가 생겼어요. 아직 말하지 않은 상대는 0 이 아니라 「아직」이라고 적어요.</span></li><li data-k="better"><span class="k">다듬음</span><span class="t">결 지문이 억양을 못 들은 날에도 다섯 축 그대로 서요. 홈의 간격, 달력 칸, 녹음 버튼과 다이얼도 손봤어요.</span></li></ul></article>
+  </li>
+
+  <li class="ver" id="v1.0.3" style="--dotc: var(--r3)" data-reveal>
+    <div class="when"><span class="no">1.0.3</span><time datetime="2026-09-19">2026. 9. 19.</time></div>
+    <article class="page"><span class="tape" aria-hidden="true"></span><h2 data-i="v.103.title">놓아준 뒤의 짧은 그림</h2><ul data-i="v.103.list"><li data-k="new"><span class="k">새 기능</span><span class="t">놓아주기가 끝나면 짧은 그림 일곱 가지 가운데 하나가 흐르고, 마음을 다독이는 문구가 천천히 떠올라요.</span></li><li data-k="better"><span class="k">다듬음</span><span class="t">화면 전환과 시각 효과를 더 자연스럽게 다듬었어요.</span></li></ul></article>
+  </li>
+
+  <li class="ver" id="v1.0.2" style="--dotc: var(--r4)" data-reveal>
+    <div class="when"><span class="no">1.0.2</span><time datetime="2026-09-17">2026. 9. 17.</time></div>
+    <article class="page"><span class="tape" aria-hidden="true"></span><h2 data-i="v.102.title">새 버전을 알려 드릴 준비</h2><ul data-i="v.102.list"><li data-k="better"><span class="k">다듬음</span><span class="t">앱 안에 보이는 버전이 스토어의 번호와 같아졌어요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">새 버전이 나오면 앱이 알려 드릴 수 있게 했어요. 확인할 때 나가는 값은 없어요 — 버전 표 한 장을 받아 기기 안에서 견줘요.</span></li></ul></article>
+  </li>
+
+  <li class="ver" id="v1.0.1" style="--dotc: var(--r5)" data-reveal>
+    <div class="when"><span class="no">1.0.1</span><time datetime="2026-09-16">2026. 9. 16.</time></div>
+    <article class="page"><span class="tape" aria-hidden="true"></span><h2 data-i="v.101.title">「오늘 남기기」를 고쳤어요</h2><ul data-i="v.101.list"><li data-k="fix"><span class="k">고침</span><span class="t">홈 달력 아래 「오늘 남기기 →」를 눌러도 아무 일이 없던 문제를 고쳤어요. 손가락이 닿는 자리도 넓혔어요.</span></li></ul></article>
+  </li>
+
+  <li class="ver first" id="v1.0.0" style="--dotc: var(--r6)" data-reveal>
+    <div class="when"><span class="no">1.0.0</span><time datetime="2026-09-15">2026. 9. 15.</time></div>
+    <article class="page">
+      <span class="tape" aria-hidden="true"></span>
+      <h2 data-i="v.100.title">말온도가 처음 나왔어요</h2>
+      <div class="meta"><span class="badge" data-i="m.first.title">App Store 에 처음 나왔어요</span></div>
+      <ul data-i="v.100.list"><li data-k="new"><span class="k">새 기능</span><span class="t">건넬 말 찾기 — 상대와 하고 싶은 것, 온도를 고르고 있었던 일을 적으면 결이 다른 문장 네 장이 와요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">마음부터 풀기 — 아무한테도 못 한 이야기를 적으면 편지 한 통이 와요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">놓아주기 — 오래 남은 일을 백 자 안에 적고 손으로 문질러 지워요. 적은 글은 어디에도 남지 않아요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">말온도 재기 — 20초쯤 소리 내어 말하면 목표한 온도에 얼마나 닿았는지 살펴 드려요. 녹음은 바로 지워져요.</span></li><li data-k="new"><span class="k">새 기능</span><span class="t">하루 한 칸, 홈 달력, 오늘의 한 문장, 그리고 홈 화면 위젯.</span></li></ul>
+    </article>
+  </li>
+</ol>
+
+<p class="end" data-i="end">이 기록장은 업데이트마다 한 장씩 늘어나요. 바라는 것이 있으면 <a href="/support.html">지원 페이지</a>에 적어 주세요.</p>
+</main>
+
+<footer>
+  <div class="row">
+    <a href="/" data-home data-i="link.home">말온도 첫 페이지</a>
+    <a href="/support.html" data-i="nav.support">지원</a>
+    <a href="/privacy.html" data-i="link.privacy">개인정보처리방침</a>
+    <small data-i="foot">© 2026 말온도</small>
+  </div>
+</footer>
+
+<script type="application/json" id="i18n">{"ko":{"meta.title":"업데이트 이력 · 말온도","meta.desc":"말온도가 버전마다 새로 얻은 것, 다듬은 것, 고친 것. 2026년 9월 첫 출시부터 지금까지의 기록이에요.","brand":"말온도","pref.lang":"언어","nav.aria":"바로 가기","nav.home":"처음으로","nav.history":"이력","nav.support":"지원","eyebrow":"업데이트 이력","title":"한 장씩 넘겨 온,<br><span class=\"grad\">말온도의 기록장<\/span>","lede":"2026년 9월 15일 처음 나온 뒤로, 버전마다 무엇이 새로 생기고 무엇을 다듬고 고쳤는지 모아 두었어요. 위에서부터 가장 최근이에요.","filter.aria":"종류로 걸러 보기","filter.all":"전체","filter.new":"새 기능","filter.better":"다듬은 것","filter.fix":"고친 것","stat.versions":"개의 버전","stat.days":"일째 자라는 중","stat.langs":"가지 언어","soon":"곧 나와요","soon.note":"다음 업데이트로 준비하고 있어요. 스토어에 나오면 날짜가 붙어요.","now":"지금 스토어에 있어요","milestone":"이정표","m.play.title":"Google Play 에서도 받을 수 있어요","m.play.body":"안드로이드에서도 아이폰과 같은 이름, 같은 번호로 함께 자라요.","m.first.title":"App Store 에 처음 나왔어요","end":"이 기록장은 업데이트마다 한 장씩 늘어나요. 바라는 것이 있으면 <a href=\"/support.html\">지원 페이지<\/a>에 적어 주세요.","link.home":"말온도 첫 페이지","link.privacy":"개인정보처리방침","foot":"© 2026 말온도","shot.alt.111":"홈 화면의 말온도 위젯 — 일력, 말온도, 꾸민 이 달 한 장","shot.alt.110":"한 달짜리 기록장이 된 홈","shot.alt.107":"창가 책상","shot.alt.105":"상대 탭","v.111.title":"홈 화면에 한 장 — 위젯이 기록장이 돼요","v.111.list":"<li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">홈 화면 위젯을 새로 그렸어요. 일력처럼 넘어가는 「오늘 한 장」과, 이 달을 한 장에 담은 「이 달 한 장」(보통 · 크게)이 있어요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">이 달 쪽에서 꾸민 속지 · 대표 스티커 · 사진 · 손글씨가 위젯에도 그대로 붙어요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">오늘 칸이 비어 있으면 앱을 열지 않고 위젯에서 바로 마음과 온도를 골라 남길 수 있어요. (iOS 17 이상 · 안드로이드)<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">잠금 화면에도 이번 주와 오늘 날짜를 올려 둘 수 있어요. 잠금 화면에는 마음이 보이지 않아요. (iOS 16 이상)<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">조용히 쓰기를 켜 두면 위젯은 날짜만 있는 달력이 돼요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">스케치북에 남긴 낙서가 그린 선 둘레로 오린 흰 테 스티커가 돼요. 목소리 능선도 산 모양 그대로 오려 붙어요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">필사 노트가 원고지가 됐어요. 내 글을 적어 따라 쓰고, 펜촉과 서체를 고르고, 여백에 한 줄을 남길 수 있어요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">받은 말 병을 진짜 유리병처럼 새로 만들었어요. 흔들면 종이별이 굴러요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">놓아주기의 사라지는 방법이 아홉 가지, 마지막 장면이 여덟 가지로 늘었어요. 할 때마다 다르게 골라져요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">처음 쓰는 손짓은 손끝 그림으로 살짝 알려 드려요. 도움말에서 끌 수 있어요.<\/span><\/li><li data-k=\"better\"><span class=\"k\">다듬음<\/span><span class=\"t\">달력 칸을 길게 누르면 바로 꾸미기로 들어가요. 다가올 달도 1년 앞까지 넘겨 볼 수 있어요.<\/span><\/li><li data-k=\"better\"><span class=\"k\">다듬음<\/span><span class=\"t\">AI 나 인터넷이 안 될 때는 「AI 없이 할 수 있는 것」을 바로 보여 드려요.<\/span><\/li><li data-k=\"better\"><span class=\"k\">다듬음<\/span><span class=\"t\">문장 · 답장 횟수는 날마다 채워지지 않는다는 것을 화면에 적어 두었어요.<\/span><\/li><li data-k=\"fix\"><span class=\"k\">고침<\/span><span class=\"t\">큰 글자와 좁은 화면에서 글자가 넘치던 자리를 고쳤어요.<\/span><\/li><li data-k=\"fix\"><span class=\"k\">고침<\/span><span class=\"t\">소리가 난 뒤 화면이 쉬지 않고 다시 그려져 배터리를 쓰던 문제를 고쳤어요.<\/span><\/li>","v.110.title":"홈이 한 달짜리 기록장이 됐어요","v.110.list":"<li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">홈이 한 달짜리 기록장으로 바뀌었어요. 날짜를 누르면 그날 쪽이 열리고, 스티커와 사진으로 꾸밀 수 있어요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">그날 남긴 마음과 말온도는 스티커가 되어 알아서 붙어요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">스티커에 반짝이거나 살랑이는 효과를 줄 수 있어요. 움직임이 부담스러우면 메뉴의 「화면과 소리」에서 끌 수 있어요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">화살표, 상대 이름표, 말풍선 스티커는 모양과 색을 골라 붙일 수 있어요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">이 달을 크게 펼쳐 한 번에 꾸미고, 한 해를 한 장에 모아 볼 수 있어요.<\/span><\/li><li data-k=\"better\"><span class=\"k\">다듬음<\/span><span class=\"t\">달력이 책장 넘기듯 넘어가요.<\/span><\/li><li data-k=\"better\"><span class=\"k\">다듬음<\/span><span class=\"t\">창가 책상의 오르골은 스노볼로, 촛불은 창가 풍경으로 새로 그렸어요.<\/span><\/li><li data-k=\"better\"><span class=\"k\">다듬음<\/span><span class=\"t\">따라 쓰기는 한 글자씩 크게 쓸 수 있어요.<\/span><\/li><li data-k=\"better\"><span class=\"k\">다듬음<\/span><span class=\"t\">처음 쓰는 분을 위한 안내를 새로 만들었어요.<\/span><\/li><li data-k=\"better\"><span class=\"k\">다듬음<\/span><span class=\"t\">말온도를 재고 닫으면 원래 보던 화면으로 돌아가요.<\/span><\/li><li data-k=\"better\"><span class=\"k\">다듬음<\/span><span class=\"t\">기록이 많이 쌓여도 가볍게 움직이도록 다듬었어요.<\/span><\/li>","v.109.title":"지나간 날도, 다가올 날도","v.109.list":"<li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">지나간 날에도 하루 한 칸을 남길 수 있어요. 깜빡하고 못 남긴 날은 달력에서 날짜를 눌러 채워 보세요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">다가올 날의 마음도 미리 적어 둘 수 있어요. 그날 앱을 열면 적어 둔 마음을 먼저 보여 드려요.<\/span><\/li><li data-k=\"better\"><span class=\"k\">다듬음<\/span><span class=\"t\">미리 적어 둔 날은 그날이 오기 전까지 말온도에 반영되지 않아요.<\/span><\/li><li data-k=\"fix\"><span class=\"k\">고침<\/span><span class=\"t\">AI 연결이 잠시 끊겨도 앱을 껐다 켜지 않고 다시 이어져요.<\/span><\/li>","v.108.title":"홈에 머무를 거리가 생겼어요","v.108.list":"<li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">홈을 아래로 내리면 그림 세 장이 있어요 — 남긴 날이 하늘에 쌓이는 「나의 온기」, 담아둔 말이 이어지는 별자리, 놓아준 마음이 오르는 종이 등불.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">하늘은 지금 시각에 맞춰 새벽 · 아침 · 한낮 · 해 질 녘 · 저녁의 빛으로 바뀌어요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">홈에 들어오면 남긴 칸이 날짜 순서대로 물들고, 오늘 칸은 천천히 숨을 쉬어요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">오늘 한 칸을 남기면 그날의 다른 기록을 하루 한 장으로 이어 보여 드려요. 밤에는 촛불을 끄고 하루를 닫을 수 있어요.<\/span><\/li><li data-k=\"better\"><span class=\"k\">다듬음<\/span><span class=\"t\">위에 열린 화면을 왼쪽 가장자리에서 밀어서 닫을 수 있어요.<\/span><\/li><li data-k=\"better\"><span class=\"k\">다듬음<\/span><span class=\"t\">담아둔 문장은 왼쪽으로 밀어서 지우고, 바로 되돌릴 수 있어요.<\/span><\/li><li data-k=\"better\"><span class=\"k\">다듬음<\/span><span class=\"t\">「읽기 글자」에서 고른 서체와 크기가 앱의 본문 글 전체에 적용돼요.<\/span><\/li><li data-k=\"better\"><span class=\"k\">다듬음<\/span><span class=\"t\">오르골의 「한 달」에서 지난 달의 노래도 들을 수 있어요.<\/span><\/li><li data-k=\"fix\"><span class=\"k\">고침<\/span><span class=\"t\">달력 아래 달 이름이 「1…」로 잘려 보이던 문제를 고쳤어요.<\/span><\/li>","v.107.title":"창가 책상이 생겼어요","v.107.list":"<li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">말을 고르지 않는 날에도 머물 곳, 창가 책상이 생겼어요. 따라 쓰기 · 편지 · 받은 말 병 · 스케치북 · 말꽃 · 오르골 · 촛불이 있어요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">말온도를 재는 동안 종이 위에 온도가 그려지고, 결과는 그 종이에서 한 페이지로 이어져요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">달력의 날짜를 누르면 그날 잰 온도, 담아 둔 문장, 책상에서 만든 것까지 한 장으로 모아 보여 줘요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">온도에 따라 손끝에 오는 느낌과 소리가 달라요. 쉬어가기 · 털어놓기 · 놓아주기에는 잔잔한 음악이 흘러요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">놓아주기에서 적는 대신 그림으로 그려서 놓아줄 수도 있어요.<\/span><\/li><li data-k=\"better\"><span class=\"k\">다듬음<\/span><span class=\"t\">내보내기 파일에 말투 학습과 설정까지 담겨서, 폰을 바꿔도 그대로 이어져요.<\/span><\/li><li data-k=\"fix\"><span class=\"k\">고침<\/span><span class=\"t\">아이폰에서 말온도를 재는 동안 진동이 나지 않던 문제를 고쳤어요.<\/span><\/li>","v.106.title":"건넨 말을 돌아보는 길","v.106.list":"<li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">추천 문장을 복사하고 「보냈어요」를 누르면, 다음 날 저녁 알림으로 한 번 물어볼 수 있어요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">받은 말에 답할 때도 쓸 수 있어요. 상대가 보낸 메시지를 붙여 넣으면 건넬 답을 함께 찾아요. 받은 말은 기기에 남기지 않아요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">보내기 전에 20분 식혀 둘 수 있어요. 20분이 지나면 알림이 한 번 와요.<\/span><\/li><li data-k=\"better\"><span class=\"k\">다듬음<\/span><span class=\"t\">홈의 창가, 네 걸음, 털어놓기, 쉬어가기, 놓아주기의 끝을 선과 빛, 번짐으로 새로 그렸어요.<\/span><\/li><li data-k=\"better\"><span class=\"k\">다듬음<\/span><span class=\"t\">털어놓기는 300자 안에서 적고, 적을수록 엉킨 실이 한 가닥으로 풀려요.<\/span><\/li><li data-k=\"better\"><span class=\"k\">다듬음<\/span><span class=\"t\">처음 여는 분께 홈에 보이는 자리를 하나씩 모두 짚어 드려요.<\/span><\/li><li data-k=\"fix\"><span class=\"k\">고침<\/span><span class=\"t\">영어 · 일본어 · 스페인어에서 홈 바닥 카드의 글자가 잘리던 것을 고쳤어요.<\/span><\/li>","v.105.title":"나를 둘러앉은 사람들 — 「상대」 탭","v.105.list":"<li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">저장 탭이 「상대」 탭이 됐어요. 나를 둘러앉은 사람들에게 어떤 온도로 말해 왔는지 한눈에 봐요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">말투 탭에서 쓰는 상대를 고를 수 있어요. 끈 상대의 지난 기록은 지우지 않고 감춰 둬요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">읽는 글의 서체를 다섯 가지에서 골라요 — Pretendard · 마루부리 · 고운바탕 · 고운돋움 · 나눔손글씨 펜.<\/span><\/li><li data-k=\"better\"><span class=\"k\">다듬음<\/span><span class=\"t\">말온도는 억양을 중심으로 읽고, 「목소리 기준」(기본 · 남성 · 여성)으로 내 목소리의 폭을 맞출 수 있어요. 목소리 기준은 기기 밖으로 나가지 않아요.<\/span><\/li><li data-k=\"better\"><span class=\"k\">다듬음<\/span><span class=\"t\">서랍을 새로 짰어요. 알림 · 언어 · 읽기 글자의 지금 값이 한눈에 보이고, 조용히 쓰기를 바로 켜고 꺼요.<\/span><\/li><li data-k=\"better\"><span class=\"k\">다듬음<\/span><span class=\"t\">영어 · 일본어 · 스페인어로 적은 글에서도 위험 신호를 알아차리고, 한국 밖에서는 그 지역의 응급 번호로 안내해요.<\/span><\/li>","v.104.title":"네 가지 언어로 말해요","v.104.list":"<li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">한국어 · English · 日本語 · Español — 화면도, 지어 오는 문장도 고른 언어로 와요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">온도 단위를 ℃ 와 °F 중에 골라요. 단위를 바꿔도 지난 기록은 그대로예요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">홈에 「누구와의 말」 카드가 생겼어요. 아직 말하지 않은 상대는 0 이 아니라 「아직」이라고 적어요.<\/span><\/li><li data-k=\"better\"><span class=\"k\">다듬음<\/span><span class=\"t\">결 지문이 억양을 못 들은 날에도 다섯 축 그대로 서요. 홈의 간격, 달력 칸, 녹음 버튼과 다이얼도 손봤어요.<\/span><\/li>","v.103.title":"놓아준 뒤의 짧은 그림","v.103.list":"<li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">놓아주기가 끝나면 짧은 그림 일곱 가지 가운데 하나가 흐르고, 마음을 다독이는 문구가 천천히 떠올라요.<\/span><\/li><li data-k=\"better\"><span class=\"k\">다듬음<\/span><span class=\"t\">화면 전환과 시각 효과를 더 자연스럽게 다듬었어요.<\/span><\/li>","v.102.title":"새 버전을 알려 드릴 준비","v.102.list":"<li data-k=\"better\"><span class=\"k\">다듬음<\/span><span class=\"t\">앱 안에 보이는 버전이 스토어의 번호와 같아졌어요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">새 버전이 나오면 앱이 알려 드릴 수 있게 했어요. 확인할 때 나가는 값은 없어요 — 버전 표 한 장을 받아 기기 안에서 견줘요.<\/span><\/li>","v.101.title":"「오늘 남기기」를 고쳤어요","v.101.list":"<li data-k=\"fix\"><span class=\"k\">고침<\/span><span class=\"t\">홈 달력 아래 「오늘 남기기 →」를 눌러도 아무 일이 없던 문제를 고쳤어요. 손가락이 닿는 자리도 넓혔어요.<\/span><\/li>","v.100.title":"말온도가 처음 나왔어요","v.100.list":"<li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">건넬 말 찾기 — 상대와 하고 싶은 것, 온도를 고르고 있었던 일을 적으면 결이 다른 문장 네 장이 와요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">마음부터 풀기 — 아무한테도 못 한 이야기를 적으면 편지 한 통이 와요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">놓아주기 — 오래 남은 일을 백 자 안에 적고 손으로 문질러 지워요. 적은 글은 어디에도 남지 않아요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">말온도 재기 — 20초쯤 소리 내어 말하면 목표한 온도에 얼마나 닿았는지 살펴 드려요. 녹음은 바로 지워져요.<\/span><\/li><li data-k=\"new\"><span class=\"k\">새 기능<\/span><span class=\"t\">하루 한 칸, 홈 달력, 오늘의 한 문장, 그리고 홈 화면 위젯.<\/span><\/li>"},"en":{"meta.title":"What's new · Malondo","meta.desc":"Everything Malondo gained, polished and fixed, version by version — from the first release in September 2026 to now.","brand":"Malondo","pref.lang":"Language","nav.aria":"Jump to","nav.home":"Home","nav.history":"What's new","nav.support":"Support","eyebrow":"Release history","title":"Page by page,<br><span class=\"grad\">Malondo's own record book<\/span>","lede":"Since the first release on September 15, 2026, here is what each version added, polished and fixed. Newest first.","filter.aria":"Filter by kind","filter.all":"All","filter.new":"New","filter.better":"Improved","filter.fix":"Fixed","stat.versions":"versions","stat.days":"days and growing","stat.langs":"languages","soon":"Coming soon","soon.note":"Being prepared for the next update. The date appears once it's in the stores.","now":"In the stores now","milestone":"Milestone","m.play.title":"Now on Google Play","m.play.body":"Android now grows alongside iPhone, with the same versions.","m.first.title":"First release on the App Store","end":"This record book gains a page with every update. If there's something you'd like, tell us on the <a href=\"/support.html\">Support page<\/a>.","link.home":"Malondo home","link.privacy":"Privacy policy","foot":"© 2026 Malondo","shot.alt.111":"Malondo widgets on the home screen — a tear-off day, your temperature, and this month's decorated page","shot.alt.110":"Home as a month-long record book","shot.alt.107":"The window desk","shot.alt.105":"The People tab","v.111.title":"A page on your home screen — widgets become a record book","v.111.list":"<li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">Home screen widgets, redrawn. “Today's page” turns like a tear-off calendar, and “This month's page” fits the whole month on one sheet, in medium and large.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">The paper, cover stickers, photos and handwriting you put on this month's page appear on the widget too.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">If today is still empty, pick a mood and a temperature right on the widget — no need to open the app. (iOS 17+ and Android)<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">Put this week and today's date on the Lock Screen. Your moods never show there. (iOS 16+)<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">With Quiet mode on, the widget becomes a plain calendar with dates only.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">Doodles you keep in the Sketchbook become white-bordered stickers, cut along your own lines. Voice ridges are cut out as mountains.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">The Tracing notebook is now manuscript paper. Write your own lines to trace, pick a nib and a typeface, and leave a note in the margin.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">The Jar of kind words is now a real-looking glass jar. Give it a shake and the paper stars tumble.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">Letting go now has nine ways to fade and eight closing scenes, picked differently every time.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">Gentle fingertip hints show you a gesture the first time. Turn them off in Help.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Improved<\/span><span class=\"t\">Long-press a day on the calendar to jump straight into decorating. You can now flip up to a year ahead.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Improved<\/span><span class=\"t\">When AI or the internet isn't available, you'll see right away what you can do without AI.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Improved<\/span><span class=\"t\">The app now says plainly that phrase and letter counts don't refill each day.<\/span><\/li><li data-k=\"fix\"><span class=\"k\">Fixed<\/span><span class=\"t\">Fixed text overflowing with large font sizes and on narrow screens.<\/span><\/li><li data-k=\"fix\"><span class=\"k\">Fixed<\/span><span class=\"t\">Fixed the screen redrawing nonstop after a sound played, which used extra battery.<\/span><\/li>","v.110.title":"Home becomes a month-long record book","v.110.list":"<li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">Home is now a month-long record book. Tap a date to open that day's page and decorate it with stickers and photos.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">The mood and speech temperature you left that day turn into stickers on their own.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">Give stickers a sparkle or a gentle sway. If motion bothers you, turn it off under Display & sound.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">Pick shapes and colors for arrows, name tags and speech-bubble stickers.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">Spread out the whole month to decorate it at once, and see your year on a single page.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Improved<\/span><span class=\"t\">The calendar turns like the pages of a book.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Improved<\/span><span class=\"t\">On the Window desk, the music box is now a snow globe and the candle sits in a window scene.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Improved<\/span><span class=\"t\">Tracing now lets you write one large character at a time.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Improved<\/span><span class=\"t\">A brand-new guide for first-time users.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Improved<\/span><span class=\"t\">After measuring, closing takes you back to where you were.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Improved<\/span><span class=\"t\">Stays light and smooth even with lots of records.<\/span><\/li>","v.109.title":"Days gone by, days to come","v.109.list":"<li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">Fill in a day's square for days that have passed — tap the date on the calendar for any you missed.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">Write down a mood for a day ahead. When that day comes, it's the first thing you see when you open the app.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Improved<\/span><span class=\"t\">Days written in advance don't count toward your speech temperature until they arrive.<\/span><\/li><li data-k=\"fix\"><span class=\"k\">Fixed<\/span><span class=\"t\">If the AI connection drops for a moment, it now reconnects without restarting the app.<\/span><\/li>","v.108.title":"Something to linger over on Home","v.108.list":"<li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">Scroll down Home for three pictures: “My warmth,” where your days stack up in the sky; a constellation of saved phrases; and paper lanterns rising for what you let go.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">The sky follows the time of day — dawn, morning, midday, dusk and evening light.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">Your filled days color in one by one when you open Home, and today's square breathes slowly.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">After you fill today's square, the rest of your day follows on a single page. At night, blow out a candle to close the day.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Improved<\/span><span class=\"t\">Swipe from the left edge to close a screen.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Improved<\/span><span class=\"t\">Swipe a saved phrase left to delete it — and undo right away.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Improved<\/span><span class=\"t\">The typeface and size you choose in Reading type now apply to all body text.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Improved<\/span><span class=\"t\">The music box's “month” now plays last month's song too.<\/span><\/li><li data-k=\"fix\"><span class=\"k\">Fixed<\/span><span class=\"t\">Fixed month names under the calendar being cut off as “1…”.<\/span><\/li>","v.107.title":"Say hello to the Window desk","v.107.list":"<li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">The Window desk: a place to stay even on days you're not choosing words. Tracing, letters, a jar of kind words, a sketchbook, word flowers, a music box and a candle.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">While you measure, your temperature is drawn on paper, and the result continues on that same page.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">Tap a date to see that day's measurements, saved phrases and what you made at the desk, all on one page.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">Haptics and sounds now follow the temperature, and calm music plays in Take a break, Unwind and Letting go.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">In Letting go, you can draw instead of writing.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Improved<\/span><span class=\"t\">Export files now carry your learned speaking style and settings, so a new phone picks up right where you left off.<\/span><\/li><li data-k=\"fix\"><span class=\"k\">Fixed<\/span><span class=\"t\">Fixed haptics not working on iPhone while measuring.<\/span><\/li>","v.106.title":"A way back to the words you sent","v.106.list":"<li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">Copy a suggested phrase and tap “Sent” — the next evening, one notification asks how it went.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">Use it to reply, too: paste the message you received and find an answer together. The message isn't kept on your device.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">Let a message cool for 20 minutes before sending. One notification tells you when time's up.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Improved<\/span><span class=\"t\">New line, light and watercolor illustrations for Home, the four steps, Unwind, Take a break and the end of Letting go.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Improved<\/span><span class=\"t\">Unwind takes up to 300 characters, and the more you write, the more a tangled thread loosens into one strand.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Improved<\/span><span class=\"t\">First-time users get a tour of everything on Home, one spot at a time.<\/span><\/li><li data-k=\"fix\"><span class=\"k\">Fixed<\/span><span class=\"t\">Fixed text on Home's bottom cards being cut off in English, Japanese and Spanish.<\/span><\/li>","v.105.title":"The people around you — the People tab","v.105.list":"<li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">The Saved tab is now the People tab. See at a glance how warmly you've been speaking to the people gathered around you.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">Choose which people you use in the Tone tab. Past records for anyone you turn off are hidden, not deleted.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">Choose from five reading typefaces — Pretendard, MaruBuri, Gowun Batang, Gowun Dodum and Nanum Pen.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Improved<\/span><span class=\"t\">Speech temperature now centers on intonation, and a Voice reference (Default, Male, Female) fits it to your voice. It never leaves your device.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Improved<\/span><span class=\"t\">A redesigned drawer shows your notification, language and reading-type settings at a glance, with Quiet mode one tap away.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Improved<\/span><span class=\"t\">Warning signs are now noticed in English, Japanese and Spanish too, and outside Korea you're pointed to local emergency numbers.<\/span><\/li>","v.104.title":"Now in four languages","v.104.list":"<li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">한국어, English, 日本語 and Español — both the screens and the phrases Malondo writes come in your language.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">Choose ℃ or °F. Switching units never changes your past records.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">A new “Who you spoke with” card on Home. People you haven't spoken to yet show “not yet,” not zero.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Improved<\/span><span class=\"t\">The tone fingerprint keeps all five axes even when intonation wasn't heard. Home spacing, calendar squares, the record button and dial got a polish.<\/span><\/li>","v.103.title":"A short scene after letting go","v.103.list":"<li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">When letting go ends, one of seven short scenes plays, and a few comforting words slowly appear.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Improved<\/span><span class=\"t\">Smoother screen transitions and visual effects.<\/span><\/li>","v.102.title":"Getting ready to tell you about updates","v.102.list":"<li data-k=\"better\"><span class=\"k\">Improved<\/span><span class=\"t\">The version shown in the app now matches the store.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">The app can now let you know when a new version is out. Nothing is sent to check — it fetches one version table and compares on your device.<\/span><\/li>","v.101.title":"Fixed “Leave today”","v.101.list":"<li data-k=\"fix\"><span class=\"k\">Fixed<\/span><span class=\"t\">Fixed “Leave today →” under the Home calendar doing nothing when tapped, and made it easier to hit.<\/span><\/li>","v.100.title":"Malondo's first release","v.100.list":"<li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">What to say — choose who, what you want to do and a temperature, describe what happened, and get four phrases in different tones.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">Unwind first — write what you couldn't tell anyone and receive a letter.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">Letting go — write something that lingers in 100 characters and rub it away by hand. Nothing you write is kept.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">Measure your speech temperature — speak for about 20 seconds and see how close you came to the warmth you aimed for. The recording is deleted right away.<\/span><\/li><li data-k=\"new\"><span class=\"k\">New<\/span><span class=\"t\">One square a day, the Home calendar, a daily phrase, and a home screen widget.<\/span><\/li>"},"ja":{"meta.title":"アップデート履歴 · Malondo","meta.desc":"Malondo がバージョンごとに加えたこと、整えたこと、直したこと。2026年9月の初リリースから今までの記録です。","brand":"Malondo","pref.lang":"言語","nav.aria":"ショートカット","nav.home":"ホーム","nav.history":"更新履歴","nav.support":"サポート","eyebrow":"アップデート履歴","title":"一枚ずつめくってきた、<br><span class=\"grad\">Malondo の記録帳<\/span>","lede":"2026年9月15日の初リリースから、バージョンごとに何が加わり、何を整え、何を直したかをまとめました。上がいちばん新しい記録です。","filter.aria":"種類で絞り込む","filter.all":"すべて","filter.new":"新機能","filter.better":"改善","filter.fix":"修正","stat.versions":"のバージョン","stat.days":"日目、育ち中","stat.langs":"つの言語","soon":"まもなく","soon.note":"次のアップデートとして準備中です。ストアに出たら日付がつきます。","now":"いまストアにあります","milestone":"できごと","m.play.title":"Google Play でも配信開始","m.play.body":"Android でも iPhone と同じ名前・同じ番号で、いっしょに育ちます。","m.first.title":"App Store ではじめて公開","end":"この記録帳はアップデートのたびに一枚ずつ増えます。ご要望は<a href=\"/support.html\">サポートページ<\/a>へどうぞ。","link.home":"Malondo トップ","link.privacy":"プライバシーポリシー","foot":"© 2026 Malondo","shot.alt.111":"ホーム画面の Malondo ウィジェット — 日めくり、話し温度、飾った今月の一枚","shot.alt.110":"ひと月の記録帳になったホーム","shot.alt.107":"窓辺の机","shot.alt.105":"相手タブ","v.111.title":"ホーム画面に一枚 — ウィジェットが記録帳に","v.111.list":"<li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">ホーム画面ウィジェットを描き直しました。日めくりのような「今日の一枚」と、今月を一枚にした「今月の一枚」(中・大)があります。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">今月のページで飾った用紙・代表ステッカー・写真・手書きが、ウィジェットにもそのまま貼られます。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">今日のマスが空いていれば、アプリを開かずにウィジェットで気持ちと温度を選んで残せます。(iOS 17 以降・Android)<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">ロック画面にも今週と今日の日付を置けます。ロック画面に気持ちは表示しません。(iOS 16 以降)<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">「そっと使う」をオンにすると、ウィジェットは日付だけのカレンダーになります。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">スケッチブックに残した落書きが、描いた線にそって切り抜いた白ふちステッカーになります。声の稜線も山の形のまま貼られます。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">書き写しノートが原稿用紙になりました。自分の文を書いてなぞったり、ペン先や書体を選んだり、余白にひとこと残せます。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">もらった言葉の瓶を、本物のガラス瓶のように作り直しました。振ると紙の星が転がります。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">手放すときの消え方が九つ、最後の場面が八つに増えました。毎回ちがうものが選ばれます。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">はじめての操作は、指先のアニメーションでそっとお知らせします。ヘルプでオフにできます。<\/span><\/li><li data-k=\"better\"><span class=\"k\">改善<\/span><span class=\"t\">カレンダーのマスを長押しすると、すぐ飾りつけに入れます。先の月も一年先までめくれます。<\/span><\/li><li data-k=\"better\"><span class=\"k\">改善<\/span><span class=\"t\">AI やインターネットが使えないときは、「AI なしでできること」をすぐにご案内します。<\/span><\/li><li data-k=\"better\"><span class=\"k\">改善<\/span><span class=\"t\">文・返事の回数は毎日は回復しないことを、画面に書き添えました。<\/span><\/li><li data-k=\"fix\"><span class=\"k\">修正<\/span><span class=\"t\">大きな文字や幅の狭い画面で文字があふれていた箇所を直しました。<\/span><\/li><li data-k=\"fix\"><span class=\"k\">修正<\/span><span class=\"t\">音が鳴ったあと画面が描き直され続け、電池を使っていた問題を直しました。<\/span><\/li>","v.110.title":"ホームがひと月の記録帳に","v.110.list":"<li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">ホームがひと月の記録帳に変わりました。日付をタップするとその日のページが開き、ステッカーや写真で飾れます。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">その日に残した気持ちと話し温度は、ステッカーになって自動で貼られます。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">ステッカーにきらめきや揺らぎの効果をつけられます。動きが気になるときはメニューの「画面とサウンド」でオフにできます。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">矢印・相手の名札・吹き出しのステッカーは、形と色を選んで貼れます。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">今月を大きく広げて一度に飾り、一年を一枚にまとめて見られます。<\/span><\/li><li data-k=\"better\"><span class=\"k\">改善<\/span><span class=\"t\">カレンダーが本のページのようにめくれます。<\/span><\/li><li data-k=\"better\"><span class=\"k\">改善<\/span><span class=\"t\">窓辺の机のオルゴールはスノードームに、ろうそくは窓辺の風景に描き直しました。<\/span><\/li><li data-k=\"better\"><span class=\"k\">改善<\/span><span class=\"t\">なぞり書きは一文字ずつ大きく書けます。<\/span><\/li><li data-k=\"better\"><span class=\"k\">改善<\/span><span class=\"t\">はじめての方向けの案内を新しくしました。<\/span><\/li><li data-k=\"better\"><span class=\"k\">改善<\/span><span class=\"t\">話し温度を測って閉じると、もとの画面に戻ります。<\/span><\/li><li data-k=\"better\"><span class=\"k\">改善<\/span><span class=\"t\">記録がたくさんたまっても軽く動くように整えました。<\/span><\/li>","v.109.title":"過ぎた日も、これからの日も","v.109.list":"<li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">過ぎた日にも一日ひとマスを残せます。うっかり残し忘れた日は、カレンダーの日付をタップして埋めてください。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">これからの日の気持ちも先に書いておけます。その日にアプリを開くと、書いておいた気持ちを最初にお見せします。<\/span><\/li><li data-k=\"better\"><span class=\"k\">改善<\/span><span class=\"t\">先に書いた日は、その日が来るまで話し温度に反映されません。<\/span><\/li><li data-k=\"fix\"><span class=\"k\">修正<\/span><span class=\"t\">AI との接続が一時的に切れても、アプリを再起動せずにつながり直します。<\/span><\/li>","v.108.title":"ホームにとどまる楽しみ","v.108.list":"<li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">ホームを下にスクロールすると三枚の絵があります — 残した日が空に積もる「わたしのぬくもり」、とっておいた言葉がつながる星座、手放した気持ちがのぼる紙の灯籠。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">空は今の時刻に合わせて、夜明け・朝・昼・夕暮れ・夜の光に変わります。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">ホームを開くと残したマスが日付順に色づき、今日のマスはゆっくり息をします。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">今日のひとマスを残すと、その日のほかの記録を一日一枚にしてつなげてお見せします。夜はろうそくを消して一日を閉じられます。<\/span><\/li><li data-k=\"better\"><span class=\"k\">改善<\/span><span class=\"t\">上に開いた画面は、左端からスワイプして閉じられます。<\/span><\/li><li data-k=\"better\"><span class=\"k\">改善<\/span><span class=\"t\">とっておいた文は左にスワイプして消し、すぐに元に戻せます。<\/span><\/li><li data-k=\"better\"><span class=\"k\">改善<\/span><span class=\"t\">「読む文字」で選んだ書体とサイズが、アプリの本文全体に反映されます。<\/span><\/li><li data-k=\"better\"><span class=\"k\">改善<\/span><span class=\"t\">オルゴールの「ひと月」で、先月の曲も聴けます。<\/span><\/li><li data-k=\"fix\"><span class=\"k\">修正<\/span><span class=\"t\">カレンダー下の月の名前が「1…」と切れていた問題を直しました。<\/span><\/li>","v.107.title":"窓辺の机ができました","v.107.list":"<li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">言葉を選ばない日にもいられる場所、窓辺の机ができました。なぞり書き・手紙・もらった言葉の瓶・スケッチブック・ことばの花・オルゴール・ろうそくがあります。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">話し温度を測る間、紙の上に温度が描かれ、結果はその紙から一ページでつながります。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">カレンダーの日付をタップすると、その日に測った温度・とっておいた文・机で作ったものまで一枚にまとめてお見せします。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">温度によって指先に伝わる感触と音が変わります。ひと休み・打ち明ける・手放すには静かな音楽が流れます。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">手放すでは、書くかわりに絵を描いて手放すこともできます。<\/span><\/li><li data-k=\"better\"><span class=\"k\">改善<\/span><span class=\"t\">書き出しファイルに話し方の学習と設定まで入り、機種変更してもそのまま続きます。<\/span><\/li><li data-k=\"fix\"><span class=\"k\">修正<\/span><span class=\"t\">iPhone で話し温度を測る間、振動しなかった問題を直しました。<\/span><\/li>","v.106.title":"送った言葉をふり返る道","v.106.list":"<li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">おすすめの文をコピーして「送りました」を押すと、翌日の夕方に一度だけ通知でたずねます。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">受け取った言葉に返すときにも使えます。相手のメッセージを貼り付けると、返す言葉をいっしょに探します。受け取った言葉は端末に残しません。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">送る前に20分冷ましておけます。20分たつと通知が一度届きます。<\/span><\/li><li data-k=\"better\"><span class=\"k\">改善<\/span><span class=\"t\">ホームの窓辺、四つのステップ、打ち明ける、ひと休み、手放すの最後を、線と光とにじみで描き直しました。<\/span><\/li><li data-k=\"better\"><span class=\"k\">改善<\/span><span class=\"t\">打ち明けるは300字まで。書くほどに、もつれた糸が一本にほどけます。<\/span><\/li><li data-k=\"better\"><span class=\"k\">改善<\/span><span class=\"t\">はじめての方には、ホームに見える場所をひとつずつご案内します。<\/span><\/li><li data-k=\"fix\"><span class=\"k\">修正<\/span><span class=\"t\">英語・日本語・スペイン語で、ホーム下のカードの文字が切れていたのを直しました。<\/span><\/li>","v.105.title":"わたしを囲む人たち — 「相手」タブ","v.105.list":"<li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">保存タブが「相手」タブになりました。わたしを囲む人たちに、どんな温度で話してきたかがひと目でわかります。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">話し方タブで使う相手を選べます。オフにした相手の記録は消さずに隠しておきます。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">読む文字の書体を五つから選べます — Pretendard・MaruBuri・Gowun Batang・Gowun Dodum・Nanum Pen。<\/span><\/li><li data-k=\"better\"><span class=\"k\">改善<\/span><span class=\"t\">話し温度は抑揚を中心に読み、「声の基準」(標準・男性・女性)で自分の声の幅に合わせられます。声の基準は端末の外に出ません。<\/span><\/li><li data-k=\"better\"><span class=\"k\">改善<\/span><span class=\"t\">メニューを作り直しました。通知・言語・読む文字の今の設定がひと目でわかり、「そっと使う」もすぐ切り替えられます。<\/span><\/li><li data-k=\"better\"><span class=\"k\">改善<\/span><span class=\"t\">英語・日本語・スペイン語で書いた文でも危険のサインに気づき、韓国以外ではその地域の緊急番号をご案内します。<\/span><\/li>","v.104.title":"四つの言語で","v.104.list":"<li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">한국어・English・日本語・Español — 画面も、届く文も、選んだ言語で。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">温度の単位を ℃ と °F から選べます。単位を変えても過去の記録はそのままです。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">ホームに「だれとの言葉」カードができました。まだ話していない相手は 0 ではなく「まだ」と書きます。<\/span><\/li><li data-k=\"better\"><span class=\"k\">改善<\/span><span class=\"t\">声の指紋は、抑揚が聞き取れなかった日も五つの軸のまま立ちます。ホームの余白、カレンダーのマス、録音ボタンとダイヤルも整えました。<\/span><\/li>","v.103.title":"手放したあとの短い絵","v.103.list":"<li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">手放し終えると、七つの短い絵のうちひとつが流れ、気持ちをいたわる言葉がゆっくり浮かびます。<\/span><\/li><li data-k=\"better\"><span class=\"k\">改善<\/span><span class=\"t\">画面の切り替えと視覚効果を、より自然に整えました。<\/span><\/li>","v.102.title":"新しいバージョンをお知らせする準備","v.102.list":"<li data-k=\"better\"><span class=\"k\">改善<\/span><span class=\"t\">アプリ内に表示されるバージョンがストアの番号と同じになりました。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">新しいバージョンが出たらアプリがお知らせできるようにしました。確認のために送る値はありません — バージョン表を一枚受け取り、端末の中で比べます。<\/span><\/li>","v.101.title":"「今日を残す」を修正","v.101.list":"<li data-k=\"fix\"><span class=\"k\">修正<\/span><span class=\"t\">ホームのカレンダー下の「今日を残す →」を押しても何も起きなかった問題を直し、押せる範囲も広げました。<\/span><\/li>","v.100.title":"Malondo、はじめての公開","v.100.list":"<li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">かける言葉を探す — 相手としたいこと、温度を選び、あったことを書くと、ちがう味わいの文が4枚届きます。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">まず気持ちをほどく — 誰にも言えなかった話を書くと、手紙が一通届きます。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">手放す — 長く残っていることを100字で書き、指でこすって消します。書いた文はどこにも残りません。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">話し温度を測る — 20秒ほど声に出して話すと、目標の温度にどれだけ届いたかを見てくれます。録音はすぐ消えます。<\/span><\/li><li data-k=\"new\"><span class=\"k\">新機能<\/span><span class=\"t\">一日ひとマス、ホームのカレンダー、今日のひと言、そしてホーム画面ウィジェット。<\/span><\/li>"},"es":{"meta.title":"Novedades · Malondo","meta.desc":"Todo lo que Malondo ganó, pulió y corrigió, versión a versión: desde el primer lanzamiento en septiembre de 2026 hasta hoy.","brand":"Malondo","pref.lang":"Idioma","nav.aria":"Ir a","nav.home":"Inicio","nav.history":"Novedades","nav.support":"Soporte","eyebrow":"Historial de versiones","title":"Página a página,<br><span class=\"grad\">el cuaderno de Malondo<\/span>","lede":"Desde el primer lanzamiento, el 15 de septiembre de 2026, reunimos lo que cada versión añadió, pulió y corrigió. Lo más reciente, arriba.","filter.aria":"Filtrar por tipo","filter.all":"Todo","filter.new":"Nuevo","filter.better":"Mejoras","filter.fix":"Correcciones","stat.versions":"versiones","stat.days":"días creciendo","stat.langs":"idiomas","soon":"Muy pronto","soon.note":"En preparación para la próxima actualización. La fecha aparecerá cuando llegue a las tiendas.","now":"Ya en las tiendas","milestone":"Hito","m.play.title":"Ya en Google Play","m.play.body":"Android crece junto a iPhone, con las mismas versiones.","m.first.title":"Primer lanzamiento en la App Store","end":"Este cuaderno suma una página con cada actualización. Si echas algo en falta, cuéntanoslo en la <a href=\"/support.html\">página de soporte<\/a>.","link.home":"Inicio de Malondo","link.privacy":"Política de privacidad","foot":"© 2026 Malondo","shot.alt.111":"Widgets de Malondo en la pantalla de inicio: la hoja del día, tu temperatura y la página del mes decorada","shot.alt.110":"El inicio convertido en un cuaderno de un mes","shot.alt.107":"El escritorio junto a la ventana","shot.alt.105":"La pestaña Personas","v.111.title":"Una página en tu pantalla de inicio: los widgets se vuelven cuaderno","v.111.list":"<li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Rediseñamos los widgets de inicio. «La página de hoy» pasa como un taco de calendario, y «La página del mes» reúne el mes entero en una hoja, en tamaño mediano y grande.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">El papel, las pegatinas principales, las fotos y la letra a mano de la página del mes también aparecen en el widget.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Si el día de hoy está vacío, elige ánimo y temperatura desde el widget, sin abrir la app. (iOS 17 o posterior y Android)<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Pon la semana y la fecha de hoy en la pantalla de bloqueo. Tu ánimo nunca aparece ahí. (iOS 16 o posterior)<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Con el Modo discreto activado, el widget es un calendario solo con fechas.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Los garabatos del Cuaderno de bocetos se vuelven pegatinas con borde blanco, recortadas por tus trazos. Las crestas de voz se recortan como montañas.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">El Cuaderno de copias ahora es papel de manuscrito. Escribe tus propias frases para copiarlas, elige plumilla y tipografía, y deja una nota al margen.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">El Frasco de palabras amables ahora parece de vidrio de verdad. Agítalo y las estrellas de papel ruedan.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Soltar ahora tiene nueve formas de desvanecerse y ocho escenas finales, distintas cada vez.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Pequeñas pistas con la yema del dedo te enseñan cada gesto la primera vez. Puedes apagarlas en Ayuda.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Mejora<\/span><span class=\"t\">Mantén pulsado un día del calendario para decorarlo al instante. Ahora puedes pasar hasta un año hacia delante.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Mejora<\/span><span class=\"t\">Si la IA o internet no están disponibles, te mostramos al momento lo que puedes hacer sin IA.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Mejora<\/span><span class=\"t\">La app ahora indica con claridad que los usos de frases y cartas no se recargan cada día.<\/span><\/li><li data-k=\"fix\"><span class=\"k\">Arreglo<\/span><span class=\"t\">Corregimos textos que se desbordaban con letra grande y en pantallas estrechas.<\/span><\/li><li data-k=\"fix\"><span class=\"k\">Arreglo<\/span><span class=\"t\">Corregimos que la pantalla se redibujara sin parar tras un sonido, gastando batería.<\/span><\/li>","v.110.title":"El inicio se convierte en un cuaderno de un mes","v.110.list":"<li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">El inicio ahora es un cuaderno de un mes. Toca una fecha para abrir la página de ese día y decorarla con pegatinas y fotos.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">El ánimo y la temperatura de voz de ese día se vuelven pegatinas por sí solos.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Da a las pegatinas un brillo o un suave vaivén. Si el movimiento te molesta, desactívalo en Pantalla y sonido.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Elige forma y color para flechas, etiquetas con nombre y bocadillos.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Despliega el mes para decorarlo de una vez y mira todo tu año en una sola página.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Mejora<\/span><span class=\"t\">El calendario pasa como las páginas de un libro.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Mejora<\/span><span class=\"t\">En el escritorio junto a la ventana, la caja de música ahora es una bola de nieve y la vela vive en una escena de ventana.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Mejora<\/span><span class=\"t\">Al copiar a mano, ahora escribes una letra grande cada vez.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Mejora<\/span><span class=\"t\">Una guía nueva para quienes empiezan.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Mejora<\/span><span class=\"t\">Al cerrar después de medir, vuelves a la pantalla donde estabas.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Mejora<\/span><span class=\"t\">Sigue ágil aunque acumules muchos registros.<\/span><\/li>","v.109.title":"Días pasados y días por venir","v.109.list":"<li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Ahora puedes llenar la casilla de días pasados: toca la fecha en el calendario si se te olvidó.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Anota el ánimo de un día que está por venir. Ese día será lo primero que veas al abrir la app.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Mejora<\/span><span class=\"t\">Los días anotados por adelantado no cuentan para tu temperatura hasta que llegan.<\/span><\/li><li data-k=\"fix\"><span class=\"k\">Arreglo<\/span><span class=\"t\">Si la conexión con la IA se corta un momento, se recupera sin reiniciar la app.<\/span><\/li>","v.108.title":"Algo para quedarse en el inicio","v.108.list":"<li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Desliza el inicio hacia abajo y encontrarás tres imágenes: «Mi calidez», donde tus días se acumulan en el cielo; una constelación de frases guardadas; y faroles de papel que suben por lo que soltaste.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">El cielo sigue la hora del día: luz de amanecer, mañana, mediodía, atardecer y noche.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Al abrir el inicio, tus días se colorean uno a uno y la casilla de hoy respira despacio.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Al llenar la casilla de hoy, el resto del día te sigue en una sola página. De noche, apaga una vela para cerrar el día.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Mejora<\/span><span class=\"t\">Desliza desde el borde izquierdo para cerrar una pantalla.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Mejora<\/span><span class=\"t\">Desliza una frase guardada a la izquierda para borrarla y deshazlo al instante.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Mejora<\/span><span class=\"t\">La fuente y el tamaño que eliges en Tipografía se aplican a todo el texto.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Mejora<\/span><span class=\"t\">En el «mes» de la caja de música también suena la canción del mes pasado.<\/span><\/li><li data-k=\"fix\"><span class=\"k\">Arreglo<\/span><span class=\"t\">Corregimos que el nombre del mes bajo el calendario se cortara como «1…».<\/span><\/li>","v.107.title":"Llega el escritorio junto a la ventana","v.107.list":"<li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">El escritorio junto a la ventana: un lugar para quedarte aunque no busques palabras. Copiar a mano, cartas, un frasco de palabras amables, cuaderno de bocetos, flores de palabras, caja de música y vela.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Mientras mides, tu temperatura se dibuja en el papel y el resultado sigue en esa misma página.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Toca una fecha y verás en una página lo que mediste, las frases guardadas y lo que hiciste en el escritorio.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">La vibración y los sonidos siguen la temperatura, y suena música tranquila en Descansar un poco, Desahogarte y Soltar.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">En Soltar, puedes dibujar en lugar de escribir.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Mejora<\/span><span class=\"t\">El archivo de exportación incluye tu estilo aprendido y tus ajustes, para seguir igual al cambiar de teléfono.<\/span><\/li><li data-k=\"fix\"><span class=\"k\">Arreglo<\/span><span class=\"t\">Corregimos que el iPhone no vibrara mientras medías.<\/span><\/li>","v.106.title":"Volver a las palabras que enviaste","v.106.list":"<li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Copia una frase sugerida y toca «Enviado»: la tarde siguiente, una notificación te pregunta cómo fue.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">También sirve para responder: pega el mensaje que recibiste y buscamos juntos la respuesta. El mensaje no se guarda en tu dispositivo.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Deja enfriar un mensaje 20 minutos antes de enviarlo. Una notificación te avisa al terminar.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Mejora<\/span><span class=\"t\">Nuevas ilustraciones de línea, luz y acuarela para el inicio, los cuatro pasos, Desahogarte, Descansar un poco y el final de Soltar.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Mejora<\/span><span class=\"t\">Desahogarte admite hasta 300 caracteres; cuanto más escribes, más se desenreda el hilo.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Mejora<\/span><span class=\"t\">Si es tu primera vez, te mostramos cada rincón del inicio, uno a uno.<\/span><\/li><li data-k=\"fix\"><span class=\"k\">Arreglo<\/span><span class=\"t\">Corregimos textos cortados en las tarjetas inferiores del inicio en inglés, japonés y español.<\/span><\/li>","v.105.title":"Las personas a tu alrededor: la pestaña Personas","v.105.list":"<li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">La pestaña Guardado ahora es Personas. Mira de un vistazo con qué calidez has hablado con quienes te rodean.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Elige en la pestaña Tono con qué personas hablas. Los registros de quien desactives se ocultan, no se borran.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Elige entre cinco tipografías de lectura: Pretendard, MaruBuri, Gowun Batang, Gowun Dodum y Nanum Pen.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Mejora<\/span><span class=\"t\">La temperatura de voz se centra en la entonación, y la Referencia de voz (Estándar, Hombre, Mujer) la ajusta a tu voz. Nunca sale de tu dispositivo.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Mejora<\/span><span class=\"t\">Un menú rediseñado muestra de un vistazo tus avisos, idioma y tipografía, con el Modo discreto a un toque.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Mejora<\/span><span class=\"t\">Ahora también detectamos señales de riesgo en inglés, japonés y español, y fuera de Corea te indicamos el número de emergencias local.<\/span><\/li>","v.104.title":"Ahora en cuatro idiomas","v.104.list":"<li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">한국어, English, 日本語 y Español: tanto las pantallas como las frases que escribe Malondo llegan en tu idioma.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Elige ℃ o °F. Cambiar de unidad no altera tus registros anteriores.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Nueva tarjeta «Con quién hablaste» en el inicio. A quien aún no le hablaste se muestra como «todavía no», no como cero.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Mejora<\/span><span class=\"t\">La huella del tono mantiene sus cinco ejes aunque no se oiga la entonación. Pulimos espacios del inicio, casillas, botón de grabar y dial.<\/span><\/li>","v.103.title":"Una breve escena después de soltar","v.103.list":"<li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Al terminar de soltar, se reproduce una de siete escenas breves y aparecen despacio unas palabras de consuelo.<\/span><\/li><li data-k=\"better\"><span class=\"k\">Mejora<\/span><span class=\"t\">Transiciones y efectos visuales más naturales.<\/span><\/li>","v.102.title":"Listos para avisarte de nuevas versiones","v.102.list":"<li data-k=\"better\"><span class=\"k\">Mejora<\/span><span class=\"t\">La versión que muestra la app ahora coincide con la de la tienda.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">La app ya puede avisarte cuando haya una versión nueva. No se envía nada: descarga una tabla de versiones y compara en tu dispositivo.<\/span><\/li>","v.101.title":"Arreglamos «Guardar hoy»","v.101.list":"<li data-k=\"fix\"><span class=\"k\">Arreglo<\/span><span class=\"t\">Corregimos que «Guardar hoy →» bajo el calendario no hiciera nada al tocarlo, y ampliamos su zona táctil.<\/span><\/li>","v.100.title":"Primera versión de Malondo","v.100.list":"<li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Qué decir: elige a quién, qué quieres hacer y una temperatura, cuenta lo que pasó y recibe cuatro frases con tonos distintos.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Primero desahogarme: escribe lo que no contaste a nadie y recibe una carta.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Soltar: escribe en 100 caracteres algo que no se va y bórralo con el dedo. Nada de lo que escribes se guarda.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Mide tu temperatura de voz: habla unos 20 segundos y mira cuánto te acercaste a la calidez que buscabas. La grabación se borra al momento.<\/span><\/li><li data-k=\"new\"><span class=\"k\">Nuevo<\/span><span class=\"t\">Una casilla al día, el calendario de inicio, una frase diaria y un widget de inicio.<\/span><\/li>"}}</script>
+<script>
+/* 네 페이지(index · privacy · support · history)가 함께 쓰는 언어·단위 장치.
+ *
+ * - 표는 페이지마다 <script type="application/json" id="i18n"> 에 실려 온다.
+ *   build.py 가 그 자리에 네 언어를 통째로 넣는다.
+ * - 첫 페이지는 언어마다 제 주소가 있다 — / · /en/ · /ja/ · /es/ (<html data-paged>).
+ *   그 주소의 언어로 구워져 있어서 검색 엔진도 네 언어를 제 주소로 읽는다. 그래서
+ *   첫 페이지는 **기기 언어로 글을 바꿔 달지 않는다** — 구글의 렌더러는 기기 언어가
+ *   en-US 라, 바꿔 달면 한국어 주소에서 영어를 읽어 간다. 기기 언어가 다르면 아래에
+ *   한 줄로 권하기만 하고(#suggest), 사람이 고르면 그 자리에서 바꾸고 주소도 옮긴다.
+ * - privacy · support · history 는 주소가 하나다. ?lang= → 고른 언어 → 기기 언어 순으로 고른다
+ *   (앱 안의 링크가 언어 없이 이 주소를 연다).
+ * - 고른 언어는 localStorage 에 남는다. 같은 출처라 **페이지를 옮겨도 따라온다** —
+ *   홈에서 English 를 고르고 처리방침으로 가면 처리방침도 영어로 선다.
+ * - 온도 단위 단추와 언어 고르개는 없을 수도 있다(support). 없으면 건너뛴다.
+ * - 값이 바뀔 때 다시 그려야 하는 것(홈의 다이얼)은 onChange 로 건다.
+ */
+(function () {
+  var LANGS = ['ko', 'en', 'ja', 'es'];
+  // 언어마다의 첫 페이지 주소 — build.py 의 HOME 과 같다.
+  var HOME = { ko: '/', en: '/en/', ja: '/ja/', es: '/es/' };
+  var dict;
+  try {
+    dict = JSON.parse(document.getElementById('i18n').textContent);
+  } catch (e) {
+    return; // 표가 없으면 HTML 에 구워진 글이 그대로 선다.
+  }
+
+  var root = document.documentElement;
+  var paged = root.hasAttribute('data-paged');
+  var lang = 'ko', unit = 'c', hooks = [];
+
+  function keep(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  function recall(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+
+  // 넷 중 하나인지 보고 받는다 — 표에 없는 이름이 들어오면 null.
+  function pick(v) { return (v && LANGS.indexOf(v) >= 0) ? v : null; }
+
+  // 기기가 고른 언어 가운데 이 사이트가 아는 첫 것. 하나도 모르면 null.
+  function deviceWants() {
+    var list = navigator.languages || [navigator.language || ''];
+    for (var i = 0; i < list.length; i++) {
+      var t = pick(String(list[i]).slice(0, 2).toLowerCase());
+      if (t) return t;
+    }
+    return null;
+  }
+  function deviceLang() { return deviceWants() || 'ko'; }
+
+  // 일상에서 화씨를 쓰는 여덟 나라 — lib/temperature_unit.dart 와 같은 목록
+  function deviceUnit() {
+    var list = navigator.languages || [navigator.language || ''];
+    for (var i = 0; i < list.length; i++) {
+      var m = /[-_]([A-Za-z]{2})\b/.exec(String(list[i]));
+      if (m && 'US BS BZ KY FM LR MH PW'.split(' ').indexOf(m[1].toUpperCase()) >= 0) return 'f';
+    }
+    return 'c';
+  }
+
+  function t(k) {
+    var d = dict[lang] || dict.ko;
+    if (d && d[k] != null) return d[k];
+    return (dict.ko && dict.ko[k]) || '';
+  }
+
+  function fmtC(c) { return unit === 'f' ? (c * 9 / 5 + 32).toFixed(1) : c.toFixed(1); }
+  function sym() { return unit === 'f' ? '°F' : '℃'; }
+  // 차이는 절대 온도가 아니다 — 32 를 더하지 않는다.
+  // 자릿수는 글에 적은 대로 지킨다 — {d:0.45} 는 0.45℃ · 0.81°F. 한 자리로 깎으면
+  // 판정 띠 ±0.45℃ 가 「0.5℃」로 섰다.
+  function places(s) { var i = String(s).indexOf('.'); return i < 0 ? 1 : Math.max(1, String(s).length - i - 1); }
+  function fmtD(d, p) { return (unit === 'f' ? d * 9 / 5 : d).toFixed(p == null ? 1 : p) + sym(); }
+
+  function expand(s) {
+    return String(s)
+      .replace(/\{c:([\d.]+)\}/g, function (_, c) {
+        return '<span class="tv" data-c="' + c + '">' + fmtC(+c) + sym() + '</span>';
+      })
+      .replace(/\{d:([\d.]+)\}/g, function (_, d) {
+        return '<span class="tv" data-d="' + d + '">' + fmtD(+d, places(d)) + '</span>';
+      });
+  }
+
+  function strip(s) { return s.replace(/<[^>]+>/g, ''); }
+
+  function paintUnits() {
+    Array.prototype.forEach.call(document.querySelectorAll('.tv[data-c]'), function (el) {
+      var v = fmtC(+el.getAttribute('data-c'));
+      if (el.classList.contains('bare')) el.textContent = v;
+      else if (el.querySelector('small')) el.innerHTML = v + '<small>' + sym() + '</small>';
+      else el.textContent = v + sym();
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.tv[data-d]'), function (el) {
+      var d = el.getAttribute('data-d');
+      el.textContent = fmtD(+d, places(d));
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.unit-h'), function (el) {
+      el.textContent = sym();
+    });
+    var b = document.getElementById('unit');
+    if (b) b.textContent = unit === 'f' ? '°F' : '℃';
+    Array.prototype.forEach.call(document.querySelectorAll('[data-unit]'), function (x) {
+      x.classList.toggle('on', x.getAttribute('data-unit') === unit);
+    });
+    fire();
+  }
+
+  // 다른 페이지로 가는 길에 지금 언어를 싣는다. 받는 쪽(privacy · support)이 스스로 고를
+  // 언어와 같으면 주소를 깨끗이 둔다. 첫 페이지로 돌아가는 길(data-home)은 그 언어의 주소로.
+  function relink() {
+    var own = pick(recall('malondo.lang')) || deviceLang();
+    Array.prototype.forEach.call(document.querySelectorAll('a[href]'), function (a) {
+      var m = /^\/(privacy|support|history)\.html(?:\?lang=[a-z]{2})?(#.*)?$/.exec(a.getAttribute('href'));
+      if (m) a.setAttribute('href', '/' + m[1] + '.html' + (lang === own ? '' : '?lang=' + lang) + (m[2] || ''));
+      else if (a.hasAttribute('data-home')) a.setAttribute('href', HOME[lang]);
+    });
+  }
+
+  // 첫 페이지의 주소를 보는 언어에 맞춘다 — 옮겨 붙이는 주소가 보는 언어와 같게. 다른 쿼리는 둔다.
+  function syncUrl() {
+    if (!paged || !window.history || !history.replaceState) return;
+    var q = new URLSearchParams(location.search);
+    q.delete('lang');
+    var s = q.toString();
+    var want = HOME[lang] + (s ? '?' + s : '') + location.hash;
+    if (want !== location.pathname + location.search + location.hash) {
+      try { history.replaceState(history.state, '', want); } catch (e) {}
+    }
+  }
+
+  function apply() {
+    root.lang = lang;
+    Array.prototype.forEach.call(document.querySelectorAll('[data-i]'), function (el) {
+      var s = expand(t(el.getAttribute('data-i')));
+      if (el.namespaceURI === 'http://www.w3.org/2000/svg' || el.tagName === 'TITLE') el.textContent = strip(s);
+      else el.innerHTML = s;
+    });
+    ['alt', 'aria-label', 'aria-roledescription', 'content'].forEach(function (a) {
+      Array.prototype.forEach.call(document.querySelectorAll('[data-i-' + a + ']'), function (el) {
+        el.setAttribute(a, strip(expand(t(el.getAttribute('data-i-' + a)))));
+      });
+    });
+    var sel = document.getElementById('lang');
+    if (sel) sel.value = lang;
+    Array.prototype.forEach.call(document.querySelectorAll('#fan li'), function (li) {
+      li.classList.toggle('on', li.getAttribute('data-lang') === lang);
+    });
+    relink();
+    paintUnits();
+  }
+
+  function fire() { hooks.forEach(function (fn) { try { fn(); } catch (e) {} }); }
+
+  var api = {
+    get lang() { return lang; },
+    get unit() { return unit; },
+    langs: LANGS,
+    t: t, fmtC: fmtC, sym: sym, fmtD: fmtD, apply: apply,
+    setLang: function (l, remember) {
+      if (LANGS.indexOf(l) < 0) return;
+      lang = l;
+      if (remember) {
+        keep('malondo.lang', l);
+        var box = document.getElementById('suggest');
+        if (box) box.hidden = true;
+      }
+      apply();
+      syncUrl();
+    },
+    setUnit: function (u, remember) {
+      unit = u === 'f' ? 'f' : 'c';
+      if (remember) keep('malondo.unit', unit);
+      paintUnits();
+    },
+    onChange: function (fn) { hooks.push(fn); },
+  };
+
+  var q = pick(new URLSearchParams(location.search).get('lang'));
+  var chosen = pick(recall('malondo.lang'));
+  var pageLang = pick(root.getAttribute('lang')) || 'ko';
+  if (paged) {
+    // 예전 주소(/?lang=en)는 그 언어의 주소로 옮긴다 — 퍼져 있던 링크와 검색 결과를 한 주소로 모은다.
+    if (q && q !== pageLang) { location.replace(HOME[q] + location.hash); return; }
+    lang = chosen || pageLang;
+  } else {
+    lang = q || chosen || deviceLang();
+  }
+  // 한국어로 구운 글을 한국어가 아닌 기기가 읽을 때(구글의 렌더러가 그렇다 — en-US)
+  // 단위까지 기기를 따르면 36.5℃ 가 97.7°F 로 색인된다. 그때는 섭씨로 둔다.
+  var u = recall('malondo.unit');
+  unit = u === 'f' || u === 'c' ? u : (lang === 'ko' && deviceWants() !== 'ko') ? 'c' : deviceUnit();
+
+  var sel = document.getElementById('lang');
+  if (sel) sel.addEventListener('change', function (e) { api.setLang(e.target.value, true); });
+  var ub = document.getElementById('unit');
+  if (ub) ub.addEventListener('click', function () { api.setUnit(unit === 'f' ? 'c' : 'f', true); });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-unit]'), function (x) {
+    x.addEventListener('click', function () { api.setUnit(x.getAttribute('data-unit'), true); });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('#fan li button'), function (b) {
+    b.addEventListener('click', function () { api.setLang(b.parentNode.getAttribute('data-lang'), true); });
+  });
+
+  window.MalondoI18n = api;
+  apply();
+  syncUrl();
+
+  // 기기 언어가 이 페이지와 다르면 한 번 권한다. 사람의 손이 처음 닿을 때 띄운다 —
+  // 손이 닿지 않는 검색 엔진의 렌더러에는 이 한 줄이 서지 않아, 한국어 페이지에
+  // 영어 한 줄이 섞여 색인되지 않는다.
+  var box = document.getElementById('suggest');
+  var want = deviceWants();
+  if (paged && box && want && want !== lang && !chosen && recall('malondo.suggest') !== 'no') {
+    var shown = false;
+    var show = function () {
+      if (shown) return;
+      shown = true;
+      ['scroll', 'pointerdown', 'keydown'].forEach(function (ev) { window.removeEventListener(ev, show); });
+      if (lang === want) return; // 그새 사람이 골랐다
+      var d = dict[want] || {};
+      box.lang = want;
+      box.querySelector('.say').textContent = d['suggest.say'] || '';
+      var go = box.querySelector('.go'), x = box.querySelector('.x');
+      go.textContent = d['suggest.go'] || want;
+      x.setAttribute('aria-label', d['suggest.close'] || '×');
+      go.addEventListener('click', function () { api.setLang(want, true); });
+      x.addEventListener('click', function () { box.hidden = true; keep('malondo.suggest', 'no'); });
+      box.hidden = false;
+    };
+    ['scroll', 'pointerdown', 'keydown'].forEach(function (ev) { window.addEventListener(ev, show, { passive: true }); });
+  }
+})();
+</script>
+<script>
+(function () {
+  document.documentElement.classList.add('js');
+  var i18n = window.MalondoI18n;
+  var book = document.getElementById('book');
+  var FIRST = Date.UTC(2026, 8, 15);
+
+  // 몇 개의 버전 · 첫 출시에서 며칠째.
+  document.getElementById('statVersions').textContent = book.querySelectorAll('.ver:not(.soon)').length;
+  var now = new Date(), today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+  document.getElementById('statDays').textContent = Math.max(1, Math.round((today - FIRST) / 864e5) + 1);
+
+  // 날짜와 화면 사진은 고른 언어로.
+  function localize() {
+    var lang = i18n ? i18n.lang : 'ko';
+    var fmt;
+    try { fmt = new Intl.DateTimeFormat(lang, { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' }); } catch (e) { fmt = null; }
+    Array.prototype.forEach.call(book.querySelectorAll('time[datetime]'), function (t) {
+      var p = t.getAttribute('datetime').split('-');
+      if (fmt) t.textContent = fmt.format(new Date(Date.UTC(+p[0], +p[1] - 1, +p[2])));
+    });
+    Array.prototype.forEach.call(book.querySelectorAll('img[data-shot]'), function (img) {
+      var want = '/shots/' + lang + '/' + img.getAttribute('data-shot') + '.webp';
+      if (img.getAttribute('src') !== want) img.setAttribute('src', want);
+    });
+    filter(current);
+  }
+
+  // 종류로 걸러 보기 — 맞는 줄이 하나도 없는 장은 접는다.
+  var current = 'all';
+  var buttons = document.querySelectorAll('.filters button');
+  function filter(f) {
+    current = f;
+    Array.prototype.forEach.call(buttons, function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-f') === f)); });
+    Array.prototype.forEach.call(book.children, function (li) {
+      if (li.classList.contains('mile')) { li.hidden = f !== 'all'; return; }
+      var shown = 0;
+      Array.prototype.forEach.call(li.querySelectorAll('ul > li'), function (row) {
+        var on = f === 'all' || row.getAttribute('data-k') === f;
+        row.hidden = !on;
+        if (on) shown++;
+      });
+      li.hidden = shown === 0;
+    });
+  }
+  Array.prototype.forEach.call(buttons, function (b) {
+    b.addEventListener('click', function () { filter(b.getAttribute('data-f')); });
+  });
+
+  if (i18n) i18n.onChange(localize);
+  localize();
+
+  // 장이 하나씩 놓인다.
+  var items = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    Array.prototype.forEach.call(items, function (el) { io.observe(el); });
+  } else {
+    Array.prototype.forEach.call(items, function (el) { el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>

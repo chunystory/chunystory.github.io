@@ -1,4 +1,4 @@
-/* 세 페이지(index · privacy · support)가 함께 쓰는 언어·단위 장치.
+/* 네 페이지(index · privacy · support · history)가 함께 쓰는 언어·단위 장치.
  *
  * - 표는 페이지마다 <script type="application/json" id="i18n"> 에 실려 온다.
  *   build.py 가 그 자리에 네 언어를 통째로 넣는다.
@@ -7,7 +7,7 @@
  *   첫 페이지는 **기기 언어로 글을 바꿔 달지 않는다** — 구글의 렌더러는 기기 언어가
  *   en-US 라, 바꿔 달면 한국어 주소에서 영어를 읽어 간다. 기기 언어가 다르면 아래에
  *   한 줄로 권하기만 하고(#suggest), 사람이 고르면 그 자리에서 바꾸고 주소도 옮긴다.
- * - privacy · support 는 주소가 하나다. ?lang= → 고른 언어 → 기기 언어 순으로 고른다
+ * - privacy · support · history 는 주소가 하나다. ?lang= → 고른 언어 → 기기 언어 순으로 고른다
  *   (앱 안의 링크가 언어 없이 이 주소를 연다).
  * - 고른 언어는 localStorage 에 남는다. 같은 출처라 **페이지를 옮겨도 따라온다** —
  *   홈에서 English 를 고르고 처리방침으로 가면 처리방침도 영어로 선다.
@@ -109,7 +109,7 @@
   function relink() {
     var own = pick(recall('malondo.lang')) || deviceLang();
     Array.prototype.forEach.call(document.querySelectorAll('a[href]'), function (a) {
-      var m = /^\/(privacy|support)\.html(?:\?lang=[a-z]{2})?(#.*)?$/.exec(a.getAttribute('href'));
+      var m = /^\/(privacy|support|history)\.html(?:\?lang=[a-z]{2})?(#.*)?$/.exec(a.getAttribute('href'));
       if (m) a.setAttribute('href', '/' + m[1] + '.html' + (lang === own ? '' : '?lang=' + lang) + (m[2] || ''));
       else if (a.hasAttribute('data-home')) a.setAttribute('href', HOME[lang]);
     });

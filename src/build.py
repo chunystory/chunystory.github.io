@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""세 페이지(index · privacy · support)를 짓고, 검색 엔진이 읽을 sitemap.xml 을 함께 쓴다.
+"""네 페이지(index · privacy · support · history)를 짓고, 검색 엔진이 읽을 sitemap.xml 을 함께 쓴다.
 
     python3 src/build.py
 
@@ -9,7 +9,7 @@
   글이 HTML 에 그대로 있어서 자바스크립트를 돌리지 않는 검색 엔진(네이버)도, 기기
   언어가 en-US 인 구글의 렌더러도 그 주소의 언어를 읽는다. 주소마다 canonical ·
   hreflang · og · JSON-LD(앱 · 자주 묻는 것)를 그 언어로 단다.
-- privacy · support 는 주소가 하나다. 한국어로 굽고, 나머지 셋은 `<script id="i18n">`
+- privacy · support · history 는 주소가 하나다. 한국어로 굽고, 나머지 셋은 `<script id="i18n">`
   의 표에서 읽어 바꿔 단다 — 앱 안의 링크가 언어 없이 이 주소를 연다.
 - 언어를 바꾸는 장치는 `src/i18n.js` 하나이고 세 페이지에 함께 구워 넣는다.
   고른 언어는 localStorage 에 남아 **페이지를 옮겨도 따라온다.**
@@ -20,6 +20,11 @@
   달라진 주소를 검색 엔진에 바로 알리려면 `python3 src/indexnow.py`.
 
 한 페이지의 네 표에서 키가 어긋나거나, 틀이 표에 없는 키를 부르면 멈춘다.
+
+1.1.1 리뉴얼(2026-10-11) — 개인정보 다음에 하루 한 쪽(#daily) · 한 달 한 장(#month) · 홈 화면 위젯(#widget)을
+앞세우고, 이력 페이지(history.html)를 더했다. 위젯 사진(`shots/{lang}/widget-*.webp`)과 영상(`video/{lang}/widget.mp4`)은
+시뮬레이터의 진짜 홈 화면에 위젯을 올리고 시스템 언어를 바꿔 가며 찍었다. 이력의 글은 App Store 「버전 기록」에 실제로
+나간 출시 노트(날짜는 한국 시각)에서 옮겼다.
 
 1.0.10 리뉴얼(2026-10-06) 뒤의 첫 페이지가 쓰는 그림과 영상:
 - `shots/{lang}/*.webp` — 17 Pro Max 시뮬레이터에서 찍은 실제 앱 화면(720폭). 샘플 기록장
@@ -59,6 +64,7 @@ PAGES = [
     ("index.tpl.html", "", "index.html"),
     ("privacy.tpl.html", "privacy.", "privacy.html"),
     ("support.tpl.html", "support.", "support.html"),
+    ("history.tpl.html", "history.", "history.html"),
 ]
 # 언어마다 제 주소에 굽는 페이지.
 PAGED = {"index.html"}
@@ -77,7 +83,7 @@ SCRIPT_ONLY = {"dial.warmer", "dial.cooler",
 SCRIPT_PREFIXES = ("visit.", "trace.line.", "desk.o.", "fx.e.", "fx.g.")
 
 # JSON-LD 의 featureList — 기록 꾸미기부터, 그다음 말온도가 처음부터 해 온 일.
-FEATURES = ("auto.title", "drawer.title", "fx.title", "paper.title", "month.title", "f.talk.h", "f.letter.h",
+FEATURES = ("daily.title", "decor.title", "widget.title", "auto.title", "drawer.title", "fx.title", "paper.title", "month.title", "f.talk.h", "f.letter.h",
             "f.measure.h", "f.mark.h", "f.letgo.h", "f.people.h", "desk.title")
 
 FILL = re.compile(r'(<([a-zA-Z0-9]+)\b[^>]*\bdata-i="([^"]+)"[^>]*>)(</\2>)')
@@ -149,7 +155,7 @@ def json_ld(lang: str, t: dict, url: str) -> str:
             "inLanguage": LANGS,
             "installUrl": [APP_STORE, PLAY],
             "image": f"{SITE}/icon-1024.png",
-            "screenshot": [f"{SITE}/shots/{lang}/{n}.webp" for n in ("home", "day-full", "drawer-deco", "effects", "month-page", "phrases")],
+            "screenshot": [f"{SITE}/shots/{lang}/{n}.webp" for n in ("home", "day-full", "widget-large", "month-page", "drawer-deco", "effects", "phrases")],
             "featureList": [text(t[k]) for k in FEATURES],
             "keywords": text(t["meta.keywords"]),
             "offers": {"@type": "Offer", "price": "0", "priceCurrency": CURRENCY[lang]},

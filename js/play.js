@@ -397,7 +397,7 @@
     // 판 353×106 둘레에 여유 — 촛불의 볕(오른쪽 23)과 들림(위로 4).
     var PX = 20, PT = 8, PB = 3, UW = 353 + PX * 2, UH = 106 + PT + PB;
     var ctx, W = 0, k = 1, off = 0, lift = null, raf = 0, onScreen = false, flame0 = performance.now(), opened = -1;
-    var SHOT = ['tracepage', 'ridges', 'letterbox', 'herbarium', 'jar', 'musicbox', 'candle'];
+    var SHOT = ['tracepage', 'sketch', 'letterbox', 'herbarium', 'jar', 'musicbox', 'candle'];
     stage.classList.toggle('night', night);
     function traces() {
       var tr = recall('malondo.trace') || {}, jar = recall('malondo.jar');
@@ -1077,12 +1077,23 @@
   })();
 
   // ── 언어마다의 스크린샷 ────────────────────────────────────────────────
-  i18n.onChange(function () {
+  // 페이지에 구운 /shots/<언어>/ 주소(img src · picture source srcset)도 고른 언어로 — 처음 설 때도 한 번.
+  function shotsFollowLang() {
     each(document.querySelectorAll('img[data-shot]'), function (im) {
       var want = '/shots/' + i18n.lang + '/' + im.getAttribute('data-shot') + '.webp';
       if (im.getAttribute('src') !== want) im.setAttribute('src', want);
     });
-  });
+    var re = /\/shots\/(ko|en|ja|es)\//;
+    each(document.querySelectorAll('img[src*="/shots/"], source[srcset*="/shots/"]'), function (el) {
+      if (el.closest('.fan')) return; // 네 언어를 나란히 보여 주는 부채는 그대로
+      var attr = el.tagName === 'SOURCE' ? 'srcset' : 'src', v = el.getAttribute(attr);
+      if (!re.test(v)) return;
+      var want = v.replace(re, '/shots/' + i18n.lang + '/');
+      if (want !== v) el.setAttribute(attr, want);
+    });
+  }
+  shotsFollowLang();
+  i18n.onChange(shotsFollowLang);
 
   // ── 손에 반응하는 것 — 폰이 살짝 기울고, 머리의 빛이 손을 따라온다 ──
   if (!reduce && window.matchMedia('(pointer: fine)').matches) {

@@ -2,6 +2,8 @@
 <!-- build.py 가 이 틀을 언어마다 제 주소에 굽는다 — / · /en/ · /ja/ · /es/. data-paged 는 i18n.js 에게
      「이 페이지는 언어마다 주소가 있다」고 알린다(기기 언어로 글을 바꿔 달지 않는다).
      2026-10-06 1.0.10 리뉴얼 — 개인정보를 먼저, 그다음 기록 꾸미기(스티커 · 효과 · 속지 · 이 달 쪽), 그리고 모든 기능.
+     2026-10-11 1.1.1 리뉴얼 — 개인정보 다음에 하루 한 쪽 · 한 달 한 장 · 홈 화면 위젯을 앞세우고, 이력 페이지(/history.html)를 단다.
+     위젯 사진과 영상은 시뮬레이터의 진짜 홈 화면에 위젯을 올려 찍은 것이다(1.1.1 은 아직 스토어 전이라 「곧」이라고 적는다).
      부르는 이름은 build.py 머리말의 「이름」을 따른다. -->
 <html lang="{{LANG}}" data-paged>
 <head>
@@ -155,7 +157,8 @@
   .prefs button { min-width: 2.6rem; font-variant-numeric: tabular-nums; }
   .prefs button:hover, .prefs select:hover { border-color: var(--ink); }
   @media (max-width: 1080px) { .bar nav .wide-only { display: none; } }
-  @media (max-width: 760px) { .bar nav { display: none; } .prefs { margin-left: auto; } }
+  @media (max-width: 760px) { .bar nav { margin-left: auto; gap: .9rem; } .bar nav a:not(.always) { display: none; } .prefs { margin-left: .6rem; } }
+  @media (max-width: 340px) { .bar b { display: none; } }
   /* ── 영웅 ── */
   .hero { position: relative; overflow: hidden; padding: 3.5rem 0 3.5rem; }
   .blobs { position: absolute; inset: -20% -10%; pointer-events: none; filter: blur(60px); z-index: 0; transform: translate3d(var(--mx, 0), var(--my, 0), 0); transition: transform 1.4s cubic-bezier(.2,.7,.2,1); }
@@ -805,6 +808,115 @@
     html.js .fp-me { transform: none; opacity: 1; transition: none; }
   }
 
+
+  /* ── 1.1.1 — 하루 한 쪽(펼친 부채) ── */
+  .daily { background: radial-gradient(120% 70% at 50% 0%, color-mix(in srgb, var(--t5) 70%, transparent), transparent 70%); }
+  .spread { display: flex; justify-content: center; align-items: flex-end; padding: 1rem 1.25rem 0; max-width: 72rem; margin: 0 auto; }
+  .spread figure { position: relative; margin: 0 -1.6rem; flex: 0 0 min(232px, 19vw); transform: translateY(var(--lift)) rotate(var(--r)); transform-origin: 50% 120%; transition: transform .6s cubic-bezier(.2,.7,.2,1), z-index 0s .2s; z-index: 1; }
+  html.js .spread figure[data-reveal] { transform: translateY(calc(var(--lift) + 26px)) rotate(var(--r)); }
+  html.js .spread figure[data-reveal].in { transform: translateY(var(--lift)) rotate(var(--r)); }
+  .spread figure.mid { flex-basis: min(262px, 22vw); z-index: 3; }
+  .spread figure:hover, .spread figure:focus-within { transform: translateY(calc(var(--lift) - 18px)) rotate(calc(var(--r) * .4)) !important; z-index: 5; transition-delay: 0s; }
+  .spread .phone { margin: 12px auto 18px; }
+  .spread figcaption { text-align: center; padding: 0 1.4rem; opacity: 0; transition: opacity .4s; }
+  .spread figure:hover figcaption, .spread figure.mid figcaption, .spread figure:focus-within figcaption { opacity: 1; }
+  .spread figcaption b { display: block; font-family: var(--serif); font-weight: 400; font-size: 1.05rem; color: var(--ink); line-height: 1.4; }
+  .spread figcaption span { display: block; font-size: .8rem; color: var(--ink-3); margin-top: .15rem; }
+  .washi { position: absolute; top: 2px; left: 50%; width: 46%; height: 22px; translate: -50% 0; rotate: -3deg; z-index: 4; border-radius: 2px; opacity: .9;
+    background: repeating-linear-gradient(90deg, color-mix(in srgb, var(--c) 92%, transparent) 0 7px, color-mix(in srgb, var(--c) 70%, transparent) 7px 14px);
+    -webkit-mask: linear-gradient(90deg, transparent, #000 3px, #000 calc(100% - 3px), transparent); mask: linear-gradient(90deg, transparent, #000 3px, #000 calc(100% - 3px), transparent); }
+  .spread figure:nth-child(even) .washi { rotate: 4deg; }
+  .spread-note { text-align: center; margin: 1.6rem auto 0; padding: 0 1.25rem; }
+  @media (max-width: 899px) {
+    .spread { justify-content: flex-start; align-items: flex-start; overflow-x: auto; scroll-snap-type: x mandatory; gap: 1.1rem; padding: 1rem calc(50% - min(240px, 66vw) / 2) 1.5rem; scrollbar-width: none; }
+    .spread::-webkit-scrollbar { display: none; }
+    .spread figure, .spread figure.mid { margin: 0; flex: 0 0 min(240px, 66vw); scroll-snap-align: center; transform: rotate(calc(var(--r) * .25)) !important; }
+    .spread figcaption { opacity: 1; padding: 0 .4rem; }
+  }
+
+  /* ── 1.1.1 — 한 달 한 장 · 세 장 ── */
+  .sheets figure .phone { rotate: -1deg; }
+  .sheets figure:nth-child(2) .phone { rotate: .8deg; }
+
+  /* ── 1.1.1 — 홈 화면 위젯 ── */
+  .widget { background: linear-gradient(180deg, color-mix(in srgb, var(--t1) 65%, var(--canvas)), var(--canvas) 70%); }
+  .widget .glow { position: absolute; inset: 0; pointer-events: none; filter: blur(70px); }
+  .widget .glow i { position: absolute; border-radius: 50%; }
+  .widget .glow i:first-child { width: 38vw; height: 30vw; left: 8%; top: 14%; background: color-mix(in srgb, var(--r2) 22%, transparent); animation: drift 33s ease-in-out infinite alternate; }
+  .widget .glow i:last-child { width: 34vw; height: 26vw; right: 6%; top: 34%; background: color-mix(in srgb, var(--r5) 20%, transparent); animation: drift 27s ease-in-out infinite alternate-reverse; }
+  .widget .wide { position: relative; }
+  .soon-pill { display: inline-flex; align-items: center; gap: .5rem; margin: 1rem 0 0; padding: .32rem .9rem; border-radius: 999px; font-size: .8125rem; font-weight: 600; color: var(--accent); background: color-mix(in srgb, var(--accent-soft) 80%, transparent); border: 1px dashed color-mix(in srgb, var(--accent) 50%, transparent); }
+  .soon-pill i { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: blink 2.4s ease-in-out infinite; }
+  @keyframes blink { 50% { opacity: .25; } }
+  .homes { display: flex; justify-content: center; align-items: center; gap: 0; margin: .5rem auto 0; max-width: 64rem; }
+  .homes figure { margin: 0; position: relative; }
+  .homes .center { flex: 0 0 min(300px, 64vw); z-index: 2; }
+  .homes .side { flex: 0 0 min(250px, 24vw); }
+  .homes .side.l { transform: translateX(26px) rotate(-6deg) translateY(28px); }
+  .homes .side.r { transform: translateX(-26px) rotate(6deg) translateY(28px); }
+  html.js .homes .side[data-reveal] { opacity: 0; }
+  html.js .homes .side.l[data-reveal].in { opacity: 1; transform: translateX(26px) rotate(-6deg) translateY(28px); }
+  html.js .homes .side.r[data-reveal].in { opacity: 1; transform: translateX(-26px) rotate(6deg) translateY(28px); }
+  .homes .side .phone { filter: saturate(.96); }
+  @media (max-width: 760px) {
+    .homes { flex-direction: column; }
+    .homes .side { display: none; }
+  }
+  .wfeats { list-style: none; margin: clamp(2.5rem, 6vw, 4rem) auto 0; padding: 0; display: grid; gap: 1rem 1.4rem; max-width: 64rem; }
+  @media (min-width: 720px) { .wfeats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1040px) { .wfeats { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .wfeats li { position: relative; padding: 1.15rem 1.2rem 1.2rem 3.6rem; border-radius: 1.1rem; background: color-mix(in srgb, var(--surface) 86%, transparent); box-shadow: inset 0 0 0 1px var(--line), 0 14px 30px -26px var(--shadow); }
+  .wfeats b { display: block; font-size: 1rem; margin-bottom: .2rem; }
+  .wfeats span { font-size: .875rem; color: var(--ink-3); }
+  .wi { position: absolute; left: 1.05rem; top: 1.2rem; width: 1.75rem; height: 1.75rem; border-radius: .5rem; background: var(--t4); }
+  .wi::after { content: ""; position: absolute; inset: 0; margin: auto; }
+  .wi.w1 { background: var(--t6); } .wi.w1::after { width: 46%; height: 56%; border-radius: 2px; background: var(--r6); box-shadow: 0 -4px 0 -2px var(--ink-3); }
+  .wi.w2 { background: var(--t4); } .wi.w2::after { width: 62%; height: 54%; border-radius: 2px; background: repeating-linear-gradient(90deg, var(--r4) 0 2px, transparent 2px 5px), repeating-linear-gradient(0deg, var(--r4) 0 2px, transparent 2px 5px); opacity: .7; }
+  .wi.w3 { background: var(--t2); } .wi.w3::after { width: 48%; height: 48%; border-radius: 50%; background: var(--r2); box-shadow: 0 0 0 3px color-mix(in srgb, var(--r2) 30%, transparent); }
+  .wi.w4 { background: var(--t5); } .wi.w4::after { width: 64%; height: 30%; background: repeating-linear-gradient(90deg, var(--r5) 0 4px, color-mix(in srgb, var(--r5) 60%, transparent) 4px 8px); rotate: -8deg; }
+  .wi.w5 { background: var(--t1); } .wi.w5::after { width: 40%; height: 44%; border-radius: 3px; background: var(--r1); box-shadow: 0 -5px 0 -1px var(--t1), 0 -6px 0 0 var(--r1); }
+  .wi.w6 { background: var(--t3); } .wi.w6::after { width: 54%; height: 54%; border-radius: 50%; border: 2px dashed var(--r3); }
+  .night { margin: clamp(2.5rem, 6vw, 4rem) auto 0; max-width: 64rem; display: grid; gap: 1.5rem; align-items: center; padding: clamp(1.5rem, 4vw, 2.6rem); border-radius: 1.6rem; color: #F0EAE3;
+    background: radial-gradient(120% 90% at 85% 10%, rgba(205,166,105,.22), transparent 55%), linear-gradient(160deg, #1B1714, #0F0C0A); box-shadow: 0 30px 60px -36px rgba(0,0,0,.6); }
+  .night h3 { color: #F0EAE3; }
+  .night p { color: #B8AFA5; margin: 0; }
+  .night-phones { display: flex; justify-content: center; gap: 1.2rem; }
+  .night-phones .phone { width: min(200px, 36vw); margin: 10px 0 14px; --frame: #2B2622; --frame-edge: #4A423C; box-shadow: 0 0 0 3px #050404, 0 0 0 11px #2B2622, 0 0 0 12px #4A423C, 0 26px 50px -20px rgba(0,0,0,.8); }
+  .night-phones .phone:last-child { translate: 0 26px; rotate: 3deg; }
+  .night-phones .phone:first-child { rotate: -2deg; }
+  @media (min-width: 860px) { .night { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); } }
+  .widget .how { max-width: 44rem; margin: 2rem auto 0; }
+
+
+  /* 위젯 가까이 보기 — 홈 화면 사진에서 둥근 모서리로 오려 낸 위젯 */
+  .closeup { margin: clamp(3rem, 7vw, 5rem) auto 0; text-align: center; }
+  .close-cap { margin: 0 0 1.4rem; }
+  figure.noted.wcut { width: min(480px, 84vw); text-align: left; margin-bottom: clamp(3rem, 8vw, 4.5rem); }
+  .wstage { position: relative; }
+  .wc { display: block; }
+  .wc img { display: block; width: 100%; height: auto; filter: drop-shadow(0 22px 34px var(--shadow)) drop-shadow(0 2px 3px rgba(0,0,0,.08)); }
+  .wc.large { rotate: -1.4deg; }
+  .wc.day { position: absolute; width: 36%; right: -12%; bottom: -12%; rotate: 5deg; z-index: 2; transition: rotate .5s, translate .5s; }
+  .wcut:hover .wc.day { rotate: 2deg; translate: 0 -6px; }
+  @media (min-width: 1000px) { .notes li.r.far { left: calc(100% + 5.2rem); } }
+  @media (max-width: 999px) { figure.noted.wcut .notes { margin-top: 3.6rem; } .wc.day { right: -6%; bottom: -14%; width: 38%; } }
+  /* ── 1.1.1 — 놓아주기 끝 장면 · 이력 맛보기 ── */
+  .scenes { list-style: none; margin: 1.4rem 0 0; padding: 0; display: flex; gap: 1.2rem; }
+  .scenes li { flex: 0 0 min(140px, 36vw); display: grid; gap: .2rem; justify-items: center; }
+  .scenes .phone { margin: 8px auto 10px; }
+  .scenes span { font-size: .82rem; color: var(--ink-3); }
+  .history .vers { list-style: none; margin: 1.6rem 0 0; padding: 0; display: grid; gap: .7rem; }
+  .history .vers a { display: grid; grid-template-columns: 4.2rem minmax(0, 1fr) auto; align-items: center; gap: .9rem; padding: .95rem 1.1rem; border-radius: 1rem; text-decoration: none; color: var(--ink);
+    background: color-mix(in srgb, var(--surface) 85%, transparent); box-shadow: inset 0 0 0 1px var(--line); transition: box-shadow .25s, transform .25s; }
+  .history .vers a:hover { box-shadow: inset 0 0 0 1px var(--line-2), 0 14px 26px -22px var(--shadow); transform: translateY(-2px); }
+  .history .vers .no { font-family: var(--hand); font-size: 1.6rem; line-height: 1; color: var(--accent); }
+  .history .vers b { font-weight: 600; font-size: .98rem; }
+  .history .vers time, .history .vers em { font-style: normal; font-size: .78rem; color: var(--ink-3); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .history .vers .soon a { box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--accent) 40%, var(--line)); background: color-mix(in srgb, var(--accent-soft) 45%, var(--surface)); }
+  .history .vers .soon em { color: var(--accent); font-weight: 600; }
+  .history .more { display: inline-block; margin-top: 1.2rem; font-weight: 600; }
+  .history .more::after { content: " →"; }
+  @media (prefers-reduced-motion: reduce) { .widget .glow i, .soon-pill i { animation: none; } .spread figure { transition: none; } }
 </style>
 </head>
 <body>
@@ -814,12 +926,13 @@
     <img src="/icon-192.png" alt="" width="30" height="30">
     <b data-i="brand"></b>
     <nav data-i-aria-label="nav.aria">
-      <a href="#decor" data-i="nav.decor"></a>
-      <a href="#play" class="wide-only" data-i="nav.play"></a>
+      <a href="#daily" data-i="nav.daily"></a>
+      <a href="#widget" data-i="nav.widget"></a>
+      <a href="#decor" class="wide-only" data-i="nav.decor"></a>
       <a href="#features" data-i="nav.features"></a>
-      <a href="#privacy" data-i="nav.privacy"></a>
-      <a href="#faq" class="wide-only" data-i="nav.faq"></a>
-      <a href="/support.html" data-i="nav.support"></a>
+      <a href="#privacy" class="wide-only" data-i="nav.privacy"></a>
+      <a href="/history.html" class="always" data-i="nav.history"></a>
+      <a href="/support.html" class="wide-only" data-i="nav.support"></a>
     </nav>
     <div class="prefs">
       <select id="lang" data-i-aria-label="pref.lang">
@@ -848,6 +961,7 @@
       <span class="eyebrow" data-reveal data-i="hero.eyebrow"></span>
       <h1 id="hero-title" data-reveal data-delay="1" data-i="hero.title"></h1>
       <p class="lede" data-reveal data-delay="2" data-i="hero.lede"></p>
+      <a class="new-chip" href="#widget" data-reveal data-delay="2"><i aria-hidden="true">✦</i><span data-i="hero.new"></span></a>
       <!-- Google Play 링크의 referrer 는 Play Console 「사용자 획득」에서 어느 단추로 왔는지(hero · get) 가른다. -->
       <ul class="stores" data-reveal data-delay="3">
         <li><a class="store" href="https://apps.apple.com/kr/app/id6809147797"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.9-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.8zM14.2 5.8c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.8 1 .1 2.1-.5 2.7-1.2z"/></svg><span><small data-i="store.ios.small"></small><b data-i="store.ios"></b></span></a></li>
@@ -898,25 +1012,23 @@
   </div>
 </section>
 
-<!-- ── 기록 꾸미기 — 홈이 이 달 한 장이 됐다(1.0.10). ── -->
-<section class="chapter" id="decor" aria-labelledby="decor-title">
+<!-- ── 하루 한 쪽 — 꾸민 하루 쪽 다섯 장을 펼친 부채처럼. 좁은 화면에서는 옆으로 넘긴다. ── -->
+<section class="chapter daily" id="daily" aria-labelledby="daily-title">
   <div class="wide">
     <div class="head-c">
-      <span class="eyebrow" data-reveal data-i="decor.eyebrow"></span>
-      <h2 id="decor-title" data-reveal data-delay="1" data-i="decor.title"></h2>
-      <p data-reveal data-delay="2" data-i="decor.lede"></p>
+      <span class="eyebrow" data-reveal data-i="daily.eyebrow"></span>
+      <h2 id="daily-title" data-reveal data-delay="1" data-i="daily.title"></h2>
+      <p data-reveal data-delay="2" data-i="daily.lede"></p>
     </div>
-    <figure class="noted" style="width:min(300px,72vw);margin:0 auto" data-reveal>
-      <div class="phone"><img src="/shots/{{LANG}}/home.webp" data-i-alt="decor.alt" loading="lazy" width="720" height="1564"></div>
-      <ul class="notes">
-        <li class="l" style="--y:17%"><span data-i="decor.n.year"></span><svg viewBox="0 0 34 20" aria-hidden="true"><path d="M1 10 C10 4, 20 4, 31 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M26 4 L32 9 L25 13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
-        <li class="l" style="--y:44%"><span data-i="decor.n.day"></span><svg viewBox="0 0 34 20" aria-hidden="true"><path d="M1 12 C10 16, 22 14, 31 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M25 5 L32 9 L26 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
-        <li class="l" style="--y:78%"><span data-i="decor.n.corner"></span><svg viewBox="0 0 34 20" aria-hidden="true"><path d="M1 8 C12 2, 22 6, 31 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M25 6 L32 11 L25 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
-        <li class="r" style="--y:34%"><span data-i="decor.n.tabs"></span><svg viewBox="0 0 34 20" aria-hidden="true"><path d="M1 10 C10 4, 20 4, 31 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M26 4 L32 9 L25 13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
-        <li class="r" style="--y:70%"><span data-i="decor.n.zoom"></span><svg viewBox="0 0 34 20" aria-hidden="true"><path d="M1 12 C10 16, 22 14, 31 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M25 5 L32 9 L26 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
-      </ul>
-    </figure>
   </div>
+  <div class="spread" id="spread" tabindex="0" data-i-aria-label="daily.aria">
+    <figure style="--r:-8deg;--lift:34px" data-reveal><span class="washi" style="--c:#C9DCE6"></span><div class="phone"><img src="/shots/{{LANG}}/day-night.webp" data-i-alt="samples.4.h" loading="lazy" width="720" height="1564"></div><figcaption><b data-i="samples.4.h"></b><span data-i="samples.4.p"></span></figcaption></figure>
+    <figure style="--r:-4deg;--lift:12px" data-reveal data-delay="1"><span class="washi" style="--c:#E7D3A8"></span><div class="phone"><img src="/shots/{{LANG}}/day-holiday.webp" data-i-alt="samples.3.h" loading="lazy" width="720" height="1564"></div><figcaption><b data-i="samples.3.h"></b><span data-i="samples.3.p"></span></figcaption></figure>
+    <figure class="mid" style="--r:0deg;--lift:0px" data-reveal data-delay="2"><span class="washi" style="--c:#EBB9A9"></span><div class="phone"><img src="/shots/{{LANG}}/day-full.webp" data-i-alt="samples.1.h" loading="lazy" width="720" height="1564"></div><figcaption><b data-i="samples.1.h"></b><span data-i="samples.1.p"></span></figcaption></figure>
+    <figure style="--r:4deg;--lift:12px" data-reveal data-delay="3"><span class="washi" style="--c:#BFD9CF"></span><div class="phone"><img src="/shots/{{LANG}}/day-today.webp" data-i-alt="samples.2.h" loading="lazy" width="720" height="1564"></div><figcaption><b data-i="samples.2.h"></b><span data-i="samples.2.p"></span></figcaption></figure>
+    <figure style="--r:8deg;--lift:34px" data-reveal data-delay="4"><span class="washi" style="--c:#D9CBE3"></span><div class="phone"><img src="/shots/{{LANG}}/day-month.webp" data-i-alt="samples.5.h" loading="lazy" width="720" height="1564"></div><figcaption><b data-i="samples.5.h"></b><span data-i="samples.5.p"></span></figcaption></figure>
+  </div>
+  <p class="hand spread-note" data-reveal data-i="daily.hint"></p>
 </section>
 
 <!-- ── 기록이 먼저 스티커로 — 하루 쪽의 머리 다섯과 하루의 기록, 그리고 사람이 붙인 것. ── -->
@@ -942,8 +1054,115 @@
   </div>
 </section>
 
+<!-- ── 한 달 한 장 — 홈은 이 달 한 장이다. 칸 · 해 · 귀퉁이 · 갈피 · 크게 가 저마다 문이다. ── -->
+<section class="chapter monthly" id="month" aria-labelledby="decor-title">
+  <div class="wide">
+    <div class="head-c">
+      <span class="eyebrow" data-reveal data-i="decor.eyebrow"></span>
+      <h2 id="decor-title" data-reveal data-delay="1" data-i="decor.title"></h2>
+      <p data-reveal data-delay="2" data-i="decor.lede"></p>
+    </div>
+    <figure class="noted" style="width:min(300px,72vw);margin:0 auto" data-reveal>
+      <div class="phone"><img src="/shots/{{LANG}}/home.webp" data-i-alt="decor.alt" loading="lazy" width="720" height="1564"></div>
+      <ul class="notes">
+        <li class="l" style="--y:17%"><span data-i="decor.n.year"></span><svg viewBox="0 0 34 20" aria-hidden="true"><path d="M1 10 C10 4, 20 4, 31 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M26 4 L32 9 L25 13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+        <li class="l" style="--y:44%"><span data-i="decor.n.day"></span><svg viewBox="0 0 34 20" aria-hidden="true"><path d="M1 12 C10 16, 22 14, 31 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M25 5 L32 9 L26 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+        <li class="l" style="--y:78%"><span data-i="decor.n.corner"></span><svg viewBox="0 0 34 20" aria-hidden="true"><path d="M1 8 C12 2, 22 6, 31 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M25 6 L32 11 L25 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+        <li class="r" style="--y:34%"><span data-i="decor.n.tabs"></span><svg viewBox="0 0 34 20" aria-hidden="true"><path d="M1 10 C10 4, 20 4, 31 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M26 4 L32 9 L25 13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+        <li class="r" style="--y:70%"><span data-i="decor.n.zoom"></span><svg viewBox="0 0 34 20" aria-hidden="true"><path d="M1 12 C10 16, 22 14, 31 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M25 5 L32 9 L26 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+      </ul>
+    </figure>
+  </div>
+</section>
+
+<!-- ── 이 달 쪽 · 책장 넘김 · 회고 속지 ── -->
+<section class="chapter tint" aria-labelledby="month-title">
+  <div class="wide">
+    <div class="duo flip">
+      <div class="phone-wrap" data-reveal>
+        <div class="phone" data-tilt><video class="reel" data-reel="month" muted playsinline loop preload="none" poster="/video/{{LANG}}/month.webp" width="600" height="1304" data-i-aria-label="month.video"></video></div>
+      </div>
+      <div>
+        <span class="eyebrow" data-reveal data-i="month.eyebrow"></span>
+        <h2 id="month-title" data-reveal data-delay="1" data-i="month.title"></h2>
+        <p data-reveal data-delay="2" data-i="month.lede"></p>
+        <p class="aside" data-reveal data-delay="3" data-i="month.flip"></p>
+      </div>
+    </div>
+    <div class="duo" style="margin-top:clamp(3rem,7vw,5rem)">
+      <div class="phone-wrap" data-reveal>
+        <div class="phone" data-tilt><video class="reel" data-reel="insert" muted playsinline loop preload="none" poster="/video/{{LANG}}/insert.webp" width="600" height="1304" data-i-aria-label="insert.video"></video></div>
+      </div>
+      <div>
+        <span class="eyebrow" data-reveal data-i="insert.eyebrow"></span>
+        <h3 data-reveal data-delay="1" data-i="insert.title"></h3>
+        <p data-reveal data-delay="2" data-i="insert.lede"></p>
+      </div>
+    </div>
+    <div class="row3 sheets" style="margin-top:clamp(3rem,7vw,5rem)">
+      <figure data-reveal><div class="phone"><img src="/shots/{{LANG}}/home-sep.webp" data-i-alt="samples.6.h" loading="lazy" width="720" height="1564"></div><figcaption><b data-i="samples.6.h"></b><span data-i="samples.6.p"></span></figcaption></figure>
+      <figure data-reveal data-delay="1"><div class="phone"><img src="/shots/{{LANG}}/month-page.webp" data-i-alt="month.page.h" loading="lazy" width="720" height="1564"></div><figcaption><b data-i="month.page.h"></b><span data-i="month.page.p"></span></figcaption></figure>
+      <figure data-reveal data-delay="2"><div class="phone"><img src="/shots/{{LANG}}/year.webp" data-i-alt="shelf.9.h" loading="lazy" width="720" height="1564"></div><figcaption><b data-i="shelf.9.h"></b><span data-i="shelf.9.p"></span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ── 홈 화면 위젯 — 시뮬레이터의 진짜 홈 화면(iOS 26)에 위젯을 올려 찍었다. 가운데 영상은 「이 달 한 장」의 스티커 판. ── -->
+<section class="chapter widget" id="widget" aria-labelledby="widget-title">
+  <div class="glow" aria-hidden="true"><i></i><i></i></div>
+  <div class="wide">
+    <div class="head-c">
+      <span class="eyebrow" data-reveal data-i="widget.eyebrow"></span>
+      <h2 id="widget-title" data-reveal data-delay="1" data-i="widget.title"></h2>
+      <p data-reveal data-delay="2" data-i="widget.lede"></p>
+      <p class="soon-pill" data-reveal data-delay="3"><i aria-hidden="true"></i><span data-i="widget.soon"></span></p>
+    </div>
+    <div class="homes">
+      <figure class="side l" data-reveal data-delay="1"><div class="phone"><img src="/shots/{{LANG}}/widget-medium.webp" data-i-alt="widget.alt.medium" loading="lazy" width="720" height="1564"></div></figure>
+      <figure class="center" data-reveal><div class="phone" data-tilt><video class="reel" data-reel="widget" muted playsinline loop preload="none" poster="/video/{{LANG}}/widget.webp" width="576" height="1252" data-i-aria-label="widget.video"></video></div></figure>
+      <figure class="side r" data-reveal data-delay="2"><div class="phone"><img src="/shots/{{LANG}}/widget-large.webp" data-i-alt="widget.alt.large" loading="lazy" width="720" height="1564"></div></figure>
+    </div>
+    <div class="closeup">
+      <p class="hand close-cap" data-reveal data-i="widget.close"></p>
+      <figure class="noted wcut" data-reveal>
+        <div class="wstage">
+        <picture class="wc large"><source media="(prefers-color-scheme: dark)" srcset="/shots/{{LANG}}/wcut-large-dark.webp"><img src="/shots/{{LANG}}/wcut-large.webp" data-i-alt="widget.alt.large" loading="lazy" width="960" height="1001"></picture>
+        <picture class="wc day"><source media="(prefers-color-scheme: dark)" srcset="/shots/{{LANG}}/wcut-day-dark.webp"><img src="/shots/{{LANG}}/wcut-day.webp" alt="" loading="lazy" width="450" height="450"></picture>
+        </div>
+        <ul class="notes">
+          <li class="l" style="--y:5%"><span data-i="widget.n.paper"></span><svg viewBox="0 0 34 20" aria-hidden="true"><path d="M1 10 C10 4, 20 4, 31 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M26 4 L32 9 L25 13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+          <li class="l" style="--y:50%"><span data-i="widget.n.cover"></span><svg viewBox="0 0 34 20" aria-hidden="true"><path d="M1 12 C10 16, 22 14, 31 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M25 5 L32 9 L26 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+          <li class="l" style="--y:82%"><span data-i="widget.n.stamp2"></span><svg viewBox="0 0 34 20" aria-hidden="true"><path d="M1 8 C12 2, 22 6, 31 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M25 6 L32 11 L25 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+          <li class="r" style="--y:10%"><span data-i="widget.n.stamp"></span><svg viewBox="0 0 34 20" aria-hidden="true"><path d="M1 10 C10 4, 20 4, 31 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M26 4 L32 9 L25 13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+          <li class="r" style="--y:44%"><span data-i="widget.n.photo"></span><svg viewBox="0 0 34 20" aria-hidden="true"><path d="M1 12 C10 16, 22 14, 31 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M25 5 L32 9 L26 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+          <li class="r far" style="--y:84%"><span data-i="widget.n.day"></span><svg viewBox="0 0 34 20" aria-hidden="true"><path d="M1 8 C12 2, 22 6, 31 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M25 6 L32 11 L25 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+        </ul>
+      </figure>
+    </div>
+    <ul class="wfeats">
+      <li data-reveal><i class="wi w1" aria-hidden="true"></i><b data-i="w.1.h"></b><span data-i="w.1.p"></span></li>
+      <li data-reveal data-delay="1"><i class="wi w2" aria-hidden="true"></i><b data-i="w.2.h"></b><span data-i="w.2.p"></span></li>
+      <li data-reveal data-delay="2"><i class="wi w3" aria-hidden="true"></i><b data-i="w.3.h"></b><span data-i="w.3.p"></span></li>
+      <li data-reveal><i class="wi w4" aria-hidden="true"></i><b data-i="w.4.h"></b><span data-i="w.4.p"></span></li>
+      <li data-reveal data-delay="1"><i class="wi w5" aria-hidden="true"></i><b data-i="w.5.h"></b><span data-i="w.5.p"></span></li>
+      <li data-reveal data-delay="2"><i class="wi w6" aria-hidden="true"></i><b data-i="w.6.h"></b><span data-i="w.6.p"></span></li>
+    </ul>
+    <div class="night" data-reveal>
+      <div class="night-text">
+        <h3 class="big" data-i="widget.night.h"></h3>
+        <p data-i="widget.night.p"></p>
+      </div>
+      <div class="night-phones">
+        <div class="phone"><img src="/shots/{{LANG}}/widget-large-dark.webp" data-i-alt="widget.alt.dark" loading="lazy" width="720" height="1564"></div>
+        <div class="phone"><img src="/shots/{{LANG}}/widget-medium-dark.webp" data-i-alt="widget.alt.dark" loading="lazy" width="720" height="1564"></div>
+      </div>
+    </div>
+    <p class="aside how" data-reveal data-i="widget.how"></p>
+  </div>
+</section>
+
 <!-- ── 스티커 서랍 — 붙이고 끌고 키운다(영상), 그리고 서랍의 그림을 한눈에. ── -->
-<section class="chapter" aria-labelledby="drawer-title">
+<section class="chapter" id="decor" aria-labelledby="drawer-title">
   <div class="wide">
     <div class="duo">
       <div class="phone-wrap" data-reveal>
@@ -1023,52 +1242,6 @@
   </div>
 </section>
 
-<!-- ── 이 달 쪽 · 책장 넘김 · 회고 속지 ── -->
-<section class="chapter tint" aria-labelledby="month-title">
-  <div class="wide">
-    <div class="duo flip">
-      <div class="phone-wrap" data-reveal>
-        <div class="phone" data-tilt><video class="reel" data-reel="month" muted playsinline loop preload="none" poster="/video/{{LANG}}/month.webp" width="600" height="1304" data-i-aria-label="month.video"></video></div>
-      </div>
-      <div>
-        <span class="eyebrow" data-reveal data-i="month.eyebrow"></span>
-        <h2 id="month-title" data-reveal data-delay="1" data-i="month.title"></h2>
-        <p data-reveal data-delay="2" data-i="month.lede"></p>
-        <p class="aside" data-reveal data-delay="3" data-i="month.flip"></p>
-      </div>
-    </div>
-    <div class="duo" style="margin-top:clamp(3rem,7vw,5rem)">
-      <div class="phone-wrap" data-reveal>
-        <div class="phone" data-tilt><video class="reel" data-reel="insert" muted playsinline loop preload="none" poster="/video/{{LANG}}/insert.webp" width="600" height="1304" data-i-aria-label="insert.video"></video></div>
-      </div>
-      <div>
-        <span class="eyebrow" data-reveal data-i="insert.eyebrow"></span>
-        <h3 data-reveal data-delay="1" data-i="insert.title"></h3>
-        <p data-reveal data-delay="2" data-i="insert.lede"></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── 꾸며 본 하루들 — 실제 앱에서 기록을 남기고 꾸민 다섯 장(언어마다 그 언어로). ── -->
-<section class="samples" id="samples" aria-labelledby="samples-title">
-  <div class="wide">
-    <div class="head-c">
-      <span class="eyebrow" data-reveal data-i="samples.eyebrow"></span>
-      <h2 id="samples-title" data-reveal data-delay="1" data-i="samples.title"></h2>
-      <p data-reveal data-delay="2" data-i="samples.lede"></p>
-    </div>
-  </div>
-  <div class="album" id="album" tabindex="0" data-i-aria-label="samples.aria">
-    <figure><div class="phone"><img src="/shots/{{LANG}}/day-full.webp" data-i-alt="samples.1.h" loading="lazy" width="720" height="1564"></div><figcaption><b data-i="samples.1.h"></b><span data-i="samples.1.p"></span></figcaption></figure>
-    <figure><div class="phone"><img src="/shots/{{LANG}}/day-today.webp" data-i-alt="samples.2.h" loading="lazy" width="720" height="1564"></div><figcaption><b data-i="samples.2.h"></b><span data-i="samples.2.p"></span></figcaption></figure>
-    <figure><div class="phone"><img src="/shots/{{LANG}}/day-holiday.webp" data-i-alt="samples.3.h" loading="lazy" width="720" height="1564"></div><figcaption><b data-i="samples.3.h"></b><span data-i="samples.3.p"></span></figcaption></figure>
-    <figure><div class="phone"><img src="/shots/{{LANG}}/day-night.webp" data-i-alt="samples.4.h" loading="lazy" width="720" height="1564"></div><figcaption><b data-i="samples.4.h"></b><span data-i="samples.4.p"></span></figcaption></figure>
-    <figure><div class="phone"><img src="/shots/{{LANG}}/day-month.webp" data-i-alt="samples.5.h" loading="lazy" width="720" height="1564"></div><figcaption><b data-i="samples.5.h"></b><span data-i="samples.5.p"></span></figcaption></figure>
-    <figure><div class="phone"><img src="/shots/{{LANG}}/home-sep.webp" data-i-alt="samples.6.h" loading="lazy" width="720" height="1564"></div><figcaption><b data-i="samples.6.h"></b><span data-i="samples.6.p"></span></figcaption></figure>
-  </div>
-  <div class="album-ctl"><button type="button" data-album="album" data-dir="-1" data-i-aria-label="samples.prev">‹</button><button type="button" data-album="album" data-dir="1" data-i-aria-label="samples.next">›</button></div>
-</section>
 
 <!-- ── 직접 꾸며 보기 — 앱의 스티커 그림 몇 장으로 종이 한 장을. 이 브라우저에만 남는다. ── -->
 <section class="chapter" id="play" aria-labelledby="play-title">
@@ -1171,6 +1344,10 @@
         <span class="kicker" data-reveal data-i="f.letgo.k"></span>
         <h3 data-reveal data-delay="1" data-i="f.letgo.h"></h3>
         <p data-reveal data-delay="2" data-i="f.letgo.p"></p>
+        <ul class="scenes" data-reveal data-delay="3">
+          <li><div class="phone"><video class="reel" data-reel="letgo2" muted playsinline loop preload="none" poster="/video/{{LANG}}/letgo2.webp" width="576" height="1252" data-i-aria-label="f.letgo.v2"></video></div><span data-i="f.letgo.v2"></span></li>
+          <li><div class="phone"><video class="reel" data-reel="letgo3" muted playsinline loop preload="none" poster="/video/{{LANG}}/letgo3.webp" width="576" height="1252" data-i-aria-label="f.letgo.v3"></video></div><span data-i="f.letgo.v3"></span></li>
+        </ul>
       </div>
     </div>
 
@@ -1207,8 +1384,9 @@
         <li data-reveal><div class="phone"><video class="reel" data-reel="musicbox" muted playsinline loop preload="none" poster="/video/{{LANG}}/musicbox.webp" width="600" height="1304" data-i-aria-label="obj.musicbox.h"></video></div><b data-i="obj.musicbox.h"></b><span data-i="obj.musicbox.p"></span></li>
         <li data-reveal data-delay="1"><div class="phone"><video class="reel" data-reel="candle" muted playsinline loop preload="none" poster="/video/{{LANG}}/candle.webp" width="600" height="1304" data-i-aria-label="obj.candle.h"></video></div><b data-i="obj.candle.h"></b><span data-i="obj.candle.p"></span></li>
         <li data-reveal data-delay="2"><div class="phone"><video class="reel" data-reel="compose" muted playsinline loop preload="none" poster="/video/{{LANG}}/compose.webp" width="600" height="1304" data-i-aria-label="obj.letter.h"></video></div><b data-i="obj.letter.h"></b><span data-i="obj.letter.p"></span></li>
-        <li data-reveal data-delay="3"><div class="phone"><img src="/shots/{{LANG}}/trace.webp" data-i-alt="obj.trace.h" loading="lazy" width="720" height="1564"></div><b data-i="obj.trace.h"></b><span data-i="obj.trace.p"></span></li>
+        <li data-reveal data-delay="3"><div class="phone"><img src="/shots/{{LANG}}/notebook.webp" data-i-alt="obj.trace.h" loading="lazy" width="720" height="1564"></div><b data-i="obj.trace.h"></b><span data-i="obj.trace.p"></span></li>
         <li data-reveal data-delay="4"><div class="phone"><video class="reel" data-reel="jar" muted playsinline loop preload="none" poster="/video/{{LANG}}/jar.webp" width="600" height="1304" data-i-aria-label="obj.jar.h"></video></div><b data-i="obj.jar.h"></b><span data-i="obj.jar.p"></span></li>
+        <li data-reveal data-delay="1"><div class="phone"><video class="reel" data-reel="sketch" muted playsinline loop preload="none" poster="/video/{{LANG}}/sketch.webp" width="576" height="1252" data-i-aria-label="obj.sketch.h"></video></div><b data-i="obj.sketch.h"></b><span data-i="obj.sketch.p"></span></li>
       </ul>
     </div>
 
@@ -1505,6 +1683,21 @@
 </section>
 
 
+<!-- ── 업데이트 이력 맛보기 — 전문은 /history.html(src/history.tpl.html). ── -->
+<section class="plain history" id="history" aria-labelledby="hist-title">
+  <div class="wrap">
+    <span class="eyebrow" data-reveal data-i="hist.eyebrow"></span>
+    <h2 id="hist-title" data-reveal data-delay="1" data-i="hist.title"></h2>
+    <p data-reveal data-delay="2" data-i="hist.lede"></p>
+    <ol class="vers" data-reveal data-delay="2">
+      <li class="soon"><a href="/history.html#v1.1.1"><span class="no">1.1.1</span><b data-i="hist.111"></b><em data-i="hist.soon"></em></a></li>
+      <li><a href="/history.html#v1.1.0"><span class="no">1.1.0</span><b data-i="hist.110"></b><time datetime="2026-10-10">10.10</time></a></li>
+      <li><a href="/history.html#v1.0.9"><span class="no">1.0.9</span><b data-i="hist.109"></b><time datetime="2026-10-03">10.03</time></a></li>
+    </ol>
+    <a class="more" href="/history.html" data-reveal data-i="hist.more"></a>
+  </div>
+</section>
+
 <!-- 자주 묻는 것 — 사람들이 검색창에 적는 말로 묻고 답한다. JSON-LD 의 FAQPage 가 이 글을 그대로 옮긴다.
      물음을 더하면 네 표에 faq.N.q · faq.N.a 를 함께 더하고 여기 한 줄. -->
 <section class="plain faq" id="faq" aria-labelledby="faq-title">
@@ -1512,6 +1705,7 @@
     <span class="eyebrow" data-reveal data-i="faq.eyebrow"></span>
     <h2 id="faq-title" data-reveal data-delay="1" data-i="faq.title"></h2>
     <div class="qa" data-reveal data-delay="2">
+      <details><summary><h3 data-i="faq.17.q"></h3></summary><p data-i="faq.17.a"></p></details>
       <details><summary><h3 data-i="faq.13.q"></h3></summary><p data-i="faq.13.a"></p></details>
       <details><summary><h3 data-i="faq.14.q"></h3></summary><p data-i="faq.14.a"></p></details>
       <details><summary><h3 data-i="faq.15.q"></h3></summary><p data-i="faq.15.a"></p></details>
@@ -1557,6 +1751,7 @@
 <footer>
   <div class="wrap">
     <ul class="links">
+      <li><a href="/history.html" data-i="foot.history"></a></li>
       <li><a href="/support.html" data-i="nav.support"></a></li>
       <li><a href="/privacy.html" data-i="foot.privacy"></a></li>
       <li><a href="mailto:chuny4u@gmail.com" data-i="foot.mail"></a></li>
