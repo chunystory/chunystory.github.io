@@ -5,7 +5,7 @@
     "latest_build": 19
   },
   "android": {
-    "min_build": 19,
-    "latest_build": 19
+    "min_build": 20,
+    "latest_build": 20
   }
 }
