@@ -63,6 +63,31 @@
         if (playing) v.play().catch(function () {});
       });
     });
+
+    // 영상의 걸음(ol.beats) — 영상이 지나는 자리(data-at, 초)를 따라 불이 옮겨 가고, 누르면 그 자리부터 돈다.
+    each(document.querySelectorAll('ol.beats[data-for]'), function (ol) {
+      var v = document.querySelector('video.reel[data-reel="' + ol.getAttribute('data-for') + '"]');
+      if (!v) return;
+      var items = ol.querySelectorAll('li[data-at]');
+      function at(li) { return parseFloat(li.getAttribute('data-at')) || 0; }
+      function sync() {
+        var t = v.currentTime, on = 0;
+        each(items, function (li, i) { if (t >= at(li)) on = i; });
+        each(items, function (li, i) { li.classList.toggle('on', i === on); });
+      }
+      v.addEventListener('timeupdate', sync);
+      v.addEventListener('seeked', sync);
+      each(items, function (li) {
+        li.querySelector('button').addEventListener('click', function () {
+          arm(v);
+          v.currentTime = at(li) + 0.05;
+          v.removeAttribute('data-held');
+          v.play().catch(function () {});
+          sync();
+        });
+      });
+      sync();
+    });
   })();
 
   // ── 효과 — 앱의 sticker_effects.dart 와 같은 이름 · 같은 갈래 ───────────────

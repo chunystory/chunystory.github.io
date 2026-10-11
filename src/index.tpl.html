@@ -5,6 +5,8 @@
      2026-10-11 1.1.1 리뉴얼 — 개인정보 다음에 하루 한 쪽 · 한 달 한 장 · 홈 화면 위젯을 앞세우고, 이력 페이지(/history.html)를 단다.
      같은 날 저녁 — 「건네기 힘든 말」과 「소리 내어 재는 말온도」가 가장 먼저다(사용자). 영웅 → #moments → #measure → 개인정보 → 기록장.
      위젯 사진과 영상은 시뮬레이터의 진짜 홈 화면에 위젯을 올려 찍은 것이다(1.1.1 은 아직 스토어 전이라 「곧」이라고 적는다).
+     2026-10-12 — 영웅 영상을 짧은 한 편(19.5초: 홈 → 20초 재기를 빨리 감아 → 결과 → 오늘 쪽에 스티커로 남은 온도 → 하트 붙이기)으로,
+     제목 아래 「소리 내어 잰 온도는 스티커가 되어 기록장에 남아요」와 영상의 세 걸음(재고 · 남고 · 꾸미고)을 단다.
      부르는 이름은 build.py 머리말의 「이름」을 따른다. -->
 <html lang="{{LANG}}" data-paged>
 <head>
@@ -542,6 +544,15 @@
   :root[lang="ko"] .hero-stage .note, :root[lang="en"] .hero-stage .note, :root[lang="es"] .hero-stage .note { font-size: 1.5rem; }
   .hero-stage .note::before { content: ""; position: absolute; left: -1.8rem; top: -1.6rem; width: 1.6rem; height: 1.6rem; border-left: 1.5px solid currentColor; border-top: 1.5px solid currentColor; border-radius: 60% 0 0 0; transform: rotate(-20deg); opacity: .55; }
   @media (max-width: 520px) { .hero-stage .note { right: -.6rem; bottom: -1.2rem; } .hero-stage .note::before { display: none; } }
+  /* 영상의 세 걸음 — 지금 걸음만 붉은 테. 폰 폭이 아니라 글 폭(최대 30rem)으로 앉아 세 알약이 한 줄에 들게. */
+  .beats { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem .35rem; width: min(30rem, calc(100vw - 2rem)); margin: -.35rem 0 0; padding: 0; position: relative; left: 50%; translate: -50% 0; z-index: 3; }
+  .beats li { display: flex; }
+  .beats button { display: inline-flex; align-items: center; gap: .38rem; padding: .3rem .66rem .3rem .3rem; border: 0; border-radius: 999px; background: color-mix(in srgb, var(--surface) 82%, transparent); box-shadow: inset 0 0 0 1px var(--line); color: var(--ink-3); font: inherit; font-size: .8125rem; font-weight: 600; letter-spacing: 0; white-space: nowrap; cursor: pointer; transition: color .35s, box-shadow .35s, background .35s; }
+  .beats i { display: grid; place-items: center; width: 1.25rem; height: 1.25rem; border-radius: 50%; background: var(--sunken); color: var(--ink-3); font-style: normal; font-size: .6875rem; font-weight: 700; transition: background .35s, color .35s; }
+  .beats li.on button { color: var(--ink); background: var(--surface); box-shadow: inset 0 0 0 1.5px var(--accent); }
+  .beats li.on i { background: var(--accent); color: var(--on-accent); }
+  .hero-stage:has(.beats) .note { bottom: -3rem; }
+  @media (max-width: 420px) { .beats { gap: .35rem .25rem; } .beats button { font-size: .75rem; padding-right: .55rem; gap: .3rem; } .hero-stage:has(.beats) .note { bottom: -2.9rem; } }
   .stores { list-style: none; margin: 1.6rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .65rem; }
   .store { display: inline-flex; align-items: center; gap: .6rem; padding: .7rem 1.15rem .7rem .95rem; border-radius: .95rem; color: #fff; background: #1E1A17; text-decoration: none; font-size: .9375rem; font-weight: 600; letter-spacing: 0; box-shadow: 0 14px 28px -18px rgba(30,26,23,.9); transition: transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s; max-width: 100%; }
   .store:hover { transform: translateY(-2px); box-shadow: 0 18px 32px -18px rgba(30,26,23,.95); text-decoration: none; }
@@ -985,7 +996,7 @@
 
 <main>
 
-<!-- ── 영웅 — 폰 안은 실제 앱을 시뮬레이터에서 움직여 녹화한 것(책장 넘김 → 꾸민 하루 쪽). 둘레의 스티커는 앱의 그림을 그대로 구운 것. -->
+<!-- ── 영웅 — 폰 안은 실제 앱을 시뮬레이터에서 움직여 녹화한 한 편(홈 → 20초 재기(빨리 감음) → 결과 → 오늘 쪽에 붙은 온도 → 하트 스티커). 둘레의 스티커는 앱의 그림을 그대로 구운 것. -->
 <section class="hero" id="top" aria-labelledby="hero-title">
   <div class="blobs" aria-hidden="true"><i class="blob a"></i><i class="blob b"></i><i class="blob c"></i></div>
   <div class="wide hero-grid">
@@ -1018,7 +1029,14 @@
       <div class="floaters front" aria-hidden="true">
         <img src="/stickers/tape-hanji.webp" alt="" style="--x:58%;--y:1%;--w:120px;--r:9deg">
       </div>
-      <div class="phone" data-tilt><video class="reel" data-reel="measure" muted playsinline loop preload="metadata" poster="/video/{{LANG}}/measure.webp" width="576" height="1252" data-i-aria-label="hero.video"></video></div>
+      <div class="phone" data-tilt><video class="reel" data-reel="flow" muted playsinline loop preload="metadata" poster="/video/{{LANG}}/flow.webp" width="576" height="1252" data-i-aria-label="hero.video"></video></div>
+      <!-- 영상의 세 걸음 — js/decor.js 가 영상 시각(data-at, 초)을 따라 불을 옮기고, 누르면 그 자리로 간다.
+           시각은 tool cut_flow.py 가 네 언어 모두 같은 자리로 자른 것(재기 0 · 오늘 칸 9.4 · 꾸미기 12.4). -->
+      <ol class="beats" data-for="flow">
+        <li data-at="0"><button type="button"><i>1</i><span data-i="hero.beat.1"></span></button></li>
+        <li data-at="9.4"><button type="button"><i>2</i><span data-i="hero.beat.2"></span></button></li>
+        <li data-at="12.4"><button type="button"><i>3</i><span data-i="hero.beat.3"></span></button></li>
+      </ol>
       <p class="hand note" data-i="hero.note"></p>
     </div>
   </div>
