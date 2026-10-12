@@ -4,7 +4,7 @@
     python3 src/og.py
 
 - 링크를 카카오톡 · 네이버 · X 에 붙였을 때 뜨는 큰 그림이다. 첫 화면(영웅 구획)을
-  한 장으로 옮긴다 — 맨 위 이름, 눈썹 글, 제목(스티커에 무지개), 아래 사실 한 줄, 오른쪽
+  한 장으로 옮긴다 — 맨 위 이름, 눈썹 글, 제목(대문과 같은 테이프 · 스티커 꾸밈), 아래 사실 한 줄, 오른쪽
   폰에는 그 언어의 녹음 중 화면(shots/{lang}/rec-mid.webp — 2026-10-11 부터, 그 전엔 꾸민 하루 쪽), 둘레에
   앱의 스티커 그림 셋(stickers/*.webp, 앱의 StickerArt 를 구운 것). 1.0.10 리뉴얼(2026-10-06).
 - 글은 네 표의 brand · hero.eyebrow · hero.title · fact.* 에서 온다. 그 문구를 고치면
@@ -23,7 +23,15 @@ ROOT = Path(__file__).resolve().parent
 OUT = ROOT.parent
 LANGS = ["ko", "en", "ja", "es"]
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-# 제목 글자 크기 — 제목이 세 줄이다. 스페인어가 가장 길다.
+# 한국어 부리체 · 손글씨는 웹 글꼴이 크고 조각이 많아 찍기 전에 다 오지 않는다(10-12 소제목 · 스티커가 비어 찍혔다).
+# 옆 앱 저장소에 든 같은 글꼴 파일을 먼저 읽는다. 없으면 웹 글꼴로 선다.
+APP_FONTS = OUT.parent / "malondo_app" / "fonts"
+
+
+def font_face(family: str, file: str) -> str:
+    f = APP_FONTS / file
+    return f'@font-face {{ font-family: "{family}"; src: url("{f.as_uri()}"); }}' if f.exists() else ""
+# 제목 글자 크기 — 제목 두 줄 + 부리체 두 줄(.soft, 절반 크기). 스페인어가 가장 길다.
 TITLE_PX = {"ko": 64, "en": 58, "ja": 60, "es": 48}
 
 PAGE = """<!doctype html>
@@ -32,7 +40,9 @@ PAGE = """<!doctype html>
 <meta charset="utf-8">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-jp-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400&family=Shippori+Mincho:wght@400&family=Lora:wght@400&family=Nanum+Pen+Script&family=Yomogi&display=block">
 <style>
+  {faces}
   html, body {{ margin: 0; width: 1200px; height: 630px; overflow: hidden; }}
   body {{ position: relative; background: #F5F1EA; color: #211E1B; -webkit-font-smoothing: antialiased;
     font-family: "Pretendard Variable", Pretendard, "Pretendard JP Variable", "Pretendard JP", "Apple SD Gothic Neo", "Hiragino Sans", sans-serif; }}
@@ -41,7 +51,7 @@ PAGE = """<!doctype html>
   .a {{ width: 640px; height: 400px; left: 80px; top: 520px; background: rgba(156,208,198,.55); }}
   .b {{ width: 560px; height: 360px; left: 760px; top: 60px; background: rgba(234,205,150,.55); }}
   .c {{ width: 620px; height: 380px; left: 900px; top: 560px; background: rgba(242,181,161,.6); }}
-  .copy {{ position: absolute; left: 76px; top: 62px; bottom: 58px; width: 690px; display: flex; flex-direction: column; }}
+  .copy {{ position: absolute; left: 76px; top: 62px; bottom: 58px; width: 690px; display: flex; flex-direction: column; z-index: 1; }}
   .brand {{ display: flex; align-items: center; gap: 14px; font-size: 30px; font-weight: 700; letter-spacing: -.02em; }}
   .brand img {{ width: 54px; height: 54px; border-radius: 13px; }}
   .mid {{ margin: auto 0; }}
@@ -49,6 +59,25 @@ PAGE = """<!doctype html>
   h1 {{ margin: 0; font-size: {title_px}px; line-height: 1.17; font-weight: 700; letter-spacing: -.03em; word-break: keep-all; }}
   :root[lang="en"] h1, :root[lang="es"] h1 {{ letter-spacing: -.02em; }}
   .grad {{ background: linear-gradient(90deg, #2F7A6E, #B5832C 55%, #D3664F); -webkit-background-clip: text; background-clip: text; color: transparent; }}
+  /* 대문과 같은 꾸밈(2026-10-12) — 「흘러가도」는 옅은 잉크, 말 · 온도 아래 마스킹 테이프, 셋째 낱말은 붙인 스티커. */
+  h1 .soft {{ display: block; margin-top: 18px; font-family: "OG Batang", "Gowun Batang", "Shippori Mincho", serif; font-weight: 400; font-size: .5em; line-height: 1.32; letter-spacing: -.01em; color: #56504A; }}
+  :root[lang="en"] h1 .soft, :root[lang="es"] h1 .soft {{ font-family: Lora, Georgia, serif; letter-spacing: 0; }}
+  /* 일본어 부리체는 시스템의 히라기노 명조 — 웹 글꼴(Shippori)은 찍기 전에 다 오지 않을 때가 있었다. */
+  :root[lang="ja"] h1 .soft {{ font-family: "Hiragino Mincho ProN", "Shippori Mincho", serif; }}
+  h1 .flow {{ color: #56504A; }}
+  h1 .k1 {{ color: #2F7A6E; --kt: #2F7A6E; --kr: -1.6deg; }}
+  h1 .k2 {{ --kt: #B5832C; --kr: 1.2deg; }}
+  h1 .kw {{ position: relative; white-space: nowrap; }}
+  h1 .kw::before {{ content: ""; position: absolute; z-index: -1; left: -.08em; right: -.08em; top: .64em; height: .3em; rotate: var(--kr);
+    background: color-mix(in srgb, var(--kt) 27%, transparent);
+    -webkit-mask: linear-gradient(90deg, transparent 0, #000 6px, #000 calc(100% - 6px), transparent 100%); }}
+  h1 .sticker {{ display: inline-block; position: relative; margin: .18em .15em .1em .25em; padding: .02em .48em .1em; border-radius: .45em;
+    font-family: "OG Pen", "Nanum Pen Script", "Yomogi", serif; font-size: 1.28em; line-height: 1.12; letter-spacing: 0; color: #AA451E; white-space: nowrap;
+    background: linear-gradient(140deg, rgba(255,255,255,.55), transparent 42%), color-mix(in srgb, #D3664F 17%, #FDFCFA);
+    box-shadow: 0 0 0 .12em #fff, 0 .16em .3em -.08em rgba(58,34,24,.42); rotate: -3deg; vertical-align: .04em; }}
+  :root[lang="ja"] h1 .sticker {{ font-family: "Yomogi", serif; font-size: 1.02em; padding: .12em .5em .14em; }}
+  h1 .sticker::after {{ content: ""; position: absolute; right: -.12em; top: -.12em; width: .52em; height: .52em; border-bottom-left-radius: .22em;
+    background: linear-gradient(225deg, #F5F1EA 50%, #fff 50%); box-shadow: -.05em .05em .1em -.02em rgba(58,34,24,.22); }}
   .facts {{ font-size: 22px; color: #6C655D; }}
   .phone {{ position: absolute; right: 92px; top: 66px; width: 286px; aspect-ratio: 1320 / 2868; border-radius: 14% / 6.4%; background: #0A0908;
     box-shadow: 0 0 0 3px #0A0908, 0 0 0 11px #3A3532, 0 0 0 12px #6B645F, 0 40px 70px -24px rgba(58,34,24,.5); }}
@@ -107,6 +136,7 @@ def main() -> int:
             page = tmp / f"{lang}.html"
             page.write_text(PAGE.format(
                 lang=lang,
+                faces=font_face("OG Batang", "GowunBatang-Regular.ttf") + font_face("OG Pen", "NanumPenScript-Regular.ttf"),
                 title_px=TITLE_PX[lang],
                 icon=(OUT / "icon-192.png").as_uri(),
                 shot=(OUT / "shots" / lang / "rec-mid.webp").as_uri(),
