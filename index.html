@@ -11,6 +11,7 @@
      낱말 셋(말 · 온도 · 기록장)에 같은 테이프를 붙이고 램프 차례로 물들인다. 세 걸음도 같은 차례 · 같은 빛깔(말하고 · 온도를 남기고 · 기록장을 꾸며요).
      곧이어 셋째 낱말을 「스티커 다이어리」로(사용자) — 대문에서만이다, 아래 구획과 메뉴는 build.py 머리말의 이름(기록장)을 따른다.
      그 낱말은 테이프 대신 정말 붙는 스티커(.sticker)로, 세 걸음의 셋째는 「다이어리를 꾸며요」.
+     그날 저녁 움직임을 더함(사용자) — 「흘러가도」 글자가 물결처럼 · 온도 뒤 온기의 숨 · 스티커 반짝이 · 살랑 · 누르면 다시 붙기.
      부르는 이름은 build.py 머리말의 「이름」을 따른다. -->
 <html lang="ko" data-paged>
 <head>
@@ -592,7 +593,38 @@
     100% { opacity: 1; transform: none; box-shadow: 0 0 0 .12em var(--rim), 0 .16em .3em -.08em var(--shadow); } }
   html.js .hero h1:not(.in) .sticker { opacity: 0; }
   html.js .hero h1.in .sticker { animation: stick .8s cubic-bezier(.3,.7,.3,1) 1.35s backwards; }
-  @media (prefers-reduced-motion: reduce) { html.js .hero h1 .kw::before { opacity: 1; } html.js .hero h1.in .flow, html.js .hero h1.in .kw::before, html.js .hero h1.in .sticker { animation: none; } html.js .hero h1 .sticker { opacity: 1; } }
+  /* 움직임을 조금 더(2026-10-12 저녁, 사용자) — 셋 다 제목의 뜻을 따른다.
+     ① 흘러가도 — 아래 스크립트가 글자로 나눈다(.ch). 하나씩 흘러 들어와, 물 위에 뜬 듯 차례로 살짝 오르내리며 옅어졌다 돌아온다.
+     ② 온도 — 램프가 글자 안에서 천천히 오가고, 뒤에서 온기 한 겹이 숨 쉰다(남아 있는 것).
+     ③ 스티커 — 붙는 순간 반짝이가 튀고(.spark), 일곱 초에 한 번 살랑. 손을 올리면 귀퉁이가 더 들리고, 누르면 다시 붙는다.
+     살랑은 transform 을 쥐므로 손을 올렸을 때는 translate 로 띄운다. 화면 밖에서는 멈춘다(.hero.still). */
+  .vh { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .hero h1 .flow .w { white-space: nowrap; }
+  .hero h1 .flow .ch { display: inline-block; }
+  @keyframes ch-in { from { opacity: 0; transform: translate(-.35em, .08em); filter: blur(5px); } }
+  @keyframes ch-drift { 0%, 100% { transform: none; opacity: 1; } 50% { transform: translateY(-.05em); opacity: .7; } }
+  html.js .hero h1.in .flow[data-split] { animation: none; }
+  html.js .hero h1.in .flow .ch { animation: ch-in .9s cubic-bezier(.2,.7,.2,1) calc(.2s + var(--i) * .06s) both, ch-drift 3.6s ease-in-out calc(1.7s + var(--i) * .22s) infinite; }
+  .hero h1 .k2.grad { background-image: linear-gradient(90deg, var(--g1), var(--g2) 27%, var(--g3) 50%, var(--g2) 73%, var(--g1)); background-size: 200% 100%; }
+  .hero h1 .k2::after { content: ""; position: absolute; z-index: -2; left: -.35em; right: -.35em; top: -.12em; bottom: -.12em; border-radius: 50%; pointer-events: none; opacity: 0;
+    background: radial-gradient(closest-side, color-mix(in srgb, var(--g3) 55%, transparent), color-mix(in srgb, var(--g2) 18%, transparent) 70%, transparent); filter: blur(12px); }
+  @keyframes grad-flow { to { background-position: 100% 50%; } }
+  @keyframes warm { 0%, 100% { opacity: .35; transform: scale(.9); } 50% { opacity: 1; transform: scale(1.08); } }
+  html.js .hero h1.in .k2.grad { animation: grad-flow 6s ease-in-out 1.6s infinite alternate; }
+  html.js .hero h1.in .k2::after { animation: warm 4.8s ease-in-out 1.3s infinite both; }
+  .hero h1 .sticker { cursor: pointer; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; user-select: none; }
+  .hero h1 .sticker:hover { transform: none; translate: 0 -.06em; }
+  .hero h1 .sticker::after { transform-origin: 100% 0; transition: transform .3s cubic-bezier(.2,.7,.2,1); }
+  .hero h1 .sticker:hover::after { transform: scale(1.45); }
+  @keyframes sway { 0%, 84%, 100% { transform: none; } 88% { transform: rotate(2.4deg); } 92% { transform: rotate(-1.6deg); } 96% { transform: rotate(.7deg); } }
+  html.js .hero h1.in .sticker { animation: stick .8s cubic-bezier(.3,.7,.3,1) 1.35s backwards, sway 7s ease-in-out 3s infinite; }
+  .hero h1 .sticker .spark { position: absolute; left: 50%; top: 50%; width: var(--s); height: var(--s); margin: calc(var(--s) / -2) 0 0 calc(var(--s) / -2); background: var(--c); pointer-events: none;
+    clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%); animation: spark .8s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes spark { 0% { opacity: 0; transform: translate(calc(var(--dx) * .5), calc(var(--dy) * .5)) scale(.2); } 30% { opacity: 1; }
+    100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1) rotate(90deg); } }
+  .hero.still *, .hero.still *::before, .hero.still *::after { animation-play-state: paused !important; }
+  @media (prefers-reduced-motion: reduce) { html.js .hero h1 .kw::before { opacity: 1; } html.js .hero h1.in .flow, html.js .hero h1.in .kw::before, html.js .hero h1.in .sticker { animation: none; } html.js .hero h1 .sticker { opacity: 1; }
+    html.js .hero h1.in .flow .ch, html.js .hero h1.in .k2.grad, html.js .hero h1.in .k2::after { animation: none; } html.js .hero h1 .k2::after { opacity: .5; } }
   .hero-stage { position: relative; width: min(310px, 72vw); margin: 0 auto; }
   .hero-stage .phone { z-index: 2; }
   .hero-stage .note { position: absolute; right: -3.4rem; bottom: -1.6rem; z-index: 3; transform: rotate(-6deg); font-size: 1.05rem; color: var(--ink-2); white-space: nowrap; }
@@ -2247,6 +2279,61 @@
       });
     }, { threshold: 0.35 }).observe(film);
   }
+
+  // ── 대문 제목의 움직임(2026-10-12) — 「흘러가도」를 글자로 나눠 흐르게 하고, 스티커는 붙는 순간 반짝이며
+  //    누르면 다시 붙는다. 언어를 바꾸면 i18n 이 제목을 새로 쓰므로 onChange 에서 다시 건다(이미 건 것은 건너뛴다).
+  //    나눈 글자는 aria-hidden, 읽는 글은 .vh 한 벌 — 화면 읽기가 글자를 하나씩 읽지 않게.
+  function esc(s) { return s.replace(/[&<>]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]; }); }
+  function burst(st) {
+    var w = st.offsetWidth / 2 + 20, h = st.offsetHeight / 2 + 16, n = 8;
+    for (var i = 0; i < n; i++) {
+      var a = (i / n) * Math.PI * 2 - Math.PI / 2 + (Math.random() - .5) * .5, sp = document.createElement('i');
+      sp.className = 'spark';
+      sp.setAttribute('aria-hidden', 'true');
+      sp.style.cssText = '--dx:' + (Math.cos(a) * w).toFixed(1) + 'px;--dy:' + (Math.sin(a) * h).toFixed(1) + 'px;--s:' + (10 + Math.random() * 9).toFixed(1) +
+        'px;--c:var(--k' + (i % 3 + 1) + ');animation-delay:' + (Math.random() * .08).toFixed(2) + 's';
+      sp.addEventListener('animationend', function () { this.remove(); });
+      st.appendChild(sp);
+    }
+  }
+  function heroMotion() {
+    var h1 = document.getElementById('hero-title');
+    if (!h1) return;
+    var flow = h1.querySelector('.flow');
+    if (flow && !flow.hasAttribute('data-split')) {
+      var text = flow.textContent, k = 0, out = '';
+      text.split(/(\s+)/).forEach(function (part) {
+        if (!part) return;
+        if (/^\s+$/.test(part)) { out += part; return; }
+        out += '<span class="w">' + Array.from(part).map(function (c) { return '<span class="ch" style="--i:' + (k++) + '">' + esc(c) + '</span>'; }).join('') + '</span>';
+      });
+      flow.setAttribute('data-split', '');
+      flow.innerHTML = '<span class="vh">' + esc(text) + '</span><span aria-hidden="true">' + out + '</span>';
+    }
+    var st = h1.querySelector('.sticker');
+    if (st && !st.hasAttribute('data-wired')) {
+      st.setAttribute('data-wired', '');
+      st.addEventListener('animationstart', function (e) {
+        if (e.target === st && e.animationName === 'stick' && !reduce) setTimeout(function () { burst(st); }, 440);
+      });
+      st.addEventListener('click', function () {
+        if (reduce || !st.animate) return;
+        st.animate([
+          { transform: 'none' },
+          { transform: 'translateY(-.45em) scale(1.14) rotate(-6deg)', offset: .35 },
+          { transform: 'scale(.95) rotate(1.2deg)', offset: .7 },
+          { transform: 'none' }
+        ], { duration: 700, easing: 'cubic-bezier(.3,.7,.3,1)' });
+        setTimeout(function () { burst(st); }, 400);
+      });
+    }
+  }
+  heroMotion();
+  i18n.onChange(heroMotion);
+  var heroSec = document.querySelector('.hero');
+  if (heroSec) new IntersectionObserver(function (es) {
+    es.forEach(function (e) { heroSec.classList.toggle('still', !e.isIntersecting); });
+  }).observe(heroSec);
 
   // ── 나타나기 ──
   var io = new IntersectionObserver(function (es) {
