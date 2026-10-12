@@ -1,7 +1,7 @@
 {
   "meta.title": "Malondo — Words drift away, their warmth stays · a conversation coach and sticker diary for the warmth of your words",
-  "meta.desc": "Apologies, refusals, comfort — find the first sentence of what's hard to say. Speak for 20 seconds and Malondo measures how warm your voice sounds; the recording never leaves your phone. What you felt and said that day becomes stickers on a page a day, a sheet a month, and your home screen widget. No sign-up. Free on iPhone and Android.",
-  "meta.keywords": "Malondo, sticker diary, record book app, decorate your records, sticker journal, calendar widget, home screen widget, mood calendar, daily record, monthly record, speech temperature, tone of voice, conversation coach, apology text, kind words, handwriting tracing",
+  "meta.desc": "Apologies, refusals, comfort — find the first sentence of what's hard to say. Speak for 20 seconds and Malondo measures how warm your voice sounds; the recording never leaves your phone. What you felt and said that day becomes stickers in a diary — a page a day, a sheet a month — and on your home screen widget, ready to decorate with photos and handwriting. No sign-up. Free on iPhone and Android.",
+  "meta.keywords": "Malondo, sticker diary, diary app, free diary app, sticker diary app, digital diary, diary decorating, decorate diary, journal app, journaling app, digital journal, sticker journal, sticker journal app, deco journal, digital scrapbook, mood diary, mood journal, mood tracker, emotion diary, feelings journal, daily journal, daily diary, monthly diary, photo diary, picture diary, diary widget, calendar diary, record book app, decorate your records, calendar widget, home screen widget, mood calendar, daily record, monthly record, speech temperature, tone of voice, conversation coach, apology text, kind words, handwriting tracing",
   "meta.og.alt": "Malondo — Words drift away, their warmth stays. The temperature of your words is traced on paper as you speak.",
   "brand": "Malondo",
   "nav.aria": "Jump to",
@@ -576,6 +576,8 @@
   "hist.more": "See the full history",
   "faq.17.q": "How do the home screen widgets work? Does my decorated calendar show up?",
   "faq.17.a": "Press and hold an empty spot on the home screen, tap Edit → Add Widget and choose “Malondo” (on Android, hold the home screen and open Widgets). There's “Today's page,” a tear-off calendar; “This month's page” in medium and large; and “Temperature.” On iPhone you can add them to the Lock Screen too. The paper, cover stickers, photos and handwriting on your month page appear on the widget after you open the app once. If today is empty, you can pick a mood and temperature right on the widget (iOS 17+ and Android). Moods never appear on the Lock Screen, and in Quiet mode the widget is a calendar with dates only. The new widgets arrive with update 1.1.1.",
+  "faq.18.q": "Can I use Malondo as a diary app? Can I decorate it?",
+  "faq.18.a": "Yes. Home is a calendar diary — tap a date and that day’s page opens. The feeling you picked, how warm you sounded and the words you sent are already there as stickers, so the day is kept even if you never write an entry from scratch; then you decorate it with photos, handwritten notes, your own drawings, stickers and papers. On this month’s page you decorate the whole month at once. Because a feeling and a temperature build up day by day, it also works as a mood diary or mood tracker. There is no schedule or to-do planner, though — Malondo’s diary is a place for the day’s words and feelings. Everything you keep stays on your phone.",
   "widget.close": "Up close —",
   "widget.n.paper": "<em>Paper and tape</em>, handwriting too",
   "widget.n.cover": "Each day's <em>cover sticker</em>",
