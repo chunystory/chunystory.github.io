@@ -1,6 +1,6 @@
 <!doctype html>
 <!-- 업데이트 이력 — build.py 가 한국어로 굽고, 나머지 셋은 i18n.js 가 표에서 바꿔 단다(privacy · support 와 같은 길).
-     글의 원본은 App Store 「버전 기록」에 실제로 나간 출시 노트와 그 날짜(한국 시각)다. 1.1.1 은 아직 스토어에 없어 「곧 나와요」로 선다 —
+     글의 원본은 App Store 「버전 기록」에 실제로 나간 출시 노트와 그 날짜(한국 시각)다. 1.1.2 는 아직 스토어에 없어 「곧 나와요」로 선다(1.1.1 은 2026-10-12 04:05 출시) —
      출시되면 날짜를 달고 .soon 을 걷는다. 버전 한 장은 li.ver 하나, 줄마다 data-k 로 새 기능(new) · 다듬음(better) · 고침(fix). -->
 <html lang="ko">
 <head>
@@ -243,14 +243,25 @@
 </section>
 
 <ol class="book" id="book">
-  <li class="ver soon" id="v1.1.1" style="--dotc: var(--accent)" data-reveal>
-    <div class="when"><span class="no">1.1.1</span><time data-i="soon"></time></div>
+  <li class="ver soon" id="v1.1.2" style="--dotc: var(--accent)" data-reveal>
+    <div class="when"><span class="no">1.1.2</span><time data-i="soon"></time></div>
     <article class="page">
       <span class="tape" aria-hidden="true"></span>
       <span class="stamp" aria-hidden="true" data-i="soon"></span>
+      <figure class="shot"><span class="ph"><img data-shot="react" src="/shots/ko/react.webp" data-i-alt="shot.alt.112" alt="" loading="lazy" width="1320" height="2868"></span></figure>
+      <h2 data-i="v.112.title"></h2>
+      <p class="note" data-i="soon.note"></p>
+      <ul data-i="v.112.list"></ul>
+    </article>
+  </li>
+
+  <li class="ver" id="v1.1.1" style="--dotc: var(--r5)" data-reveal>
+    <div class="when"><span class="no">1.1.1</span><time datetime="2026-10-12">2026. 10. 12.</time></div>
+    <article class="page">
+      <span class="tape" aria-hidden="true"></span>
       <figure class="shot"><span class="ph"><img data-shot="widget-large" src="/shots/ko/widget-large.webp" data-i-alt="shot.alt.111" alt="" loading="lazy" width="1320" height="2868"></span></figure>
       <h2 data-i="v.111.title"></h2>
-      <p class="note" data-i="soon.note"></p>
+      <div class="meta"><span class="badge live" data-i="now"></span></div>
       <ul data-i="v.111.list"></ul>
     </article>
   </li>
@@ -261,7 +272,6 @@
       <span class="tape" aria-hidden="true"></span>
       <figure class="shot"><span class="ph"><img data-shot="home" src="/shots/ko/home.webp" data-i-alt="shot.alt.110" alt="" loading="lazy" width="1320" height="2868"></span></figure>
       <h2 data-i="v.110.title"></h2>
-      <div class="meta"><span class="badge live" data-i="now"></span></div>
       <ul data-i="v.110.list"></ul>
     </article>
   </li>

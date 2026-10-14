@@ -718,6 +718,12 @@
   .tags li::before { content: "·"; margin-right: .5rem; color: var(--line-2); }
   .tags li:first-child::before { content: none; }
   .aside { margin: 1.25rem 0 0; padding: .9rem 1.1rem; border-left: 3px solid color-mix(in srgb, var(--accent) 55%, var(--line)); background: color-mix(in srgb, var(--surface) 70%, transparent); border-radius: 0 .8rem .8rem 0; font-size: .9375rem; color: var(--ink-2); }
+  /* 스티커끼리 반응(1.1.2) — 짝마다 그 스티커 그림 하나와 한 줄. */
+  .react-list { list-style: none; margin: 1.3rem 0 0; padding: 0; display: grid; gap: .7rem; }
+  @media (min-width: 560px) { .react-list { grid-template-columns: 1fr 1fr; gap: .85rem 1.3rem; } }
+  .react-list li { display: flex; align-items: center; gap: .75rem; font-size: .9375rem; line-height: 1.45; color: var(--ink-2); }
+  .react-list img { width: 44px; height: 44px; object-fit: contain; flex: none; filter: drop-shadow(0 2px 3px rgba(74, 44, 28, .2)); transform: rotate(-6deg); }
+  .react-list li:nth-child(even) img { transform: rotate(5deg); }
 
   /* 손글씨 메모 — 폰 둘레에 화살표와 함께. 좁은 화면에서는 폰 아래 목록으로. */
   figure.noted { position: relative; display: block; margin: 0 auto; width: min(300px, 72vw); }
@@ -1091,7 +1097,7 @@
       <span class="eyebrow" data-reveal data-i="hero.eyebrow"></span>
       <h1 id="hero-title" data-reveal data-delay="1" data-i="hero.title"></h1>
       <p class="lede" data-reveal data-delay="2" data-i="hero.lede"></p>
-      <a class="new-chip" href="#widget" data-reveal data-delay="2"><i aria-hidden="true">✦</i><span data-i="hero.new"></span></a>
+      <a class="new-chip" href="#react" data-reveal data-delay="2"><i aria-hidden="true">✦</i><span data-i="hero.new"></span></a>
       <!-- Google Play 링크의 referrer 는 Play Console 「사용자 획득」에서 어느 단추로 왔는지(hero · get) 가른다. -->
       <ul class="stores" data-reveal data-delay="3">
         <li><a class="store" href="https://apps.apple.com/kr/app/id6809147797"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.9-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.8zM14.2 5.8c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.8 1 .1 2.1-.5 2.7-1.2z"/></svg><span><small data-i="store.ios.small"></small><b data-i="store.ios"></b></span></a></li>
@@ -1116,11 +1122,11 @@
       </div>
       <div class="phone" data-tilt><video class="reel" data-reel="flow" muted playsinline loop preload="metadata" poster="/video/{{LANG}}/flow.webp" width="576" height="1252" data-i-aria-label="hero.video"></video></div>
       <!-- 영상의 세 걸음 — js/decor.js 가 영상 시각(data-at, 초)을 따라 불을 옮기고, 누르면 그 자리로 간다.
-           시각은 tool cut_flow.py 가 네 언어 모두 같은 자리로 자른 것(재기 0 · 오늘 칸 9.4 · 꾸미기 12.4). -->
+           시각은 촬영 도구 cut_site.py 가 네 언어 모두 같은 자리로 자른 것(1.1.2 다이얼 판 — 재기 0 · 홈으로 12.1 · 꾸미기 15.5). -->
       <ol class="beats" data-for="flow">
         <li data-at="0"><button type="button"><i>1</i><span data-i="hero.beat.1"></span></button></li>
-        <li data-at="9.4"><button type="button"><i>2</i><span data-i="hero.beat.2"></span></button></li>
-        <li data-at="12.4"><button type="button"><i>3</i><span data-i="hero.beat.3"></span></button></li>
+        <li data-at="12.1"><button type="button"><i>2</i><span data-i="hero.beat.2"></span></button></li>
+        <li data-at="15.5"><button type="button"><i>3</i><span data-i="hero.beat.3"></span></button></li>
       </ol>
       <p class="hand note" data-i="hero.note"></p>
     </div>
@@ -1327,7 +1333,6 @@
       <span class="eyebrow" data-reveal data-i="widget.eyebrow"></span>
       <h2 id="widget-title" data-reveal data-delay="1" data-i="widget.title"></h2>
       <p data-reveal data-delay="2" data-i="widget.lede"></p>
-      <p class="soon-pill" data-reveal data-delay="3"><i aria-hidden="true"></i><span data-i="widget.soon"></span></p>
     </div>
     <div class="homes">
       <figure class="side l" data-reveal data-delay="1"><div class="phone"><img src="/shots/{{LANG}}/widget-medium.webp" data-i-alt="widget.alt.medium" loading="lazy" width="720" height="1564"></div></figure>
@@ -1433,6 +1438,32 @@
           <p class="fx-now" data-now aria-live="polite"></p>
           <p class="local" data-i="fx.premium"></p>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 스티커끼리 반응(1.1.2) — 가까이 붙인 스티커가 서로 물들고 서리고 쌓이고 숨 쉰다. 영상: 반응이 도는 9월 28일 쪽 →
+     꾸미기에서 촛불을 편지 곁에 붙이면 편지가 촛불 빛으로 물든다(촬영 장면 v-react). ── -->
+<section class="chapter react" id="react" aria-labelledby="react-title">
+  <div class="wide">
+    <div class="duo flip">
+      <div class="phone-wrap" data-reveal>
+        <div class="phone" data-tilt><video class="reel" data-reel="react" muted playsinline loop preload="none" poster="/video/{{LANG}}/react.webp" width="576" height="1252" data-i-aria-label="react.video"></video></div>
+      </div>
+      <div>
+        <span class="eyebrow" data-reveal data-i="react.eyebrow"></span>
+        <h2 id="react-title" data-reveal data-delay="1" data-i="react.title"></h2>
+        <p data-reveal data-delay="2" data-i="react.lede"></p>
+        <ul class="react-list" data-reveal data-delay="2">
+          <li><img src="/stickers/desk-candle.webp" alt="" loading="lazy" width="44" height="44"><span data-i="react.l.1"></span></li>
+          <li><img src="/stickers/tone-cup.webp" alt="" loading="lazy" width="44" height="44"><span data-i="react.l.2"></span></li>
+          <li><img src="/stickers/desk-globe.webp" alt="" loading="lazy" width="44" height="44"><span data-i="react.l.3"></span></li>
+          <li><img src="/stickers/deco-cloud.webp" alt="" loading="lazy" width="44" height="44"><span data-i="react.l.4"></span></li>
+          <li><img src="/stickers/deco-heart.webp" alt="" loading="lazy" width="44" height="44"><span data-i="react.l.5"></span></li>
+          <li><img src="/stickers/deco-butterfly.webp" alt="" loading="lazy" width="44" height="44"><span data-i="react.l.6"></span></li>
+        </ul>
+        <p class="aside" data-reveal data-delay="3" data-i="react.off"></p>
       </div>
     </div>
   </div>
@@ -1863,9 +1894,9 @@
     <h2 id="hist-title" data-reveal data-delay="1" data-i="hist.title"></h2>
     <p data-reveal data-delay="2" data-i="hist.lede"></p>
     <ol class="vers" data-reveal data-delay="2">
-      <li class="soon"><a href="/history.html#v1.1.1"><span class="no">1.1.1</span><b data-i="hist.111"></b><em data-i="hist.soon"></em></a></li>
+      <li class="soon"><a href="/history.html#v1.1.2"><span class="no">1.1.2</span><b data-i="hist.112"></b><em data-i="hist.soon"></em></a></li>
+      <li><a href="/history.html#v1.1.1"><span class="no">1.1.1</span><b data-i="hist.111"></b><time datetime="2026-10-12">10.12</time></a></li>
       <li><a href="/history.html#v1.1.0"><span class="no">1.1.0</span><b data-i="hist.110"></b><time datetime="2026-10-10">10.10</time></a></li>
-      <li><a href="/history.html#v1.0.9"><span class="no">1.0.9</span><b data-i="hist.109"></b><time datetime="2026-10-03">10.03</time></a></li>
     </ol>
     <a class="more" href="/history.html" data-reveal data-i="hist.more"></a>
   </div>

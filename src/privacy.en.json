@@ -109,7 +109,7 @@
   "s3.r14.a": "Today's count",
   "s3.r14.b": "How many suggestions and letters you received today. It returns to 0 when the day changes",
   "s3.r15.a": "Display settings",
-  "s3.r15.b": "Appearance · <strong>language · temperature unit</strong> · reading type · reminder time · quiet mode · calendar page turn (like a page · slide) · sticker effects · sound and background music · the crash-report switch",
+  "s3.r15.b": "Appearance · <strong>language · temperature unit</strong> · reading type · reminder time · quiet mode · calendar page turn (like a page · slide) · sticker effects · sound · the crash-report switch",
   "s3.r16.a": "Installation name",
   "s3.r16.b": "One random name for this installation. It points to neither a person nor a device and is <strong>never transmitted anywhere</strong>",
   "s3.2": "<strong>The situation you typed, the suggestions you received, the story you shared and its reply are not stored.</strong> Look-backs keep no original text either. Only what you choose to keep — letters · kind words · the tracing notebook · replies you folded into an envelope · the handwriting and photos you put on day pages — stays on the device, as in the table above.",
